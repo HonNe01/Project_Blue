@@ -1,241 +1,200 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
+
 /// <summary>
-/// 길달 보스 구현
-///     - 평상시 은신(피격X). 패턴 시작 직전 은신 해제 -> 공격 수행 -> 종료 후 재은신.
-///     - 페이즈 1/2 별 패턴 테이블을 가중치 기반으로 선택.
-///     - 쿨다운/선후딜/재은신 대기 등을 통합 관리.
-///     - BossBase의 supportsStealth, invulnerableWhileStealthed 사용.
+/// [길달 클래스]
+///     - 패턴 시작 전 : 패턴별 위치로 이동 후 은신 해제(EndStealth)
+///     - 이동 완료 -> 은신 해제(피격 판정 On) -> 선딜레이 -> 공격 -> 후딜레이 -> 재은신(피격 판정 Off)
+///     - 페이즈 1 / 2 별 패턴 테이블 선택
+///     - 은신 무적은 추후 구현 예정
 /// </summary>
-
-
 public class GildalBoss : BossBase
 {
-    [Header("Phase Pattern Tables")]
-    [Tooltip("1페이즈 패턴들(예 : Swing, Slam, DokkaebiOrb)")]
-    [SerializeField] private List<AttackPatternSO> phase1Patterns = new();
-    [Tooltip("2페이즈 패턴들(예 : DoubleSlash, LeapSlash, EnhanceDokkaebiOrb)")]
-    [SerializeField] private List<AttackPatternSO> phase2Patterns = new();
+    [Header("전체 패턴 딜레이")]
+    [Tooltip("은신 해제 직후, 공격 전 선딜레이")]
+    public float pre_Delay = 0.2f;
+    [Tooltip("공격 후, 은신 돌입 직전 후딜레이")]
+    public float post_Delay = 0.35f;
+    [Tooltip("재은신 연출/대기 시간")]
+    public float reStealth_Delay = 1f;
 
-    [Header("Stealth Cycle")]
-    [Tooltip("패턴 시작 전의 은신 해제 예고 시간(셔더/사운드/텔레그래프")]
-    [SerializeField] private float revealLeadTime = 0.15f;
-    [Tooltip("패턴 종료 후 재은신 시간")]
-    [SerializeField] private float reStealthDelay = 0.1f;
+    [Header(" === 1 Phase Patterns === ")]
+    [Header("Swing")]
+    [Tooltip("Swing 공격 모션 시간")]
+    public float swing_Duration = 0.9f;
+    public float swing_weight = 3f;
+    public float swing_cooldowwn = 2.0f;
+    [Tooltip("Swing 히트 박스 오브젝트")]
+    public GameObject swing_Hitbox;
 
-    [Header("Pacing / Idle")]
-    [Tooltip("패턴 간 최소 유휴 시간")]
-    [SerializeField] private Vector2 idleBetweenPatterns = new Vector2(0.2f, 0.5f);
+    [Header("Slam")]
+    [Tooltip("Slam 공격 모션 시간")]
+    public float slam_Duration = 0.9f;
+    public float slam_weight = 3f;
+    public float slam_cooldowwn = 2.0f;
+    [Tooltip("Slam 히트 박스 오브젝트")]
+    public GameObject slam_Hitbox;
 
-    [Header("Collision / Renderer (은신 시 토글용.")]
-    [SerializeField] private Collider2D[] hitCollidersToToggle;
-    [SerializeField] private GameObject[] visualsToToggle;
+    [Header("Dokkaebi Orb")]
+    [Tooltip("Dokkaebi Orb 공격 모션 시간")]
+    public float dokkaebiOrb_Duration = 0.9f;
+    public float dokkaebiOrb_weight = 3f;
+    public float dokkaebiOrb_cooldowwn = 2.0f;
+    [Tooltip("Dokkaebi Orb 히트 박스 오브젝트")]
+    public GameObject dokkaebiOrb_Hitbox;
 
+    [Header(" === 2 Phase Patterns === ")]
 
-    // State
-    private Coroutine patternRoutine;
-    private List<AttackPatternSO> activePatterns;                       // 현재 페이즈의 패턴 목록
-    private readonly Dictionary<string, float> cooldownEnds = new();    // 패턴별 쿨다운 시간
+    [Header("References")]
+    [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
+    public SpriteRenderer sprite;
 
+    // 길달 패턴 리스트
+    private readonly List<BossPattern> phase1Patterns = new();
+    private readonly List<BossPattern> phase2Patterns = new();
+    private Transform _transform;
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
+        _transform = transform;
+        if (sprite == null) sprite = GetComponent<SpriteRenderer>();
 
-        // 은신 사용
-        supportsStealth = true;
-        invulnerableWhileStealth = true;
+        // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
+        phase1Patterns.Add(new BossPattern { name = "Swing", weight = swing_weight, cooldown = swing_cooldowwn, execute = () => Co_Swing() });
+        //phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
+        //phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
 
-        // 1페이즈 테이블 시작
-        activePatterns = phase1Patterns;
+        // ---- 페이즈2 패턴 등록 ----
+        //phase2Patterns.Add(new BossPattern { name = "DoubleSlash", weight = 3f, cooldown = 2.2f, execute = () => Co_DoubleSlash() });
+        //phase2Patterns.Add(new BossPattern { name = "LeapSlash", weight = 2f, cooldown = 3.2f, execute = () => Co_LeapSlash() });
+        //phase2Patterns.Add(new BossPattern { name = "EnhanceDokkaebi", weight = 2f, cooldown = 4.5f, execute = () => Co_EDokkaebiOrb() });
 
-        // 전투 시작
-        EnterStealth();
+        // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
+        StartCoroutine(Co_DoStealth());
     }
 
-    protected override void StartNextPattern()
+    protected override IEnumerator Co_ChoosePattern()
     {
-        // 이미 돌고 있으면 무시
-        if (patternRoutine != null) return;
+        // 현재 페이즈 풀에서 패턴 선택
+        var pool = inPhase2 ? phase2Patterns : phase1Patterns;
+        var choose = ChooseNextPattern(pool);
+        choose.lastUsedTime = Time.time;
 
-        // 패턴 후보 필터링 + 가중치 선택
-        var pattern = PickNextPattern();
-        if (pattern == null)
-        {
-            // 실행 가능한 패턴 없으면 잠시 대기
-            StartCoroutine(Co_ShortIdleRetry());
-            return;
-        }
+        // 위치 이동
+        var attackStartPos = CalcPreAttackPosition(choose.name);
+        MoveTo(attackStartPos);
 
-        patternRoutine = StartCoroutine(Co_RunPatternCycle(pattern));
-    }
+        // 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
 
-    protected override void StopCurrentPattern()
-    {
-        if (patternRoutine != null)
-        {
-            StopCoroutine(patternRoutine);
-            patternRoutine = null;
-        }
-        SetRunningPattern(false);
+        // 패턴 실행
+        yield return StartCoroutine(choose.execute());
 
         // 재은신
-        if (supportsStealth && !isStealthed)
-            EnterStealth();
+        yield return StartCoroutine(Co_DoStealth());
+
+        state = BossState.Idle;
+        curPatternCoroutine = null;
     }
 
-    private IEnumerator Co_ShortIdleRetry()
+    // 은신 기믹
+    private IEnumerator Co_DoStealth()
     {
-        SetRunningPattern(false);
-        yield return new WaitForSeconds(0.1f);
-        StartNextPattern();
+        // 현재는 단순 sprite 토글
+        if (sprite != null) sprite.enabled = false;
+
+        yield return new WaitForSeconds(reStealth_Delay);
     }
 
-    // 길달 루틴
-    //  1) 대기 -> 2) 은신 해제 예고 -> 3) 패턴 코루틴 실행
-    //  4) 재은신 대기 -> 5) 패턴 종료
-
-    private IEnumerator Co_RunPatternCycle(AttackPatternSO pattern)
+    private IEnumerator Co_EndStealth()
     {
-        SetRunningPattern(true);
+        // 현재난 단순 sprite 토글
+        if (sprite != null) sprite.enabled = true;
 
-        // 1) 패턴 간 템포
-        float idleWait = Random.Range(idleBetweenPatterns.x, idleBetweenPatterns.y);
-        yield return new WaitForSeconds(idleWait);
+        yield return null;
+    }
 
-        // 2) 은신 해제 예고
-        if (supportsStealth)
+    private Vector2 CalcPreAttackPosition(string patternName)
+    {
+        if (target == null) return _transform.position;
+
+        if (patternName == "Swing")
         {
-            // 연출 타임
-            if (revealLeadTime > 0f) yield return new WaitForSeconds(revealLeadTime);
-            ExitStealth();
+            float playerX = target.position.x;
+            float playerY = target.position.y;
+
+            // 추후 player의 왼쪽, 오른쪽 선택 로직 추가 필요
+            return new Vector2(playerX + 1.5f, playerY);
         }
+        // 추후 다른 패턴의 이동 로직 분기 추가 필요.
 
-        // 3) 쿨다운 시작
-        cooldownEnds[pattern.name] = Time.time + pattern.cooldown * Mathf.Max(0.01f, cooldownMultiplier);
-        yield return StartCoroutine(pattern.Execute(this));
-
-        // 4) 재은신
-        if (supportsStealth)
-        {
-            if (reStealthDelay > 0f) yield return new WaitForSeconds(reStealthDelay);
-            EnterStealth();
-        }
-
-        // 5) 후처리
-        if (pattern.recoveryTime > 0f)
-            yield return new WaitForSeconds(pattern.recoveryTime);
-
-        // 종료
-        patternRoutine = null;
-        SetRunningPattern(false);
+        return _transform.position;
     }
 
-    // 패턴 선택
-    private AttackPatternSO PickNextPattern()
+    private void MoveTo(Vector2 pos)
     {
-        var now = Time.time;
+        if (sprite == null || target == null) return;
 
-        // 실행 가능한 후보 필터링(쿨다운/조건)
-        var candidates = ListPool<AttackPatternSO>.Get();
-        foreach (var p in activePatterns)
-        {
-            if (p == null) continue;
+        // 좌표 이동
+        _transform.position = pos;
 
-            // 쿨다운 체크
-            if (cooldownEnds.TryGetValue(p.name, out float end) && now < end)
-                continue;
-
-            // 조건 판단
-            if (!p.CanExecute(this)) continue;
-
-            candidates.Add(p);
-        }
-
-        if (candidates.Count == 0)
-        {
-            ListPool<AttackPatternSO>.Release(candidates);
-
-            return null;
-        }
-
-        // 가중치 합
-        float sum = 0f;
-        for (int i = 0; i < candidates.Count; i++)
-            sum += Mathf.Max(0.0001f, candidates[i].weight);
-
-        float r = Random.value * sum;
-        for (int i = 0; i < candidates.Count; i++)
-        {
-            r -= Mathf.Max(0.0001f, candidates[i].weight);
-            if (r <= 0f)
-            {
-                var picked = candidates[i];
-                ListPool<AttackPatternSO>.Release(candidates);
-                return picked;
-            }
-        }
-
-        var fallback = candidates[Random.Range(0, candidates.Count)];
-        ListPool<AttackPatternSO>.Release(candidates);
-
-        return fallback;
+        // FlipX ( 길달 FlipX = False는 왼쪽 )
+        bool playerIsRight = target.position.x > _transform.position.x;
+        sprite.flipX = playerIsRight;
     }
 
-    // 페이즈 전환/훅
-    protected override IEnumerator OnPhaseChangeCutscene()
+    // 1페이즈 패턴
+    private IEnumerator Co_Swing()
     {
-        // 변신 연출
-        // 은신 유지 + 무적은 Base
-        anim?.SetTrigger("PhaseChange");
-        yield return new WaitForSeconds(1.0f);  // 필요시 타임라인/시네머신 연동
+        Debug.Log("[Gildal] Swing");
+
+        yield return new WaitForSeconds(pre_Delay);
+
+        anim?.SetTrigger("Swing");
+
+        if (swing_Hitbox) swing_Hitbox.SetActive(true);
+        yield return new WaitForSeconds(swing_Duration);
+        if (swing_Hitbox) swing_Hitbox.SetActive(false);
+
+        yield return new WaitForSeconds(post_Delay);
     }
 
-    // 이동 AI 없음, 패턴 내에서 이동 수행.
-    protected override void OnUpdateTick() { }
-    protected override void OnFixedTick() { }
-
-    protected override void OnHit(float damageTaken)
+    private IEnumerator Co_Slam()
     {
-        // 은신 중 Base에서 피격 무시
-        // 피격 애니/사운드
-        if (!isStealthed) anim?.SetTrigger("Hit");
+        Debug.Log("[Gildal] Slam");
+
+        yield return null;
     }
 
-    // 은신/피격
-    protected override void OnStealthEnter()
+    private IEnumerator Co_DokkaebiOrb()
     {
-        // 시각/피격 Off
-        ToggleVisuals(false);
-        ToggleHitColliders(false);
+        Debug.Log("[Gildal] Dokkaebi Orb");
 
-        // 셰이더 스위치/파티클 종료 등..
+        yield return null;
     }
 
-    protected override void OnStealthExit()
+    // 2페이즈 패턴
+    private IEnumerator Co_DoubleSlash()
     {
-        // 시각/피격 On
-        ToggleVisuals(true);
-        ToggleHitColliders(true);
+        Debug.Log("[Gildal] DoubleSlash");
 
-        // 이펙트 등..
+        yield return null;
     }
 
-    private void ToggleHitColliders(bool on)
+    private IEnumerator Co_LeapSlash()
     {
-        if (hitCollidersToToggle == null) return;
+        Debug.Log("[Gildal] LeapSlash");
 
-        foreach (var c in hitCollidersToToggle)
-            if (c) c.enabled = on;
+        yield return null;
     }
 
-    private void ToggleVisuals(bool on)
+    private IEnumerator Co_EDokkaebiOrb()
     {
-        if (visualsToToggle == null) return;
-        
-        foreach (var go in visualsToToggle)
-            if (go) go.SetActive(on);
+        Debug.Log("[Gildal] Enhance Dokkaeni Orb");
+
+        yield return null;
     }
 }

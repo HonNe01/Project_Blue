@@ -3,79 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 보스 부모 클래스
-///  - 체력/난이도 배율/페이즈 전환/무적(I-Frame)/히트 처리
-///  - 타깃 탐지(기본 : Tag : "Player")와 기본 상태머신
-///  - 은신(광학미채) 시스템 훅(길달)
-///  - 물리 갱신 훅 : 입력, AI는 Update, 실제 이동/힘은 Fixed에서 처리하게 분리함.
-///  
-/// 패턴 스케줄링/실행은 자식 클래스에서 구현
-///  - StartNextPattern(), IsRunningPattern(), StopCurrrentPattern() 등을 오버라이드/구현
+/// [보스 베이스 클래스]
+///     - 체력 / 페이즈 전환 / I-Frame / 사망 처리
+///     - 기본 FSM 상태 관리 ( Idle -> ChoosePattern -> Attacking -> PhaseChange -> Die )
+///     - 공통 패턴 시스템 (BossPattern) 제공 : 가중치 + 쿨타임 기반
+///     - 자식 클래스는 Co_ChoosePattern()과 패턴 코루틴 등의 추가 구현 필요
 /// </summary>
 public abstract class BossBase : MonoBehaviour
 {
-    // 설정
-    [Header("HP/Phase")]
-    [SerializeField] protected float maxHP = 100f;
-    [Tooltip("페이즈 전환 임계치(절대값) 혹은 비율. 둘 다 세팅하면 절대값이 우선")]
-    [SerializeField] protected float phase2ThresholdAbs = -1f;
-    [Tooltip("절대값 미사용시 비율로 전환. 예 : 0.5f => Hp 50% 이하 진입 시 페이즈2")]
-    [Range(0.05f, 0.95f)]
-    [SerializeField] protected float phase2ThreshholdRatio = 0.5f;
+    // Enum 상태 정의
+    public enum BossState { Idle, ChoosePattern, Attacking, PhaseChange, Die }
 
-    [Header("Difficulty Multipliers (보스별로 다름)")]
-    [Tooltip("데미지/체력/쿨다운 등에 곱해 쓸 배율. 자식 클래스에서 접근해서 사용.")]
-    [SerializeField] protected float hpMultiplier = 1f;
-    [SerializeField] protected float damageMultiplier = 1f;
-    [SerializeField] protected float cooldownMultiplier = 1f;
 
-    public float DamageMultiplier => damageMultiplier;
-
-    [Header("References")]
-    [SerializeField] protected Rigidbody2D rb;
-    [SerializeField] protected Animator anim;
-    [SerializeField] protected Transform target;
-
-    [Header("Flags")]
-    [Tooltip("보스가 은신 시스템을 쓰는지(길달 = True, 청류 = False). 미사용 보스는 그냥 무시")]
-    [SerializeField] protected bool supportsStealth = false;
-    [Tooltip("은신 중 피격 불가.")]
-    [SerializeField] protected bool invulnerableWhileStealth = true;
-
-    [Header("Tuning")]
-    [Tooltip("피격 후 잠깐 무적(I-frame) 시간(초). 필요 없으면 0")]
-    [SerializeField] protected float hitIFrame = 0.1f;
-    [Tooltip("보스 아레나 경계. 필요시 자식에서 사용.")]
-    [SerializeField] protected Bounds arenaBounds;
-
-    // 상태
-    protected float hp;
-
-    protected bool isDead;
-    protected bool inPhase2;
-    protected bool isStealthed;         // 현재 은신 상태
-    protected bool isInvulnerable;      // 일시 무적(페이즈 전환/컷씬/히트 I-Frame)
-    protected bool isBusy;              // 패턴/연출 중 임시 락
-
-    protected Transform cachedTransform;
-    protected SpriteRenderer cachedSR;  // 플립/가시성 토글용
-
-    // 자식 클래스의 패턴 진행 여부 보고 프로퍼티
-    public bool IsRunningPattern { get; private set; }
-    protected void SetRunningPattern(bool value) => IsRunningPattern = value;
-
-    
-    protected virtual void Awake()
+    // 패턴 클래스
+    [System.Serializable]
+    public class BossPattern
     {
-        cachedTransform = transform;
-        if (!rb)    rb = GetComponent<Rigidbody2D>();
-        if (!anim)  anim = GetComponent<Animator>();
-        cachedSR = GetComponentInChildren<SpriteRenderer>();
+        public string name;     // 패턴 이름
+        public float weight;    // 패턴 가중치
+        public float cooldown;  // 패턴 쿨타임
+        [HideInInspector] public float lastUsedTime = -999f;    // 마지막 사용 시간
+        public System.Func<IEnumerator> execute;                // 실행할 패턴 함수(자식 클래스에서 등록)
+    }
 
-        // Hp 초기화
-        hp = Mathf.Max(1f, maxHP * Mathf.Max(0.01f, hpMultiplier));
+    private List<BossPattern> phase1Patterns = new List<BossPattern>();
+    private List<BossPattern> phase2Patterns = new List<BossPattern>();
 
-        // 플레이어 탐지
+
+    [Header("보스 기본 설정")]
+    public float maxHp = 100f;                  // 최대 HP
+    public float phase2ThresholdRatio = 0.5f;   // 페이즈 전환 체력 비율(0.5f = 50%)
+    public float iFrameDuration = 0.5f;         // 피격 시 무적 시간 (초)
+    public Animator anim;
+
+    [Header("참조")]
+    public Transform target;                    // 플레이어(Tag:Player)
+
+    [Header("디버깅")]
+    public BossState state = BossState.Idle;    // 보스 상태
+    public float curHp;                         // 현재 체력
+    public bool inPhase2 = false;               // 페이즈 상태
+
+    // 현재 실행 중인 패턴
+    protected Coroutine curPatternCoroutine;
+    // I - Frame 플래그
+    private bool isInvulnerable = false;
+
+
+    // ===================== Unity 생명주기 =====================
+    private void Awake()
+    {
+        // 체력 초기화
+        curHp = maxHp;
+
+        // 타겟 초기화
         if (!target)
         {
             var go = GameObject.FindGameObjectWithTag("Player");
@@ -83,211 +64,196 @@ public abstract class BossBase : MonoBehaviour
         }
     }
 
-    protected virtual void OnEnable() { }
-
-    protected virtual void OnDisable() { }
-
-    protected virtual void Update()
+    private void Update()
     {
-        if (isDead) return;
-
-        // 페이즈 전환 체크
-        TryEnterPhase2();
-
-        // 패턴이 안 돌고 있으면 자식 클래스가 다음 패턴을 시작하도록 요청
-        if (!IsRunningPattern && !isBusy)
+        switch (state)
         {
-            StartNextPattern(); // 자식에서 구현 : 조건 검사 + 패턴 코루틴 시작
+            case BossState.Idle:
+                // 패턴 선택으로 이동
+                state = BossState.ChoosePattern;
+
+                break;
+            case BossState.ChoosePattern:
+                // 패턴 선택
+                StartPattern();
+                state = BossState.Attacking;
+
+                break;
+            case BossState.Attacking:
+                // 패턴 실행 중
+
+                break;
+            case BossState.PhaseChange:
+                //페이즈 전환
+
+                break;
+            case BossState.Die:
+                // 사망
+
+                break;
         }
-
-        // 보스별 Update 로직 훅
-        OnUpdateTick();
     }
 
-    protected virtual void FixedUpdate()
+
+    // ===================== [전투 처리] =====================
+    /// <summary>
+    /// 보스 전투 관련
+    ///     - I-Frame 적용
+    ///     - 체력 감소 / 사망 체크
+    ///     - 페이즈 전환 체크
+    /// </summary>
+    public void TakeDamage(float damage)
     {
-        if (isDead) return;
+        if (state == BossState.Die) return;
+        if (isInvulnerable) return;     // I-Frame 중 무시
 
-        // 실제 물리 이동/힘 적용
-        OnFixedTick();
-    }
+        //anim?.SetTrigger("Hit");
+        curHp -= damage;
 
-    // 전투, 피격, 사망
-    public virtual void TakeDamage(float rawDamage)
-    {
-        if (isDead) return;
+        // I-Frame
+        if (iFrameDuration > 0f)
+            StartCoroutine(Co_IFrame());
 
-        if (isInvulnerable) return;
-        if (supportsStealth && isStealthed && invulnerableWhileStealth) return;
-
-        float dmg = rawDamage * Mathf.Max(0.01f, damageMultiplier);
-        hp -= dmg;
-
-        if (hp <= 0f)
+        // 사망 체크
+        if (curHp <= 0f)
         {
-            hp = 0f;
+            curHp = 0f;
             Die();
+
             return;
         }
 
-        // 피격 리액션
-        OnHit(dmg);
-
-        // I - Frame
-        if (hitIFrame > 0f) StartCoroutine(Co_TempInvuln(hitIFrame));
-    }
-
-    protected virtual IEnumerator Co_TempInvuln(float sec)
-    {
-        isInvulnerable = true;
-        yield return new WaitForSeconds(sec);
-        isInvulnerable = false;
-    }
-
-    protected virtual void Die()
-    {
-        if (isDead) return;
-        isDead = true;
-
-        // 현재 패턴 정지
-        StopCurrentPattern();
-
-        // 연출
-        isInvulnerable = true;
-        anim?.SetTrigger("Die");
-
-        // 정리
-        OnDie();
-    }
-
-    // 페이즈 전환
-    protected virtual void TryEnterPhase2()
-    {
-        if (inPhase2) return;
-
-        float threshold = phase2ThresholdAbs > 0f ? phase2ThresholdAbs : maxHP * phase2ThreshholdRatio;
-
-        if (hp <= threshold)
+        // 페이즈 체크
+        if (!inPhase2 && curHp <= maxHp * phase2ThresholdRatio)
         {
+            StopPattern();  // 패턴 중단
             StartCoroutine(Co_PhaseChange());
         }
     }
+    
+    /// <summary>
+    /// I-Frame
+    ///     - 피격 시 일정 시간 무적
+    /// </summary>
+    private IEnumerator Co_IFrame()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(iFrameDuration);
+        isInvulnerable = false;
+    }
 
+    /// <summary>
+    /// 사망 처리
+    ///     - 패턴 중단
+    ///     - Die 연출
+    /// </summary>
+    private void Die()
+    {
+        Debug.Log("[Boss] 보스 사망");
+
+        StopPattern();
+        state = BossState.Die;
+        anim?.SetTrigger("Die");
+    }
+
+    /// <summary>
+    /// 페이즈 전환
+    ///     - 공통 구조 ( 자식이 Override로 구현 )
+    /// </summary>
     protected virtual IEnumerator Co_PhaseChange()
     {
+        Debug.Log("[Boss] 페이즈 전환");
+
+        state = BossState.PhaseChange;
+        anim?.SetTrigger("PhaseChange");
+
+        // 연출 대기
+        yield return new WaitForSeconds(2f);
+
         inPhase2 = true;
-        isBusy = true;
-        isInvulnerable = true;
-
-        // 현재 패턴/행동 정지
-        StopCurrentPattern();
-
-        // 전환 연출 훅
-        yield return OnPhaseChangeCutscene();
-
-        isInvulnerable = false;
-        isBusy = false;
-
-        OnEnterPhase2();
+        state = BossState.Idle;
     }
 
-    // 은신
-    public virtual void EnterStealth()
+
+    // ===================== 패턴 관리 =====================
+    // 패턴 시작
+    protected void StartPattern()
     {
-        if (!supportsStealth) return;
-        isStealthed = true;
+        if (curPatternCoroutine != null) return;
 
-        // 시각적 가시성 Off
-        if (cachedSR) cachedSR.enabled = false;
-
-        OnStealthEnter();
+        curPatternCoroutine = StartCoroutine(Co_ChoosePattern());
     }
 
-    public virtual void ExitStealth()
+    // 패턴 중단
+    protected void StopPattern()
     {
-        if (!supportsStealth) return;
-        isStealthed = false;
-
-        if (cachedSR) cachedSR.enabled = true;
-
-        OnStealthExit();
-    }
-
-    // Player의 현재 위치 조준
-    public virtual Vector2 GetAimPoint() => target ? (Vector2)target.position : (Vector2)cachedTransform.position;
-
-    // 영역 밖으로 나가지 않게 클램프 (필요시 자식에서 사용)
-    protected void ClampInsideArena()
-    {
-        if (arenaBounds.size == Vector3.zero) return;
-        var p = cachedTransform.position;
-        p.x = Mathf.Clamp(p.x, arenaBounds.min.x, arenaBounds.max.x);
-        p.y = Mathf.Clamp(p.y, arenaBounds.min.y, arenaBounds.max.y);
-        cachedTransform.position = p;
-    }
-
-    // 다음 패턴 시작
-    protected abstract void StartNextPattern();
-
-    // 현재 패턴 강제 중지. 페이즈 전환/사망
-    protected abstract void StopCurrentPattern();
-
-    // 보스별 Update 로직 (플립, 추적, 대기)
-    protected virtual void OnUpdateTick() { }
-
-    // 보스별 FixedUpdate 로직 (물리 이동/힘 적용)
-    protected virtual void OnFixedTick() { }
-
-    // 피격 연출
-    protected virtual void OnHit(float damageTaken) { }
-
-    // 페이즈 전환 연출
-    protected virtual IEnumerator OnPhaseChangeCutscene() { yield return null; }
-
-    // 페이즈2 진입 초기화
-    protected virtual void OnEnterPhase2() { }
-
-    // 은신 시작 처리
-    protected virtual void OnStealthEnter() { }
-
-    // 은신 해제 처리
-    protected virtual void OnStealthExit() { }
-
-    // 사망 시 정리(드론/투사체 제거, 문 열기, 보상 스폰 등)
-    protected virtual void OnDie() { }
-
-#if UNITY_EDITOR
-    protected virtual void OnDrawGizmosSelected()
-    {
-        // 아레나 경계 시각화
-        if (arenaBounds.size != Vector3.zero)
+        if (curPatternCoroutine != null)
         {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(arenaBounds.center, arenaBounds.size);
-        }
-
-        // 조준점 라인
-        if (target)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, target.position);
+            StopCoroutine(curPatternCoroutine);
+            curPatternCoroutine = null;
         }
     }
-#endif
-}
 
-static class ListPool<T>
-{
-    private static readonly Stack<List<T>> pool = new();
-
-    public static List<T> Get()
+    /// <summary>
+    /// 패턴 선택 코루틴
+    ///     - 가중치 / 쿨타임 기반
+    ///     - 선택 패턴 실행 후 Idle 복귀
+    /// </summary>
+    protected virtual IEnumerator Co_ChoosePattern()
     {
-        return pool.Count > 0 ? pool.Pop() : new List<T>();
+        // 현재 페이즈의 패턴 풀 가져오기
+        var pool = inPhase2 ? phase2Patterns : phase1Patterns;
+
+        // 패턴 선택
+        var choose = ChooseNextPattern(pool);
+        choose.lastUsedTime = Time.time;
+
+        // 패턴 실행
+        yield return StartCoroutine(choose.execute());
+
+        state = BossState.Idle;
+        curPatternCoroutine = null;
     }
 
-    public static void Release(List<T> list)
+    /// <summary>
+    /// 패턴 선택 알고리즘
+    ///     - 쿨타임 끝난 패턴 필터링
+    ///     - 가중치 랜덤으로 선택
+    ///     - 전부 쿨타임이면 모든 패턴에서 선택
+    /// </summary>
+    protected BossPattern ChooseNextPattern(List<BossPattern> patterns)
     {
-        list.Clear();
-        pool.Push(list);
+        float now = Time.time;
+        List<BossPattern> candidates = new List<BossPattern>(); // 패턴 리스트 나열
+        float totalWeight = 0f;
+
+        // 후보 필터링
+        foreach (var p in patterns)
+        {
+            if (now - p.lastUsedTime >= p.cooldown)
+            {
+                candidates.Add(p);
+                totalWeight += p.weight;
+            }
+        }
+
+        // 전부 쿨타임이면 전체 풀에서 사용
+        if (candidates.Count == 0)
+        {
+            candidates.AddRange(patterns);
+            totalWeight = 0f;
+            foreach (var p in candidates) totalWeight += p.weight;
+        }
+
+        // 가중치 랜덤 추첨
+        float roll = Random.Range(0, totalWeight);
+        float acc = 0f;
+        foreach (var p in candidates)
+        {
+            acc += p.weight;
+            if (roll <= acc) return p;
+        }
+
+        return candidates[0];
     }
 }
