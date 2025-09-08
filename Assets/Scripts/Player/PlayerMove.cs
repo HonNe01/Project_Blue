@@ -22,9 +22,13 @@ public class PlayerController : MonoBehaviour
     private bool isRising = false;      // 점프 중 위로 올라가는 중
     private bool isDroppingDown = false; // 아래점프 중인지 체크
 
+    [Header("참조")]
+    SpriteRenderer sprite;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
     }
 
@@ -41,12 +45,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             move = Vector2.left;
-            transform.localScale = new Vector2(-1f, 1f);
+
+            //transform.localScale = new Vector2(-1f, 1f);
+            sprite.flipX = true;    // 좌우 대칭 코드 수정. 크기 변경이 아닌 Sprite 컴포넌트 플립 기능 이용.
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             move = Vector2.right;
-            transform.localScale = new Vector2(1f, 1f);
+
+            //transform.localScale = new Vector2(1f, 1f);
+            sprite.flipX = true;
         }
 
         rb.linearVelocity = new Vector2(move.x * moveSpeed, rb.linearVelocity.y);
@@ -56,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            // 아래점프 처리
+            // 아래점프 처리              *수정 필요* => 일반 점프 중 점프키를 누르고 있지 않아도, 아래키를 누르면 플랫폼에 안올라가지는 아래점프 상태 버그 존재.
             if (IsOnPlatform() && Input.GetKey(KeyCode.DownArrow))
             {
                 if (!isDroppingDown)
@@ -75,7 +83,7 @@ public class PlayerController : MonoBehaviour
             // 아래점프 중이면 점프 입력 무시
             if (isDroppingDown) return;
 
-            // 벽점프 처리
+            // 벽점프 처리           *수정 필요* => 벽 점프시 좌우 입력 해제하여 반대 방향으로 점프하도록 해야함.
             if (isTouchingWall)
             {
                 rb.linearVelocity = new Vector2(-wallDir * wallJumpForce, wallJumpVertical);
