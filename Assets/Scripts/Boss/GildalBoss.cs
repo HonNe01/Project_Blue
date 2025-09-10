@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 
@@ -23,30 +22,35 @@ public class GildalBoss : BossBase
 
     [Header(" === 1 Phase Patterns === ")]
     [Header("Swing")]
-    [Tooltip("Swing 공격 모션 시간")]
-    public float swing_Duration = 0.9f;
     public float swing_weight = 3f;
     public float swing_cooldowwn = 2.0f;
+    public float swing_preDelay = 0.2f;
+    public float swing_postDelay = 0.4f;
     [Tooltip("Swing 히트 박스 오브젝트")]
     public GameObject swing_Hitbox;
 
     [Header("Slam")]
-    [Tooltip("Slam 공격 모션 시간")]
-    public float slam_Duration = 0.9f;
+    public float slam_height = 5f;
     public float slam_weight = 3f;
     public float slam_cooldowwn = 2.0f;
+    public float slam_preDelay = 0.2f;
+    public float slam_postDelay = 0.4f;
     [Tooltip("Slam 히트 박스 오브젝트")]
     public GameObject slam_Hitbox;
 
     [Header("Dokkaebi Orb")]
     [Tooltip("Dokkaebi Orb 공격 모션 시간")]
-    public float dokkaebiOrb_Duration = 0.9f;
     public float dokkaebiOrb_weight = 3f;
     public float dokkaebiOrb_cooldowwn = 2.0f;
+    public float dokkaebiOrb_preDelay = 0.2f;
+    public float dokkaebiOrb_postDelay = 0.4f;
     [Tooltip("Dokkaebi Orb 히트 박스 오브젝트")]
     public GameObject dokkaebiOrb_Hitbox;
 
     [Header(" === 2 Phase Patterns === ")]
+    [Header("Double Slash")]
+    [Header("Slam Slash")]
+    [Header("Enhanced Dokkaebi Orb")]
 
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
@@ -55,16 +59,14 @@ public class GildalBoss : BossBase
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
     private readonly List<BossPattern> phase2Patterns = new();
-    private Transform _transform;
 
     private void Start()
     {
-        _transform = transform;
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
 
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern { name = "Swing", weight = swing_weight, cooldown = swing_cooldowwn, execute = () => Co_Swing() });
-        //phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
+        phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
         //phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
 
         // ---- 페이즈2 패턴 등록 ----
@@ -83,18 +85,8 @@ public class GildalBoss : BossBase
         var choose = ChooseNextPattern(pool);
         choose.lastUsedTime = Time.time;
 
-        // 위치 이동
-        var attackStartPos = CalcPreAttackPosition(choose.name);
-        MoveTo(attackStartPos);
-
-        // 은신 해제
-        yield return StartCoroutine(Co_EndStealth());
-
         // 패턴 실행
         yield return StartCoroutine(choose.execute());
-
-        // 재은신
-        yield return StartCoroutine(Co_DoStealth());
 
         state = BossState.Idle;
         curPatternCoroutine = null;
@@ -111,39 +103,62 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_EndStealth()
     {
-        // 현재난 단순 sprite 토글
+        // 현재는 단순 sprite 토글
         if (sprite != null) sprite.enabled = true;
 
         yield return null;
     }
 
-    private Vector2 CalcPreAttackPosition(string patternName)
-    {
-        if (target == null) return _transform.position;
-
-        if (patternName == "Swing")
-        {
-            float playerX = target.position.x;
-            float playerY = target.position.y;
-
-            // 추후 player의 왼쪽, 오른쪽 선택 로직 추가 필요
-            return new Vector2(playerX + 1.5f, playerY);
-        }
-        // 추후 다른 패턴의 이동 로직 분기 추가 필요.
-
-        return _transform.position;
-    }
-
-    private void MoveTo(Vector2 pos)
+    // 좌우 반전
+    private void FlipX(GameObject hitbox = null)
     {
         if (sprite == null || target == null) return;
 
-        // 좌표 이동
-        _transform.position = pos;
+        // FlipX ( 길달 FlipX = true는 왼쪽, -1 )
+        bool playerIsRight = target.position.x > transform.position.x;
+        sprite.flipX = !playerIsRight;
 
-        // FlipX ( 길달 FlipX = False는 왼쪽 )
-        bool playerIsRight = target.position.x > _transform.position.x;
-        sprite.flipX = playerIsRight;
+        if (hitbox != null)
+        {
+            int sign = playerIsRight ? 1 : -1;
+            hitbox.transform.localScale = new Vector3(sign, 1, 1);
+        }
+    }
+
+    private IEnumerator Co_MoveTo(Vector2 pos, float duration, bool isLerp = false)
+    {
+        if (sprite == null || target == null) yield break;
+
+        Vector2 start = transform.position;
+        float elapsed = 0f;
+
+        // A : Lerp 보간 (선형 이동)
+        if (isLerp)
+        {
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+
+                transform.position = Vector2.Lerp(start, pos, t);
+
+                yield return null;
+            }
+        }
+        // B : MoveTowards (속도 일정)
+        else
+        {
+            float speed = Vector2.Distance(start, pos) / duration;
+            while (Vector2.Distance(transform.position, pos) > 0.1f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+
+                yield return null;
+            }
+
+            // 위치 보정
+            transform.position = pos;
+        }
     }
 
     // 1페이즈 패턴
@@ -151,23 +166,64 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Swing");
 
-        yield return new WaitForSeconds(pre_Delay);
+        // 1) 플레이어 위치로 이동
+        if (target != null)
+        {
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 2f, target.position.y);
+            transform.position = swing_destination;
+            FlipX(swing_Hitbox);
+        }
 
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(swing_preDelay);    // 은신 해제 후 공격까지의 딜레이
+
+        // 3) 공격
         anim?.SetTrigger("Swing");
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
-        if (swing_Hitbox) swing_Hitbox.SetActive(true);
-        yield return new WaitForSeconds(swing_Duration);
-        if (swing_Hitbox) swing_Hitbox.SetActive(false);
-
-        yield return new WaitForSeconds(post_Delay);
+        // 4) 재은신
+        yield return new WaitForSeconds(swing_postDelay);   // 공격 후 재은신까지의 딜레이
+        yield return StartCoroutine(Co_DoStealth());
     }
+
+    public void OnSwingHitStart() { if (swing_Hitbox) swing_Hitbox.SetActive(true); }
+    public void OnSwingHitEnd() { if (swing_Hitbox) swing_Hitbox.SetActive(false); }
 
     private IEnumerator Co_Slam()
     {
         Debug.Log("[Gildal] Slam");
 
-        yield return null;
+        // 1) 플레이어 위치로 이동
+        if (target != null)
+        {
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 1.5f, target.position.y + slam_height);
+            transform.position = swing_destination;
+            FlipX();
+        }
+
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(slam_preDelay);
+
+        // 3) 공격
+        anim?.SetTrigger("Slam");
+        Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
+        StartCoroutine(Co_MoveTo(dest, 0.5f, false));
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        // 4) 재은신
+        yield return new WaitForSeconds(slam_postDelay);
+        yield return StartCoroutine(Co_DoStealth());
     }
+    public void OnSlamHitStart() { if (slam_Hitbox) slam_Hitbox.SetActive(true); }
+    public void OnSlamHitEnd() { if (slam_Hitbox) slam_Hitbox.SetActive(false); }
 
     private IEnumerator Co_DokkaebiOrb()
     {

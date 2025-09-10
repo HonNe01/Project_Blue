@@ -307,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 374795667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.97, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -671,11 +671,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &889861187 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7991700780297173686, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-  m_PrefabInstance: {fileID: 3673040770859255626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087021609
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,11 +808,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087021609}
   m_CullTransparentMesh: 1
---- !u!1 &1293416332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6133158865817230817, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-  m_PrefabInstance: {fileID: 3673040770859255626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1294171716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,11 +1171,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.56
+      value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.89
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1220,13 +1210,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5258845458500319665, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 889861187}
-    - target: {fileID: 5258845458500319665, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: swing_Hitbox
-      value: 
-      objectReference: {fileID: 1293416332}
+      propertyPath: slam_preDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555403426357735960, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924644709608940927, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133158865817230817, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal

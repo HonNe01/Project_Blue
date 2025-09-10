@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5924644709608940927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5258880911747263640}
+  - component: {fileID: 175316724010572814}
+  - component: {fileID: 2584652441422187708}
+  m_Layer: 0
+  m_Name: Hitbox_Slam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5258880911747263640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924644709608940927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1439300101132665714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &175316724010572814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924644709608940927}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.35}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.39, y: 0.6645837}
+  m_EdgeRadius: 0
+--- !u!114 &2584652441422187708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924644709608940927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
+  baseDamage: 1
 --- !u!1 &6133158865817230817
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +159,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8711456, y: -0.030188262}
+  m_Offset: {x: 0.7, y: 1.73}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +169,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4312603, y: 1.9056464}
+  m_Size: {x: 4.5, y: 2.62}
   m_EdgeRadius: 0
 --- !u!114 &8815849992785037117
 MonoBehaviour:
@@ -127,6 +219,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5555403426357735960}
+  - {fileID: 5258880911747263640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7783108065526105649
@@ -176,7 +269,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b0ba3ef17a62404d985ccc14f6d9c95, type: 3}
+  m_Sprite: {fileID: 1118370953060766263, guid: 1d116eaf4de31604fb1269c4d6daa0fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,7 +295,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -248,8 +341,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.4, y: 2}
+  m_Offset: {x: 0, y: 0.99}
+  m_Size: {x: 1.76, y: 2}
   m_Direction: 0
 --- !u!95 &7991700780297173686
 Animator:
@@ -285,26 +378,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a318193937b69448909e8ea48e1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GildalBoss
-  maxHP: 100
-  phase2ThresholdAbs: -1
-  phase2ThreshholdRatio: 0.5
-  hpMultiplier: 1
-  damageMultiplier: 1
-  cooldownMultiplier: 1
-  rb: {fileID: 6833678964055669684}
-  anim: {fileID: 0}
+  maxHp: 100
+  phase2ThresholdRatio: 0.5
+  iFrameDuration: 0.5
+  anim: {fileID: 7991700780297173686}
   target: {fileID: 0}
-  supportsStealth: 0
-  invulnerableWhileStealth: 1
-  hitIFrame: 0.1
-  arenaBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  phase1Patterns:
-  - {fileID: 11400000, guid: d446d26270120a14eb59bc8cfd958904, type: 2}
-  phase2Patterns: []
-  revealLeadTime: 0.15
-  reStealthDelay: 0.1
-  idleBetweenPatterns: {x: 0.2, y: 0.5}
-  hitCollidersToToggle: []
-  visualsToToggle: []
+  state: 0
+  curHp: 0
+  inPhase2: 0
+  pre_Delay: 0.3
+  post_Delay: 0.35
+  reStealth_Delay: 1
+  swing_Duration: 0.9
+  swing_weight: 3
+  swing_cooldowwn: 2
+  swing_Hitbox: {fileID: 6133158865817230817}
+  slam_Duration: 1.5
+  slam_weight: 3
+  slam_cooldowwn: 3
+  slam_Hitbox: {fileID: 5924644709608940927}
+  dokkaebiOrb_Duration: 0.9
+  dokkaebiOrb_weight: 3
+  dokkaebiOrb_cooldowwn: 2
+  dokkaebiOrb_Hitbox: {fileID: 0}
+  sprite: {fileID: 0}
