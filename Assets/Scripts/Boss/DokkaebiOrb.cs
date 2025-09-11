@@ -10,11 +10,14 @@ public class DokkaebiOrb : MonoBehaviour
 
     private Vector2 dir;
     private Animator anim;
+    private Collider2D coll;
     private Rigidbody2D rigid;
+    
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
 
         Destroy(gameObject, lifeTime);
@@ -47,7 +50,7 @@ public class DokkaebiOrb : MonoBehaviour
         {
             Debug.Log($"[{gameObject.name}] Player Hit!");
             rigid.linearVelocity = Vector3.zero;
-            collision.enabled = false;
+            coll.enabled = false;
 
             float damage = baseDamage;
             //collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
@@ -57,7 +60,7 @@ public class DokkaebiOrb : MonoBehaviour
         else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform"))
         {
             rigid.linearVelocity = Vector3.zero;
-            collision.enabled = false;
+            coll.enabled = false;
 
             StartCoroutine(Explosion());
         }
