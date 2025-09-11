@@ -25,6 +25,7 @@ public class GildalBoss : BossBase
 
     [Header(" === 1 Phase Patterns === ")]
     [Header("Swing")]
+    [Tooltip("Swing 가중치")]
     public float swing_weight = 3f;
     public float swing_cooldowwn = 2.0f;
     public float swing_preDelay = 0.2f;
@@ -33,8 +34,9 @@ public class GildalBoss : BossBase
     public GameObject swing_Hitbox;
 
     [Header("Slam")]
-    public float slam_height = 5f;
+    [Tooltip("Slam 가중치")]
     public float slam_weight = 3f;
+    public float slam_height = 5f;
     public float slam_cooldowwn = 2.0f;
     public float slam_preDelay = 0.2f;
     public float slam_postDelay = 0.4f;
@@ -42,13 +44,13 @@ public class GildalBoss : BossBase
     public GameObject slam_Hitbox;
 
     [Header("Dokkaebi Orb")]
-    [Tooltip("Dokkaebi Orb 공격 모션 시간")]
+    [Tooltip("Dokkaebi Orb 가중치")]
     public float dokkaebiOrb_weight = 3f;
     public float dokkaebiOrb_cooldowwn = 2.0f;
     public float dokkaebiOrb_preDelay = 0.2f;
     public float dokkaebiOrb_postDelay = 0.4f;
-    [Tooltip("Dokkaebi Orb 히트 박스 오브젝트")]
-    public GameObject dokkaebiOrb_Hitbox;
+    [Tooltip("Dokkaebi Orb Drone 프리펩")]
+    public GameObject dronePrefab;
 
     [Header(" === 2 Phase Patterns === ")]
     [Header("Double Slash")]
@@ -74,7 +76,7 @@ public class GildalBoss : BossBase
         swing_Hitbox.SetActive(false);
         phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
         slam_Hitbox.SetActive(false);
-        //phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
+        phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
 
         // ---- 페이즈2 패턴 등록 ----
         //phase2Patterns.Add(new BossPattern { name = "DoubleSlash", weight = 3f, cooldown = 2.2f, execute = () => Co_DoubleSlash() });
@@ -271,7 +273,36 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Dokkaebi Orb");
 
-        yield return null;
+        // 1) 플레이어 근처로 이동
+        if (target != null)
+        {
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, target.position.y);
+            transform.position = dokkaebiOrb_Destination;
+            FlipX();
+        }
+
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(dokkaebiOrb_preDelay);
+        anim?.SetTrigger("DokkaebiOrb");
+
+        // 3) 드론 소환
+        bool playerIsRight = target.position.x > transform.position.x;
+        int sign = playerIsRight ? 1 : -1;
+        Vector2 spawnPos = transform.position + new Vector3(sign * 2f, 2f, 0);
+
+        var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
+        var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
+        yield return StartCoroutine(drone.Co_EndStealth());
+
+        // 5) 공격 명령
+        Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
+        drone.FireOrb(droneTarget);
+        
+        // 6) 재은신
+        StartCoroutine(Co_DoStealth());
+        yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
 
     // 2페이즈 패턴

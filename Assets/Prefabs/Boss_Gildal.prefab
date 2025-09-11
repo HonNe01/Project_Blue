@@ -194,7 +194,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6133158865817230817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 37504e7926c1148458dfbf620836b039, type: 2}
   m_CullingMode: 0
@@ -488,5 +488,5 @@ MonoBehaviour:
   dokkaebiOrb_cooldowwn: 2
   dokkaebiOrb_preDelay: 0.2
   dokkaebiOrb_postDelay: 0.4
-  dokkaebiOrb_Hitbox: {fileID: 0}
+  dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   sprite: {fileID: 0}
