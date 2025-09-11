@@ -22,15 +22,8 @@ public class HitboxController : MonoBehaviour
         }
     }
 
-    public void Activate(float duration)
+    public void ObjectOff()
     {
-        StartCoroutine(Co_Active(duration));
-    }
-
-    private System.Collections.IEnumerator Co_Active(float duration)
-    {
-        gameObject.SetActive(true);
-        yield return new WaitForSeconds(duration);
         gameObject.SetActive(false);
     }
 }
