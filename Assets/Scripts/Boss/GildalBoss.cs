@@ -8,11 +8,14 @@ using UnityEngine;
 ///     - 패턴 시작 전 : 패턴별 위치로 이동 후 은신 해제(EndStealth)
 ///     - 이동 완료 -> 은신 해제(피격 판정 On) -> 선딜레이 -> 공격 -> 후딜레이 -> 재은신(피격 판정 Off)
 ///     - 페이즈 1 / 2 별 패턴 테이블 선택
-///     - 은신 무적은 추후 구현 예정
+///     - 은신 중 무적
 /// </summary>
 public class GildalBoss : BossBase
 {
-    [Header("전체 패턴 딜레이")]
+    [Header(" === Gildal Boss === ")]
+    [Header("All Pattern Setting")]
+    public int bossLayer;
+    public int playerAttackLayer;
     [Tooltip("은신 해제 직후, 공격 전 선딜레이")]
     public float pre_Delay = 0.2f;
     [Tooltip("공격 후, 은신 돌입 직전 후딜레이")]
@@ -63,10 +66,14 @@ public class GildalBoss : BossBase
     private void Start()
     {
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
+        bossLayer = LayerMask.NameToLayer("Enemy");
+        playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
 
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern { name = "Swing", weight = swing_weight, cooldown = swing_cooldowwn, execute = () => Co_Swing() });
+        swing_Hitbox.SetActive(false);
         phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
+        slam_Hitbox.SetActive(false);
         //phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
 
         // ---- 페이즈2 패턴 등록 ----
@@ -95,18 +102,52 @@ public class GildalBoss : BossBase
     // 은신 기믹
     private IEnumerator Co_DoStealth()
     {
-        // 현재는 단순 sprite 토글
-        if (sprite != null) sprite.enabled = false;
+        // 피격 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
 
-        yield return new WaitForSeconds(reStealth_Delay);
+        // 은신 로직
+        if (sprite != null)
+        {
+            float elapsed = 0f;
+            Color c = sprite.color;
+
+            while (elapsed < reStealth_Delay)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
+                c.a = Mathf.Lerp(1f, 0f, t);
+                sprite.color = c;
+                yield return null;
+            }
+
+            c.a = 0f;
+            sprite.color = c;
+        }
     }
 
     private IEnumerator Co_EndStealth()
     {
-        // 현재는 단순 sprite 토글
-        if (sprite != null) sprite.enabled = true;
+        // 은신 해제 로직
+        if (sprite != null)
+        {
+            float elapsed = 0f;
+            Color c = sprite.color;
 
-        yield return null;
+            while (elapsed < reStealth_Delay)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
+                c.a = Mathf.Lerp(0f, 1f, t);
+                sprite.color = c;
+                yield return null;
+            }
+
+            c.a = 1f;
+            sprite.color = c;
+        }
+
+        // 피격 판정 설정
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
 
     // 좌우 반전
@@ -207,13 +248,14 @@ public class GildalBoss : BossBase
         }
 
         // 2) 은신 해제
+        anim?.SetTrigger("SlamPrep");
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(slam_preDelay);
 
         // 3) 공격
         anim?.SetTrigger("Slam");
         Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
-        StartCoroutine(Co_MoveTo(dest, 0.5f, false));
+        StartCoroutine(Co_MoveTo(dest, 0.2f, false));
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기

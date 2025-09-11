@@ -29,17 +29,17 @@ public abstract class BossBase : MonoBehaviour
     private List<BossPattern> phase1Patterns = new List<BossPattern>();
     private List<BossPattern> phase2Patterns = new List<BossPattern>();
 
-
-    [Header("보스 기본 설정")]
+    [Header(" === Boss Base === ")]
+    [Header("Boss Base Setting")]
     public float maxHp = 100f;                  // 최대 HP
     public float phase2ThresholdRatio = 0.5f;   // 페이즈 전환 체력 비율(0.5f = 50%)
     public float iFrameDuration = 0.5f;         // 피격 시 무적 시간 (초)
     public Animator anim;
 
-    [Header("참조")]
+    [Header("Boss Base Reference")]
     public Transform target;                    // 플레이어(Tag:Player)
 
-    [Header("디버깅")]
+    [Header("Boss Base State")]
     public BossState state = BossState.Idle;    // 보스 상태
     public float curHp;                         // 현재 체력
     public bool inPhase2 = false;               // 페이즈 상태

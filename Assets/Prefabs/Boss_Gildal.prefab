@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5258880911747263640}
   - component: {fileID: 175316724010572814}
   - component: {fileID: 2584652441422187708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hitbox_Slam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5555403426357735960}
   - component: {fileID: 4283784493699178518}
   - component: {fileID: 8815849992785037117}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hitbox_Swing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,9 +198,9 @@ GameObject:
   - component: {fileID: 5499621151267507001}
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss_Gildal
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,19 +386,29 @@ MonoBehaviour:
   state: 0
   curHp: 0
   inPhase2: 0
+  bossLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  playerAttackLayer:
+    serializedVersion: 2
+    m_Bits: 256
   pre_Delay: 0.3
   post_Delay: 0.35
   reStealth_Delay: 1
-  swing_Duration: 0.9
   swing_weight: 3
   swing_cooldowwn: 2
+  swing_preDelay: 0.2
+  swing_postDelay: 0.4
   swing_Hitbox: {fileID: 6133158865817230817}
-  slam_Duration: 1.5
+  slam_height: 5
   slam_weight: 3
   slam_cooldowwn: 3
+  slam_preDelay: 1
+  slam_postDelay: 0.4
   slam_Hitbox: {fileID: 5924644709608940927}
-  dokkaebiOrb_Duration: 0.9
   dokkaebiOrb_weight: 3
   dokkaebiOrb_cooldowwn: 2
+  dokkaebiOrb_preDelay: 0.2
+  dokkaebiOrb_postDelay: 0.4
   dokkaebiOrb_Hitbox: {fileID: 0}
   sprite: {fileID: 0}

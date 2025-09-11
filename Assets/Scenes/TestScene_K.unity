@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374795669}
   - component: {fileID: 374795668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Test_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1208,22 +1208,6 @@ PrefabInstance:
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5258845458500319665, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: slam_preDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5555403426357735960, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5924644709608940927, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6133158865817230817, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
