@@ -4,44 +4,45 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Header("이동 및 점프 설정")]
-    public float moveSpeed = 5f;              // 이동속도
-    public float jumpForce = 7f;              // 점프 초기 속도
-    public float wallJumpForce = 8f;          // 벽점프 (값을 올리면 벽점프시 위쪽으로 올라가는 값 증가)
-    public float wallJumpVertical = 7f;       // 벽점프 (값을 올리면 반대편으로 나가는 값 증가)
-    public float jumpTimeMax = 0.3f;          // 키를 누를 수 있는 최대 점프 시간
+    public float moveSpeed = 5f; // 이동속도
+    public float jumpForce = 12f; // 점프 초기 속도
+    public float wallJumpForce = 8f; // 벽점프 (값을 올리면 벽점프시 위쪽으로 올라가는 값 증가)
+    public float wallJumpVertical = 7f; // 벽점프 (값을 올리면 반대편으로 나가는 값 증가)
+    public float jumpTimeMax = 0.3f; // 점프 키 입력 유지 최대 시간
+
     private Rigidbody2D rb;
     private Collider2D playerCollider;
 
     [Header("점프 설정")]
     private int jumpCount = 0;
-    private int maxJumps = 2;                 // 최대점프 횟수 정하기
-    private bool isDroppingDown = false;      // 아래점프 중인지 체크
-    private float jumpTimeCounter;            // 현재 점프 지속 시간 카운트
+    private int maxJumps = 2; // 최대점프 횟수
+    private bool isDroppingDown = false; // 아래점프 중인지 체크
+    private float jumpTimeCounter; // 점프 키 유지 시간 카운트
 
     [Header("벽 점프 / 슬라이드")]
-    public float wallSlideSpeed = 0.5f;       // 벽 슬라이드 속도
+    public float wallSlideSpeed = 0.5f; // 벽 슬라이드 속도
     private bool isTouchingWall = false;
-    private int wallDir = 0;                  // 1 = 왼쪽벽 기준 오른쪽으로, -1 = 오른쪽벽 기준 왼쪽으로
+    private int wallDir = 0; // 1 = 왼쪽벽 기준 오른쪽, -1 = 오른쪽벽 기준 왼쪽
     private bool isWallSliding = false;
     private bool isWallJumping = false;
 
     [Header("코요테타임 & 버퍼")]
-    public float coyoteTime = 0.1f;           // 땅에서 떨어진 후 점프 가능한 시간
+    public float coyoteTime = 0.1f; // 땅에서 떨어진 후 점프 가능한 시간
     private float coyoteTimeCounter;
-    public float jumpBufferTime = 0.1f;       // 점프키 입력을 미리 받아두는 시간
+    public float jumpBufferTime = 0.1f; // 점프키 입력을 미리 받아두는 시간
     private float jumpBufferCounter;
 
     [Header("대쉬 설정")]
-    public float dashSpeed = 15f;         // 대쉬 속도
-    public float dashTime = 0.2f;         // 대쉬 지속 시간    대쉬거리는 속도*시간
-    public float dashCooldown = 0.8f;       // 지상에서 대쉬 쿨타임
-    private bool isDashing = false;       
-    private float dashTimeCounter;        
-    private float dashCooldownCounter;    
+    public float dashSpeed = 15f; // 대쉬 속도
+    public float dashTime = 0.2f; // 대쉬 지속 시간     대쉬 거리 계산 = dashSpeed * dashTime
+    public float dashCooldown = 0.8f; // 지상 대쉬 쿨타임
+    private bool isDashing = false;
+    private float dashTimeCounter;
+    private float dashCooldownCounter;
     private bool canAirDash = true;
 
     [Header("대쉬 트레일")]
-    public TrailRenderer dashTrail;       // 트레일 렌더러 참조
+    public TrailRenderer dashTrail; // 트레일 렌더러 참조
 
     [Header("참조")]
     SpriteRenderer sprite;
@@ -56,20 +57,26 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        HandleJumpInput(); 
-        Jump();            
+        HandleJumpInput();
+        Jump();
         dash();
     }
 
     void Move()
     {
         Vector2 move = Vector2.zero;
-        if (isWallJumping) return;
+        if (isWallJumping || isDashing) return;       // 벽점프중이거나 대쉬중일때는 이동 불가 처리
 
-        if (Input.GetKey(KeyCode.LeftArrow))               // 좌우 방향설정
-        { move = Vector2.left; sprite.flipX = true; }
+        if (Input.GetKey(KeyCode.LeftArrow)) // 좌우 방향설정
+        {
+            move = Vector2.left;
+            sprite.flipX = true;
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
-        { move = Vector2.right; sprite.flipX = false; }
+        {
+            move = Vector2.right;
+            sprite.flipX = false;
+        }
 
         float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
         rb.linearVelocity = new Vector2(move.x * moveSpeed, targetY);
@@ -77,7 +84,7 @@ public class PlayerController : MonoBehaviour
         isWallSliding = isTouchingWall && rb.linearVelocity.y < 0;
     }
 
-   //점프버퍼
+    // 점프버퍼 처리
     void HandleJumpInput()
     {
         // 점프버튼 누르면 버퍼 카운트 시작
@@ -98,55 +105,57 @@ public class PlayerController : MonoBehaviour
         // 점프버퍼 체크
         if (jumpBufferCounter > 0f)
         {
-            // 아래점프 처리
+            // 아래점프 처리 (원웨이 플랫폼 통과)
             if (IsOnPlatform() && Input.GetKey(KeyCode.DownArrow) && !isDroppingDown)
             {
                 Collider2D platform = GetPlatformBelow();
-                if (platform != null) StartCoroutine(DisableSinglePlatform(platform)); // 플랫폼 충돌 무시
+                if (platform != null)
+                    StartCoroutine(DisableSinglePlatform(platform)); // 플랫폼 충돌 무시
+
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 isDroppingDown = true;
-                jumpBufferCounter = 0f; 
+                jumpBufferCounter = 0f;
                 return;
             }
 
             if (isDroppingDown) return;
 
-            // 벽점프 처리 
+            // 벽점프 처리
             if (isTouchingWall)
             {
                 rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(wallDir * wallJumpForce, wallJumpVertical), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(wallDir * wallJumpForce, wallJumpVertical*1.5f), ForceMode2D.Impulse);
                 StartCoroutine(WallJumpLock(0.3f)); // 점프 후 이동 잠금
                 jumpCount = 1; // 벽점프 후 더블점프 가능
-                jumpBufferCounter = 0f; 
-                jumpTimeCounter = 0f;   // 벽점프는 키 누른 시간 계산 안함
-                return; 
+                jumpBufferCounter = 0f;
+                jumpTimeCounter = 0f; // 벽점프는 키 누른 시간 계산 안함
+                return;
             }
 
-            // 일반 점프 
+            // 일반 점프 (지상/더블점프)
             if (coyoteTimeCounter > 0f || jumpCount < maxJumps)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // 점프 초기 속도 설정
-                jumpTimeCounter = jumpTimeMax; // 최대 0.3초 동안 상승 유지
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce*1.5f); // 점프 초기 속도만 적용
                 jumpCount++;
                 jumpBufferCounter = 0f;
+                jumpTimeCounter = jumpTimeMax; // 점프 키 유지 최대 시간
             }
         }
 
-        
-        // 점프키를 누른 시간 동안 상승력 유지 (0.3초 동안)
-        if (Input.GetKey(KeyCode.Z) && jumpTimeCounter > 0f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            jumpTimeCounter -= Time.deltaTime;
-        }
-
-        // 키를 떼면 남은 시간 무시하고 낮은 점프 적용
+        // 점프 키를 빨리 떼면 지정시간보다 못 누른 것이므로 즉시 떨어지도록 처리
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            if (jumpTimeCounter > 0f) // 0.3초보다 빨리 떼면
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * 0.5f); // 낮은 점프
-            jumpTimeCounter = 0f;
+            if (jumpTimeCounter > 0f) // 지정시간보다 빨리 떼면
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // 상승력 초기화 → 바로 떨어짐
+                jumpTimeCounter = 0f;
+            }
+        }
+
+        // 시간 카운트 감소
+        if (jumpTimeCounter > 0f)
+        {
+            jumpTimeCounter -= Time.deltaTime;
         }
     }
 

@@ -3,11 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< Updated upstream
   tags:
   - Ground
   - Enemy
   - OneWayPlatform
   - Wall
+=======
+  tags: []
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -15,11 +19,19 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< Updated upstream
   - Ground
   - Player
   - PlayerAttack
   - Enemy
   - EnemyAttack
+=======
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes
   - 
   - 
   - 
@@ -45,6 +57,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< Updated upstream
   - name: BackGround
     uniqueID: 4069324249
     locked: 0
@@ -63,5 +76,7 @@ TagManager:
   - name: PlayerAttack
     uniqueID: 1668797033
     locked: 0
+=======
+>>>>>>> Stashed changes
   m_RenderingLayers:
   - Default
