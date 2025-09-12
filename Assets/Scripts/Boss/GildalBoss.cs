@@ -61,6 +61,7 @@ public class GildalBoss : BossBase
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
     public SpriteRenderer sprite;
+    public Collider2D coll;
 
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
@@ -69,6 +70,7 @@ public class GildalBoss : BossBase
     private void Start()
     {
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
+        if (coll == null) coll = GetComponent<Collider2D>();
         bossLayer = LayerMask.NameToLayer("Enemy");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
 
@@ -169,40 +171,24 @@ public class GildalBoss : BossBase
         }
     }
 
-    private IEnumerator Co_MoveTo(Vector2 pos, float duration, bool isLerp = false)
+    private IEnumerator Co_MoveTo(Vector2 pos, float duration)
     {
         if (sprite == null || target == null) yield break;
 
-        Vector2 start = transform.position;
-        float elapsed = 0f;
-
-        // A : Lerp 보간 (선형 이동)
-        if (isLerp)
-        {
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / duration);
-
-                transform.position = Vector2.Lerp(start, pos, t);
-
-                yield return null;
-            }
-        }
         // B : MoveTowards (속도 일정)
-        else
+        float speed = Vector2.Distance(transform.position, pos) / duration;
+        while (Vector2.Distance(transform.position, pos) > 0.1f)
         {
-            float speed = Vector2.Distance(start, pos) / duration;
-            while (Vector2.Distance(transform.position, pos) > 0.1f)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, pos, speed * Time.deltaTime);
 
-                yield return null;
-            }
-
-            // 위치 보정
-            transform.position = pos;
+            yield return null;
         }
+
+        // 충돌 복구
+        if (coll != null) coll.isTrigger = false;
+
+        // 위치 보정
+        transform.position = pos;
     }
 
     // Y값 보정
@@ -285,10 +271,13 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(slam_preDelay);
 
+        // 충돌 무시 (복구는 Co_MoveTo에서)
+        if (coll != null) coll.isTrigger = true;
+
         // 3) 공격
         anim?.SetTrigger("Slam");
         Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
-        StartCoroutine(Co_MoveTo(dest, 0.2f, false));
+        StartCoroutine(Co_MoveTo(dest, 0.2f));
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
