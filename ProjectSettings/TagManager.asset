@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  - Wall
-  - OneWayPlatform
   - Enemy
+  - OneWayPlatform
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,19 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< Updated upstream
-  - 
+  - Ground
   - Player
   - PlayerAttack
   - Enemy
   - EnemyAttack
-=======
-  - wall
-  - ground
-  - platform
-  - 
-  - 
->>>>>>> Stashed changes
   - 
   - 
   - 
@@ -54,22 +46,22 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: BackGround
-    uniqueID: 1957211349
+    uniqueID: 4069324249
     locked: 0
   - name: Ground
-    uniqueID: 2225047237
+    uniqueID: 382559355
     locked: 0
   - name: Enemy
-    uniqueID: 4130571619
-    locked: 0
-  - name: EnemyAttack
-    uniqueID: 2957357105
+    uniqueID: 120441875
     locked: 0
   - name: Player
-    uniqueID: 992839469
+    uniqueID: 1563108761
+    locked: 0
+  - name: EnemyAttack
+    uniqueID: 2088381727
     locked: 0
   - name: PlayerAttack
-    uniqueID: 1827539003
+    uniqueID: 1668797033
     locked: 0
   m_RenderingLayers:
   - Default

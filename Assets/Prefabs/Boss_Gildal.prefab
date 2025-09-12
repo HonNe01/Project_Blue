@@ -253,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1337610191
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -348,7 +348,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -164395677
+  m_SortingLayerID: 120441875
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1118370953060766263, guid: 1d116eaf4de31604fb1269c4d6daa0fb, type: 3}
@@ -470,16 +470,19 @@ MonoBehaviour:
   inPhase2: 0
   bossLayer: 0
   playerAttackLayer: 0
+  floorHeights:
+  - -5
+  - -2
   pre_Delay: 0.3
   post_Delay: 0.35
   reStealth_Delay: 1
-  swing_weight: 3
+  swing_weight: 1
   swing_cooldowwn: 2
   swing_preDelay: 0.2
   swing_postDelay: 0.4
   swing_Hitbox: {fileID: 6133158865817230817}
+  slam_weight: 1
   slam_height: 5
-  slam_weight: 3
   slam_cooldowwn: 3
   slam_preDelay: 1
   slam_postDelay: 0.4

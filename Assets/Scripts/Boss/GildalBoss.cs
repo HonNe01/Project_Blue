@@ -16,6 +16,7 @@ public class GildalBoss : BossBase
     [Header("All Pattern Setting")]
     public int bossLayer;
     public int playerAttackLayer;
+    [SerializeField] private float[] floorHeights;
     [Tooltip("은신 해제 직후, 공격 전 선딜레이")]
     public float pre_Delay = 0.2f;
     [Tooltip("공격 후, 은신 돌입 직전 후딜레이")]
@@ -204,6 +205,24 @@ public class GildalBoss : BossBase
         }
     }
 
+    // Y값 보정
+    private float GetFloorY(float playerY)
+    {
+        float chosen = floorHeights[0];
+
+        for (int i = 0; i < floorHeights.Length; i++)
+        {
+            if (playerY < floorHeights[i])
+            {
+                chosen = i == 0 ? floorHeights[0] : floorHeights[i - 1];
+
+                return chosen;
+            }
+        }
+
+        return floorHeights[floorHeights.Length - 1];
+    }
+
     // 1페이즈 패턴
     private IEnumerator Co_Swing()
     {
@@ -212,8 +231,14 @@ public class GildalBoss : BossBase
         // 1) 플레이어 위치로 이동
         if (target != null)
         {
+            // 플레이어의 왼쪽/오른쪽 판단
             int offsetX = Random.value < 0.5f ? -1 : 1;
-            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 2f, target.position.y);
+
+            // 플레이어의 현재 층으로 y좌표 보정
+            float groundY = GetFloorY(target.position.y);
+
+            // 길달 이동
+            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 2f, groundY);
             transform.position = swing_destination;
             FlipX(swing_Hitbox);
         }
@@ -243,8 +268,14 @@ public class GildalBoss : BossBase
         // 1) 플레이어 위치로 이동
         if (target != null)
         {
+            // 플레이어의 왼쪽/오른쪽 판단
             int offsetX = Random.value < 0.5f ? -1 : 1;
-            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 1.5f, target.position.y + slam_height);
+
+            // 플레이어의 현재 층으로 y좌표 보정
+            float groundY = GetFloorY(target.position.y);
+
+            // 길달 이동
+            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 1.5f, groundY + slam_height);
             transform.position = swing_destination;
             FlipX();
         }
@@ -276,8 +307,14 @@ public class GildalBoss : BossBase
         // 1) 플레이어 근처로 이동
         if (target != null)
         {
+            // 플레이어의 왼쪽/오른쪽 판단
             int offsetX = Random.value < 0.5f ? -1 : 1;
-            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, target.position.y);
+
+            // 플레이어의 현재 층으로 y좌표 보정
+            float groundY = GetFloorY(target.position.y);
+
+            // 길달 이동
+            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, groundY);
             transform.position = dokkaebiOrb_Destination;
             FlipX();
         }
