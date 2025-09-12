@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 5499621151267507001}
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Boss_Gildal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -348,8 +348,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 120441875
-  m_SortingLayer: 3
+  m_SortingLayerID: -61198025
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1118370953060766263, guid: 1d116eaf4de31604fb1269c4d6daa0fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
