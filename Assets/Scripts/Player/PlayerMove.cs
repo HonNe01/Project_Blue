@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     [Header("이동 및 점프 설정")]
     public float moveSpeed = 5f; // 이동속도
@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
     private float dashTimeCounter;
     private float dashCooldownCounter;
     private bool canAirDash = true;
+
+    //[Header("가드")]
+    //Player_Guard _playerGuard;
+
 
     [Header("대쉬 트레일")]
     public TrailRenderer dashTrail; // 트레일 렌더러 참조
@@ -213,7 +217,7 @@ public class PlayerController : MonoBehaviour
     // 지상 체크 (코요테타임용)
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.3f);
         return hit.collider != null && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("OneWayPlatform"));
     }
 
