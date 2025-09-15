@@ -32,7 +32,7 @@ public abstract class BossBase : MonoBehaviour
     [Header(" === Boss Base === ")]
     [Header("Boss Base Setting")]
     public float maxHp = 100f;                  // 최대 HP
-    public float phase2ThresholdRatio = 0.5f;   // 페이즈 전환 체력 비율(0.5f = 50%)
+    [Range(0f, 1f)] public float phase2ThresholdRatio = 0.5f;   // 페이즈 전환 체력 비율(0.5f = 50%)
     public float iFrameDuration = 0.5f;         // 피격 시 무적 시간 (초)
     public Animator anim;
 
@@ -42,6 +42,7 @@ public abstract class BossBase : MonoBehaviour
     [Header("Boss Base State")]
     public BossState state = BossState.Idle;    // 보스 상태
     public float curHp;                         // 현재 체력
+    public bool phaseChange = false;            // 페이즈 변경
     public bool inPhase2 = false;               // 페이즈 상태
 
     // 현재 실행 중인 패턴
@@ -85,7 +86,7 @@ public abstract class BossBase : MonoBehaviour
                 break;
             case BossState.PhaseChange:
                 //페이즈 전환
-
+                
                 break;
             case BossState.Die:
                 // 사망
@@ -126,11 +127,10 @@ public abstract class BossBase : MonoBehaviour
         // 페이즈 체크
         if (!inPhase2 && curHp <= maxHp * phase2ThresholdRatio)
         {
-            StopPattern();  // 패턴 중단
-            StartCoroutine(Co_PhaseChange());
+            phaseChange = true;
         }
     }
-    
+
     /// <summary>
     /// I-Frame
     ///     - 피격 시 일정 시간 무적
@@ -210,9 +210,8 @@ public abstract class BossBase : MonoBehaviour
 
         // 패턴 실행
         yield return StartCoroutine(choose.execute());
-
-        state = BossState.Idle;
         curPatternCoroutine = null;
+        state = BossState.Idle;
     }
 
     /// <summary>

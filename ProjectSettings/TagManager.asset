@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - OneWayPlatform
   - PlayerAttack
+  - Wall
   layers:
   - Default
   - TransparentFX

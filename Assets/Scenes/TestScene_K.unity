@@ -1287,10 +1287,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
-    - target: {fileID: 6833678964055669684, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
