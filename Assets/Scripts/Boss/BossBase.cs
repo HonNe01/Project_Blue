@@ -12,7 +12,7 @@ using UnityEngine;
 public abstract class BossBase : MonoBehaviour
 {
     // Enum 상태 정의
-    public enum BossState { Idle, ChoosePattern, Attacking, PhaseChange, Die }
+    public enum BossState { Idle, ChoosePattern, Attacking, Directing, Die }
 
 
     // 패턴 클래스
@@ -84,8 +84,8 @@ public abstract class BossBase : MonoBehaviour
                 // 패턴 실행 중
 
                 break;
-            case BossState.PhaseChange:
-                //페이즈 전환
+            case BossState.Directing:
+                // 페이즈 전환
                 
                 break;
             case BossState.Die:
@@ -97,6 +97,16 @@ public abstract class BossBase : MonoBehaviour
 
 
     // ===================== [전투 처리] =====================
+    // 전투 시작
+    public virtual IEnumerator StartBattle()
+    {
+        Debug.Log("[Boss] Battle Start");
+
+        anim?.SetTrigger("PhaseStart");
+
+        yield return null;
+    }
+
     /// <summary>
     /// 보스 전투 관련
     ///     - I-Frame 적용
@@ -164,7 +174,7 @@ public abstract class BossBase : MonoBehaviour
     {
         Debug.Log("[Boss] 페이즈 전환");
 
-        state = BossState.PhaseChange;
+        state = BossState.Directing;
         anim?.SetTrigger("PhaseChange");
 
         // 연출 대기

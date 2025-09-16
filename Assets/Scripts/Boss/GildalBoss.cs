@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
 using UnityEngine;
 
@@ -83,6 +84,7 @@ public class GildalBoss : BossBase
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
     private readonly List<BossPattern> phase2Patterns = new();
+    private readonly List<BossPattern> specialPatterns = new();
 
     private void Start()
     {
@@ -92,18 +94,48 @@ public class GildalBoss : BossBase
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
 
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
-        phase1Patterns.Add(new BossPattern { name = "Swing", weight = swing_weight, cooldown = swing_cooldowwn, execute = () => Co_Swing() });
+        phase1Patterns.Add(new BossPattern {name = "Swing", 
+                                            weight = swing_weight, 
+                                            cooldown = swing_cooldowwn, 
+                                            execute = () => Co_Swing() });
         swing_Hitbox.SetActive(false);
-        phase1Patterns.Add(new BossPattern { name = "Slam", weight = slam_weight, cooldown = slam_cooldowwn, execute = () => Co_Slam() });
+        phase1Patterns.Add(new BossPattern {name = "Slam", 
+                                            weight = slam_weight, 
+                                            cooldown = slam_cooldowwn, 
+                                            execute = () => Co_Slam() });
         slam_Hitbox.SetActive(false);
-        phase1Patterns.Add(new BossPattern { name = "DokkaebiOrb", weight = dokkaebiOrb_cooldowwn, cooldown = dokkaebiOrb_cooldowwn, execute = () => Co_DokkaebiOrb() });
+        phase1Patterns.Add(new BossPattern {name = "DokkaebiOrb", 
+                                            weight = dokkaebiOrb_cooldowwn, 
+                                            cooldown = dokkaebiOrb_cooldowwn, 
+                                            execute = () => Co_DokkaebiOrb() });
 
         // ---- 페이즈2 패턴 등록 ----
-        phase2Patterns.Add(new BossPattern { name = "DoubleSlash", weight = 3f, cooldown = 2.2f, execute = () => Co_DoubleSlash() });
-        //phase2Patterns.Add(new BossPattern { name = "JumpSlash", weight = 2f, cooldown = 3.2f, execute = () => Co_JumpSlash() });
-        //phase2Patterns.Add(new BossPattern { name = "EnhanceDokkaebi", weight = 2f, cooldown = 4.5f, execute = () => Co_EDokkaebiOrb() });
+        phase2Patterns.Add(new BossPattern {name = "DoubleSlash", 
+                                            weight = slash_weight, 
+                                            cooldown = slash_cooldowwn, 
+                                            execute = () => Co_DoubleSlash() });
+        slash_Hitbox.SetActive(false);
+        phase2Patterns.Add(new BossPattern {name = "JumpSlash", 
+                                            weight = jumpSlash_weight, 
+                                            cooldown = jumpSlash_cooldowwn, 
+                                            execute = () => Co_JumpSlash() });
+        jumpSlash_Hitbox.SetActive(false);
+        phase2Patterns.Add(new BossPattern {name = "EnhanceDokkaebi", 
+                                            weight = eDokkaebiOrb_weight, 
+                                            cooldown = eDokkaebiOrb_cooldowwn, 
+                                            execute = () => Co_EDokkaebiOrb() });
 
-        // ---- 특수 패턴 등록 ----
+        /* ---- 특수 패턴 등록 ----
+        specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
+                                           weight = eDokkaebiOrb_weight,
+                                           cooldown = eDokkaebiOrb_cooldowwn,
+                                           execute = () => Co_EDokkaebiOrb() });
+
+        specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
+                                           weight = eDokkaebiOrb_weight,
+                                           cooldown = eDokkaebiOrb_cooldowwn,
+                                           execute = () => Co_EDokkaebiOrb() });
+        */
 
         // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
         StartCoroutine(Co_DoStealth());
@@ -277,12 +309,12 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Slam");
 
+        // 플레이어의 왼쪽/오른쪽 판단
+        int offsetX = Random.value < 0.5f ? -1 : 1;
+
         // 1) 플레이어 위치로 이동
         if (target != null)
         {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
             // 플레이어의 현재 층으로 y좌표 보정
             float groundY = GetFloorY(target.position.y);
 
@@ -302,7 +334,7 @@ public class GildalBoss : BossBase
 
         // 3) 공격
         anim?.SetTrigger("Slam");
-        Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
+        Vector2 dest = new Vector2(target.position.x + offsetX * 1f, transform.position.y - slam_height);
         StartCoroutine(Co_MoveTo(dest, 0.2f));
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
@@ -369,7 +401,7 @@ public class GildalBoss : BossBase
     protected override IEnumerator Co_PhaseChange()
     {
         Debug.Log("[Gildal] 페이즈 전환");
-        state = BossState.PhaseChange;
+        state = BossState.Directing;
 
         // 1) 플레이어 근처로 이동
         if (target != null)
@@ -398,11 +430,19 @@ public class GildalBoss : BossBase
         anim?.SetLayerWeight(2, 1f);
         anim?.SetLayerWeight(1, 0f);
 
-        // 5) 재은신
+        /* 5) 페이즈 변경 연출
+        anim?.SetTrigger("PhaseChaange");
+        yield return null;
+        animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);
+        yield return null;
+        */
+
+        // 6) 재은신
         yield return StartCoroutine(Co_DoStealth());
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
         
-        // 6) 페이즈 변경 종료
+        // 7) 페이즈 변경 종료
         inPhase2 = true;
         state = BossState.Idle;
         Debug.Log("[Gildal] 2페이즈 돌입");
@@ -458,13 +498,101 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] JumpSlash");
 
-        yield return null;
+        // 1) 플레이어 위치로 이동
+        if (target != null)
+        {
+            // 플레이어의 왼쪽/오른쪽 판단
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+
+            // 플레이어의 현재 층으로 y좌표 보정
+            float groundY = GetFloorY(target.position.y);
+
+            // 길달 이동
+            Vector2 swing_destination = new Vector2(target.position.x, groundY + slam_height);
+            transform.position = swing_destination;
+            FlipX();
+        }
+
+        // 2) 은신 해제
+        anim?.SetTrigger("JumpSlashPrep");
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(jumpSlash_preDelay);
+
+        // 충돌 무시 (복구는 Co_MoveTo에서)
+        if (coll != null) coll.isTrigger = true;
+
+        // 3) 공격
+        anim?.SetTrigger("JumpSlash");
+        Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
+        StartCoroutine(Co_MoveTo(dest, 0.1f));
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        // 3) 공격2
+        anim?.SetTrigger("JumpSlash");
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        // 4) 재은신
+        yield return new WaitForSeconds(jumpSlash_postDelay);
+        yield return StartCoroutine(Co_DoStealth());
     }
+
+    public void OnJumpSlashHitStart() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(true); }
+    public void OnJumpSlashHitEnd() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(false); }
 
     private IEnumerator Co_EDokkaebiOrb()
     {
         Debug.Log("[Gildal] Enhance Dokkaeni Orb");
 
-        yield return null;
+        // 1) 플레이어 근처로 이동
+        if (target != null)
+        {
+            // 플레이어의 왼쪽/오른쪽 판단
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+
+            // 플레이어의 현재 층으로 y좌표 보정
+            float groundY = GetFloorY(target.position.y);
+
+            // 길달 이동
+            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, groundY);
+            transform.position = dokkaebiOrb_Destination;
+            FlipX();
+        }
+
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
+        anim?.SetTrigger("DokkaebiOrb");
+
+        // 3) 드론 3체 소환
+        bool playerIsRight = target.position.x > transform.position.x;
+        int sign = playerIsRight ? 1 : -1;
+
+        for (int i = 0; i < 3; i++)
+        {
+            // 드론 위치 조금식 오프셋
+            Vector2 spawnPos = transform.position + new Vector3(sign * (2f + i * 1.5f), 2f + i * 1.2f, 0);
+
+            var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
+            var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
+
+            // 드론 조작
+            Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
+            StartCoroutine(drone.Co_DroneAuto(droneTarget));
+
+            // 다음 드론 소환 딜레이
+            yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
+        }
+
+        // 4) 모션 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        // 5) 재은신
+        StartCoroutine(Co_DoStealth());
+        yield return new WaitForSeconds(eDokkaebiOrb_postDelay);
     }
 }

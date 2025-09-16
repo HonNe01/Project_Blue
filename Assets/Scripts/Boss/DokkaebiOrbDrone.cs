@@ -8,6 +8,18 @@ public class DokkaebiOrbDrone : MonoBehaviour
     [SerializeField] private GameObject wavePrefab;
     [SerializeField] private float fireSpeed = 10f;
 
+    // 드론 자동 조작
+    public IEnumerator Co_DroneAuto(Vector2 target)
+    {
+        yield return StartCoroutine(Co_EndStealth());
+        yield return null;
+
+        FireOrb(target);
+        yield return null;
+
+        StartCoroutine(Co_DoStealth());
+    }
+
     // 은신
     public IEnumerator Co_DoStealth()
     {

@@ -445,7 +445,7 @@ SpriteRenderer:
   m_SortingLayerID: -61198025
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1118370953060766263, guid: 1d116eaf4de31604fb1269c4d6daa0fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 273335addacac794b8af6de090d5b549, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -561,6 +561,7 @@ MonoBehaviour:
   target: {fileID: 0}
   state: 0
   curHp: 0
+  phaseChange: 0
   inPhase2: 0
   bossLayer: 0
   playerAttackLayer: 0
@@ -570,37 +571,37 @@ MonoBehaviour:
   pre_Delay: 0.3
   post_Delay: 0.35
   reStealth_Delay: 1
-  swing_weight: 5
+  swing_weight: 4
   swing_cooldowwn: 2
   swing_preDelay: 0.1
   swing_postDelay: 0.4
   swing_Hitbox: {fileID: 6133158865817230817}
-  slam_weight: 5
+  slam_weight: 3
   slam_height: 5
   slam_cooldowwn: 3
-  slam_preDelay: 0.5
+  slam_preDelay: 0.3
   slam_postDelay: 0.4
   slam_Hitbox: {fileID: 5924644709608940927}
-  dokkaebiOrb_weight: 3
+  dokkaebiOrb_weight: 1
   dokkaebiOrb_cooldowwn: 6
   dokkaebiOrb_preDelay: 0.2
   dokkaebiOrb_postDelay: 0.4
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
-  slash_weight: 3
+  slash_weight: 4
   slash_cooldowwn: 2
-  slash_preDelay: 0.2
-  slash_postDelay: 0.4
+  slash_preDelay: 0.1
+  slash_postDelay: 0.2
   slash_Hitbox: {fileID: 8355188705297284781}
   jumpSlash_weight: 3
   jumpSlash_height: 5
   jumpSlash_cooldowwn: 2
-  jumpSlash_preDelay: 0.2
-  jumpSlash_postDelay: 0.4
+  jumpSlash_preDelay: 0.1
+  jumpSlash_postDelay: 0.2
   jumpSlash_Hitbox: {fileID: 5816483574308687481}
-  eDokkaebiOrb_weight: 3
+  eDokkaebiOrb_weight: 1
   eDokkaebiOrb_cooldowwn: 2
-  eDokkaebiOrb_preDelay: 0.2
-  eDokkaebiOrb_postDelay: 0.4
+  eDokkaebiOrb_preDelay: 0.1
+  eDokkaebiOrb_postDelay: 0.2
   sprite: {fileID: 0}
   coll: {fileID: 0}
 --- !u!1 &8355188705297284781
@@ -672,7 +673,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.7, y: 1.73}
+  m_Offset: {x: -0.75, y: 1.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -682,7 +683,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.5, y: 2.62}
+  m_Size: {x: 1.5, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &6943410192139023981
 MonoBehaviour:
