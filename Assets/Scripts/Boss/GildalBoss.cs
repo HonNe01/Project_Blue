@@ -19,10 +19,7 @@ public class GildalBoss : BossBase
     public int bossLayer;
     public int playerAttackLayer;
     [SerializeField] private float[] floorHeights;
-    [Tooltip("은신 해제 직후, 공격 전 선딜레이")]
-    public float pre_Delay = 0.2f;
-    [Tooltip("공격 후, 은신 돌입 직전 후딜레이")]
-    public float post_Delay = 0.35f;
+    public float pattern_Delay = 0.35f;
     [Tooltip("재은신 연출/대기 시간")]
     public float reStealth_Delay = 1f;
 
@@ -91,7 +88,6 @@ public class GildalBoss : BossBase
     private bool[] specialUsed;
     private bool isSpecialRunning = false;
     private float lastSpecialTime = -999f;
-    private bool isFamine;
 
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
@@ -101,17 +97,19 @@ public class GildalBoss : BossBase
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
     private readonly List<BossPattern> phase2Patterns = new();
-    private readonly List<BossPattern> specialPatterns = new();
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         specialUsed = new bool[specialHpThresholds.Length];
+
+        if (sprite == null) sprite = GetComponent<SpriteRenderer>();
+        if (coll == null) coll = GetComponent<Collider2D>();
     }
 
     private void Start()
     {
-        if (sprite == null) sprite = GetComponent<SpriteRenderer>();
-        if (coll == null) coll = GetComponent<Collider2D>();
         bossLayer = LayerMask.NameToLayer("Enemy");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
 
@@ -147,16 +145,6 @@ public class GildalBoss : BossBase
                                             cooldown = eDokkaebiOrb_cooldowwn, 
                                             execute = () => Co_EDokkaebiOrb() });
 
-        // ---- 특수 패턴 등록 ----
-        specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
-                                           weight = eDokkaebiOrb_weight,
-                                           cooldown = eDokkaebiOrb_cooldowwn,
-                                           execute = () => Co_EDokkaebiOrb() });
-        specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
-                                           weight = eDokkaebiOrb_weight,
-                                           cooldown = eDokkaebiOrb_cooldowwn,
-                                           execute = () => Co_EDokkaebiOrb() });
-        
         // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
         StartCoroutine(Co_DoStealth());
     }
@@ -178,6 +166,8 @@ public class GildalBoss : BossBase
         // 패턴 실행
         yield return StartCoroutine(choose.execute());
 
+        // 패턴 딜레이
+        yield return new WaitForSeconds(pattern_Delay);
         state = BossState.Idle;
         curPatternCoroutine = null;
     }
@@ -207,7 +197,6 @@ public class GildalBoss : BossBase
             sprite.color = c;
         }
     }
-
     private IEnumerator Co_EndStealth()
     {
         // 은신 해제 로직
@@ -270,7 +259,7 @@ public class GildalBoss : BossBase
     }
 
     // Y값 보정
-    private float GetFloorY(float playerY)
+    private float GetFloorY(float playerY, bool isCenter = false)
     {
         float chosen = floorHeights[0];
 
@@ -321,7 +310,6 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(swing_postDelay);   // 공격 후 재은신까지의 딜레이
         yield return StartCoroutine(Co_DoStealth());
     }
-
     public void OnSwingHitStart() { if (swing_Hitbox) swing_Hitbox.SetActive(true); }
     public void OnSwingHitEnd() { if (swing_Hitbox) swing_Hitbox.SetActive(false); }
 
@@ -403,10 +391,10 @@ public class GildalBoss : BossBase
         // 5) 공격 명령
         Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
         drone.FireOrb(droneTarget);
-        
+
         // 6) 재은신
-        StartCoroutine(Co_DoStealth());
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
+        yield return StartCoroutine(Co_DoStealth());
     }
 
 #if UNITY_EDITOR
@@ -559,7 +547,6 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(jumpSlash_postDelay);
         yield return StartCoroutine(Co_DoStealth());
     }
-
     public void OnJumpSlashHitStart() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(true); }
     public void OnJumpSlashHitEnd() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(false); }
 
@@ -648,6 +635,10 @@ public class GildalBoss : BossBase
         StopPattern();
         state = BossState.Directing;
 
+        float stageCenterX = (wallXMin + wallXMax) * 0.5f;
+        bool isOnRightWall = transform.position.x > stageCenterX;
+        bool isHyungNyeon = !isOnRightWall; // 서쪽(왼쪽) 흉년
+
         // 1) 플레이어 근처로 이동
         if (target != null)
         {
@@ -677,11 +668,11 @@ public class GildalBoss : BossBase
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
 
-        // 4) 벽 이동
-        float groundYWall = GetFloorY(target.position.y);
-        float wallX = isFamine ? wallXMin : wallXMax;
-        Vector2 wallPos = new Vector2(wallX, groundYWall);
-        anim?.SetTrigger("SepcialPrep2");
+        // 4) 벽 이동;
+        float groundYWall = floorHeights[1];
+        float wallX = isHyungNyeon ? wallXMin : wallXMax;
+        transform.position = new Vector2(wallX, groundYWall);
+        anim?.SetTrigger("SpecialPrep2");
         if (inPhase2)
         {
             yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
@@ -695,6 +686,107 @@ public class GildalBoss : BossBase
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
 
-        // 4) 풍년/
+        // 4) 공격
+        anim?.SetTrigger("SpecialAttack");
+        if (isHyungNyeon)
+            yield return StartCoroutine(Co_DoHyungNyeon());
+        else
+            yield return StartCoroutine(Co_DoPungNyeon());
+
+        yield return StartCoroutine(Co_DoStealth());
+        state = BossState.Idle;
+    }
+
+    // 각 층 중심 y좌표 반환
+    private float[] GetFloorCenter()
+    {
+        if (floorHeights == null || floorHeights.Length == 0)
+            return new float[0];
+
+        // 층 개수
+        float[] centers = new float[floorHeights.Length];
+
+        for (int i = 0; i < floorHeights.Length; i++)
+        {
+            if (i < floorHeights.Length - 1)
+            {
+                // 현재 층 중간 값
+                centers[i] = 0.5f * (floorHeights[i] + floorHeights[i + 1]);
+            }
+            else
+            {
+                if (floorHeights.Length >= 2)
+                {
+                    // 마지막 층 외삽
+                    float prevGap = floorHeights[i] - floorHeights[i - 1];
+                    centers[i] = floorHeights[i] + 0.5f * prevGap;
+                }
+                else
+                {
+                    centers[i] = floorHeights[i];
+                }
+            }
+        }
+
+        return centers;
+    }
+
+    private IEnumerator Co_DoPungNyeon()    // 두 층
+    {
+        Debug.Log("[Gildal] 풍년이로구나!");
+
+        float[] centers = GetFloorCenter();
+
+        // 1) 층 선택
+        int idxA = Random.Range(0, centers.Length);
+        int idxB = idxA;
+        while (idxB == idxA)
+            idxB = Random.Range(0, centers.Length);
+
+        // 드론 배열
+        DokkaebiOrbDrone[] drones = new DokkaebiOrbDrone[2];
+
+        // 2) 드론 소환
+        Vector2 spawnPosA = new Vector2(transform.position.x, centers[idxA]);
+        var objA = Instantiate(dronePrefab, spawnPosA, Quaternion.identity);
+        drones[0] = objA.GetComponent<DokkaebiOrbDrone>();
+
+        Vector2 spawnPosB = new Vector2(transform.position.x, centers[idxB]);
+        var objB = Instantiate(dronePrefab, spawnPosB, Quaternion.identity);
+        drones[1] = objB.GetComponent<DokkaebiOrbDrone>();
+
+        // 3) 은신 해제
+        StartCoroutine(drones[0].Co_EndStealth());
+        yield return StartCoroutine(drones[1].Co_EndStealth());
+
+        // 4) 공격
+        yield return new WaitForSeconds(dokkaebiOrb_preDelay);
+        StartCoroutine(drones[0].FireWave(false));
+        yield return StartCoroutine(drones[1].FireWave(false));
+
+        yield return new WaitForSeconds(dokkaebiOrb_postDelay);
+    }
+
+    private IEnumerator Co_DoHyungNyeon()   // 한 층
+    {
+        Debug.Log("[Gildal] 흉년이로구나..");
+
+        // 1) 층 선택
+        float[] centers = GetFloorCenter();
+        int floor = Random.Range(0, centers.Length);
+
+        // 2) 드론 소환
+        Vector2 spawnPos = new Vector2(transform.position.x, centers[floor]);
+        var obj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
+        var drone = obj.GetComponent<DokkaebiOrbDrone>();
+
+        // 3) 은신해제
+        yield return StartCoroutine(drone.Co_EndStealth());
+
+        // 4) 공격
+        yield return new WaitForSeconds(dokkaebiOrb_preDelay);
+        yield return StartCoroutine(drone.FireWave(true));
+
+        yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
 }

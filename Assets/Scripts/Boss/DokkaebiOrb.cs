@@ -23,11 +23,6 @@ public class DokkaebiOrb : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    public void Init(Vector2 dir)
-    {
-        this.dir = dir.normalized;
-    }
-
     private void Update()
     {
         transform.Translate(dir * speed * Time.deltaTime, Space.World);

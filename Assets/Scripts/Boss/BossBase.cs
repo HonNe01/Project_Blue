@@ -52,7 +52,7 @@ public abstract class BossBase : MonoBehaviour
 
 
     // ===================== Unity 생명주기 =====================
-    private void Awake()
+    protected virtual void Awake()
     {
         // 체력 초기화
         curHp = maxHp;

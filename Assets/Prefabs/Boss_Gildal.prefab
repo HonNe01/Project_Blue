@@ -443,9 +443,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -61198025
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 273335addacac794b8af6de090d5b549, type: 3}
+  m_Sprite: {fileID: 5675857372675088757, guid: ad322464c910fda40900b39fc93351e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GildalBoss
   maxHp: 100
-  phase2ThresholdRatio: 0.9
+  phase2ThresholdRatio: 0.35
   iFrameDuration: 0.5
   anim: {fileID: 7991700780297173686}
   target: {fileID: 0}
@@ -568,9 +568,9 @@ MonoBehaviour:
   floorHeights:
   - -5
   - -2
-  pre_Delay: 0.3
-  post_Delay: 0.35
-  reStealth_Delay: 1
+  - 1
+  pattern_Delay: 0.35
+  reStealth_Delay: 0.8
   swing_weight: 4
   swing_cooldowwn: 2
   swing_preDelay: 0.1
@@ -602,6 +602,18 @@ MonoBehaviour:
   eDokkaebiOrb_cooldowwn: 2
   eDokkaebiOrb_preDelay: 0.1
   eDokkaebiOrb_postDelay: 0.2
+  specialHpThresholds:
+  - 75
+  - 50
+  - 25
+  special_Cooldown: 10
+  special_preDelay: 0.2
+  special_postDelay: 0.2
+  wallXMin: -9
+  wallXMax: 9
+  baseDronesPerLayer: 2
+  spawnSpacing: 5
+  spawnDelay: 0.1
   sprite: {fileID: 0}
   coll: {fileID: 0}
 --- !u!1 &8355188705297284781

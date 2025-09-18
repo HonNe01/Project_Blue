@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -61198025
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ea893d105b38a054b8d9d9a365ecc907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,5 +105,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DokkaebiOrbDrone
   sprite: {fileID: 6445644047219005585}
   orbPrefab: {fileID: 5258680384805949804, guid: b894d893b53351647aed4069389ca2e8, type: 3}
-  wavePrefab: {fileID: 0}
-  fireSpeed: 3
+  wavePrefab: {fileID: 5258680384805949804, guid: 391d72ece714d6c4a81e0d5bde152474, type: 3}
+  fireSpeed: 5
