@@ -76,6 +76,23 @@ public class GildalBoss : BossBase
     public float eDokkaebiOrb_preDelay = 0.2f;
     public float eDokkaebiOrb_postDelay = 0.4f;
 
+    [Header(" === Special Patterns === ")]
+    [Header("Famine / abundance")]
+    public float[] specialHpThresholds = new float[] { 75f, 50f, 25f };
+    public float special_Cooldown = 10f;
+    public float special_preDelay = 0.2f;
+    public float special_postDelay = 0.2f;
+    public float wallXMin = -20f;      // 벽 x좌표
+    public float wallXMax = 20f;
+    public int baseDronesPerLayer = 2;
+    public float spawnSpacing = 5f;
+    public float spawnDelay = 0.1f;
+
+    private bool[] specialUsed;
+    private bool isSpecialRunning = false;
+    private float lastSpecialTime = -999f;
+    private bool isFamine;
+
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
     public SpriteRenderer sprite;
@@ -85,6 +102,11 @@ public class GildalBoss : BossBase
     private readonly List<BossPattern> phase1Patterns = new();
     private readonly List<BossPattern> phase2Patterns = new();
     private readonly List<BossPattern> specialPatterns = new();
+
+    void Awake()
+    {
+        specialUsed = new bool[specialHpThresholds.Length];
+    }
 
     private void Start()
     {
@@ -125,18 +147,16 @@ public class GildalBoss : BossBase
                                             cooldown = eDokkaebiOrb_cooldowwn, 
                                             execute = () => Co_EDokkaebiOrb() });
 
-        /* ---- 특수 패턴 등록 ----
+        // ---- 특수 패턴 등록 ----
         specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
                                            weight = eDokkaebiOrb_weight,
                                            cooldown = eDokkaebiOrb_cooldowwn,
                                            execute = () => Co_EDokkaebiOrb() });
-
         specialPatterns.Add(new BossPattern{name = "EnhanceDokkaebi",
                                            weight = eDokkaebiOrb_weight,
                                            cooldown = eDokkaebiOrb_cooldowwn,
                                            execute = () => Co_EDokkaebiOrb() });
-        */
-
+        
         // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
         StartCoroutine(Co_DoStealth());
     }
@@ -594,5 +614,86 @@ public class GildalBoss : BossBase
         // 5) 재은신
         StartCoroutine(Co_DoStealth());
         yield return new WaitForSeconds(eDokkaebiOrb_postDelay);
+    }
+
+    new public void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        CheckSpecialTrigger();
+    }
+
+    private void CheckSpecialTrigger()
+    {
+        if (isSpecialRunning) return;
+        if (Time.time - lastSpecialTime < special_Cooldown) return;
+
+        for (int i = 0; i < specialHpThresholds.Length; i++)
+        {
+            if (!specialUsed[i] && curHp <= specialHpThresholds[i])
+            {
+                StartCoroutine(Co_RunSpecial(i));
+
+                break;
+            }
+        }
+    }
+
+    private IEnumerator Co_RunSpecial(int idx)  // 흉년, 풍년 패턴
+    {
+        isSpecialRunning = true;
+        specialUsed[idx] = true;
+        lastSpecialTime = Time.time;
+
+        // 0) 준비
+        StopPattern();
+        state = BossState.Directing;
+
+        // 1) 플레이어 근처로 이동
+        if (target != null)
+        {
+            int offsetX = Random.value < 0.5f ? -1 : 1;
+            float groundY = GetFloorY(target.position.y);
+            Vector2 dest = new Vector2(target.position.x + offsetX * 3f, groundY);
+            transform.position = dest;
+            FlipX();
+        }
+
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return new WaitForSeconds(special_preDelay);
+        
+        // 3) 패턴 이동 연출
+        anim?.SetTrigger("SpecialPrep1");
+        if (inPhase2)
+        {
+            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+            float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+            yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        }
+        else
+        {
+            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+            float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+            yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        }
+
+        // 4) 벽 이동
+        float groundYWall = GetFloorY(target.position.y);
+        float wallX = isFamine ? wallXMin : wallXMax;
+        Vector2 wallPos = new Vector2(wallX, groundYWall);
+        anim?.SetTrigger("SepcialPrep2");
+        if (inPhase2)
+        {
+            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+            float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+            yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        }
+        else
+        {
+            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+            float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+            yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        }
+
     }
 }
