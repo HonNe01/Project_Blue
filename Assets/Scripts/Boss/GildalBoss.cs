@@ -695,5 +695,6 @@ public class GildalBoss : BossBase
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
 
+        // 4) 풍년/
     }
 }
