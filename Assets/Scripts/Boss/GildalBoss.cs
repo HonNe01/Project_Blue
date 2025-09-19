@@ -76,7 +76,6 @@ public class GildalBoss : BossBase
     [Header(" === Special Patterns === ")]
     [Header("Famine / abundance")]
     public float[] specialHpThresholds = new float[] { 75f, 50f, 25f };
-    public float special_Cooldown = 10f;
     public float special_preDelay = 0.2f;
     public float special_postDelay = 0.2f;
     public float wallXMin = -20f;      // 벽 x좌표
@@ -87,7 +86,6 @@ public class GildalBoss : BossBase
 
     private bool[] specialUsed;
     private bool isSpecialRunning = false;
-    private float lastSpecialTime = -999f;
 
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
@@ -612,7 +610,6 @@ public class GildalBoss : BossBase
     private void CheckSpecialTrigger()
     {
         if (isSpecialRunning) return;
-        if (Time.time - lastSpecialTime < special_Cooldown) return;
 
         for (int i = 0; i < specialHpThresholds.Length; i++)
         {
@@ -629,7 +626,6 @@ public class GildalBoss : BossBase
     {
         isSpecialRunning = true;
         specialUsed[idx] = true;
-        lastSpecialTime = Time.time;
 
         // 0) 준비
         StopPattern();
@@ -694,6 +690,7 @@ public class GildalBoss : BossBase
             yield return StartCoroutine(Co_DoPungNyeon());
 
         yield return StartCoroutine(Co_DoStealth());
+        isSpecialRunning = false;
         state = BossState.Idle;
     }
 

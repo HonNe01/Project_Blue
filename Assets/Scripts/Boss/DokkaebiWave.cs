@@ -24,6 +24,9 @@ public class DokkaebiWave : MonoBehaviour
 
     public IEnumerator Fire(bool isRight)
     {
+        // 메모리 세팅 대기
+        yield return null;
+
         // 좌우반전
         sprite.flipX = !isRight;
         int dir = isRight ? 1 : -1;
@@ -31,13 +34,41 @@ public class DokkaebiWave : MonoBehaviour
 
         // 발사
         anim.SetTrigger("Wave");
-        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Fire"));
         float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animLength * fireTime);    // anim 끝날 때까지 대기
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        WaveEnd();
+    }
+
+    public void WaveEnd()
+    {
+        anim.SetTrigger("End");
+        StartCoroutine(Co_EndStealth());
+    }
+    public IEnumerator Co_EndStealth()
+    {
+        // 은신 해제 로직
+        if (sprite != null)
+        {
+            float elapsed = 0f;
+            Color c = sprite.color;
+
+            while (elapsed < 1f)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / 0.5f);
+                c.a = Mathf.Lerp(0f, 1f, t);
+                sprite.color = c;
+                yield return null;
+            }
+
+            c.a = 1f;
+            sprite.color = c;
+        }
 
         Destroy(gameObject);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

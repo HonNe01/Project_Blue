@@ -32,7 +32,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
             while (elapsed < 1f)
             {
                 elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / 1f);
+                float t = Mathf.Clamp01(elapsed / 0.5f);
                 c.a = Mathf.Lerp(1f, 0f, t);
                 sprite.color = c;
                 yield return null;
@@ -57,7 +57,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
             while (elapsed < 1f)
             {
                 elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / 1f);
+                float t = Mathf.Clamp01(elapsed / 0.5f);
                 c.a = Mathf.Lerp(0f, 1f, t);
                 sprite.color = c;
                 yield return null;
@@ -85,8 +85,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
         // น฿ป็
         var proj = Instantiate(wavePrefab, firePos, Quaternion.identity);
-        var wave = proj.GetComponent<DokkaebiWave>();
-        yield return StartCoroutine(wave.Fire(isRight));
+        yield return StartCoroutine(proj.GetComponent<DokkaebiWave>().Fire(isRight));
 
         StartCoroutine(Co_DoStealth());
     }
