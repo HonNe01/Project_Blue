@@ -9,6 +9,8 @@ public class atk
     public float ComboTimingEnd = 0.7f;    // 동일
 }
 
+
+
 public class Player_atk : MonoBehaviour
 {
     [SerializeField] atk[] _steps;
@@ -16,7 +18,7 @@ public class Player_atk : MonoBehaviour
     [SerializeField] float _inputBufferTime = 0.2f;      // 공격 입력시간 보정
     Animator _anim;
 
-    int _currentCombo = -1;
+    public int _currentCombo = -1;
     float _comboStrartTime = -1;
     bool _queuedNextCombo;
     float _lastInputTime;
@@ -36,6 +38,10 @@ public class Player_atk : MonoBehaviour
 
         if (_currentCombo >= 0)
             UpdateCombo();
+    }
+    public bool IsAttacking()
+    {
+        return _currentCombo >= 0;  // 콤보 진행 중이면 true
     }
 
     void StartComboAttack()

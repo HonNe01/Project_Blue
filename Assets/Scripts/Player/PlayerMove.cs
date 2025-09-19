@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     private int wallDir = 0; // 1 = 왼쪽벽 기준 오른쪽, -1 = 오른쪽벽 기준 왼쪽
     private bool isWallSliding = false;
     private bool isWallJumping = false;
+    private bool jumplock = false;
 
     [Header("코요테타임 & 버퍼")]
     public float coyoteTime = 0.1f; // 땅에서 떨어진 후 점프 가능한 시간
@@ -40,6 +41,7 @@ public class PlayerMove : MonoBehaviour
     private float dashTimeCounter;
     private float dashCooldownCounter;
     private bool canAirDash = true;
+    private float defaultGravity; // 현재 중력값 저장
 
     //[Header("가드")]
     //Player_Guard _playerGuard;
@@ -56,6 +58,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
+        defaultGravity = rb.gravityScale;
     }
 
     void Update()
@@ -69,7 +72,13 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         Vector2 move = Vector2.zero;
-        if (isWallJumping || isDashing) return;       // 벽점프중이거나 대쉬중일때는 이동 불가 처리
+        Player_atk atk = GetComponent<Player_atk>();
+        Player_Guard guard = GetComponent<Player_Guard>();
+
+        // 벽점프, 대쉬, 공격, 방어 중이면 이동 불가
+        if (isWallJumping || isDashing || (atk != null && atk._currentCombo >= 0) ||
+            (guard != null && guard.isGuard))
+            return;      
 
         if (Input.GetKey(KeyCode.LeftArrow)) // 좌우 방향설정
         {
@@ -109,6 +118,7 @@ public class PlayerMove : MonoBehaviour
         // 점프버퍼 체크
         if (jumpBufferCounter > 0f)
         {
+            if (jumplock) return;
             // 아래점프 처리 (원웨이 플랫폼 통과)
             if (IsOnPlatform() && Input.GetKey(KeyCode.DownArrow) && !isDroppingDown)
             {
@@ -194,6 +204,7 @@ public class PlayerMove : MonoBehaviour
                 canAirDash = false; // 땅/벽 닿기 전까지 재사용 불가
 
             dashTrail.emitting = true; // 대쉬 트레일 켜기
+            rb.gravityScale = 0f; // 중력 무시
         }
 
         // 대쉬 중 처리
@@ -206,6 +217,7 @@ public class PlayerMove : MonoBehaviour
             {
                 isDashing = false;
                 dashTrail.emitting = false; // 트레일 끄기
+                rb.gravityScale = defaultGravity; // 중력 복구
             }
         }
 
@@ -243,8 +255,10 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator WallJumpLock(float duration)
     {
         isWallJumping = true;
+        jumplock = true;
         yield return new WaitForSeconds(duration);
         isWallJumping = false;
+        jumplock = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -261,6 +275,8 @@ public class PlayerMove : MonoBehaviour
             isTouchingWall = true;
             ContactPoint2D contact = collision.contacts[0];
             wallDir = (contact.point.x < transform.position.x) ? 1 : -1; // 왼쪽벽이면 1, 오른쪽벽이면 -1
+
+            rb.linearVelocity = Vector2.zero; // 벽에 닿으면 속도 초기화
         }
     }
 

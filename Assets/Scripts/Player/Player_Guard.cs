@@ -18,4 +18,9 @@ public class Player_Guard : MonoBehaviour
         else
             guardingTime = 0f;
     }
+
+    public bool IsGuarding()
+    {
+        return isGuard;
+    }
 }
