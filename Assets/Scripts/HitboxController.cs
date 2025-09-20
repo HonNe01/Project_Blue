@@ -22,7 +22,6 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
 
-                    float damage = baseDamage;
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
                         enemy.TakeDamage(baseDamage);
@@ -33,8 +32,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
-                    float damage = baseDamage;
-                    //collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+                    //collision.GetComponent<PlayerHealth>()?.TakeDamage(baseDamage);
                 }
                 break;
         }
