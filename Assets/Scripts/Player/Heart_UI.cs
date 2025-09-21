@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthUI : MonoBehaviour
+public class Heart_UI : MonoBehaviour
 {
     [Header("데이터 연결")]
     public Player_Health playerHealth;

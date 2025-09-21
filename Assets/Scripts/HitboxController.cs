@@ -4,7 +4,7 @@ public class HitboxController : MonoBehaviour
 {
     public enum HitbotType { Player, Enemy }
 
-    [SerializeField] private float baseDamage = 1f;
+    [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitbotType type;
 
 
@@ -32,7 +32,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
-                    //collision.GetComponent<PlayerHealth>()?.TakeDamage(baseDamage);
+                    collision.GetComponent<Player_Health>()?.TakeDamage(baseDamage);
                 }
                 break;
         }

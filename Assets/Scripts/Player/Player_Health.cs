@@ -17,6 +17,8 @@ public class Player_Health : MonoBehaviour
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
+        Debug.Log("Damage");
+
         if (currentHP <= 0) Die();
     }
 
