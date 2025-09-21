@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1783552059457215340}
   - component: {fileID: 5026501836725320976}
   - component: {fileID: 5494261296122241408}
-  - component: {fileID: 873592711513710516}
   m_Layer: 10
   m_Name: Test_Dokkaebi_Orb
   m_TagString: Untagged
@@ -194,17 +193,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DokkaebiOrb
   speed: 10
   lifeTime: 10
-  baseDamage: 1
---- !u!114 &873592711513710516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258680384805949804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1

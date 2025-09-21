@@ -29,7 +29,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
             float elapsed = 0f;
             Color c = sprite.color;
 
-            while (elapsed < 1f)
+            while (elapsed < 0.5f)
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / 0.5f);
@@ -54,7 +54,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
             float elapsed = 0f;
             Color c = sprite.color;
 
-            while (elapsed < 1f)
+            while (elapsed < 0.5f)
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / 0.5f);
