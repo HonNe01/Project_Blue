@@ -38,6 +38,31 @@ public class HitboxController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (type)
+        {
+            case HitbotType.Player:
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+
+                    var enemy = collision.gameObject.GetComponent<BossBase>();
+                    if (enemy != null)
+                        enemy.TakeDamage(baseDamage);
+                }
+                break;
+            case HitbotType.Enemy:
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    Debug.Log($"[{gameObject.name}] Player Hit!");
+
+                    collision.gameObject.GetComponent<Player_Health>()?.TakeDamage(baseDamage);
+                }
+                break;
+        }
+    }
+
     public void ObjectOff()
     {
         gameObject.SetActive(false);
