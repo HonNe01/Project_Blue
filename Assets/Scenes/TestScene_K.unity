@@ -209,6 +209,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3844423571995196673, guid: 880ba2025d711934ca3346b01b075423, type: 3}
   m_PrefabInstance: {fileID: 2713486527214967173}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &318072947 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4163785054544420959, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
+  m_PrefabInstance: {fileID: 492789014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322936696
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +283,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 318072947}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1896,10 +1901,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 308779845844477620, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.49
@@ -1940,25 +1941,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2584652441422187708, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: type
-      value: 1
+    - target: {fileID: 5499621151267507001, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
-    - target: {fileID: 6943410192139023981, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8815849992785037117, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 405939936081692799, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-    - {fileID: 3512471860287823602, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

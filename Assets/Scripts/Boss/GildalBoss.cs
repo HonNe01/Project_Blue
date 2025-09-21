@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AppUI.Redux;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
 using UnityEngine;
@@ -88,7 +89,8 @@ public class GildalBoss : BossBase
     public float spawnDelay = 0.1f;
 
     private bool[] specialUsed;
-    private bool isSpecialRunning = false;
+    private int specialIndex = -1;
+    private bool isSpecial = false;
 
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
@@ -161,13 +163,26 @@ public class GildalBoss : BossBase
             yield break;
         }
 
-        // 현재 페이즈 풀에서 패턴 선택
-        var pool = inPhase2 ? phase2Patterns : phase1Patterns;
-        var choose = ChooseNextPattern(pool);
-        choose.lastUsedTime = Time.time;
+        // 특수패턴 확인
+        if (isSpecial)
+        {
+            // 패턴 실행
+            yield return StartCoroutine(Co_RunSpecial(specialIndex));
 
-        // 패턴 실행
-        yield return StartCoroutine(choose.execute());
+            // 상태 복구
+            isSpecial = false;
+            specialIndex = -1;
+        }
+        else
+        {
+            // 현재 페이즈 풀에서 패턴 선택
+            var pool = inPhase2 ? phase2Patterns : phase1Patterns;
+            var choose = ChooseNextPattern(pool);
+            choose.lastUsedTime = Time.time;
+
+            // 패턴 실행
+            yield return StartCoroutine(choose.execute());
+        }
 
         // 패턴 딜레이
         yield return new WaitForSeconds(pattern_Delay);
@@ -438,7 +453,7 @@ public class GildalBoss : BossBase
         anim?.SetLayerWeight(2, 1f);
         anim?.SetLayerWeight(1, 0f);
 
-        /* 5) 페이즈 변경 연출
+        /* 5) 페이즈 시작 연출
         anim?.SetTrigger("PhaseChaange");
         yield return null;
         animLength = anim.GetCurrentAnimatorStateInfo(2).length;
@@ -586,13 +601,14 @@ public class GildalBoss : BossBase
     // 특수 패턴
     private void CheckSpecialTrigger()
     {
-        if (isSpecialRunning) return;
+        if (isSpecial) return;
 
         for (int i = 0; i < specialHpThresholds.Length; i++)
         {
             if (!specialUsed[i] && curHp <= specialHpThresholds[i])
             {
-                StartCoroutine(Co_RunSpecial(i));
+                isSpecial = true;
+                specialIndex = i;
 
                 break;
             }
@@ -601,11 +617,9 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_RunSpecial(int idx)  // 흉년, 풍년 패턴
     {
-        isSpecialRunning = true;
         specialUsed[idx] = true;
 
         // 0) 준비
-        StopPattern();
         state = BossState.Directing;
 
         float stageCenterX = (wallXMin + wallXMax) * 0.5f;
@@ -661,8 +675,6 @@ public class GildalBoss : BossBase
             yield return StartCoroutine(Co_DoPungNyeon());
 
         yield return StartCoroutine(Co_DoStealth());
-        isSpecialRunning = false;
-        state = BossState.Idle;
     }
 
     // 각 층 중심 y좌표 반환
