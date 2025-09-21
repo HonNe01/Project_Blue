@@ -17,11 +17,16 @@ public class GildalBoss : BossBase
     [Header(" === Gildal Boss === ")]
     [Header("All Pattern Setting")]
     public int bossLayer;
+    public int playerLayer;
     public int playerAttackLayer;
+    public int groundLayer;
     [SerializeField] private float[] floorHeights;
     public float pattern_Delay = 0.35f;
     [Tooltip("재은신 연출/대기 시간")]
     public float reStealth_Delay = 1f;
+    [Header("Map Limits")]
+    public float wallXMin = -20f;      // 벽 x좌표
+    public float wallXMax = 20f;
 
     [Header(" === 1 Phase Patterns === ")]
     [Header("Swing")]
@@ -78,8 +83,6 @@ public class GildalBoss : BossBase
     public float[] specialHpThresholds = new float[] { 75f, 50f, 25f };
     public float special_preDelay = 0.2f;
     public float special_postDelay = 0.2f;
-    public float wallXMin = -20f;      // 벽 x좌표
-    public float wallXMax = 20f;
     public int baseDronesPerLayer = 2;
     public float spawnSpacing = 5f;
     public float spawnDelay = 0.1f;
@@ -109,7 +112,9 @@ public class GildalBoss : BossBase
     private void Start()
     {
         bossLayer = LayerMask.NameToLayer("Enemy");
+        playerLayer = LayerMask.NameToLayer("Player");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
+        groundLayer = LayerMask.NameToLayer("Ground");
 
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern {name = "Swing", 
@@ -173,7 +178,8 @@ public class GildalBoss : BossBase
     // 은신 기믹
     private IEnumerator Co_DoStealth()
     {
-        // 피격 판정 해제
+        // 충돌 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
 
         // 은신 로직
@@ -217,6 +223,7 @@ public class GildalBoss : BossBase
         }
 
         // 피격 판정 설정
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
 
@@ -236,11 +243,15 @@ public class GildalBoss : BossBase
         }
     }
 
-    private IEnumerator Co_MoveTo(Vector2 pos, float duration)
+    private IEnumerator Co_MoveTo(Vector2 pos, float duration, float margin = 0.5f)
     {
         if (sprite == null || target == null) yield break;
 
-        // B : MoveTowards (속도 일정)
+        // 위치 보정
+        float clampX = Mathf.Clamp(pos.x, wallXMin + margin, wallXMax - margin);
+        pos = new Vector2(clampX, pos.y);
+
+        // 이동
         float speed = Vector2.Distance(transform.position, pos) / duration;
         while (Vector2.Distance(transform.position, pos) > 0.1f)
         {
@@ -250,10 +261,38 @@ public class GildalBoss : BossBase
         }
 
         // 충돌 복구
-        if (coll != null) coll.isTrigger = false;
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int groundLayer = LayerMask.NameToLayer("Ground");
+
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
+        Physics2D.IgnoreLayerCollision(bossLayer, groundLayer, false);
 
         // 위치 보정
         transform.position = pos;
+    }
+
+    private void MoveTo(float offsetX = 0f, float offsetY = 0f)
+    {
+        if (target == null) return;
+
+        // 1) 좌우 오프셋
+        float ranOffsetX = 0;
+        if (offsetX != 0)
+            ranOffsetX = Random.value < 0.5f ? -offsetX : offsetX;
+
+        // 2) y좌표 보정
+        float groundY = GetFloorY(target.position.y);
+
+        // 3) 목표 계산
+        float targetX = target.position.x + ranOffsetX;
+        float targetY = groundY + offsetY;
+
+        // 4) x좌표 보정
+        if (targetX < wallXMin) targetX = wallXMin + Mathf.Abs(ranOffsetX * 1.2f);
+        if (targetX > wallXMax) targetX = wallXMax - Mathf.Abs(ranOffsetX * 1.2f);
+
+        // 4) 이동
+        transform.position = new Vector2(targetX, targetY);
     }
 
     // Y값 보정
@@ -280,19 +319,8 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] Swing");
 
         // 1) 플레이어 위치로 이동
-        if (target != null)
-        {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 2f, groundY);
-            transform.position = swing_destination;
-            FlipX(swing_Hitbox);
-        }
+        MoveTo(2);
+        FlipX(swing_Hitbox);
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
@@ -315,20 +343,9 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Slam");
 
-        // 플레이어의 왼쪽/오른쪽 판단
-        int offsetX = Random.value < 0.5f ? -1 : 1;
-
         // 1) 플레이어 위치로 이동
-        if (target != null)
-        {
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 1.5f, groundY + slam_height);
-            transform.position = swing_destination;
-            FlipX();
-        }
+        MoveTo(1.5f, slam_height);
+        FlipX();
 
         // 2) 은신 해제
         anim?.SetTrigger("SlamPrep");
@@ -336,11 +353,15 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(slam_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
-        if (coll != null) coll.isTrigger = true;
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int groundLayer = LayerMask.NameToLayer("Ground");
+
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, groundLayer, true);
 
         // 3) 공격
         anim?.SetTrigger("Slam");
-        Vector2 dest = new Vector2(target.position.x + offsetX * 1f, transform.position.y - slam_height);
+        Vector2 dest = new Vector2(target.position.x + 1f, transform.position.y - slam_height);
         StartCoroutine(Co_MoveTo(dest, 0.2f));
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
@@ -358,19 +379,8 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] Dokkaebi Orb");
 
         // 1) 플레이어 근처로 이동
-        if (target != null)
-        {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, groundY);
-            transform.position = dokkaebiOrb_Destination;
-            FlipX();
-        }
+        MoveTo(5f);
+        FlipX();
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
@@ -410,16 +420,8 @@ public class GildalBoss : BossBase
         state = BossState.Directing;
 
         // 1) 플레이어 근처로 이동
-        if (target != null)
-        {
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 dest = new Vector2(target.position.x + offsetX * 5f, groundY);
-            transform.position = dest;
-            FlipX();
-        }
+        MoveTo(5f);
+        FlipX();
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
@@ -460,29 +462,20 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] DoubleSlash");
 
         // 1) 플레이어 위치로 이동
-        if (target != null)
-        {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 swing_destination = new Vector2(target.position.x + offsetX * 2f, groundY);
-            transform.position = swing_destination;
-            FlipX(swing_Hitbox);
-        }
+        MoveTo(2f);
+        FlipX(swing_Hitbox);
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(slash_preDelay);    // 은신 해제 후 공격까지의 딜레이
 
         // 3) 공격
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         anim?.SetTrigger("Slash");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
 
         // 4) 재은신
         yield return new WaitForSeconds(slash_postDelay);   // 공격 후 재은신까지의 딜레이
@@ -494,7 +487,10 @@ public class GildalBoss : BossBase
     public void OnAttackForward(float distance)
     {
         Vector3 dir = sprite.flipX ? Vector2.left : Vector2.right;
-        transform.position += dir * distance;
+
+        Vector2 targetPos = transform.position + dir * distance;
+
+        StartCoroutine(Co_MoveTo(targetPos, 0.2f));
     }
 
     public void OnSlashHitStart() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
@@ -505,27 +501,16 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] JumpSlash");
 
         // 1) 플레이어 위치로 이동
-        if (target != null)
-        {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 swing_destination = new Vector2(target.position.x, groundY + slam_height);
-            transform.position = swing_destination;
-            FlipX();
-        }
-
+        MoveTo(0, slam_height);
+        FlipX();
+        
         // 2) 은신 해제
         anim?.SetTrigger("JumpSlashPrep");
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(jumpSlash_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
-        if (coll != null) coll.isTrigger = true;
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
 
         // 3) 공격
         anim?.SetTrigger("JumpSlash");
@@ -536,10 +521,12 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
         // 3) 공격2
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         anim?.SetTrigger("JumpSlash");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         animLength = anim.GetCurrentAnimatorStateInfo(2).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
 
         // 4) 재은신
         yield return new WaitForSeconds(jumpSlash_postDelay);
@@ -553,20 +540,9 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] Enhance Dokkaeni Orb");
 
         // 1) 플레이어 근처로 이동
-        if (target != null)
-        {
-            // 플레이어의 왼쪽/오른쪽 판단
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-
-            // 플레이어의 현재 층으로 y좌표 보정
-            float groundY = GetFloorY(target.position.y);
-
-            // 길달 이동
-            Vector2 dokkaebiOrb_Destination = new Vector2(target.position.x + offsetX * 5f, groundY);
-            transform.position = dokkaebiOrb_Destination;
-            FlipX();
-        }
-
+        MoveTo(5f);
+        FlipX();
+        
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
@@ -607,6 +583,7 @@ public class GildalBoss : BossBase
         CheckSpecialTrigger();
     }
 
+    // 특수 패턴
     private void CheckSpecialTrigger()
     {
         if (isSpecialRunning) return;
@@ -636,14 +613,8 @@ public class GildalBoss : BossBase
         bool isHyungNyeon = !isOnRightWall; // 서쪽(왼쪽) 흉년
 
         // 1) 플레이어 근처로 이동
-        if (target != null)
-        {
-            int offsetX = Random.value < 0.5f ? -1 : 1;
-            float groundY = GetFloorY(target.position.y);
-            Vector2 dest = new Vector2(target.position.x + offsetX * 3f, groundY);
-            transform.position = dest;
-            FlipX();
-        }
+        MoveTo(3f);
+        FlipX();
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());

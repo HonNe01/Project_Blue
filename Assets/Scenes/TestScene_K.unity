@@ -1379,6 +1379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 308779845844477620, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.49
@@ -1419,11 +1423,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584652441422187708, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6943410192139023981, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815849992785037117, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 405939936081692799, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+    - {fileID: 3512471860287823602, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
