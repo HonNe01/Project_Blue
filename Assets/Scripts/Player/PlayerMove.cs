@@ -74,11 +74,15 @@ public class PlayerMove : MonoBehaviour
         Vector2 move = Vector2.zero;
         Player_atk atk = GetComponent<Player_atk>();
         Player_Guard guard = GetComponent<Player_Guard>();
+        Player_Health playerHealth = GetComponent<Player_Health>();
 
-        // 벽점프, 대쉬, 공격, 방어 중이면 이동 불가
+        // 벽점프, 대쉬, 공격, 방어 , 힐 중이면 이동 불가
         if (isWallJumping || isDashing || (atk != null && atk._currentCombo >= 0) ||
-            (guard != null && guard.isGuard))
-            return;      
+            (guard != null && guard.isGuard) || (playerHealth != null && playerHealth.isHealing))
+        {
+            move = Vector2.zero; 
+            return;
+        }
 
         if (Input.GetKey(KeyCode.LeftArrow)) // 좌우 방향설정
         {
