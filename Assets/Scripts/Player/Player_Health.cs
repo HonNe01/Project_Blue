@@ -26,7 +26,9 @@ public class Player_Health : MonoBehaviour
 
     void HandleHealing()
     {
+        GetComponent<Animator>().SetBool("_isHeal", isHealing);
         if (Input.GetKey(KeyCode.F))
+            
         {
             isHealing = true;
 

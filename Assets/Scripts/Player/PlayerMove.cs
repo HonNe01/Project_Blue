@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     private int maxJumps = 2; // 최대점프 횟수
     private bool isDroppingDown = false; // 아래점프 중인지 체크
     private float jumpTimeCounter; // 점프 키 유지 시간 카운트
+    public bool isjump = true; // 애니메이션용
 
     [Header("벽 점프 / 슬라이드")]
     public float wallSlideSpeed = 0.5f; // 벽 슬라이드 속도
@@ -119,6 +120,7 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
+        GetComponent<Animator>().SetBool("IsJump", isjump); // 애니메이션용
         // 점프버퍼 체크
         if (jumpBufferCounter > 0f)
         {
@@ -160,6 +162,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        isjump = Input.GetKeyDown(KeyCode.Z); // 애니메이션용
         // 점프 키를 빨리 떼면 지정시간보다 못 누른 것이므로 즉시 떨어지도록 처리
         if (Input.GetKeyUp(KeyCode.Z))
         {
@@ -180,7 +183,7 @@ public class PlayerMove : MonoBehaviour
     void dash()
     {
         bool canDash = false;
-
+        GetComponent<Animator>().SetBool("IsDash", isDashing);
         if (IsGrounded()) // 지상에서는 쿨다운 체크
         {
             canDash = !isDashing && dashCooldownCounter <= 0f;
