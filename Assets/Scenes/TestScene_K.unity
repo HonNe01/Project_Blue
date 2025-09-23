@@ -1337,7 +1337,7 @@ MonoBehaviour:
   - {fileID: 2008883995}
   fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
   emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
-  healHoldTime: 0.5
+  player_Health: {fileID: 0}
 --- !u!114 &1652640629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,10 +1939,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5499621151267507001, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
