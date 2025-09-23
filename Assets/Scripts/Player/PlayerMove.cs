@@ -3,31 +3,26 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
-    [Header("이동 및 점프 설정")]
-    public float moveSpeed = 5f; // 이동속도
-    public float jumpForce = 12f; // 점프 초기 속도
-    public float wallJumpForce = 8f; // 벽점프 (값을 올리면 벽점프시 위쪽으로 올라가는 값 증가)
-    public float wallJumpVertical = 7f; // 벽점프 (값을 올리면 반대편으로 나가는 값 증가)
-    public float jumpTimeMax = 0.3f; // 점프 키 입력 유지 최대 시간
+    [Header("Move Setting")]
+    public float moveSpeed = 5f;        // 이동속도
+    private float inputValueX;
     
-
-    private Rigidbody2D rb;
-    private Collider2D playerCollider;
-
-    [Header("점프 설정")]
+    [Header("Jump Setting")]
+    public float jumpForce = 12f;       // 점프 파워
+    public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
     private int jumpCount = 0;
-    private int maxJumps = 2; // 최대점프 횟수
-    private bool isDroppingDown = false; // 아래점프 중인지 체크
-    private float jumpTimeCounter; // 점프 키 유지 시간 카운트
-    public bool isjump = true; // 애니메이션용
+    private int maxJumps = 2;           // 최대점프 횟수
+    private bool isDroppingDown = false;// 아래점프 중인지 체크
+    private float jumpTimeCounter;      // 점프 키 유지 시간 카운트
 
-    [Header("벽 점프 / 슬라이드")]
+    [Header("Wall Jump/Sliding Setting")]
+    public float wallJumpYForce = 8f;   // 벽점프 파워 (수직)
+    public float wallJumpXForce = 7f;   // 벽점프 파워 (수평)
     public float wallSlideSpeed = 0.5f; // 벽 슬라이드 속도
     private bool isTouchingWall = false;
     private int wallDir = 0; // 1 = 왼쪽벽 기준 오른쪽, -1 = 오른쪽벽 기준 왼쪽
     private bool isWallSliding = false;
     private bool isWallJumping = false;
-    private bool jumplock = false;
 
     [Header("코요테타임 & 버퍼")]
     public float coyoteTime = 0.1f; // 땅에서 떨어진 후 점프 가능한 시간
@@ -48,70 +43,96 @@ public class PlayerMove : MonoBehaviour
     //[Header("가드")]
     //Player_Guard _playerGuard;
 
-
-  
-
-    [Header("참조")]
-    SpriteRenderer sprite;
+    // PlayerState 참조
     Animator anim;
+    Rigidbody2D rb;
+    Collider2D coll;
+    SpriteRenderer sprite;
 
+    PlayerMove playerMove;
+    PlayerAttack playerAttack;
+    PlayerGuard playerGuard;
+
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        playerCollider = GetComponent<Collider2D>();
-        defaultGravity = rb.gravityScale;
-        anim = GetComponent<Animator>();
+        defaultGravity = PlayerState.instance.rb.gravityScale;
+
+        // 컴포넌트 참조
+        anim = PlayerState.instance.anim;
+        rb = PlayerState.instance.rb;
+        coll = PlayerState.instance.coll;
+        sprite = PlayerState.instance.sprite;
+
+        // 스크립트 참조
+        playerMove = PlayerState.instance.playerMove;
+        playerAttack = PlayerState.instance.playerAttack;
+        playerGuard = PlayerState.instance.playerGuard;
     }
 
-    void Update()
+    private void Update()
     {
         Move();
         HandleJumpInput();
         Jump();
         dash();
-        anim.SetFloat("AnimStateY",rb.linearVelocityY);
+    }
 
+    private void FixedUpdate()
+    {
+        // Move
+        float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
+        rb.linearVelocity = new Vector2(inputValueX * moveSpeed, targetY);
 
+        isWallSliding = isTouchingWall && rb.linearVelocity.y < 0;
+
+        // Jump
+
+        // Dash
+    }
+
+    private void LateUpdate()
+    {
+        if (inputValueX != 0)
+        {
+            sprite.flipX = PlayerState.instance.isRight < 0;
+        }
     }
 
     void Move()
     {
-       
-        Vector2 move = Vector2.zero;
-        Player_atk atk = GetComponent<Player_atk>();
-        Player_Guard guard = GetComponent<Player_Guard>();
-        Player_Health playerHealth = GetComponent<Player_Health>();
-
         // 벽점프, 대쉬, 공격, 방어 , 힐 중이면 이동 불가
-        if (isWallJumping || isDashing || (atk != null && atk._currentCombo >= 0) ||
-            (guard != null && guard.isGuard) || (playerHealth != null && playerHealth.isHealing))
+        /*if (isWallJumping || isDashing || (playerAttack != null && playerAttack._currentCombo >= 0) ||
+            (guard != null && guard.isGuard) || (playerHealth != null && PlayerState.instance.isHealing))
         {
             PlayerState.instance.canMove = false;
             return;
+        }*/
+
+        if (isWallJumping || isDashing)
+        {
+            PlayerState.instance.canMove = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow)) // 좌우 방향설정
+        if (!PlayerState.instance.canMove)
         {
-            move = Vector2.left;
-            sprite.flipX = true;
-            anim.SetBool("IsWalk", true);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            move = Vector2.right;
-            sprite.flipX = false;
-            anim.SetBool("IsWalk", true);
-        }
-        else
-        {
-            anim.SetBool("IsWalk", false);
+            anim.SetFloat("SpeedX", 0);
+
+            return;
         }
 
-        float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
-        rb.linearVelocity = new Vector2(move.x * moveSpeed, targetY);
+        // 입력값 받기
+        inputValueX = Input.GetAxisRaw("Horizontal");
 
-        isWallSliding = isTouchingWall && rb.linearVelocity.y < 0;
+        // 애니메이션 파라미터 설정
+        anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
+        anim.SetFloat("SpeedY", rb.linearVelocityY);
+
+        // 좌우 체크
+        if (inputValueX != 0)
+        {
+            PlayerState.instance.isRight = inputValueX > 0 ? 1 : -1;
+        }
     }
 
     // 점프버퍼 처리
@@ -135,7 +156,8 @@ public class PlayerMove : MonoBehaviour
         // 점프버퍼 체크
         if (jumpBufferCounter > 0f)
         {
-            if (jumplock) return;
+            if (PlayerState.instance.canJump) return;
+
             // 아래점프 처리 (원웨이 플랫폼 통과)
             if (IsOnPlatform() && Input.GetKey(KeyCode.DownArrow) && !isDroppingDown)
             {
@@ -155,7 +177,7 @@ public class PlayerMove : MonoBehaviour
             if (isTouchingWall)
             {
                 rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(wallDir * wallJumpForce, wallJumpVertical*1.5f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(wallDir * wallJumpYForce, wallJumpXForce * 1.5f), ForceMode2D.Impulse);
                 StartCoroutine(WallJumpLock(0.3f)); // 점프 후 이동 잠금
                 jumpCount = 1; // 벽점프 후 더블점프 가능
                 jumpBufferCounter = 0f;
@@ -174,10 +196,9 @@ public class PlayerMove : MonoBehaviour
             }
         }
        
-        // 점프 키를 빨리 떼면 지정시간보다 못 누른 것이므로 즉시 떨어지도록 처리
+        // 짧은 점프 (점프 중 키를 떼면 즉시 떨어지도록 처리)
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            anim.SetTrigger("IsJump");
             if (jumpTimeCounter > 0f) // 지정시간보다 빨리 떼면
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // 상승력 초기화 → 바로 떨어짐
@@ -194,24 +215,24 @@ public class PlayerMove : MonoBehaviour
 
     void dash()
     {
-        bool canDash = false;
+        PlayerState.instance.canDash = false;
         GetComponent<Animator>().SetBool("IsDash", isDashing);
         if (IsGrounded()) // 지상에서는 쿨다운 체크
         {
-            canDash = !isDashing && dashCooldownCounter <= 0f;
+            PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
             canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
         }
         else if (isTouchingWall) // 벽에 닿으면 공중 대쉬 재사용 가능
         {
-            canDash = !isDashing && canAirDash;
+            PlayerState.instance.canDash = !isDashing && canAirDash;
             canAirDash = true; // 벽에 닿으면 재사용 가능
         }
         else // 공중
         {
-            canDash = !isDashing && canAirDash; // 최초 1회 가능
+            PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && canDash)
+        if (Input.GetKeyDown(KeyCode.X) && PlayerState.instance.canDash)
         {
             isDashing = true;
             dashTimeCounter = dashTime;
@@ -265,19 +286,23 @@ public class PlayerMove : MonoBehaviour
 
     private IEnumerator DisableSinglePlatform(Collider2D platform)
     {
-        Physics2D.IgnoreCollision(playerCollider, platform, true);
+        Physics2D.IgnoreCollision(coll, platform, true);
         yield return new WaitForSeconds(0.3f); // 플랫폼 통과 시간
-        Physics2D.IgnoreCollision(playerCollider, platform, false);
+        Physics2D.IgnoreCollision(coll, platform, false);
     }
 
     private IEnumerator WallJumpLock(float duration)
     {
+        // 벽 점프 중 이동 불가
         isWallJumping = true;
-        jumplock = true;
+        PlayerState.instance.canMove = false;
+        PlayerState.instance.canJump = true;
+        
+        // 이동 불가 해제
         yield return new WaitForSeconds(duration);
         isWallJumping = false;
-        jumplock = false;
         PlayerState.instance.canMove = true;
+        PlayerState.instance.canJump = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

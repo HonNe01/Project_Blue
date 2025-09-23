@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_Guard : MonoBehaviour
+public class PlayerGuard : MonoBehaviour
 {
     [HideInInspector]
     public bool isGuard;

@@ -1,103 +1,130 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class PlayerState : MonoBehaviour
 {
     public static PlayerState instance;
-    //참조 
 
-    [HideInInspector]  public Animator anim;
-    [HideInInspector]  public SpriteRenderer sprite;
-    [HideInInspector]  public Rigidbody2D rb;
-    [HideInInspector]  public Collider2D playerCollider;
-    [HideInInspector]  public PlayerMove playerMove;
-    [HideInInspector]  public Player_atk playeratk;
-    [HideInInspector]  public Player_Guard playerGuard;
+    // Player Reference 플레이어 참조
+    [HideInInspector] public Animator anim;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Collider2D coll;
+    [HideInInspector] public SpriteRenderer sprite;
 
-    [Header("State")]
-    public bool isMove;
-    public bool isDash;
-    public bool isDie;
-    public bool isDamage;
-    public bool isAttack;
-    public bool isGard;
-    public bool isWallSlide;
-    public bool isWallJump;
-    public bool isHeal;
-    public bool canMove;
+    [HideInInspector] public PlayerMove playerMove;
+    [HideInInspector] public PlayerAttack playerAttack;
+    [HideInInspector] public PlayerGuard playerGuard;
 
-    [Header("Health State")]
+    [HideInInspector] public CinemachinePositionComposer cinemachineCamera;
+
+    [Header("=== Player State ===")]
+    public int isRight;
+    public bool canMove = true;
+    public bool canDash = true;
+    public bool canJump = true;
+    public bool canAttack = true;
+    public bool canGuard = true;
+    public bool canSkill = true;
+    public bool isHeal = false;
+    
+
+    [Header("=== Health State ===")]
     public int maxHP = 5;
-    private int currentHP;
+    private int curHP;
+    public int CurHp => curHP;
 
-    [Header("힐 설정")]
+
+    [Header("Healing Setting")]
     public float healHoldTime = 0.5f;
     private float healTimer = 0f;
-    private bool healedThisPress = false;
+    private bool healPress = false;
 
 
     private void Awake()
     {
+        // 인스턴스
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
+
+        // 컴포넌트 참조
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+
+        // 클래스 참조
+        playerMove = GetComponent<PlayerMove>();
+        playerAttack = GetComponent<PlayerAttack>();
+        playerGuard = GetComponent<PlayerGuard>();
     }
 
-
-    
-
-    void Start()
+    private void Start()
     {
-        
+        curHP = maxHP;
     }
 
 
-    void Update()
+    private void Update()
+    {
+        Healing();
+    }
+
+    private void LateUpdate()
+    {
+        if (cinemachineCamera != null)
+        {
+            cinemachineCamera.Composition.ScreenPosition.x = 0.1f * isRight;
+        }
+    }
+
+    private void Healing()
     {
         // 회복
         if (Input.GetKey(KeyCode.F))
         {
             isHeal = true;
-            if (!healedThisPress && currentHP < maxHP)
+            if (!healPress && curHP < maxHP)
             {
                 healTimer += Time.deltaTime;
                 if (healTimer >= healHoldTime)
                 {
                     Heal(1);
-                    healedThisPress = true;
+                    healPress = true;
                 }
                 else if (Input.GetKeyUp(KeyCode.F))
                 {
                     isHeal = false;
                     healTimer = 0f;
-                    healedThisPress = false;
+                    healPress = false;
                 }
             }
         }
     }
-
-    
+    public void Heal(int amount = 1)
+    {
+        curHP += amount;
+        curHP = Mathf.Clamp(curHP, 0, maxHP);
+        Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
+    }
 
     public void TakeDamage(int damage = 1)
     {
-        currentHP -= damage;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        curHP -= damage;
+        curHP = Mathf.Clamp(curHP, 0, maxHP);
 
         Debug.Log("Damage");
 
-        if (currentHP <= 0) Die();
+        if (curHP <= 0) Die();
     }
 
-    public void Heal(int amount = 1)
-    {
-        currentHP += amount;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        Debug.Log("Healed! CurrentHP: " + currentHP);
-    }
+    
 
     private void Die()
     {
         canMove = false;
+
         Debug.Log("플레이어 사망!");
     }
 }

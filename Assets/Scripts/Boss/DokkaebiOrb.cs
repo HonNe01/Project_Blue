@@ -58,7 +58,7 @@ public class DokkaebiOrb : MonoBehaviour
             rigid.linearVelocity = Vector3.zero;
             fireColl.enabled = false;
 
-            collision.GetComponent<Player_Health>()?.TakeDamage(baseDamage);
+            PlayerState.instance.TakeDamage(baseDamage);
             
             if (!exploded)
                 StartCoroutine(Explosion());

@@ -32,7 +32,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
-                    collision.GetComponent<Player_Health>()?.TakeDamage(baseDamage);
+                    PlayerState.instance.TakeDamage(baseDamage);
                 }
                 break;
         }
@@ -57,7 +57,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
-                    collision.gameObject.GetComponent<Player_Health>()?.TakeDamage(baseDamage);
+                    PlayerState.instance.TakeDamage(baseDamage);
                 }
                 break;
         }

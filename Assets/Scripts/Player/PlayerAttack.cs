@@ -11,7 +11,7 @@ public class atk
 
 
 
-public class Player_atk : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] atk[] _steps;
 
