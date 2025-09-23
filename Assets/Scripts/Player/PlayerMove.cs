@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float wallJumpForce = 8f; // 벽점프 (값을 올리면 벽점프시 위쪽으로 올라가는 값 증가)
     public float wallJumpVertical = 7f; // 벽점프 (값을 올리면 반대편으로 나가는 값 증가)
     public float jumpTimeMax = 0.3f; // 점프 키 입력 유지 최대 시간
+    
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
@@ -48,11 +49,11 @@ public class PlayerMove : MonoBehaviour
     //Player_Guard _playerGuard;
 
 
-    [Header("대쉬 트레일")]
-    public TrailRenderer dashTrail; // 트레일 렌더러 참조
+  
 
     [Header("참조")]
     SpriteRenderer sprite;
+    Animator anim;
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class PlayerMove : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
         defaultGravity = rb.gravityScale;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -68,10 +70,14 @@ public class PlayerMove : MonoBehaviour
         HandleJumpInput();
         Jump();
         dash();
+        anim.SetFloat("AnimStateY",rb.linearVelocityY);
+
+
     }
 
     void Move()
     {
+       
         Vector2 move = Vector2.zero;
         Player_atk atk = GetComponent<Player_atk>();
         Player_Guard guard = GetComponent<Player_Guard>();
@@ -81,7 +87,7 @@ public class PlayerMove : MonoBehaviour
         if (isWallJumping || isDashing || (atk != null && atk._currentCombo >= 0) ||
             (guard != null && guard.isGuard) || (playerHealth != null && playerHealth.isHealing))
         {
-            move = Vector2.zero; 
+            PlayerState.instance.canMove = false;
             return;
         }
 
@@ -89,11 +95,17 @@ public class PlayerMove : MonoBehaviour
         {
             move = Vector2.left;
             sprite.flipX = true;
+            anim.SetBool("IsWalk", true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             move = Vector2.right;
             sprite.flipX = false;
+            anim.SetBool("IsWalk", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalk", false);
         }
 
         float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
@@ -120,7 +132,6 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
-        GetComponent<Animator>().SetBool("IsJump", isjump); // 애니메이션용
         // 점프버퍼 체크
         if (jumpBufferCounter > 0f)
         {
@@ -151,6 +162,7 @@ public class PlayerMove : MonoBehaviour
                 jumpTimeCounter = 0f; // 벽점프는 키 누른 시간 계산 안함
                 return;
             }
+            
 
             // 일반 점프 (지상/더블점프)
             if (coyoteTimeCounter > 0f || jumpCount < maxJumps)
@@ -161,11 +173,11 @@ public class PlayerMove : MonoBehaviour
                 jumpTimeCounter = jumpTimeMax; // 점프 키 유지 최대 시간
             }
         }
-
-        isjump = Input.GetKeyDown(KeyCode.Z); // 애니메이션용
+       
         // 점프 키를 빨리 떼면 지정시간보다 못 누른 것이므로 즉시 떨어지도록 처리
         if (Input.GetKeyUp(KeyCode.Z))
         {
+            anim.SetTrigger("IsJump");
             if (jumpTimeCounter > 0f) // 지정시간보다 빨리 떼면
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // 상승력 초기화 → 바로 떨어짐
@@ -210,7 +222,7 @@ public class PlayerMove : MonoBehaviour
             if (!IsGrounded() && !isTouchingWall) // 공중대쉬 사용 후
                 canAirDash = false; // 땅/벽 닿기 전까지 재사용 불가
 
-            dashTrail.emitting = true; // 대쉬 트레일 켜기
+            
             rb.gravityScale = 0f; // 중력 무시
         }
 
@@ -223,7 +235,6 @@ public class PlayerMove : MonoBehaviour
             if (dashTimeCounter <= 0f)
             {
                 isDashing = false;
-                dashTrail.emitting = false; // 트레일 끄기
                 rb.gravityScale = defaultGravity; // 중력 복구
             }
         }
@@ -266,6 +277,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isWallJumping = false;
         jumplock = false;
+        PlayerState.instance.canMove = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
