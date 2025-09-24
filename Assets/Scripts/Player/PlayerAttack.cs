@@ -1,101 +1,136 @@
 using UnityEngine;
 
-[System.Serializable]
-public class atk
-{
-    public string StateName;          // 애니메이션 이름
-    public float MaxStepTime = 0.8f;     // 콤보 종료시간
-    public float ComboTimingStart = 0.3f;  // 다음 콤보로 넘어갈 수 있는 시간
-    public float ComboTimingEnd = 0.7f;    // 동일
-}
-
-
-
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] atk[] _steps;
+    [Header(" === Default Attack === ")]
+    [Header("Attack Setting")]
+    public int maxCombo = 3;                // 최대 콤보
+    [SerializeField] private int curCombo = 0;  // 현재 콤보
 
-    [SerializeField] float _inputBufferTime = 0.2f;      // 공격 입력시간 보정
-    Animator _anim;
+    public float comboTime = 1f;            // 콤보 유지 시간
+    private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
 
-    public int _currentCombo = -1;
-    float _comboStrartTime = -1;
-    bool _queuedNextCombo;
-    float _lastInputTime;
+    public float inputBufferTime = 0.2f;    // 버퍼 입력 시간
+    private bool bufferInput = false;           // 버퍼 입력 여부
+    private float lastInputTime = -1f;          // 마지먹 버퍼 입력 시간
+
+    /*
+    [Header(" === Default Skill === ")]
+
+    [Header(" === Up Skill === ")]
+
+    [Header(" === Front Skill === ")]
+
+    [Header(" === Down Skill === ")]
+    */
+
+    // 참조
+    private Animator anim;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        _anim = GetComponent<Animator>();
+        anim = PlayerState.instance.anim;
+        rb = PlayerState.instance.rb;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+        // 공격
+        Attack();
+
+        // 스킬
+        Skill();
+        Skill_Up();
+        Skill_Front();
+        Skill_Down();
+    }
+
+    public void Attack()
+    {
+        // 공격 실행
+        if (Input.GetKeyDown(KeyCode.V) && PlayerState.instance.canAttack)
         {
-            _lastInputTime = Time.time;
-            StartComboAttack();
+            lastInputTime = Time.time;
+
+            // 공격 중 아닐 때 (Combo = 0) -> 1타 시작
+            if (curCombo == 0)
+            {
+                StartAttack(1);
+            }
+            // 공격 중일 때 (Combo != 0) -> 버퍼 입력
+            else if (curCombo < maxCombo)   
+            {
+                bufferInput = true;
+            }
+            // 마지막 공격 중엔 무시
+            else    
+            {
+                bufferInput = false;
+            }
         }
 
-        if (_currentCombo >= 0)
-            UpdateCombo();
-    }
-    public bool IsAttacking()
-    {
-        return _currentCombo >= 0;  // 콤보 진행 중이면 true
-    }
+        if (curCombo == 0) return;
 
-    void StartComboAttack()
-    {
-        if(_currentCombo < 0)    // 공격을 안했을때 1번부터 시작
-        {
-            StartCombo(0);
-            return;
-        }
-
-        var step = _steps[_currentCombo];          
-        float elapsed = Time.time - _comboStrartTime;  // 현재 콤보가 시작된지 얼마나 지났는지
-
-        bool isInTiming = elapsed >= step.ComboTimingStart && elapsed <= step.ComboTimingEnd;
-        bool withisnBuffer = (Time.time - _lastInputTime) <= _inputBufferTime;
-        
-        if (isInTiming && withisnBuffer)   // 타이밍 안에 있고 입력버퍼시간 안에 있으면 다음콤보 출력
-            _queuedNextCombo = true;
-    }
-
-    void StartCombo(int index)
-    {
-        _currentCombo = Mathf.Clamp(index, 0, _steps.Length - 1);
-        _comboStrartTime = Time.time;
-        _queuedNextCombo = false;
-
-        _anim.CrossFade(_steps[_currentCombo].StateName, 0.05f);
-    }
-
-    void UpdateCombo()
-    { 
-        var step = _steps[_currentCombo];
-        float elapsed = Time.time - _comboStrartTime;
-
-        if(_queuedNextCombo && elapsed >= step.ComboTimingStart)   // 다음콤보가 예약되어있고 타이밍이 되면 다음콤보 실행
-        {
-            int next = _currentCombo + 1;
-            if (next < _steps.Length)
-                StartCombo(next);
-            else
-                ResetCombo();
-            return;
-        }
-
-        if (elapsed > step.MaxStepTime)   // 콤보시간이 끝나면 콤보 초기화
+        // 콤보 시간 초과 -> 초기화
+        if (Time.time - lastAttackTime > comboTime)
         {
             ResetCombo();
+            return;
         }
+
+        // 버퍼 입력 -> 공격 실행
+        if (bufferInput && Time.time - lastInputTime <= inputBufferTime)
+        {
+            bufferInput = false;
+            if (curCombo < maxCombo)
+            {
+                StartAttack(curCombo + 1);
+            }
+            else
+            {
+                // 콤보 끝 -> 초기화
+                ResetCombo();
+            }
+        }
+    }
+
+    private void StartAttack(int combo)
+    {
+        curCombo = combo;
+        lastAttackTime = Time.time;
+        bufferInput = false;
+
+        PlayerState.instance.canMove = false;
+        anim.SetTrigger($"Attack{combo}");
     }
 
     void ResetCombo()
     {
-        _currentCombo = -1;
-        _queuedNextCombo = false;
+        curCombo = 0;
+        bufferInput = false;
+
+        PlayerState.instance.canMove = true;
+    }
+
+    public virtual void Skill()
+    {
+
+    }
+
+    public virtual void Skill_Up()
+    {
+
+    }
+
+    public virtual void Skill_Front()
+    {
+
+    }
+
+    public virtual void Skill_Down()
+    {
+
     }
 }
 

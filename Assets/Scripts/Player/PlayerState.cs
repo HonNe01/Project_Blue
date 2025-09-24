@@ -1,5 +1,6 @@
-using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour
 {
@@ -18,13 +19,19 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public CinemachinePositionComposer cinemachineCamera;
 
     [Header("=== Player State ===")]
+    [Header("Move")]
     public int isRight;
+    public bool isGround = true;
     public bool canMove = true;
     public bool canDash = true;
     public bool canJump = true;
+
+    [Header("Attack")]
     public bool canAttack = true;
     public bool canGuard = true;
     public bool canSkill = true;
+
+    [Header("")]
     public bool isHeal = false;
     
 
@@ -62,7 +69,10 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
-        curHP = maxHP;
+        curHP = maxHP; 
+
+        Camera vcam = Camera.main;
+        cinemachineCamera = vcam.GetComponent<CinemachinePositionComposer>();
     }
 
 
@@ -119,13 +129,29 @@ public class PlayerState : MonoBehaviour
         if (curHP <= 0) Die();
     }
 
-    
-
     private void Die()
     {
         canMove = false;
 
         Debug.Log("플레이어 사망!");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬 전환시 카메라 할당
+        Camera vcam = Camera.main;
+        if (vcam != null)
+            cinemachineCamera = vcam.GetComponent<CinemachinePositionComposer>();
     }
 }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Playables;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class PlayerMove : MonoBehaviour
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
-    private int jumpCount = 0;
-    private int maxJumps = 2;           // 최대점프 횟수
-    private bool isDroppingDown = false;// 아래점프 중인지 체크
+    private int jumpCount = 0;          // 현재 점프 횟수
+    private int maxJumps = 2;           // 최대 점프 횟수
+    private bool isDroppingDown = false;// 아래 점프 중인지 체크
     private float jumpTimeCounter;      // 점프 키 유지 시간 카운트
 
     [Header("Wall Jump/Sliding Setting")]
@@ -24,13 +25,13 @@ public class PlayerMove : MonoBehaviour
     private bool isWallSliding = false;
     private bool isWallJumping = false;
 
-    [Header("코요테타임 & 버퍼")]
+    [Header("Coyote / Buffer")]
     public float coyoteTime = 0.1f; // 땅에서 떨어진 후 점프 가능한 시간
     private float coyoteTimeCounter;
     public float jumpBufferTime = 0.1f; // 점프키 입력을 미리 받아두는 시간
     private float jumpBufferCounter;
 
-    [Header("대쉬 설정")]
+    [Header("Dash Setting")]
     public float dashSpeed = 15f; // 대쉬 속도
     public float dashTime = 0.2f; // 대쉬 지속 시간     대쉬 거리 계산 = dashSpeed * dashTime
     public float dashCooldown = 0.8f; // 지상 대쉬 쿨타임
@@ -70,50 +71,63 @@ public class PlayerMove : MonoBehaviour
         playerGuard = PlayerState.instance.playerGuard;
     }
 
-    private void Update()
+    private void Update()   // 논리 로직
     {
-        Move();
-        HandleJumpInput();
-        Jump();
-        dash();
-    }
+        MoveInput();
+        JumpInput();
+        DashInput();
 
-    private void FixedUpdate()
-    {
-        // Move
-        float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
-        rb.linearVelocity = new Vector2(inputValueX * moveSpeed, targetY);
-
-        isWallSliding = isTouchingWall && rb.linearVelocity.y < 0;
-
-        // Jump
-
-        // Dash
-    }
-
-    private void LateUpdate()
-    {
-        if (inputValueX != 0)
+        if (PlayerState.instance.isGround)
         {
+            jumpCount = 0;
+            coyoteTimeCounter = coyoteTime;
+            isDroppingDown = false; // 아래점프 상태 해제
+
+            canAirDash = true;
+            isWallSliding = false;
+            PlayerState.instance.canDash = true;
+        }
+    }
+
+    private void FixedUpdate()  // 물리 로직
+    {
+        MovePhysics();
+        JumpPhysics();
+        DashPhysics();
+
+        // === Ground Check ===
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+        if (hit.collider != null)
+        {
+            PlayerState.instance.isGround = (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("OneWayPlatform"));
+        }
+        else
+        {
+            PlayerState.instance.isGround = false;
+        }
+    }
+
+    private void LateUpdate()   // 그래픽 로직
+    {
+        if (isWallJumping)
+        {
+            // 벽 점프시 좌우 반전
+            sprite.flipX = wallDir < 0;
+        }
+        else if (isWallSliding)
+        {
+            // 벽 슬라이딩시 좌우 반전
+            sprite.flipX = wallDir > 0;
+        }
+        else if (inputValueX != 0)
+        {
+            // 이동 시 좌우 반전
             sprite.flipX = PlayerState.instance.isRight < 0;
         }
     }
 
-    void Move()
+    private void MoveInput()
     {
-        // 벽점프, 대쉬, 공격, 방어 , 힐 중이면 이동 불가
-        /*if (isWallJumping || isDashing || (playerAttack != null && playerAttack._currentCombo >= 0) ||
-            (guard != null && guard.isGuard) || (playerHealth != null && PlayerState.instance.isHealing))
-        {
-            PlayerState.instance.canMove = false;
-            return;
-        }*/
-
-        if (isWallJumping || isDashing)
-        {
-            PlayerState.instance.canMove = false;
-        }
-
         if (!PlayerState.instance.canMove)
         {
             anim.SetFloat("SpeedX", 0);
@@ -135,29 +149,56 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    // 점프버퍼 처리
-    void HandleJumpInput()
+    private void MovePhysics()
+    {
+        // 벽 슬라이드 판정
+        isWallSliding = isTouchingWall && rb.linearVelocity.y < 0;
+
+        if (!PlayerState.instance.canMove)
+        {
+            return;
+        }
+
+        // 이동 실행
+        float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
+        rb.linearVelocity = new Vector2(inputValueX * moveSpeed, targetY);
+    }
+
+    void JumpInput()
     {
         // 점프버튼 누르면 버퍼 카운트 시작
         if (Input.GetKeyDown(KeyCode.Z))
+        {
             jumpBufferCounter = jumpBufferTime;
+
+            if (PlayerState.instance.canJump)
+                anim.SetTrigger("IsJump");
+        }
+        // 카운터 갱신
         else
             jumpBufferCounter -= Time.deltaTime;
 
+        // 짧은 점프 (점프 중 키를 떼면 즉시 떨어지도록 처리)
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            if (jumpTimeCounter > 0f) // 지정시간보다 빨리 떼면
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // 상승력 초기화 → 바로 떨어짐
+                jumpTimeCounter = 0f;
+            }
+        }
+
         // 코요테타임 카운트 (지상일 때 리셋, 공중일 때 감소)
-        if (IsGrounded())
-            coyoteTimeCounter = coyoteTime;
-        else
+        if (!PlayerState.instance.isGround)
             coyoteTimeCounter -= Time.deltaTime;
     }
 
-    void Jump()
+    void JumpPhysics()
     {
-        // 점프버퍼 체크
+        if (!PlayerState.instance.canJump) return;
+
         if (jumpBufferCounter > 0f)
         {
-            if (PlayerState.instance.canJump) return;
-
             // 아래점프 처리 (원웨이 플랫폼 통과)
             if (IsOnPlatform() && Input.GetKey(KeyCode.DownArrow) && !isDroppingDown)
             {
@@ -177,47 +218,40 @@ public class PlayerMove : MonoBehaviour
             if (isTouchingWall)
             {
                 rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(wallDir * wallJumpYForce, wallJumpXForce * 1.5f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(wallDir * wallJumpXForce, wallJumpYForce), ForceMode2D.Impulse);
                 StartCoroutine(WallJumpLock(0.3f)); // 점프 후 이동 잠금
                 jumpCount = 1; // 벽점프 후 더블점프 가능
                 jumpBufferCounter = 0f;
                 jumpTimeCounter = 0f; // 벽점프는 키 누른 시간 계산 안함
                 return;
             }
-            
 
             // 일반 점프 (지상/더블점프)
             if (coyoteTimeCounter > 0f || jumpCount < maxJumps)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce*1.5f); // 점프 초기 속도만 적용
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * 1.5f); // 점프 초기 속도만 적용
                 jumpCount++;
                 jumpBufferCounter = 0f;
                 jumpTimeCounter = jumpTimeMax; // 점프 키 유지 최대 시간
             }
         }
-       
-        // 짧은 점프 (점프 중 키를 떼면 즉시 떨어지도록 처리)
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            if (jumpTimeCounter > 0f) // 지정시간보다 빨리 떼면
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // 상승력 초기화 → 바로 떨어짐
-                jumpTimeCounter = 0f;
-            }
-        }
-
-        // 시간 카운트 감소
+        
+        // 일반 점프 카운터
         if (jumpTimeCounter > 0f)
         {
             jumpTimeCounter -= Time.deltaTime;
         }
     }
 
-    void dash()
+    void DashInput()
     {
-        PlayerState.instance.canDash = false;
-        GetComponent<Animator>().SetBool("IsDash", isDashing);
-        if (IsGrounded()) // 지상에서는 쿨다운 체크
+        // 대쉬 쿨타임 감소
+        if (dashCooldownCounter > 0f)
+            dashCooldownCounter -= Time.deltaTime;
+
+        anim.SetBool("IsDash", isDashing);
+
+        if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
         {
             PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
             canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
@@ -237,19 +271,25 @@ public class PlayerMove : MonoBehaviour
             isDashing = true;
             dashTimeCounter = dashTime;
 
-            if (IsGrounded()) // 땅에서 대쉬면 쿨다운 적용
+            if (PlayerState.instance.isGround) // 땅에서 대쉬면 쿨다운 적용
                 dashCooldownCounter = dashCooldown;
 
-            if (!IsGrounded() && !isTouchingWall) // 공중대쉬 사용 후
+            if (!PlayerState.instance.isGround && !isTouchingWall) // 공중대쉬 사용 후
                 canAirDash = false; // 땅/벽 닿기 전까지 재사용 불가
 
-            
             rb.gravityScale = 0f; // 중력 무시
         }
+    }
 
+    void DashPhysics()
+    {
         // 대쉬 중 처리
         if (isDashing)
         {
+            PlayerState.instance.canMove = false;
+            PlayerState.instance.canGuard = false;
+            PlayerState.instance.canAttack = false;
+
             rb.linearVelocity = new Vector2(sprite.flipX ? -dashSpeed : dashSpeed, 0f);
             dashTimeCounter -= Time.deltaTime;
 
@@ -257,19 +297,18 @@ public class PlayerMove : MonoBehaviour
             {
                 isDashing = false;
                 rb.gravityScale = defaultGravity; // 중력 복구
+                PlayerState.instance.canMove = true;
+                PlayerState.instance.canGuard = true;
+                PlayerState.instance.canAttack = true;
             }
         }
-
-        // 땅에서 대쉬 쿨타임 감소
-        if (dashCooldownCounter > 0f)
-            dashCooldownCounter -= Time.deltaTime;
-    }
-
-    // 지상 체크 (코요테타임용)
-    private bool IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.3f);
-        return hit.collider != null && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("OneWayPlatform"));
+        else
+        {
+            rb.gravityScale = defaultGravity; // 중력 복구
+            PlayerState.instance.canMove = true;
+            PlayerState.instance.canGuard = true;
+            PlayerState.instance.canAttack = true;
+        }
     }
 
     private bool IsOnPlatform()
@@ -296,31 +335,29 @@ public class PlayerMove : MonoBehaviour
         // 벽 점프 중 이동 불가
         isWallJumping = true;
         PlayerState.instance.canMove = false;
-        PlayerState.instance.canJump = true;
+        PlayerState.instance.canJump = false;
         
         // 이동 불가 해제
         yield return new WaitForSeconds(duration);
         isWallJumping = false;
         PlayerState.instance.canMove = true;
-        PlayerState.instance.canJump = false;
+        PlayerState.instance.canJump = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform"))
-        {
-            jumpCount = 0;
-            isDroppingDown = false; // 아래점프 상태 해제
-            coyoteTimeCounter = coyoteTime; // 착지시 코요테타임 리셋
-        }
-
         if (collision.gameObject.CompareTag("Wall"))
         {
             isTouchingWall = true;
             ContactPoint2D contact = collision.contacts[0];
-            wallDir = (contact.point.x < transform.position.x) ? 1 : -1; // 왼쪽벽이면 1, 오른쪽벽이면 -1
+
+            // 왼쪽벽이면 1, 오른쪽벽이면 -1
+            wallDir = (contact.point.x < transform.position.x) ? 1 : -1;
 
             rb.linearVelocity = Vector2.zero; // 벽에 닿으면 속도 초기화
+
+            isWallJumping = false;
+            isDashing = false;
         }
     }
 
@@ -329,7 +366,16 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             isTouchingWall = false;
-            wallDir = 0;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Ground Check
+        if (PlayerState.instance != null)
+        {
+            Gizmos.color = PlayerState.instance.isGround ? Color.green : Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 0.1f);
         }
     }
 }
