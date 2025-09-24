@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Playables;
 
 public class PlayerMove : MonoBehaviour
 {
     [Header("Move Setting")]
     public float moveSpeed = 5f;        // 이동속도
     private float inputValueX;
+    [SerializeField] private Vector2 groundCheck;
     
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
@@ -96,14 +96,11 @@ public class PlayerMove : MonoBehaviour
         DashPhysics();
 
         // === Ground Check ===
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-        if (hit.collider != null)
+        if (PlayerState.instance.rb.linearVelocityY < 0.1f)
         {
-            PlayerState.instance.isGround = (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("OneWayPlatform"));
-        }
-        else
-        {
-            PlayerState.instance.isGround = false;
+            PlayerState.instance.isGround = Physics2D.OverlapBox(transform.position,
+                                                             groundCheck, 0f,
+                                                             LayerMask.GetMask("Ground"));
         }
     }
 
@@ -313,14 +310,16 @@ public class PlayerMove : MonoBehaviour
 
     private bool IsOnPlatform()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-        return hit.collider != null && hit.collider.CompareTag("OneWayPlatform");
+        Collider2D hit = Physics2D.OverlapBox(transform.position, groundCheck, 0f, LayerMask.GetMask("Ground"));
+
+        return hit != null && hit.CompareTag("OneWayPlatform");
     }
 
     private Collider2D GetPlatformBelow()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-        return (hit.collider != null && hit.collider.CompareTag("OneWayPlatform")) ? hit.collider : null;
+        Collider2D hit = Physics2D.OverlapBox(transform.position, groundCheck, 0f, LayerMask.GetMask("Ground"));
+
+        return (hit != null && hit.CompareTag("OneWayPlatform")) ? hit : null;
     }
 
     private IEnumerator DisableSinglePlatform(Collider2D platform)
@@ -375,7 +374,7 @@ public class PlayerMove : MonoBehaviour
         if (PlayerState.instance != null)
         {
             Gizmos.color = PlayerState.instance.isGround ? Color.green : Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 0.1f);
+            Gizmos.DrawWireCube(transform.position, groundCheck);
         }
     }
 }
