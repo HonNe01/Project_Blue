@@ -8,10 +8,21 @@ public class PlayerGuard : MonoBehaviour
     public float guardingTime = 0f;
 
 
-    void Update()
+    private void Update()
     {
+        Guard();
+    }
+
+    private void LateUpdate()
+    {
+        PlayerState.instance.anim.SetBool("IsGuard", isGuard);
+    }
+
+    private void Guard()
+    {
+        if (!PlayerState.instance.canGuard) return;
+
         isGuard = Input.GetKey(KeyCode.C);
-        GetComponent<Animator>().SetBool("_isGuard", isGuard);
 
         if (isGuard)
             guardingTime += Time.deltaTime;

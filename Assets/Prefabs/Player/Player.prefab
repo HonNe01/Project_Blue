@@ -213,12 +213,15 @@ MonoBehaviour:
   playerGuard: {fileID: 0}
   cinemachineCamera: {fileID: 0}
   isRight: 0
+  isGround: 1
   canMove: 1
   canDash: 1
   canJump: 1
   canAttack: 1
-  canGuard: 1
   canSkill: 1
+  isBehavior: 0
+  canGuard: 1
+  canHeal: 1
   isHeal: 0
   maxHP: 5
   healHoldTime: 0.5
@@ -237,11 +240,17 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 7
   jumpTimeMax: 0.3
+  jumpCount: 0
+  isTouchingWall: 0
+  isWallSliding: 0
+  isWallJumping: 0
   wallJumpYForce: 10
   wallJumpXForce: 7
   wallSlideSpeed: 0.5
   coyoteTime: 0.1
   jumpBufferTime: 0.2
+  isDashing: 0
+  canAirDash: 1
   dashSpeed: 15
   dashTime: 0.2
   dashCooldown: 1
@@ -259,8 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   maxCombo: 3
   curCombo: 0
-  comboTime: 0.5
-  inputBufferTime: 0.2
+  comboTime: 1
 --- !u!114 &8637804788430133120
 MonoBehaviour:
   m_ObjectHideFlags: 0

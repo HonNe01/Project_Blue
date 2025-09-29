@@ -10,10 +10,6 @@ public class PlayerAttack : MonoBehaviour
     public float comboTime = 1f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
 
-    public float inputBufferTime = 0.2f;    // 버퍼 입력 시간
-    private bool bufferInput = false;           // 버퍼 입력 여부
-    private float lastInputTime = -1f;          // 마지먹 버퍼 입력 시간
-
     /*
     [Header(" === Default Skill === ")]
 
@@ -51,26 +47,20 @@ public class PlayerAttack : MonoBehaviour
         // 공격 실행
         if (Input.GetKeyDown(KeyCode.V) && PlayerState.instance.canAttack)
         {
-            lastInputTime = Time.time;
-
             // 공격 중 아닐 때 (Combo = 0) -> 1타 시작
             if (curCombo == 0)
             {
-                StartAttack(1);
+                StartAttack();
             }
-            // 공격 중일 때 (Combo != 0) -> 버퍼 입력
+            // 공격 중 -> 다음 공격
             else if (curCombo < maxCombo)   
             {
-                bufferInput = true;
-            }
-            // 마지막 공격 중엔 무시
-            else    
-            {
-                bufferInput = false;
+                StartAttack();
             }
         }
 
         if (curCombo == 0) return;
+
 
         // 콤보 시간 초과 -> 초기화
         if (Time.time - lastAttackTime > comboTime)
@@ -78,59 +68,59 @@ public class PlayerAttack : MonoBehaviour
             ResetCombo();
             return;
         }
-
-        // 버퍼 입력 -> 공격 실행
-        if (bufferInput && Time.time - lastInputTime <= inputBufferTime)
-        {
-            bufferInput = false;
-            if (curCombo < maxCombo)
-            {
-                StartAttack(curCombo + 1);
-            }
-            else
-            {
-                // 콤보 끝 -> 초기화
-                ResetCombo();
-            }
-        }
     }
 
-    private void StartAttack(int combo)
+    private void StartAttack() // AttackCount = 0
     {
-        curCombo = combo;
+        curCombo++;
         lastAttackTime = Time.time;
-        bufferInput = false;
 
-        PlayerState.instance.canMove = false;
-        anim.SetTrigger($"Attack{combo}");
+        DisableOtherAction();
+        anim.SetTrigger("Attack");
+        anim.SetInteger("AttackCombo", 0);
     }
 
-    void ResetCombo()
+    private void ResetCombo()
     {
         curCombo = 0;
-        bufferInput = false;
+        anim.SetInteger("AttackCombo", 0);
 
+        EnableOtherAction();
+    }
+
+
+    public virtual void Skill() // AttackCount = 1
+    {
+
+    }
+
+    public virtual void Skill_Up() // AttackCount = 2
+    {
+
+    }
+
+    public virtual void Skill_Front() // AttackCount = 3
+    {
+
+    }
+
+    public virtual void Skill_Down() // AttackCount = 4
+    {
+
+    }
+
+    public void EnableOtherAction()
+    {
         PlayerState.instance.canMove = true;
+        PlayerState.instance.canHeal = true;
+        PlayerState.instance.canGuard = true;
     }
 
-    public virtual void Skill()
+    public void DisableOtherAction()
     {
-
-    }
-
-    public virtual void Skill_Up()
-    {
-
-    }
-
-    public virtual void Skill_Front()
-    {
-
-    }
-
-    public virtual void Skill_Down()
-    {
-
+        PlayerState.instance.canMove = false;
+        PlayerState.instance.canHeal = false;
+        PlayerState.instance.canGuard = false;
     }
 }
 

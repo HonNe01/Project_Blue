@@ -28,13 +28,14 @@ public class PlayerState : MonoBehaviour
 
     [Header("Attack")]
     public bool canAttack = true;
-    public bool canGuard = true;
     public bool canSkill = true;
 
-    [Header("")]
+    [Header("Behavior")]
+    public bool isBehavior = false;
+    public bool canGuard = true;
+    public bool canHeal = true;
     public bool isHeal = false;
     
-
     [Header("=== Health State ===")]
     public int maxHP = 5;
     private int curHP;
@@ -78,6 +79,8 @@ public class PlayerState : MonoBehaviour
 
     private void Update()
     {
+        isBehavior = isHeal || playerGuard.isGuard;
+
         Healing();
     }
 
@@ -87,15 +90,20 @@ public class PlayerState : MonoBehaviour
         {
             cinemachineCamera.Composition.ScreenPosition.x = 0.1f * isRight;
         }
+
+        anim.SetBool("IsBehavior", isBehavior);
+        anim.SetBool("IsHeal", isHeal);
     }
 
     private void Healing()
     {
+        if (!canHeal) return;
+
         // È¸º¹
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F) && curHP < maxHP)
         {
             isHeal = true;
-            if (!healPress && curHP < maxHP)
+            if (!healPress)
             {
                 healTimer += Time.deltaTime;
                 if (healTimer >= healHoldTime)
@@ -103,13 +111,13 @@ public class PlayerState : MonoBehaviour
                     Heal(1);
                     healPress = true;
                 }
-                else if (Input.GetKeyUp(KeyCode.F))
-                {
-                    isHeal = false;
-                    healTimer = 0f;
-                    healPress = false;
-                }
             }
+        }
+        else if (Input.GetKeyUp(KeyCode.F))
+        {
+            isHeal = false;
+            healTimer = 0f;
+            healPress = false;
         }
     }
     public void Heal(int amount = 1)
