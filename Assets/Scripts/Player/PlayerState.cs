@@ -25,6 +25,7 @@ public class PlayerState : MonoBehaviour
     public bool canMove = true;
     public bool canDash = true;
     public bool canJump = true;
+    [HideInInspector] public Vector2 groundCheck = new Vector2(0.5f, 0.05f);
 
     [Header("Attack")]
     public bool canAttack = true;
@@ -79,6 +80,15 @@ public class PlayerState : MonoBehaviour
 
     private void Update()
     {
+        // Ground Check
+        if (rb.linearVelocityY <= 0)
+        {
+            isGround = Physics2D.OverlapBox(transform.position,
+                                            groundCheck, 0f,
+                                            LayerMask.GetMask("Ground"));
+        }
+
+        // Behavior Check
         isBehavior = isHeal || playerGuard.isGuard;
 
         Healing();
@@ -129,10 +139,28 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int damage = 1)
     {
+        if (playerGuard.IsGuard())
+        {
+            if (playerGuard.IsParry())
+            {
+                // 패링 성공
+                playerGuard.Parry();
+
+                return;
+            }
+            else
+            {
+                playerGuard.Guard();
+
+                return;
+            }
+        }
+
         curHP -= damage;
         curHP = Mathf.Clamp(curHP, 0, maxHP);
 
-        Debug.Log("Damage");
+        Debug.Log("[PlayerState] Damaged!");
+        anim.SetTrigger("IsDamaged");
 
         if (curHP <= 0) Die();
     }
@@ -142,6 +170,17 @@ public class PlayerState : MonoBehaviour
         canMove = false;
 
         Debug.Log("플레이어 사망!");
+        anim.SetTrigger("IsDie");
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Ground Check
+        if (PlayerState.instance != null)
+        {
+            Gizmos.color = PlayerState.instance.isGround ? Color.green : Color.red;
+            Gizmos.DrawWireCube(transform.position, groundCheck);
+        }
     }
 
     private void OnEnable()

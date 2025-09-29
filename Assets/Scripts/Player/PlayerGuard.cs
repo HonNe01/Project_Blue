@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerGuard : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isGuard;
-    [HideInInspector]
-    public float guardingTime = 0f;
+    [Header("Guard Setting")]
+    [SerializeField] private bool isGuard;
+    [SerializeField] private float guardTime = 0f;
 
+    [Header("Parry Setting")]
+    [SerializeField] private float parrytime = 0.2f;
 
     private void Update()
     {
-        Guard();
+        GuardInput();
     }
 
     private void LateUpdate()
@@ -18,20 +19,37 @@ public class PlayerGuard : MonoBehaviour
         PlayerState.instance.anim.SetBool("IsGuard", isGuard);
     }
 
-    private void Guard()
+    private void GuardInput()
     {
         if (!PlayerState.instance.canGuard) return;
 
         isGuard = Input.GetKey(KeyCode.C);
 
         if (isGuard)
-            guardingTime += Time.deltaTime;
+            guardTime += Time.deltaTime;
         else
-            guardingTime = 0f;
+            guardTime = 0f;
     }
 
-    public bool IsGuarding()
+    public void Guard()
+    {
+        Debug.Log("[PlayerState] Guard 성공!");
+        PlayerState.instance.anim.SetTrigger("IsGuardHit");
+    }
+
+    public bool IsGuard()
     {
         return isGuard;
+    }
+
+    public bool IsParry()
+    {
+        return isGuard && guardTime <= parrytime;
+    }
+
+    public void Parry()
+    {
+        Debug.Log("[PlayerState] Parry 성공!");
+        PlayerState.instance.anim.SetTrigger("IsParry");
     }
 }

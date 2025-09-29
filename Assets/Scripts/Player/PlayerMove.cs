@@ -1,12 +1,12 @@
-using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
     [Header("Move Setting")]
     public float moveSpeed = 5f;        // 이동속도
     private float inputValueX;
-    private Vector2 groundCheck = new Vector2(0.5f, 0.05f);
     
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
@@ -17,13 +17,14 @@ public class PlayerMove : MonoBehaviour
     private float jumpTimeCounter;      // 점프 키 유지 시간 카운트
 
     [Header("Wall Jump/Sliding Setting")]
-    [SerializeField] private bool isTouchingWall = false;
-    [SerializeField] private bool isWallSliding = false;
-    [SerializeField] private bool isWallJumping = false;
+    private bool isTouchingWall = false;
+    private bool isWallSliding = false;
+    private bool isWallJumping = false;
     public float wallJumpYForce = 8f;   // 벽점프 파워 (수직)
     public float wallJumpXForce = 7f;   // 벽점프 파워 (수평)
     public float wallSlideSpeed = 0.5f; // 벽 슬라이드 속도
-    private int wallDir = 0; // 벽 위치(왼쪽 -1, 오른쪽 1)
+    public float wallJumpDuration = 0.3f; // 벽점프 길이
+    [SerializeField] private int wallDir = 0; // 벽 위치(왼쪽 -1, 오른쪽 1)
     
 
     [Header("Coyote / Buffer")]
@@ -33,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("Dash Setting")]
+    public int dashDir = 0;
     [SerializeField] private bool isDashing = false;
     [SerializeField] private bool canAirDash = true;
     public float dashSpeed = 15f; // 대쉬 속도
@@ -68,11 +70,6 @@ public class PlayerMove : MonoBehaviour
         JumpInput();
         DashInput();
 
-        // === Ground Check ===
-        PlayerState.instance.isGround = Physics2D.OverlapBox(transform.position,
-                                                             groundCheck, 0f,
-                                                             LayerMask.GetMask("Ground"));
-
         // === Wall Check ===
         isWallSliding = isTouchingWall && 
                         rb.linearVelocity.y < 0 && 
@@ -104,9 +101,18 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()   // 그래픽 로직
     {
-        anim.SetBool("IsGround", PlayerState.instance.isGround);
+        anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
+        anim.SetFloat("SpeedY", rb.linearVelocityY);
 
-        if (isWallJumping)
+        anim.SetBool("IsGround", PlayerState.instance.isGround);
+        anim.SetBool("IsDash", isDashing);
+        anim.SetBool("IsWallSliding", isWallSliding);
+
+        if (isDashing)
+        {
+            sprite.flipX = dashDir < 0;
+        }
+        else if (isWallJumping)
         {
             // 벽 점프시 좌우 반전
             sprite.flipX = wallDir > 0;
@@ -134,10 +140,6 @@ public class PlayerMove : MonoBehaviour
 
         // 입력값 받기
         inputValueX = Input.GetAxisRaw("Horizontal");
-
-        // 애니메이션 파라미터 설정
-        anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
-        anim.SetFloat("SpeedY", rb.linearVelocityY);
 
         // 좌우 체크
         if (inputValueX != 0)
@@ -191,9 +193,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (!PlayerState.instance.canJump) return;
 
-        // 윗점프
         if (jumpBufferCounter > 0f)
         {
+            PlayerState.instance.isGround = false;
             anim.SetTrigger("IsJump");
 
             // 아래점프
@@ -210,9 +212,9 @@ public class PlayerMove : MonoBehaviour
             }
 
             // 벽점프 처리
-            if (isTouchingWall)
+            if (isWallSliding)
             {
-                StartCoroutine(WallJumpLock(0.3f)); // 점프 후 이동 잠금
+                StartCoroutine(WallJumpLock(wallJumpDuration)); // 점프 후 이동 잠금
                 jumpCount++; // 벽점프 후 더블점프 가능
                 jumpBufferCounter = 0f;
                 jumpTimeCounter = 0f; // 벽점프는 키 누른 시간 계산 안함
@@ -239,14 +241,35 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private IEnumerator WallJumpLock(float duration)
+    {
+        // 벽 점프 중 이동 불가
+        isTouchingWall = false;
+        isWallJumping = true;
+
+        float timer = 0;
+        while (timer < duration)
+        {
+            PlayerState.instance.canMove = false;
+            PlayerState.instance.canJump = false;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        // 이동 불가 해제
+        isWallJumping = false;
+        PlayerState.instance.canMove = true;
+        PlayerState.instance.canJump = true;
+    }
+
     void DashInput()
     {
         // 대쉬 쿨타임 감소
         if (dashCooldownCounter > 0f)
             dashCooldownCounter -= Time.deltaTime;
 
-        anim.SetBool("IsDash", isDashing);
-
+        // 대쉬 쿨타임 초기화
         if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
         {
             PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
@@ -262,66 +285,87 @@ public class PlayerMove : MonoBehaviour
             PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
         }
 
+        // 대쉬 실행
         if (Input.GetKeyDown(KeyCode.X) && PlayerState.instance.canDash)
         {
             isDashing = true;
             dashTimeCounter = dashTime;
 
-            if (PlayerState.instance.isGround) // 땅에서 대쉬면 쿨다운 적용
+            // 벽 대쉬
+            if (isTouchingWall)
+            {
+                dashDir = -wallDir;
+                PlayerState.instance.isRight = dashDir;
+
+                isTouchingWall = false;
+            }
+            // 일반 대쉬
+            else
+            {
+                dashDir = PlayerState.instance.isRight;
+            }
+                
+            // 대쉬 쿨
+            if (PlayerState.instance.isGround)  // 지상 대쉬 -> 쿨다운 적용
                 dashCooldownCounter = dashCooldown;
-
-            if (!PlayerState.instance.isGround && !isTouchingWall) // 공중대쉬 사용 후
+            else                                // 그 외 대쉬 -> 
+            {
                 canAirDash = false; // 땅/벽 닿기 전까지 재사용 불가
-
-            rb.gravityScale = 0f; // 중력 무시
+            }   
         }
     }
 
     void DashPhysics()
     {
-        // 대쉬 중 처리
+        // 대쉬 중
         if (isDashing)
         {
-            PlayerState.instance.canMove = false;
-            PlayerState.instance.canGuard = false;
-            PlayerState.instance.canAttack = false;
-
-            if (isTouchingWall) // 벽 대쉬
-            {
-                rb.linearVelocity = new Vector2(-wallDir * dashSpeed, 0f);
-            }
-            else                // 일반 대쉬
-                rb.linearVelocity = new Vector2(sprite.flipX ? -dashSpeed : dashSpeed, 0f);
+            DashLock(true);
+            rb.linearVelocity = new Vector2(dashDir * dashSpeed, 0f);
+            
+            // 대쉬 시간 카운트
             dashTimeCounter -= Time.deltaTime;
 
             if (dashTimeCounter <= 0f)
             {
                 isDashing = false;
-                rb.gravityScale = defaultGravity; // 중력 복구
-                PlayerState.instance.canMove = true;
-                PlayerState.instance.canGuard = true;
-                PlayerState.instance.canAttack = true;
+                DashLock(false);
             }
+        }
+    }
+
+    private void DashLock(bool isStart = false)
+    {
+        if (isStart)
+        {
+            PlayerState.instance.canMove = false;
+            PlayerState.instance.canJump = false;
+            PlayerState.instance.canGuard = false;
+            PlayerState.instance.canAttack = false;
+            PlayerState.instance.canSkill = false;
+            rb.gravityScale = 0f;
         }
         else
         {
-            rb.gravityScale = defaultGravity; // 중력 복구
             PlayerState.instance.canMove = true;
+            PlayerState.instance.canJump = true;
             PlayerState.instance.canGuard = true;
             PlayerState.instance.canAttack = true;
+            PlayerState.instance.canSkill = true;
+            rb.gravityScale = defaultGravity;
         }
     }
 
     private bool IsOnPlatform()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, groundCheck, 0f, LayerMask.GetMask("Ground"));
+        Collider2D hit = Physics2D.OverlapBox(transform.position, PlayerState.instance.groundCheck, 0f, LayerMask.GetMask("Ground"));
 
         return hit != null && hit.CompareTag("OneWayPlatform");
     }
 
     private Collider2D GetPlatformBelow()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, groundCheck, 0f, LayerMask.GetMask("Ground"));
+        Collider2D hit = Physics2D.OverlapBox(transform.position, PlayerState.instance.groundCheck, 0f, LayerMask.GetMask("Ground"));
 
         return (hit != null && hit.CompareTag("OneWayPlatform")) ? hit : null;
     }
@@ -333,34 +377,24 @@ public class PlayerMove : MonoBehaviour
         Physics2D.IgnoreCollision(coll, platform, false);
     }
 
-    private IEnumerator WallJumpLock(float duration)
-    {
-        // 벽 점프 중 이동 불가
-        isWallJumping = true;
-        PlayerState.instance.canMove = false;
-        PlayerState.instance.canJump = false;
-        
-        // 이동 불가 해제
-        yield return new WaitForSeconds(duration);
-        isWallJumping = false;
-        PlayerState.instance.canMove = true;
-        PlayerState.instance.canJump = true;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            if (isDashing)
+            {
+                isDashing = false;
+                DashLock(false);
+            }
             if (!isTouchingWall)
             {
                 rb.linearVelocity = Vector2.zero; // 벽에 닿으면 속도 초기화
                 isTouchingWall = true;
                 isWallJumping = false;
-                isDashing = false;
             }
-            ContactPoint2D contact = collision.contacts[0];
 
             // 벽의 방향(왼쪽 -1, 오른쪽 1)
+            ContactPoint2D contact = collision.contacts[0];
             wallDir = (contact.point.x < transform.position.x) ? -1 : 1;
         }
     }
@@ -370,16 +404,6 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             isTouchingWall = false;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Ground Check
-        if (PlayerState.instance != null)
-        {
-            Gizmos.color = PlayerState.instance.isGround ? Color.green : Color.red;
-            Gizmos.DrawWireCube(transform.position, groundCheck);
         }
     }
 }

@@ -241,14 +241,13 @@ MonoBehaviour:
   jumpForce: 7
   jumpTimeMax: 0.3
   jumpCount: 0
-  isTouchingWall: 0
-  isWallSliding: 0
-  isWallJumping: 0
   wallJumpYForce: 10
   wallJumpXForce: 7
   wallSlideSpeed: 0.5
+  wallJumpDuration: 0.2
+  wallDir: 0
   coyoteTime: 0.1
-  jumpBufferTime: 0.2
+  jumpBufferTime: 0.3
   isDashing: 0
   canAirDash: 1
   dashSpeed: 15
