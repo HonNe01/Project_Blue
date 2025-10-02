@@ -678,11 +678,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: bd6671d2-d798-4902-9bbb-d1a5e9ce88a8
+  cloudProjectId: 2e8d7298-2ecf-4525-b488-086618d03048
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Project_Blue
-  organizationId: kgg200809
+  organizationId: yshlove1052
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
