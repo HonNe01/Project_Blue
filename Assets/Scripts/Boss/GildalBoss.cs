@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.AppUI.Redux;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -96,6 +93,7 @@ public class GildalBoss : BossBase
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
     public SpriteRenderer sprite;
     public Collider2D coll;
+    private Material stealthMat;
 
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
@@ -108,6 +106,7 @@ public class GildalBoss : BossBase
         specialUsed = new bool[specialHpThresholds.Length];
 
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
+        if (stealthMat == null) stealthMat = sprite.material;
         if (coll == null) coll = GetComponent<Collider2D>();
     }
 
@@ -201,19 +200,13 @@ public class GildalBoss : BossBase
         if (sprite != null)
         {
             float elapsed = 0f;
-            Color c = sprite.color;
-
             while (elapsed < reStealth_Delay)
             {
                 elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
-                c.a = Mathf.Lerp(1f, 0f, t);
-                sprite.color = c;
+                float lerp = Mathf.Clamp01(elapsed / reStealth_Delay);
+                stealthMat.SetFloat("_StealthAmount", lerp);
                 yield return null;
             }
-
-            c.a = 0f;
-            sprite.color = c;
         }
     }
     private IEnumerator Co_EndStealth()
@@ -222,19 +215,13 @@ public class GildalBoss : BossBase
         if (sprite != null)
         {
             float elapsed = 0f;
-            Color c = sprite.color;
-
             while (elapsed < reStealth_Delay)
             {
                 elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
-                c.a = Mathf.Lerp(0f, 1f, t);
-                sprite.color = c;
+                float lerp = Mathf.Clamp01(elapsed / reStealth_Delay);
+                stealthMat.SetFloat("_StealthAmount", 1- lerp);
                 yield return null;
             }
-
-            c.a = 1f;
-            sprite.color = c;
         }
 
         // 피격 판정 설정

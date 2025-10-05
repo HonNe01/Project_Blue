@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerGuard : MonoBehaviour
 {
     [Header("Guard Setting")]
-    [SerializeField] private bool isGuard;
+    public bool isGuard;
     [SerializeField] private float guardTime = 0f;
 
     [Header("Parry Setting")]

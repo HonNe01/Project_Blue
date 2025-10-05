@@ -67,5 +67,11 @@ TagManager:
   - name: EnemyAttack
     uniqueID: 3882112403
     locked: 0
+  - name: UI
+    uniqueID: 3802851853
+    locked: 0
+  - name: Menu UI
+    uniqueID: 1514855385
+    locked: 0
   m_RenderingLayers:
   - Default
