@@ -1,0 +1,11 @@
+{
+    "asset": "40513a595244d8742a39a0a8dd218933",
+    "fileName": "0199a543-d8dc-7d7f-a6c4-96263ef3a424.pose.json",
+    "prompt": "2D object\n\njump attack\n\n",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1873792767,
+    "w3CTraceId": "0d6977beb24ae37e79b41a23be46cd10",
+    "isTrimmed": false
+}
