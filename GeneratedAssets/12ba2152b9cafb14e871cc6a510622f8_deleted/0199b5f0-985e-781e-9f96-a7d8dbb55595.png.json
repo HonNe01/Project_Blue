@@ -1,0 +1,20 @@
+{
+    "asset": "12ba2152b9cafb14e871cc6a510622f8",
+    "fileName": "0199b5f0-985e-781e-9f96-a7d8dbb55595.png",
+    "prompt": "cyberfunk, sci-fi, pixels, UI, title",
+    "negativePrompt": "",
+    "model": "242b56c1-2224-41c4-8949-2ba760bbfc69",
+    "modelName": "16-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "0da63226585b8bf488b87cf7aca8fea0",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,1365 @@
+fileFormatVersion: 2
+guid: d46df2695d2e73d4bbcff4074b8176a4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 472359820030650337
+    second: Steampunk HP Bar - Version 2 (D)_0
+  - first:
+      213: 5127242691851137055
+    second: Steampunk HP Bar - Version 2 (D)_1
+  - first:
+      213: -5652407639009846607
+    second: Steampunk HP Bar - Version 2 (D)_2
+  - first:
+      213: 6758740155543352082
+    second: Steampunk HP Bar - Version 2 (D)_3
+  - first:
+      213: 5686964150797230656
+    second: Steampunk HP Bar - Version 2 (D)_4
+  - first:
+      213: 8926422512822667487
+    second: Steampunk HP Bar - Version 2 (D)_5
+  - first:
+      213: -8153765259325585672
+    second: Steampunk HP Bar - Version 2 (D)_6
+  - first:
+      213: 4906790235765681211
+    second: Steampunk HP Bar - Version 2 (D)_7
+  - first:
+      213: -7571211221840569120
+    second: Steampunk HP Bar - Version 2 (D)_8
+  - first:
+      213: -844818211553608453
+    second: Steampunk HP Bar - Version 2 (D)_9
+  - first:
+      213: 2335644682457397819
+    second: Steampunk HP Bar - Version 2 (D)_10
+  - first:
+      213: -5583519235903524390
+    second: Steampunk HP Bar - Version 2 (D)_11
+  - first:
+      213: 6791289704751747289
+    second: Steampunk HP Bar - Version 2 (D)_12
+  - first:
+      213: 967236164351583949
+    second: Steampunk HP Bar - Version 2 (D)_13
+  - first:
+      213: -1039273021245714869
+    second: Steampunk HP Bar - Version 2 (D)_14
+  - first:
+      213: 2020811796403437534
+    second: Steampunk HP Bar - Version 2 (D)_15
+  - first:
+      213: -5279889885010019499
+    second: Steampunk HP Bar - Version 2 (D)_16
+  - first:
+      213: 3234043354077800320
+    second: Steampunk HP Bar - Version 2 (D)_17
+  - first:
+      213: 2715251862773728911
+    second: Steampunk HP Bar - Version 2 (D)_18
+  - first:
+      213: 1975633256098862975
+    second: Steampunk HP Bar - Version 2 (D)_19
+  - first:
+      213: -1516934095015295606
+    second: Steampunk HP Bar - Version 2 (D)_20
+  - first:
+      213: -2751930719393268630
+    second: Steampunk HP Bar - Version 2 (D)_21
+  - first:
+      213: 249898122944007153
+    second: Steampunk HP Bar - Version 2 (D)_22
+  - first:
+      213: -2026186774895498654
+    second: Steampunk HP Bar - Version 2 (D)_23
+  - first:
+      213: -434624676861241826
+    second: Steampunk HP Bar - Version 2 (D)_24
+  - first:
+      213: 3884390633977670798
+    second: Steampunk HP Bar - Version 2 (D)_25
+  - first:
+      213: -3251398247562451969
+    second: Steampunk HP Bar - Version 2 (D)_26
+  - first:
+      213: 7192153429232366001
+    second: Steampunk HP Bar - Version 2 (D)_27
+  - first:
+      213: -1843778504510923012
+    second: Steampunk HP Bar - Version 2 (D)_28
+  - first:
+      213: 342069790538540858
+    second: Steampunk HP Bar - Version 2 (D)_29
+  - first:
+      213: -298606090652307041
+    second: Steampunk HP Bar - Version 2 (D)_30
+  - first:
+      213: -2595185131975562531
+    second: Steampunk HP Bar - Version 2 (D)_31
+  - first:
+      213: -7815601989990713609
+    second: Steampunk HP Bar - Version 2 (D)_32
+  - first:
+      213: -2160001443774596793
+    second: Steampunk HP Bar - Version 2 (D)_33
+  - first:
+      213: -4544791240412198159
+    second: Steampunk HP Bar - Version 2 (D)_34
+  - first:
+      213: -3259764447923610401
+    second: Steampunk HP Bar - Version 2 (D)_35
+  - first:
+      213: -5999878575542827092
+    second: Steampunk HP Bar - Version 2 (D)_36
+  - first:
+      213: -30130224493126885
+    second: Steampunk HP Bar - Version 2 (D)_37
+  - first:
+      213: -9006121077147004308
+    second: Steampunk HP Bar - Version 2 (D)_38
+  - first:
+      213: 5151643957489721425
+    second: Steampunk HP Bar - Version 2 (D)_39
+  - first:
+      213: -7148826003777529405
+    second: Steampunk HP Bar - Version 2 (D)_40
+  - first:
+      213: -6930658904338109585
+    second: Steampunk HP Bar - Version 2 (D)_41
+  - first:
+      213: -4774085370867953274
+    second: Steampunk HP Bar - Version 2 (D)_42
+  - first:
+      213: 8820870208167442090
+    second: Steampunk HP Bar - Version 2 (D)_43
+  - first:
+      213: -1481632530068478306
+    second: Steampunk HP Bar - Version 2 (D)_44
+  - first:
+      213: -5313410816043105190
+    second: Steampunk HP Bar - Version 2 (D)_45
+  - first:
+      213: -5573750731087241151
+    second: Steampunk HP Bar - Version 2 (D)_46
+  - first:
+      213: 8406990689756422877
+    second: Steampunk HP Bar - Version 2 (D)_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 235
+        width: 108
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e7281fe0c82e8600800000000000000
+      internalID: 472359820030650337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10310d1010a72740800000000000000
+      internalID: 5127242691851137055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_2
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba1d17333d9e81b0800000000000000
+      internalID: -5652407639009846607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2137454bc5edbcd50800000000000000
+      internalID: 6758740155543352082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_4
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04266aaa3c72cee40800000000000000
+      internalID: 5686964150797230656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd848df2bf501eb70800000000000000
+      internalID: 8926422512822667487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_6
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f64af772b108de80800000000000000
+      internalID: -8153765259325585672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_7
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 224
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c2b2ed8bb681440800000000000000
+      internalID: 4906790235765681211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 108
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ecddbaf187ade690800000000000000
+      internalID: -7571211221840569120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfcf098005a9644f0800000000000000
+      internalID: -844818211553608453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a3763c670e96020800000000000000
+      internalID: 2335644682457397819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_11
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1f86376da5382b0800000000000000
+      internalID: -5583519235903524390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_12
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0de7231028f3e50800000000000000
+      internalID: 6791289704751747289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_13
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc66616ba205c6d00800000000000000
+      internalID: 967236164351583949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_14
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e800881b2c391f0800000000000000
+      internalID: -1039273021245714869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_15
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 179
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edfbb824f9d5b0c10800000000000000
+      internalID: 2020811796403437534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 108
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55bbcc6af101ab6b0800000000000000
+      internalID: -5279889885010019499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087250cbb41a1ec20800000000000000
+      internalID: 3234043354077800320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_18
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f868854ee238ea520800000000000000
+      internalID: 2715251862773728911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_19
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f779834aafbda6b10800000000000000
+      internalID: 1975633256098862975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_20
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a854fe64a74c2fae0800000000000000
+      internalID: -1516934095015295606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_21
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c3410579d2fc9d0800000000000000
+      internalID: -2751930719393268630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_22
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fb4d10d401d77300800000000000000
+      internalID: 249898122944007153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_23
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 134
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a62c90dd981e3e0800000000000000
+      internalID: -2026186774895498654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101
+        width: 108
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16111db827e7f9f0800000000000000
+      internalID: -434624676861241826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ce71383b028e530800000000000000
+      internalID: 3884390633977670798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_26
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff366be3586b0e2d0800000000000000
+      internalID: -3251398247562451969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_27
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b1b08f2079afc360800000000000000
+      internalID: 7192153429232366001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_28
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe102a08359966e0800000000000000
+      internalID: -1843778504510923012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_29
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37217189a64fb400800000000000000
+      internalID: 342069790538540858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_30
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91b6e6b7532bdbf0800000000000000
+      internalID: -298606090652307041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_31
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 89
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddaa8325fdc0cfbd0800000000000000
+      internalID: -2595185131975562531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 108
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f674c02667698390800000000000000
+      internalID: -7815601989990713609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 749fb7d81222602e0800000000000000
+      internalID: -2160001443774596793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_34
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fa8ce83278ade0c0800000000000000
+      internalID: -4544791240412198159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_35
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdcd01e618df2c2d0800000000000000
+      internalID: -3259764447923610401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_36
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca70b4969362cbca0800000000000000
+      internalID: -5999878575542827092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_37
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1b951078b4f49ff0800000000000000
+      internalID: -30130224493126885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_38
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c629e78c894d30380800000000000000
+      internalID: -9006121077147004308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_39
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 44
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150667f72e05e7740800000000000000
+      internalID: 5151643957489721425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 108
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9d3cb20a44acc90800000000000000
+      internalID: -7148826003777529405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_41
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b678b527a51df90800000000000000
+      internalID: -6930658904338109585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_42
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 681d60e36aa0fbdb0800000000000000
+      internalID: -4774085370867953274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa675a728b60a6a70800000000000000
+      internalID: 8820870208167442090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_44
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96ea9d501f207be0800000000000000
+      internalID: -1481632530068478306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_45
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a544804b309f246b0800000000000000
+      internalID: -5313410816043105190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_46
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 140a8f6bd3f06a2b0800000000000000
+      internalID: -5573750731087241151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steampunk HP Bar - Version 2 (D)_47
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 0
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2a2fc7d71aba470800000000000000
+      internalID: 8406990689756422877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Steampunk HP Bar - Version 2 (D)_0: 472359820030650337
+      Steampunk HP Bar - Version 2 (D)_1: 5127242691851137055
+      Steampunk HP Bar - Version 2 (D)_10: 2335644682457397819
+      Steampunk HP Bar - Version 2 (D)_11: -5583519235903524390
+      Steampunk HP Bar - Version 2 (D)_12: 6791289704751747289
+      Steampunk HP Bar - Version 2 (D)_13: 967236164351583949
+      Steampunk HP Bar - Version 2 (D)_14: -1039273021245714869
+      Steampunk HP Bar - Version 2 (D)_15: 2020811796403437534
+      Steampunk HP Bar - Version 2 (D)_16: -5279889885010019499
+      Steampunk HP Bar - Version 2 (D)_17: 3234043354077800320
+      Steampunk HP Bar - Version 2 (D)_18: 2715251862773728911
+      Steampunk HP Bar - Version 2 (D)_19: 1975633256098862975
+      Steampunk HP Bar - Version 2 (D)_2: -5652407639009846607
+      Steampunk HP Bar - Version 2 (D)_20: -1516934095015295606
+      Steampunk HP Bar - Version 2 (D)_21: -2751930719393268630
+      Steampunk HP Bar - Version 2 (D)_22: 249898122944007153
+      Steampunk HP Bar - Version 2 (D)_23: -2026186774895498654
+      Steampunk HP Bar - Version 2 (D)_24: -434624676861241826
+      Steampunk HP Bar - Version 2 (D)_25: 3884390633977670798
+      Steampunk HP Bar - Version 2 (D)_26: -3251398247562451969
+      Steampunk HP Bar - Version 2 (D)_27: 7192153429232366001
+      Steampunk HP Bar - Version 2 (D)_28: -1843778504510923012
+      Steampunk HP Bar - Version 2 (D)_29: 342069790538540858
+      Steampunk HP Bar - Version 2 (D)_3: 6758740155543352082
+      Steampunk HP Bar - Version 2 (D)_30: -298606090652307041
+      Steampunk HP Bar - Version 2 (D)_31: -2595185131975562531
+      Steampunk HP Bar - Version 2 (D)_32: -7815601989990713609
+      Steampunk HP Bar - Version 2 (D)_33: -2160001443774596793
+      Steampunk HP Bar - Version 2 (D)_34: -4544791240412198159
+      Steampunk HP Bar - Version 2 (D)_35: -3259764447923610401
+      Steampunk HP Bar - Version 2 (D)_36: -5999878575542827092
+      Steampunk HP Bar - Version 2 (D)_37: -30130224493126885
+      Steampunk HP Bar - Version 2 (D)_38: -9006121077147004308
+      Steampunk HP Bar - Version 2 (D)_39: 5151643957489721425
+      Steampunk HP Bar - Version 2 (D)_4: 5686964150797230656
+      Steampunk HP Bar - Version 2 (D)_40: -7148826003777529405
+      Steampunk HP Bar - Version 2 (D)_41: -6930658904338109585
+      Steampunk HP Bar - Version 2 (D)_42: -4774085370867953274
+      Steampunk HP Bar - Version 2 (D)_43: 8820870208167442090
+      Steampunk HP Bar - Version 2 (D)_44: -1481632530068478306
+      Steampunk HP Bar - Version 2 (D)_45: -5313410816043105190
+      Steampunk HP Bar - Version 2 (D)_46: -5573750731087241151
+      Steampunk HP Bar - Version 2 (D)_47: 8406990689756422877
+      Steampunk HP Bar - Version 2 (D)_5: 8926422512822667487
+      Steampunk HP Bar - Version 2 (D)_6: -8153765259325585672
+      Steampunk HP Bar - Version 2 (D)_7: 4906790235765681211
+      Steampunk HP Bar - Version 2 (D)_8: -7571211221840569120
+      Steampunk HP Bar - Version 2 (D)_9: -844818211553608453
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

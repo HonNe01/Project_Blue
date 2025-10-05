@@ -1,0 +1,20 @@
+{
+    "asset": "12ba2152b9cafb14e871cc6a510622f8",
+    "fileName": "0199b5f2-2780-7489-8590-4944465da562.jpg",
+    "prompt": "cyberfunk, sci-fi, pixels, UI, title",
+    "negativePrompt": "",
+    "model": "072fd6c7-1a92-4d41-b504-c46546b0dd28",
+    "modelName": "Game UI Essentials",
+    "customSeed": -1,
+    "w3CTraceId": "7e23f9936a195521cbaff5f9e7ba0ea5",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

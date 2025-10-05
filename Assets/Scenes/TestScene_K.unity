@@ -1094,8 +1094,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2338113148626409334, guid: 3e194566442353741ba672d2036ab341, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1172500783}
   m_SourcePrefab: {fileID: 100100000, guid: 3e194566442353741ba672d2036ab341, type: 3}
+--- !u!1 &1172500782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2338113148626409334, guid: 3e194566442353741ba672d2036ab341, type: 3}
+  m_PrefabInstance: {fileID: 1172500781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1172500783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172500782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePixelPerfect
 --- !u!1 &1234177196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,30 +2075,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5499621151267507001, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5499621151267507001, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
-    - target: {fileID: 7783108065526105649, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5675857372675088757, guid: ad322464c910fda40900b39fc93351e8, type: 3}
-    - target: {fileID: 7783108065526105649, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_Color.a
-      value: 0.827451
-      objectReference: {fileID: 0}
-    - target: {fileID: 7783108065526105649, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: ff53550cd3dd385408f2e99122f1aca9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
