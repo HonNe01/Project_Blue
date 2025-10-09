@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,19 +127,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 0
         y: 0
-        width: 41
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 560b51d0c529554f0800000000000000
+      spriteID: b05c7e530333e934d95a0ff4feed9edc
       internalID: -840604831380557723
       vertices: []
       indices: 
@@ -149,19 +149,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_1
       rect:
         serializedVersion: 2
-        x: 100
+        x: 80
         y: 0
-        width: 54
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: aeace649cd7fa4a70800000000000000
+      spriteID: 8c34d4d7b18b3704297d02a05b0ae6ee
       internalID: 8812128147658951402
       vertices: []
       indices: 
@@ -171,19 +171,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_2
       rect:
         serializedVersion: 2
-        x: 189
+        x: 160
         y: 0
-        width: 39
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 38bb7292bdfc2f520800000000000000
+      spriteID: 618c02ba0b3af63429409d4783520b02
       internalID: 2734476463962569603
       vertices: []
       indices: 
@@ -193,19 +193,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_3
       rect:
         serializedVersion: 2
-        x: 271
+        x: 240
         y: 0
-        width: 36
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7334cbf16f682c1a0800000000000000
+      spriteID: a952025616485ad4fb297f8f37382969
       internalID: -6790716896468778185
       vertices: []
       indices: 
@@ -215,19 +215,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_4
       rect:
         serializedVersion: 2
-        x: 326
+        x: 320
         y: 0
-        width: 66
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: da07c340fad107d00800000000000000
+      spriteID: 3d00462871b62b4419ee34ef3b7b081e
       internalID: 968306557412208813
       vertices: []
       indices: 
@@ -237,19 +237,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_5
       rect:
         serializedVersion: 2
-        x: 407
+        x: 400
         y: 0
-        width: 43
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d8c60c660de09280800000000000000
+      spriteID: 42aafbe8b08a13249a413ac8eb50db3a
       internalID: -9038463840294614828
       vertices: []
       indices: 
@@ -259,19 +259,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_6
       rect:
         serializedVersion: 2
-        x: 488
+        x: 480
         y: 0
-        width: 43
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d18cf368e0e0bf8a0800000000000000
+      spriteID: b63e5c14869ac4b458a281f753913ae6
       internalID: -6270402600638625763
       vertices: []
       indices: 
@@ -281,19 +281,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_7
       rect:
         serializedVersion: 2
-        x: 571
+        x: 560
         y: 0
-        width: 66
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ffba9791509457ed0800000000000000
+      spriteID: 5a3c379fb2df1464e8662f0aa3db29f3
       internalID: -2416945338763334657
       vertices: []
       indices: 
@@ -303,19 +303,19 @@ TextureImporter:
       name: Mushin_attack-Sheet_8
       rect:
         serializedVersion: 2
-        x: 670
+        x: 640
         y: 0
-        width: 46
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a561f948b4fc1a20800000000000000
+      spriteID: 7569d0a22b008dc40a4191a6cdff0709
       internalID: 3034569321292588451
       vertices: []
       indices: 
@@ -325,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 68af9cce7dca96148aead2a5c76b4b87
     internalID: 0
     vertices: []
     indices: 
@@ -333,7 +333,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mushin_attack-Sheet_0: -840604831380557723
       Mushin_attack-Sheet_1: 8812128147658951402
