@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
     public enum GameState { MainMenu, Playing, Directing, Paused }
     public GameState State { get; private set; }
 
+    public enum MenuType { None, Pause, Option, Graphic, Audio, Control }
+    private Stack<MenuType> menuStack = new Stack<MenuType>();
+
     [Header(" === Scene Names === ")]
     [SerializeField] private string mainMenuScene = "MainMenu";
     [SerializeField] private string outpostScene = "OutPostScene";
@@ -15,11 +19,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string cheongryuScene = "CheongRyuScene";
 
     [Header(" === UI Reference === ")]
-    [SerializeField] private GameObject curMenu;
+    [SerializeField] private MenuType curMenu = MenuType.None;
+    [SerializeField] private GameObject[] menuPanels;
 
     private GameObject mainMenu;
-    private GameObject pauseMenu;
-    private GameObject optionMenu;
 
     private void Awake()
     {
@@ -34,6 +37,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        // UI 상태 초기화
+        foreach (var panel in menuPanels)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(false);
+            }
+        }
             
         State = GameState.MainMenu;
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -41,23 +53,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (State == GameState.Playing || State == GameState.Paused)
+        // 일시정지
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // 일시정지
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (State == GameState.Playing)
             {
-                if (State == GameState.Playing)
-                {
-                    GamePause();
-                }
-                else if (State == GameState.Paused)
-                {
-                    GameResume();
-                }
+                OpenMenu(MenuType.Pause);
             }
+            else if (State == GameState.Paused || State == GameState.MainMenu)
+            {
+                CloseMenu();
+            }
+        }
 
-            // 인벤토리
-            else if (Input.GetKeyDown(KeyCode.Tab))
+        // 인벤토리
+        if (State == GameState.Playing)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 if (State == GameState.Playing)
                 {
@@ -65,33 +77,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void GamePause()
-    {
-        if (State != GameState.Playing) return;
-
-        State = GameState.Paused;
-        Time.timeScale = 0f;
-        curMenu = pauseMenu;
-
-        if (pauseMenu != null) pauseMenu.SetActive(true);
-
-        CursorEnable();
-    }
-
-    public void GameResume()
-    {
-        if (State != GameState.Paused) return;
-
-        State = GameState.Playing;
-        Time.timeScale = 1f;
-        curMenu = null;
-
-        if (pauseMenu != null) pauseMenu.SetActive(false);
-        if (optionMenu != null) optionMenu.SetActive(false);
-
-        CursorDisable();
     }
 
     public void GameStart()
@@ -101,43 +86,113 @@ public class GameManager : MonoBehaviour
 
     public void GameOption()
     {
-        if (optionMenu == null) return;
-
-        // 기존 UI 닫기
-        if (SceneManager.GetActiveScene().name == mainMenuScene)
-        {
-            if (mainMenu != null) mainMenu.SetActive(false);
-        }
-        else
-        {
-            if (pauseMenu != null) pauseMenu.SetActive(false);
-        }
-
-        // 옵션 UI 열기
-        optionMenu.SetActive(true);
-
-        curMenu = optionMenu;
+        OpenMenu(MenuType.Option);
     }
 
-    public void PanelClose()
+    public void GameGraphic()
     {
-        if (curMenu != null) curMenu.SetActive(false);
+        OpenMenu(MenuType.Graphic);
+    }
 
-        // 이전 UI 열기
-        if (SceneManager.GetActiveScene().name == mainMenuScene)
+    public void GameAudio()
+    {
+        OpenMenu(MenuType.Audio);
+    }
+
+    public void GameControl()
+    {
+        OpenMenu(MenuType.Control);
+    }
+
+    public void OpenMenu(MenuType type)
+    {
+        if (curMenu != MenuType.None)
         {
-            if (mainMenu != null) mainMenu.SetActive(true);
+            menuStack.Push(curMenu);
+        }
 
-            curMenu = null;
+        // 메뉴 패널 열기
+        ActiveMenu(type);
+        
+        CursorEnable();
+    }
+
+    public void CloseMenu()
+    {
+        if (curMenu == MenuType.None) return;
+
+        // 현재 메뉴 닫기
+        DeActiveMenu(curMenu);
+
+        if (menuStack.Count > 0)
+        {
+            // 이전 메뉴 열기
+            MenuType prev = menuStack.Pop();
+            ActiveMenu(prev);
         }
         else
         {
-            if (pauseMenu != null) pauseMenu.SetActive(true);
+            // 메뉴 다 닫힘
+            if (State != GameState.MainMenu)
+            {
+                // 게임 재개
+                curMenu = MenuType.None;
+                State = GameState.Playing;
 
-            curMenu = pauseMenu;
+                Time.timeScale = 1f;
+                CursorDisable();
+            }
         }
     }
 
+    public void ActiveMenu(MenuType type)
+    {
+        // 기존 메뉴 닫기
+        if (curMenu != MenuType.None)
+        {
+            DeActiveMenu(curMenu);
+        }
+
+        // 새 메뉴 열기
+        GameObject panel = GetPanel(type);
+        if (panel != null)
+        {
+            panel.SetActive(true);
+        }
+
+        curMenu = type;
+
+        if (State != GameState.MainMenu)
+        {
+            // 게임 상태 설정
+            State = GameState.Paused;
+
+            Time.timeScale = 0f;
+            CursorEnable();
+        }
+    }
+
+    private void DeActiveMenu(MenuType type)
+    {
+        GameObject panel = GetPanel(type);
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
+    }
+
+    private GameObject GetPanel(MenuType type)
+    {
+        int index = (int)type - 1;
+        
+        if (index >= 0 && index < menuPanels.Length)
+        {
+            return menuPanels[index];
+        }
+
+        return null;
+    }
+          
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
@@ -187,62 +242,37 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        curMenu = null;
+        // 상태 정리
+        curMenu = MenuType.None;
         Time.timeScale = 1f;
 
-        // 씬 바뀌면 UI 재연결, 상태 설정
-        if (pauseMenu == null)
+        // 메뉴 전부 닫기
+        foreach (var panel in menuPanels)
         {
-            pauseMenu = FindChildInactive("Pause Panel");
-            pauseMenu.SetActive(false);
-        }
-        else
-        {
-            pauseMenu.SetActive(false);
-        }
-
-        if (optionMenu == null)
-        {
-            optionMenu = FindChildInactive("Option Panel");
-            optionMenu.SetActive(false);
-        }
-        else
-        {
-            optionMenu.SetActive(false);
+            if (panel != null)
+                panel.SetActive(false);
         }
 
         if (scene.name == mainMenuScene)
         {
+            // 메인 메뉴 씬
             State = GameState.MainMenu;
 
-            // 메인메뉴 진입시 -> 메인메뉴 UI 연결
+            // 메인메뉴 UI 연결
             if (mainMenu == null)
             {
                 mainMenu = GameObject.Find("Main Panel");
             }
+            
+            CursorEnable();
         }
         else
         {
+            // 게임 씬
             State = GameState.Playing;
-
-            // 인게임 진입시 -> Menu UI 비활성화
-            if (pauseMenu != null) pauseMenu.SetActive(false);
-            if (optionMenu != null) optionMenu.SetActive(false);
-
+            
             // 마우스 커서 비활성화
             CursorDisable();
         }
-    }
-
-    GameObject FindChildInactive(string childName)
-    {
-        Transform[] all = GetComponentsInChildren<Transform>(true);
-
-        foreach (var t in all)
-        {
-            if (t.name == childName) return t.gameObject;
-        }
-
-        return null;
     }
 }
