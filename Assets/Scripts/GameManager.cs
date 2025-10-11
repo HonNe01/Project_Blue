@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using NUnit.Framework;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +27,11 @@ public class GameManager : MonoBehaviour
 
     private GameObject mainMenu;
 
+    [Header("Graphics")]
+    public TMP_Dropdown resolutionDropdown;
+    private List<Resolution> resolutions = new List<Resolution>();
+    private int optimalResolutionIndex = 0;
+
     private void Awake()
     {
         // 인스턴스
@@ -46,7 +54,8 @@ public class GameManager : MonoBehaviour
                 panel.SetActive(false);
             }
         }
-            
+
+        ResolutionsInit();
         State = GameState.MainMenu;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -92,6 +101,76 @@ public class GameManager : MonoBehaviour
     public void GameGraphic()
     {
         OpenMenu(MenuType.Graphic);
+    }
+
+    public void ResolutionsInit()
+    {
+        // 16:9
+        resolutions.Add(new Resolution { width = 1920, height = 1080 });
+        resolutions.Add(new Resolution { width = 2560, height = 1440 });
+        resolutions.Add(new Resolution { width = 3840, height = 2160 });
+
+        /* 16:10
+        resolutions.Add(new Resolution { width = 1920, height = 1200 });
+        resolutions.Add(new Resolution { width = 2048, height = 1280 });
+        resolutions.Add(new Resolution { width = 2560, height = 1600 });
+        resolutions.Add(new Resolution { width = 2880, height = 1800 });
+        */
+
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < resolutions.Count; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            // 가장 적합한 해상도에 별표를 표기합니다.
+            if (resolutions[i].width == Screen.currentResolution.width &&
+                resolutions[i].height == Screen.currentResolution.height)
+            {
+                optimalResolutionIndex = i;
+                option += " *";
+            }
+            options.Add(option);
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = optimalResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+        // 게임이 가장 적합한 해상도로 시작되도록 설정합니다.
+        SetResolution(optimalResolutionIndex);
+    }
+
+    public void SetResolution(int index)
+    {
+        Resolution resolution = resolutions[index];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+        Debug.Log($"[GameManager] Set Resolution : {resolution.width} X {resolution.height}");
+    }
+
+    public void SetScreen(bool full)
+    {
+        // 전체화면 설정
+        Screen.fullScreen = full;
+        
+        Debug.Log($"[GameManager] Full Screen : {full}");
+    }
+
+    public void SetVSync(bool enable)
+    {
+        // 수직동기화 설정
+        if (enable)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+
+        Debug.Log($"[GameManager] VSync : {enable}");
     }
 
     public void GameAudio()

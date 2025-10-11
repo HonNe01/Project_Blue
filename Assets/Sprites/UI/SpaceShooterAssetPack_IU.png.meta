@@ -383,6 +383,138 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 1, y: 2, z: 1, w: 1}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425516dcccfac4b4ba31a8642931aef9
+      internalID: -1693980315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 1, y: 3, z: 1, w: 1}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d70cebe335c34d469b3e83abeaa849f
+      internalID: -1909159637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_10
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 1, y: 3, z: 1, w: 1}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c52c84d631813c4e851659edf078df5
+      internalID: -1221904408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 2, y: 3, z: 2, w: 3}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0730d5eefad8f424ab176b46ad1a1998
+      internalID: 1967021007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_12
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 1, y: 2, z: 1, w: 1}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40f0246cdbfc284cbf691e483b63df8
+      internalID: -43756620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5be37120c7bd7f4d813ea574f18e01f
+      internalID: 2119855177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -401,12 +533,18 @@ TextureImporter:
     nameFileIdTable:
       SpaceShooterAssetPack_IU_0: -3452912944203954355
       SpaceShooterAssetPack_IU_1: -7258982193374419196
+      SpaceShooterAssetPack_IU_10: -1221904408
+      SpaceShooterAssetPack_IU_11: 1967021007
+      SpaceShooterAssetPack_IU_12: -43756620
+      SpaceShooterAssetPack_IU_13: 2119855177
       SpaceShooterAssetPack_IU_2: 4888668457609010390
       SpaceShooterAssetPack_IU_3: 8965784993433089314
       SpaceShooterAssetPack_IU_4: 4642847126731458489
       SpaceShooterAssetPack_IU_5: -223824773378648341
       SpaceShooterAssetPack_IU_6: 2142168787390626652
       SpaceShooterAssetPack_IU_7: 1843883542749878518
+      SpaceShooterAssetPack_IU_8: -1693980315
+      SpaceShooterAssetPack_IU_9: -1909159637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
