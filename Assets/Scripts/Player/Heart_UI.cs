@@ -8,9 +8,17 @@ public class Heart_UI : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    [Header("Skill Gauge")]
+    public PlayerState playerstate;
+    public Image gaugeFill;
+
     void Update()
     {
         UpdateHearts();
+        if (playerstate != null && gaugeFill != null)
+        {
+            gaugeFill.fillAmount = playerstate.GaugePercent / 100f;
+        }
     }
 
     void UpdateHearts()

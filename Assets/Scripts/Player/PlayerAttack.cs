@@ -17,15 +17,24 @@ public class PlayerAttack : MonoBehaviour
     public GameObject _downattack;
     public GameObject _upAttack;
 
-    /*
+    
+
+    [Header("Skill")]
+    public PlayerState playerstate; //게이지 호출
+
+
     [Header(" === Default Skill === ")]
+    public GameObject _skill;
 
     [Header(" === Up Skill === ")]
+    public GameObject _upSkill;
 
     [Header(" === Front Skill === ")]
+    public GameObject _frontSkill;
 
     [Header(" === Down Skill === ")]
-    */
+    public GameObject _downSkill;
+
 
     // 참조
     private Animator anim;
@@ -43,12 +52,12 @@ public class PlayerAttack : MonoBehaviour
         Attack();
 
         // 스킬
-        /*
+        
         Skill();
         Skill_Up();
         Skill_Front();
         Skill_Down();
-        */
+        
     }
 
     public void Attack()
@@ -173,24 +182,53 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+
     public virtual void Skill() // AttackSkill = 1
     {
 
+        if (Input.GetKeyDown(KeyCode.A)&&playerstate.UseGauge(20))
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 1);
+            anim.SetBool("IsGround", playerstate.isGround);
+
+        }
     }
 
     public virtual void Skill_Up() // AttackSkill = 2
     {
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
+        {
 
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 2);
+            anim.SetBool("IsGround", playerstate.isGround);
+
+        }
     }
 
     public virtual void Skill_Front() // AttackSkill = 3
     {
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
+        {
 
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 3);
+            anim.SetBool("IsGround", playerstate.isGround);
+
+        }
     }
 
     public virtual void Skill_Down() // AttackSkill = 4
     {
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.A) &&playerstate.UseGauge(20))
+        {
 
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 4);
+            anim.SetBool("IsGround", playerstate.isGround);
+
+        }
     }
 
     public void EnableOtherAction()
@@ -228,6 +266,57 @@ public class PlayerAttack : MonoBehaviour
         isAttack = false;
     }
 
+    public void DownAttackStart()
+    {
+        _downattack.SetActive(true);    // 히트박스 활성화
+    }
+    public void DownAttackEnd()
+    {
+        _downattack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
+    }
+
+    public void SkillStart()
+    {
+        _skill.SetActive(true);    // 히트박스 활성화
+    }
+    public void SkillEnd()
+    {
+        _skill.SetActive(false);   // 히트박스 비활성화
+        anim.SetInteger("AttackSkill", 0);
+    }
+
+    public void UpSkillStart()
+    {
+        _upSkill.SetActive(true);    // 히트박스 활성화
+    }
+
+    public void UpSkillEnd()
+    {
+        _upSkill.SetActive(false);   // 히트박스 비활성화
+        anim.SetInteger("AttackSkill", 0);
+    }
+
+    public void DownSkillStart()
+    {
+        _downSkill.SetActive(true);    // 히트박스 활성화
+    }
+
+    public void DownSkillEnd()
+    {
+        _downSkill.SetActive(false);   // 히트박스 비활성화
+        anim.SetInteger("AttackSkill", 0);
+    }
+
+    public void FrontSkillStart()
+    {
+        _frontSkill.SetActive(true);    // 히트박스 활성화
+    }
+    public void FrontSkillEnd()
+    {
+        _frontSkill.SetActive(false);   // 히트박스 비활성화
+        anim.SetInteger("AttackSkill", 0);
+    }
 
 
 }

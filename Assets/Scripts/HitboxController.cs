@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class HitboxController : MonoBehaviour
 {
-    public enum HitbotType { Player, Enemy }
+    public enum HitbotType { Player, Enemy , skill}
 
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitbotType type;
+
+    public PlayerState playerstate;
 
 
     void Awake()
@@ -21,6 +23,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    playerstate.AddGauge(5);
 
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
@@ -33,6 +36,16 @@ public class HitboxController : MonoBehaviour
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
                     PlayerState.instance.TakeDamage(baseDamage);
+                }
+                break;
+            case HitbotType.skill:
+                if (collision.CompareTag("Enemy"))
+                {
+                    Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+
+                    var enemy = collision.GetComponent<BossBase>();
+                    if (enemy != null)
+                        enemy.TakeDamage(baseDamage);
                 }
                 break;
         }

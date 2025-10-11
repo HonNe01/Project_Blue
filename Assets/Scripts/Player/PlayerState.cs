@@ -48,6 +48,12 @@ public class PlayerState : MonoBehaviour
     private float healTimer = 0f;
     private bool healPress = false;
 
+    [Header("Skill Gauge")]
+    public int maxGauge = 100;
+    public int currentGauge = 0;
+
+    public int GaugePercent => (currentGauge * 100) / maxGauge;
+
 
     private void Awake()
     {
@@ -171,6 +177,27 @@ public class PlayerState : MonoBehaviour
 
         Debug.Log("플레이어 사망!");
         anim.SetTrigger("IsDie");
+    }
+
+    //skill gauge 관련
+    public void AddGauge(int amount)
+    {
+        currentGauge += amount;
+        currentGauge = Mathf.Clamp(currentGauge, 0, maxGauge);
+        Debug.Log("게이지 증가");
+    }
+
+    public bool UseGauge(int amount)
+    {
+        if (currentGauge < amount)
+        {
+            Debug.Log("게이지 부족");
+            return false;
+        }
+
+        currentGauge -= amount;
+        Debug.Log("게이지 사용");
+        return true;
     }
 
     private void OnDrawGizmos()
