@@ -106,15 +106,16 @@ public class GameManager : MonoBehaviour
 
     public void OpenMenu(MenuType type)
     {
-        if (curMenu != MenuType.None)
-        {
-            menuStack.Push(curMenu);
-        }
+        if (curMenu == type) return;
+
+        // 메뉴 스택 넣기
+        menuStack.Push(type);
 
         // 메뉴 패널 열기
         ActiveMenu(type);
-        
         CursorEnable();
+
+        LogMenuStack("After OpenMenu");
     }
 
     public void CloseMenu()
@@ -123,30 +124,38 @@ public class GameManager : MonoBehaviour
 
         // 현재 메뉴 닫기
         DeActiveMenu(curMenu);
+        menuStack.Pop();
 
         if (menuStack.Count > 0)
         {
-            // 이전 메뉴 열기
-            MenuType prev = menuStack.Pop();
+            // 스택 있음 -> 이전 메뉴 열기
+            MenuType prev = menuStack.Peek();
+
             ActiveMenu(prev);
         }
         else
         {
+            // 스택 없음 -> 메뉴 끝
+            curMenu = MenuType.None;
+
             // 메뉴 다 닫힘
             if (State != GameState.MainMenu)
             {
                 // 게임 재개
-                curMenu = MenuType.None;
                 State = GameState.Playing;
 
                 Time.timeScale = 1f;
                 CursorDisable();
             }
         }
+
+        LogMenuStack("After CloseMenu");
     }
 
     public void ActiveMenu(MenuType type)
     {
+        if (curMenu == type) return;
+
         // 기존 메뉴 닫기
         if (curMenu != MenuType.None)
         {
@@ -158,6 +167,8 @@ public class GameManager : MonoBehaviour
         if (panel != null)
         {
             panel.SetActive(true);
+
+            Debug.Log($"[GameManager] {type} Panel Open");
         }
 
         curMenu = type;
@@ -178,6 +189,8 @@ public class GameManager : MonoBehaviour
         if (panel != null)
         {
             panel.SetActive(false);
+
+            Debug.Log($"[GameManager] {type} Panel Close");
         }
     }
 
@@ -192,7 +205,24 @@ public class GameManager : MonoBehaviour
 
         return null;
     }
-          
+    
+    void LogMenuStack(string tag = "")
+    {
+        var arr = menuStack.ToArray();
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append($"[GameManager] MenuStack {tag}, Stack Count = {menuStack.Count} : ");
+
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            sb.Append(arr[i].ToString());
+            if (i > 0)
+                sb.Append(" -> ");
+        }
+
+        Debug.Log(sb.ToString());
+    }
+
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
