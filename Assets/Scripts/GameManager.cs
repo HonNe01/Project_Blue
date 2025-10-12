@@ -311,13 +311,24 @@ public class GameManager : MonoBehaviour
         CursorEnable();
     }
 
+    public void GoToOP()
+    {
+        Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {outpostScene}");
+
+        SceneManager.LoadScene(outpostScene);
+    }
+
     public void GoToGD()
     {
+        Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {gildalScene}");
+
         SceneManager.LoadScene(gildalScene);
     }
 
     public void GoToCR()
     {
+        Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {cheongryuScene}");
+
         SceneManager.LoadScene(cheongryuScene);
     }
 

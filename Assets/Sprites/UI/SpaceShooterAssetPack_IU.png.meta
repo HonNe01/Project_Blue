@@ -392,7 +392,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 2, z: 1, w: 1}
       customData: 
       outline: []
@@ -414,7 +414,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 3, z: 1, w: 1}
       customData: 
       outline: []
@@ -436,7 +436,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 3, z: 1, w: 1}
       customData: 
       outline: []
@@ -458,7 +458,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 2, y: 3, z: 2, w: 3}
       customData: 
       outline: []
@@ -480,7 +480,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 2, z: 1, w: 1}
       customData: 
       outline: []
@@ -502,7 +502,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -511,6 +511,28 @@ TextureImporter:
       bones: []
       spriteID: c5be37120c7bd7f4d813ea574f18e01f
       internalID: 2119855177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceShooterAssetPack_IU_14
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c785004567a608d43b66851856cc734c
+      internalID: 464013736
       vertices: []
       indices: 
       edges: []
@@ -537,6 +559,7 @@ TextureImporter:
       SpaceShooterAssetPack_IU_11: 1967021007
       SpaceShooterAssetPack_IU_12: -43756620
       SpaceShooterAssetPack_IU_13: 2119855177
+      SpaceShooterAssetPack_IU_14: 464013736
       SpaceShooterAssetPack_IU_2: 4888668457609010390
       SpaceShooterAssetPack_IU_3: 8965784993433089314
       SpaceShooterAssetPack_IU_4: 4642847126731458489
