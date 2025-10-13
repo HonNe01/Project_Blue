@@ -45,7 +45,6 @@ public class PlayerMove : MonoBehaviour
     private float defaultGravity; // 현재 중력값 저장
 
     [Header("Effect")]
-    public GameObject _MoveEffect;
 
 
     //[Header("가드")]
@@ -130,9 +129,6 @@ public class PlayerMove : MonoBehaviour
         {
             // 이동 시 좌우 반전
             sprite.flipX = PlayerState.instance.isRight < 0;
-            //이펙트 반전
-            SpriteRenderer sr = _MoveEffect.GetComponent<SpriteRenderer>();
-            sr.flipX = PlayerState.instance.isRight > 0;
         }
     }
 
@@ -148,16 +144,6 @@ public class PlayerMove : MonoBehaviour
         // 입력값 받기
         inputValueX = Input.GetAxisRaw("Horizontal");
 
-        //이펙트 출력
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        {
-            _MoveEffect.SetActive(true);
-        }
-
-        else
-        {
-            _MoveEffect.SetActive(false);
-        }
         // 좌우 체크
         if (inputValueX != 0)
         {
