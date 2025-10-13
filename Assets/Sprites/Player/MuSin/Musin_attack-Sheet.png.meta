@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 18bf5b799561b4da898515121b90532a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8897098341860192251
+    second: Musin_attack-Sheet_0
+  - first:
+      213: 288645697000342294
+    second: Musin_attack-Sheet_1
+  - first:
+      213: -8420008182168331267
+    second: Musin_attack-Sheet_2
+  - first:
+      213: -3864557610428683219
+    second: Musin_attack-Sheet_3
+  - first:
+      213: -1277187732233948744
+    second: Musin_attack-Sheet_4
+  - first:
+      213: 1323914245893780189
+    second: Musin_attack-Sheet_5
+  - first:
+      213: 5011245905835694914
+    second: Musin_attack-Sheet_6
+  - first:
+      213: 5114739016897321607
+    second: Musin_attack-Sheet_7
+  - first:
+      213: -3094916387216573080
+    second: Musin_attack-Sheet_8
+  - first:
+      213: -1583584118634021952
+    second: Musin_attack-Sheet_9
+  - first:
+      213: 2271511360195066704
+    second: Musin_attack-Sheet_10
+  - first:
+      213: 1022964297814160990
+    second: Musin_attack-Sheet_11
+  - first:
+      213: 7090013865139198102
+    second: Musin_attack-Sheet_12
+  - first:
+      213: -3399898377373496236
+    second: Musin_attack-Sheet_13
+  - first:
+      213: -1932983658826002580
+    second: Musin_attack-Sheet_14
+  - first:
+      213: 6467656021194473868
+    second: Musin_attack-Sheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 41
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff2b469dc7d87b70800000000000000
+      internalID: 8897098341860192251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 41
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61386ab6bb9710400800000000000000
+      internalID: 288645697000342294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 0
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb59ff5b2f162b80800000000000000
+      internalID: -8420008182168331267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 0
+        width: 54
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2cad5024555e5ac0800000000000000
+      internalID: -3864557610428683219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 0
+        width: 39
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b175bc3684864ee0800000000000000
+      internalID: -1277187732233948744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 0
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2f3930efc7f5210800000000000000
+      internalID: 1323914245893780189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 0
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24b9773c9958b8540800000000000000
+      internalID: 5011245905835694914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78adefc69043bf640800000000000000
+      internalID: 5114739016897321607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 0
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86dbb6281f5ac05d0800000000000000
+      internalID: -3094916387216573080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 0
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb7ed062aaf50ae0800000000000000
+      internalID: -1583584118634021952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 46
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05bf0bf0c87068f10800000000000000
+      internalID: 2271511360195066704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 0
+        width: 47
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e56be15eb9c423e00800000000000000
+      internalID: 1022964297814160990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 0
+        width: 60
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698573cbb0ac46260800000000000000
+      internalID: 7090013865139198102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 0
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45cc930707221d0d0800000000000000
+      internalID: -3399898377373496236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f8a0b8a99ac25e0800000000000000
+      internalID: -1932983658826002580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Musin_attack-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 0
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8186b852eab1c950800000000000000
+      internalID: 6467656021194473868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Musin_attack-Sheet_0: 8897098341860192251
+      Musin_attack-Sheet_1: 288645697000342294
+      Musin_attack-Sheet_10: 2271511360195066704
+      Musin_attack-Sheet_11: 1022964297814160990
+      Musin_attack-Sheet_12: 7090013865139198102
+      Musin_attack-Sheet_13: -3399898377373496236
+      Musin_attack-Sheet_14: -1932983658826002580
+      Musin_attack-Sheet_15: 6467656021194473868
+      Musin_attack-Sheet_2: -8420008182168331267
+      Musin_attack-Sheet_3: -3864557610428683219
+      Musin_attack-Sheet_4: -1277187732233948744
+      Musin_attack-Sheet_5: 1323914245893780189
+      Musin_attack-Sheet_6: 5011245905835694914
+      Musin_attack-Sheet_7: 5114739016897321607
+      Musin_attack-Sheet_8: -3094916387216573080
+      Musin_attack-Sheet_9: -1583584118634021952
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

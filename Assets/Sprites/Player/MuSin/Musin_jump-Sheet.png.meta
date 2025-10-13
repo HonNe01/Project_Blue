@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 717369de180dc41b39e22fa79ff40cff
+guid: 9d872b484787b4d429436d8e60cb6bc9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8245011954358025301
-    second: Mushin_idle-Sheet_0
+      213: -9133796567931536320
+    second: Musin_jump-Sheet_0
   - first:
-      213: -6422996934555875236
-    second: Mushin_idle-Sheet_1
+      213: -7417287855818611118
+    second: Musin_jump-Sheet_1
   - first:
-      213: 6072508233616582014
-    second: Mushin_idle-Sheet_2
+      213: -1044157822027998235
+    second: Musin_jump-Sheet_2
   - first:
-      213: 5987730941143066390
-    second: Mushin_idle-Sheet_3
+      213: 8430826474289440450
+    second: Musin_jump-Sheet_3
   - first:
-      213: -7402882749571989299
-    second: Mushin_idle-Sheet_4
-  - first:
-      213: 131709166300884726
-    second: Mushin_idle-Sheet_5
+      213: 6519711819212494589
+    second: Musin_jump-Sheet_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,133 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mushin_idle-Sheet_0
+      name: Musin_jump-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba304abbf45d39d80800000000000000
-      internalID: -8245011954358025301
+      spriteID: 04c32c51a6c3e3180800000000000000
+      internalID: -9133796567931536320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushin_idle-Sheet_1
+      name: Musin_jump-Sheet_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 65
+        y: 3
+        width: 36
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c58cf5a815eecd6a0800000000000000
-      internalID: -6422996934555875236
+      spriteID: 256ec1d5eff701990800000000000000
+      internalID: -7417287855818611118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushin_idle-Sheet_2
+      name: Musin_jump-Sheet_2
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 125
+        y: 4
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e75e950a012e54450800000000000000
-      internalID: 6072508233616582014
+      spriteID: 5eb53983ef76281f0800000000000000
+      internalID: -1044157822027998235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushin_idle-Sheet_3
+      name: Musin_jump-Sheet_3
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 185
+        y: 3
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 617a27d0191b81350800000000000000
-      internalID: 5987730941143066390
+      spriteID: 2c62bfa8200500570800000000000000
+      internalID: 8430826474289440450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushin_idle-Sheet_4
+      name: Musin_jump-Sheet_4
       rect:
         serializedVersion: 2
-        x: 240
+        x: 245
         y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc005e58c5da34990800000000000000
-      internalID: -7402882749571989299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushin_idle-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 60
-        height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6fee607f9cce3d100800000000000000
-      internalID: 131709166300884726
+      spriteID: df6931e4b5baa7a50800000000000000
+      internalID: 6519711819212494589
       vertices: []
       indices: 
       edges: []
@@ -250,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a36e77446253f784c9942264d200cae9
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -258,16 +233,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":60.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Mushin_idle-Sheet_0: -8245011954358025301
-      Mushin_idle-Sheet_1: -6422996934555875236
-      Mushin_idle-Sheet_2: 6072508233616582014
-      Mushin_idle-Sheet_3: 5987730941143066390
-      Mushin_idle-Sheet_4: -7402882749571989299
-      Mushin_idle-Sheet_5: 131709166300884726
+      Musin_jump-Sheet_0: -9133796567931536320
+      Musin_jump-Sheet_1: -7417287855818611118
+      Musin_jump-Sheet_2: -1044157822027998235
+      Musin_jump-Sheet_3: 8430826474289440450
+      Musin_jump-Sheet_4: 6519711819212494589
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
