@@ -13,11 +13,7 @@ public class Musin_Attack : PlayerAttack
     public float KnockbackXForce = 7f;
     public float KnockbackYForce = 7f;
 
-    private void Start()
-    {
-        base.Start();
 
-    }
 
     /*
     public override void Skill_Front()
