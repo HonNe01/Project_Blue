@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
+  playerstate: {fileID: 0}
 --- !u!1 &5924644709608940927
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
+  playerstate: {fileID: 0}
 --- !u!1 &6133158865817230817
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
+  playerstate: {fileID: 0}
 --- !u!1 &6428890711854167041
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,4 +633,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
+  playerstate: {fileID: 0}

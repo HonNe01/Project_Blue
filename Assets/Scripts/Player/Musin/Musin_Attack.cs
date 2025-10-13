@@ -15,15 +15,15 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill()
     {
-        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && PlayerState.instance.UseGauge(20))
         {
             shotGun.transform.position = gameObject.transform.position + new Vector3(1f, 0.5f, 0);
             shotGun.SetActive(true);
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
-            anim.SetBool("IsGround", playerstate.isGround);
+            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
-
+            // ³Ë¹é
             rb.linearVelocity = Vector2.zero;
             if (!PlayerState.instance.isGround)
             {

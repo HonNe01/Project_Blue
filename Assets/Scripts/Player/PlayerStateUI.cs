@@ -16,6 +16,11 @@ public class PlayerStateUI : MonoBehaviour
     [Header("Skill Gauge")]
     public Image[] gauges;      // ∞‘¿Ã¡ˆ UI
 
+    private void Awake()
+    {
+        canvas = GetComponent<CanvasGroup>();
+    }
+
     void Update()
     {
         bool isShow = GameManager.instance.State != GameManager.GameState.Directing;
@@ -23,7 +28,6 @@ public class PlayerStateUI : MonoBehaviour
         {
             SetActiveUI(isShow);
         }
-
 
         if (isVisible)
         {
@@ -52,9 +56,6 @@ public class PlayerStateUI : MonoBehaviour
 
             yield return null;
         }
-
-        canvas.interactable = isShow;
-        canvas.blocksRaycasts = isShow;
     }
 
     void UpdateHearts()

@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using NUnit.Framework;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,12 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MenuType curMenu = MenuType.None;
     [SerializeField] private GameObject[] menuPanels;
 
-    private GameObject mainMenu;
-
     [Header("Graphics")]
     public TMP_Dropdown resolutionDropdown;
     private List<Resolution> resolutions = new List<Resolution>();
     private int optimalResolutionIndex = 0;
+
+    [Header("Inventory")]
+    public PlayerInventory inventory;
 
     private void Awake()
     {
@@ -55,16 +54,31 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        ResolutionsInit();
+        if (resolutionDropdown != null)
+        {
+            ResolutionsInit();
+        }
         State = GameState.MainMenu;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
     {
-        // 일시정지
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            // 인벤토리 닫기
+            if (inventory != null)
+            {
+                if (inventory.IsOpen)
+                {
+                    inventory.SetActiveUI(false);
+                    CursorDisable();
+
+                    return;
+                }
+            }
+
+            // 일시정지
             if (State == GameState.Playing)
             {
                 OpenMenu(MenuType.Pause);
@@ -75,14 +89,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 인벤토리
-        if (State == GameState.Playing)
+        // 인벤토리 열기
+        if (State == GameState.Playing && curMenu == MenuType.None)
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab) && inventory != null)
             {
-                if (State == GameState.Playing)
+                if (inventory.IsOpen)
                 {
-
+                    inventory.SetActiveUI(false);
+                    CursorDisable();
+                }
+                else
+                {
+                    inventory.SetActiveUI(true);
+                    CursorEnable();
                 }
             }
         }
@@ -378,12 +398,7 @@ public class GameManager : MonoBehaviour
             // 메인 메뉴 씬
             State = GameState.MainMenu;
 
-            // 메인메뉴 UI 연결
-            if (mainMenu == null)
-            {
-                mainMenu = GameObject.Find("Main Panel");
-            }
-            
+            // 마우스 커서 활성화
             CursorEnable();
         }
         else

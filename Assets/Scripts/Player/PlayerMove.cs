@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -13,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
     [SerializeField] private int jumpCount = 0;          // 현재 점프 횟수
     private int maxJumps = 2;           // 최대 점프 횟수
-    private bool isDroppingDown = false;// 아래 점프 중인지 체크
+    //private bool isDroppingDown = false;// 아래 점프 중인지 체크
     private float jumpTimeCounter;      // 점프 키 유지 시간 카운트
 
     [Header("Wall Jump/Sliding Setting")]
@@ -82,7 +81,7 @@ public class PlayerMove : MonoBehaviour
         {
             jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
-            isDroppingDown = false; // 아래점프 상태 해제
+            //isDroppingDown = false; // 아래점프 상태 해제
 
             canAirDash = true;
             isWallSliding = false;

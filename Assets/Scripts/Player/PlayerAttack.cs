@@ -23,11 +23,6 @@ public class PlayerAttack : MonoBehaviour
     private float AttackTimer = 0f;
     private float AttackHoldTime = 0.5f;
 
-    
-
-    [Header("Skill")]
-    public PlayerState playerstate; //게이지 호출
-
 
     [Header(" === Default Skill === ")]
     public GameObject _skill;
@@ -58,11 +53,9 @@ public class PlayerAttack : MonoBehaviour
         Attack();
 
         // 스킬
-        
         Skill();
         Skill_Up();
         Skill_Down();
-        
     }
 
     public void Attack()
@@ -106,10 +99,6 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            
-        }
 
         // 콤보 시간 초과 -> 초기화
         if (Time.time - lastAttackTime > comboTime)
@@ -139,10 +128,7 @@ public class PlayerAttack : MonoBehaviour
             AttackTimer = 0f;
             AttackPress = false;
         }
-
-
     }
-
 
     private IEnumerator Co_Attack()
     {
@@ -152,8 +138,6 @@ public class PlayerAttack : MonoBehaviour
         lastAttackTime = Time.time;
         rb.linearVelocity = Vector2.zero;
         
-
-
         // 공격 애니메이션 실행
         anim.SetTrigger("Attack");
         anim.SetInteger("AttackCombo", curCombo);
@@ -182,14 +166,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-   
-
     private IEnumerator Co_JumpAttack()
     {
-
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
-  
     }
 
     private IEnumerator Co_HighAttack(bool isGround)
@@ -197,8 +177,6 @@ public class PlayerAttack : MonoBehaviour
         anim.SetTrigger("IsUp");
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
-  
-       
     }
 
     private IEnumerator Co_DownAttack()
@@ -207,7 +185,6 @@ public class PlayerAttack : MonoBehaviour
         anim.SetTrigger("IsDown");
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
-       
     }
 
     private void ResetCombo()
@@ -219,12 +196,12 @@ public class PlayerAttack : MonoBehaviour
     public virtual void Skill() // AttackSkill = 1
     {
 
-        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
-            anim.SetBool("IsGround", playerstate.isGround);
+            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
             Debug.Log("[PlayerAttack] 앞스킬 사용");
         }
@@ -232,12 +209,12 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Up() // AttackSkill = 2
     {
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.A) && PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
-            anim.SetBool("IsGround", playerstate.isGround);
+            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
             Debug.Log("[PlayerAttack] 윗스킬 사용");
         }
@@ -247,12 +224,12 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Down() // AttackSkill = 4
     {
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.A) &&playerstate.UseGauge(20))
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.A) &&PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 4);
-            anim.SetBool("IsGround", playerstate.isGround);
+            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
             Debug.Log("[PlayerAttack] 아랫스킬 사용");
         }
@@ -344,8 +321,6 @@ public class PlayerAttack : MonoBehaviour
         _frontSkill.SetActive(false);   // 히트박스 비활성화
         anim.SetInteger("AttackSkill", 0);
     }
-
-
 }
 
 

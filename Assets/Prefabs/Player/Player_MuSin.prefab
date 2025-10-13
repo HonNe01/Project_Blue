@@ -37,12 +37,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4737109600819417074}
-  - {fileID: 7666757593047583655}
-  - {fileID: 8568396990544199933}
-  - {fileID: 3309183228405999240}
   - {fileID: 1455698403034985669}
+  - {fileID: 8568396990544199933}
+  - {fileID: 4737109600819417074}
   - {fileID: 887099001652573020}
+  - {fileID: 3309183228405999240}
+  - {fileID: 7666757593047583655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5006329824984442882
@@ -400,7 +400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 1
-  playerstate: {fileID: 7999001724466460867}
 --- !u!1 &3715023713301073391
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
-  playerstate: {fileID: 7999001724466460867}
 --- !u!1 &4987269162300799472
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 1
-  playerstate: {fileID: 7999001724466460867}
 --- !u!1 &5024971863099714177
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +679,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 1
-  playerstate: {fileID: 7999001724466460867}
 --- !u!1 &6115924602441622479
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
-  playerstate: {fileID: 7999001724466460867}
 --- !u!95 &6201203966337424210
 Animator:
   serializedVersion: 7
@@ -952,4 +947,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
-  playerstate: {fileID: 7999001724466460867}

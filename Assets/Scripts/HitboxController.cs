@@ -7,8 +7,6 @@ public class HitboxController : MonoBehaviour
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitbotType type;
 
-    public PlayerState playerstate;
-
 
     void Awake()
     {
@@ -26,7 +24,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
-                    playerstate.AddGauge(5);
+                    PlayerState.instance.AddGauge(5);
 
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
@@ -63,7 +61,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
-                    playerstate.AddGauge(5);
+                    PlayerState.instance.AddGauge(5);
 
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
