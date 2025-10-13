@@ -334,11 +334,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4561445076639060114, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.97151
+      value: -3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4561445076639060114, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.25624
+      value: -4.94
       objectReference: {fileID: 0}
     - target: {fileID: 4561445076639060114, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5751161971309696620, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8245011954358025301, guid: 717369de180dc41b39e22fa79ff40cff, type: 3}
     - target: {fileID: 5751161971309696620, guid: fe5c9af98b56c8b46b373b52cff84eb7, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -848,13 +852,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6186529985679389507, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
+      propertyPath: m_GridSnapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
+      propertyPath: orthographic size
+      value: 6.1363635
+      objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8381767
+      value: -1.1566668
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1437598
+      value: -2.5400002
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1045,11 +1057,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8381767
+      value: -1.1566668
       objectReference: {fileID: 0}
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1437598
+      value: -2.5400002
       objectReference: {fileID: 0}
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1465,15 +1477,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Heart_UI
   hearts:
-  - {fileID: 1470843758}
-  - {fileID: 1234177198}
-  - {fileID: 612000137}
-  - {fileID: 917534192}
-  - {fileID: 2008883995}
-  fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
-  emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
-  playerstate: {fileID: 0}
-  gaugeFill: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gauges: []
 --- !u!114 &1652640629
 MonoBehaviour:
   m_ObjectHideFlags: 0
