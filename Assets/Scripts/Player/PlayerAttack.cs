@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
 
-    private void Start()
+    public void Start()
     {
         anim = PlayerState.instance.anim;
         rb = PlayerState.instance.rb;

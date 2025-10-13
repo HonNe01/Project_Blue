@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,20 +115,20 @@ TextureImporter:
       name: Musin_jump-Sheet_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 36
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 60
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04c32c51a6c3e3180800000000000000
-      internalID: -9133796567931536320
+      spriteID: 1d02c9d628f9df94b8ee1e221e8b8996
+      internalID: -1936655143
       vertices: []
       indices: 
       edges: []
@@ -137,20 +137,20 @@ TextureImporter:
       name: Musin_jump-Sheet_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 3
-        width: 36
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 0
+        width: 60
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 256ec1d5eff701990800000000000000
-      internalID: -7417287855818611118
+      spriteID: 825b77c9dc1ddcc4aa9df1c9d7ac50c4
+      internalID: -1549684014
       vertices: []
       indices: 
       edges: []
@@ -159,20 +159,20 @@ TextureImporter:
       name: Musin_jump-Sheet_2
       rect:
         serializedVersion: 2
-        x: 125
-        y: 4
-        width: 36
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 0
+        width: 60
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5eb53983ef76281f0800000000000000
-      internalID: -1044157822027998235
+      spriteID: bbed8137d0015af4cbe80efa92b2c328
+      internalID: -1984122281
       vertices: []
       indices: 
       edges: []
@@ -181,20 +181,20 @@ TextureImporter:
       name: Musin_jump-Sheet_3
       rect:
         serializedVersion: 2
-        x: 185
-        y: 3
-        width: 36
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 0
+        width: 60
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2c62bfa8200500570800000000000000
-      internalID: 8430826474289440450
+      spriteID: c555d00ba6dc41345999eda4d11d3543
+      internalID: -428411582
       vertices: []
       indices: 
       edges: []
@@ -203,20 +203,20 @@ TextureImporter:
       name: Musin_jump-Sheet_4
       rect:
         serializedVersion: 2
-        x: 245
+        x: 240
         y: 0
-        width: 36
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 60
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df6931e4b5baa7a50800000000000000
-      internalID: 6519711819212494589
+      spriteID: ad6f0eebe72a5c24cb57b8dbb450e07f
+      internalID: 1676171403
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 85f4869468b9f1348bf60ba3d6f9488e
     internalID: 0
     vertices: []
     indices: 
@@ -233,13 +233,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":60.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Musin_jump-Sheet_0: -9133796567931536320
-      Musin_jump-Sheet_1: -7417287855818611118
-      Musin_jump-Sheet_2: -1044157822027998235
-      Musin_jump-Sheet_3: 8430826474289440450
-      Musin_jump-Sheet_4: 6519711819212494589
+      Musin_jump-Sheet_0: -1936655143
+      Musin_jump-Sheet_1: -1549684014
+      Musin_jump-Sheet_2: -1984122281
+      Musin_jump-Sheet_3: -428411582
+      Musin_jump-Sheet_4: 1676171403
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

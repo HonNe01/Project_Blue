@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -6,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Move Setting")]
     public float moveSpeed = 5f;        // 이동속도
     private float inputValueX;
-    
+
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
@@ -24,7 +25,7 @@ public class PlayerMove : MonoBehaviour
     public float wallSlideSpeed = 0.5f; // 벽 슬라이드 속도
     public float wallJumpDuration = 0.3f; // 벽점프 길이
     [SerializeField] private int wallDir = 0; // 벽 위치(왼쪽 -1, 오른쪽 1)
-    
+
 
     [Header("Coyote / Buffer")]
     public float coyoteTime = 0.1f; // 땅에서 떨어진 후 점프 가능한 시간
@@ -42,6 +43,10 @@ public class PlayerMove : MonoBehaviour
     private float dashTimeCounter;
     private float dashCooldownCounter;
     private float defaultGravity; // 현재 중력값 저장
+
+    [Header("Effect")]
+    public GameObject _MoveEffect;
+
 
     //[Header("가드")]
     //Player_Guard _playerGuard;
@@ -125,6 +130,9 @@ public class PlayerMove : MonoBehaviour
         {
             // 이동 시 좌우 반전
             sprite.flipX = PlayerState.instance.isRight < 0;
+            //이펙트 반전
+            SpriteRenderer sr = _MoveEffect.GetComponent<SpriteRenderer>();
+            sr.flipX = PlayerState.instance.isRight > 0;
         }
     }
 
@@ -140,10 +148,21 @@ public class PlayerMove : MonoBehaviour
         // 입력값 받기
         inputValueX = Input.GetAxisRaw("Horizontal");
 
+        //이펙트 출력
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+            _MoveEffect.SetActive(true);
+        }
+
+        else
+        {
+            _MoveEffect.SetActive(false);
+        }
         // 좌우 체크
         if (inputValueX != 0)
         {
             PlayerState.instance.isRight = inputValueX > 0 ? 1 : -1;
+
         }
     }
 
@@ -240,7 +259,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private IEnumerator WallJumpLock(float duration)
+    public IEnumerator WallJumpLock(float duration)
     {
         // 벽 점프 중 이동 불가
         isTouchingWall = false;
