@@ -32,13 +32,17 @@ public class Musin_Attack : PlayerAttack
                 if (PlayerState.instance.isRight > 0)
                 {
                     rb.AddForce(new Vector2(-KnockbackXForce, KnockbackYForce), ForceMode2D.Impulse);
- 
+
                 }
                 else
                 {
                     rb.AddForce(new Vector2(KnockbackXForce, KnockbackYForce), ForceMode2D.Impulse);
 
                 }
+            }
+            else
+            {
+                StartCoroutine(Co_DisableOtherAction(KnockbackTime));
             }
 
         }
