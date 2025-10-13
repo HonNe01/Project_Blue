@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class Musin_Attack : PlayerAttack
 {
-    public PlayerState PlayerState;
- 
-
-    public PlayerMove PlayerMove;
-    private Rigidbody2D rb;
-
     [Header("Knockback")]
     public float KnockbackTime = 0.3f;
     public float KnockbackXForce = 7f;
