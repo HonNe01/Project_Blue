@@ -196,7 +196,6 @@ public class PlayerState : MonoBehaviour
         }
 
         currentGauge -= amount;
-        Debug.Log("게이지 사용");
         return true;
     }
 

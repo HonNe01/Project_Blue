@@ -1,31 +1,56 @@
+using System.Collections;
 using UnityEngine;
 
 public class Musin_Attack : PlayerAttack
 {
-    [Header("Knockback")]
+    [Header("ShotGun")]
     public float KnockbackTime = 0.3f;
     public float KnockbackXForce = 7f;
-    public float KnockbackYForce = 7f;
+    public float KnockbackYForce = 2f;
+    public GameObject shotGun;
 
 
 
-    /*
-    public override void Skill_Front()
+
+
+    public override void Skill()
     {
-        if (!PlayerState.instance.isGround)
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && playerstate.UseGauge(20))
         {
-            StartCoroutine(PlayerMove.WallJumpLock(KnockbackTime));
+            shotGun.transform.position = gameObject.transform.position + new Vector3(1f, 0.5f, 0);
+            shotGun.SetActive(true);
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 1);
+            anim.SetBool("IsGround", playerstate.isGround);
 
-            if (PlayerState.instance.isRight > 0)
+
+            rb.linearVelocity = Vector2.zero;
+            if (!PlayerState.instance.isGround)
             {
-                rb.AddForce(new Vector2(KnockbackXForce,KnockbackYForce), ForceMode2D.Impulse);
+                StartCoroutine(Co_DisableOtherAction(KnockbackTime));
+
+                if (PlayerState.instance.isRight > 0)
+                {
+                    rb.AddForce(new Vector2(-KnockbackXForce, KnockbackYForce), ForceMode2D.Impulse);
+ 
+                }
+                else
+                {
+                    rb.AddForce(new Vector2(KnockbackXForce, KnockbackYForce), ForceMode2D.Impulse);
+
+                }
             }
-            else
-            {
-                rb.AddForce(new Vector2(-KnockbackXForce, KnockbackYForce), ForceMode2D.Impulse);
-            }
+
         }
-        
     }
-    */
+
+    IEnumerator Co_DisableOtherAction(float duration)
+    {
+        DisableOtherAction();
+
+        yield return new WaitForSeconds(duration);
+
+        EnableOtherAction();
+    }
+
 }
