@@ -1545,7 +1545,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617156449181159911}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1561,5 +1561,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c120d40797eb764bacee2de311f42d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  canvas: {fileID: 2307768977753520341}
   fadeSpeed: 1

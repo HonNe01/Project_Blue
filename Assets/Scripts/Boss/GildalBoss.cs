@@ -200,13 +200,19 @@ public class GildalBoss : BossBase
         if (sprite != null)
         {
             float elapsed = 0f;
+            Color c = sprite.color;
+
             while (elapsed < reStealth_Delay)
             {
                 elapsed += Time.deltaTime;
-                float lerp = Mathf.Clamp01(elapsed / reStealth_Delay);
-                stealthMat.SetFloat("_StealthAmount", lerp);
+                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
+                c.a = Mathf.Lerp(1f, 0f, t);
+                sprite.color = c;
                 yield return null;
             }
+
+            c.a = 0f;
+            sprite.color = c;
         }
     }
     private IEnumerator Co_EndStealth()
@@ -215,13 +221,19 @@ public class GildalBoss : BossBase
         if (sprite != null)
         {
             float elapsed = 0f;
+            Color c = sprite.color;
+
             while (elapsed < reStealth_Delay)
             {
                 elapsed += Time.deltaTime;
-                float lerp = Mathf.Clamp01(elapsed / reStealth_Delay);
-                stealthMat.SetFloat("_StealthAmount", 1- lerp);
+                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
+                c.a = Mathf.Lerp(0f, 1f, t);
+                sprite.color = c;
                 yield return null;
             }
+
+            c.a = 1f;
+            sprite.color = c;
         }
 
         // 피격 판정 설정
@@ -400,7 +412,7 @@ public class GildalBoss : BossBase
 
         // 5) 공격 명령
         Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
-        drone.FireOrb(droneTarget);
+        StartCoroutine(drone.Co_FireOrb(droneTarget));
 
         // 6) 재은신
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
@@ -728,8 +740,8 @@ public class GildalBoss : BossBase
 
         // 4) 공격
         yield return new WaitForSeconds(dokkaebiOrb_preDelay);
-        StartCoroutine(drones[0].FireWave(false));
-        yield return StartCoroutine(drones[1].FireWave(false));
+        StartCoroutine(drones[0].Co_FireWave(false));
+        yield return StartCoroutine(drones[1].Co_FireWave(false));
 
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
@@ -752,7 +764,7 @@ public class GildalBoss : BossBase
 
         // 4) 공격
         yield return new WaitForSeconds(dokkaebiOrb_preDelay);
-        yield return StartCoroutine(drone.FireWave(true));
+        yield return StartCoroutine(drone.Co_FireWave(true));
 
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
