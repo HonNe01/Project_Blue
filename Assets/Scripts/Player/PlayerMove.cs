@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;        // 이동속도
     private float inputValueX;
 
+
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
@@ -44,6 +45,10 @@ public class PlayerMove : MonoBehaviour
     private float defaultGravity; // 현재 중력값 저장
 
     [Header("Effect")]
+    public GameObject dustEffect;
+    public GameObject slidedustEffect;
+    public GameObject jumpDustEffect;
+    public GameObject airjumpDustEffect;
 
 
     //[Header("가드")]
@@ -123,6 +128,26 @@ public class PlayerMove : MonoBehaviour
         {
             // 벽 슬라이딩시 좌우 반전
             sprite.flipX = wallDir < 0;
+            // 벽 슬라이딩 먼지 이펙트
+            if (Mathf.Abs(rb.linearVelocity.y) > 0.1f)
+            {
+                if (wallDir > 0)
+                {
+                    slidedustEffect.SetActive(true);  // 오른쪽
+                    slidedustEffect.transform.position = gameObject.transform.position + new Vector3(0.5f, 0.7f, 0);
+                    slidedustEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    slidedustEffect.SetActive(true);
+                    slidedustEffect.transform.position = gameObject.transform.position + new Vector3(-0.5f, 0.7f, 0);
+                    slidedustEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else
+            {
+                slidedustEffect.SetActive(false);
+            }
         }
         else if (inputValueX != 0)
         {
@@ -143,12 +168,17 @@ public class PlayerMove : MonoBehaviour
         // 입력값 받기
         inputValueX = Input.GetAxisRaw("Horizontal");
 
+
+
         // 좌우 체크
         if (inputValueX != 0)
         {
             PlayerState.instance.isRight = inputValueX > 0 ? 1 : -1;
 
         }
+
+        
+ 
     }
 
     private void MovePhysics()
@@ -161,6 +191,26 @@ public class PlayerMove : MonoBehaviour
         // 이동 실행
         float targetY = isWallSliding ? Mathf.Lerp(rb.linearVelocity.y, -wallSlideSpeed, 0.5f) : rb.linearVelocity.y;
         rb.linearVelocity = new Vector2(inputValueX * moveSpeed, targetY);
+    }
+
+    public void MoveEffectOn()
+    {
+        if (PlayerState.instance.isGround && Mathf.Abs(rb.linearVelocity.x) > 0.1f && !isDashing)
+        {
+            if (PlayerState.instance.isRight > 0)
+            {
+                dustEffect.SetActive(true);
+                dustEffect.transform.position = gameObject.transform.position + new Vector3(-1f, 0.1f, 0);
+                dustEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                dustEffect.SetActive(true);
+                dustEffect.transform.position = gameObject.transform.position + new Vector3(1f, 0.1f, 0);
+                dustEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
+        }
     }
 
     void JumpInput()
@@ -176,6 +226,20 @@ public class PlayerMove : MonoBehaviour
         {
             if (PlayerState.instance.canJump)
                 jumpBufferCounter = jumpBufferTime;
+
+            //점프 이펙트
+            if (PlayerState.instance.isGround)
+            {
+                jumpDustEffect.SetActive(true);
+                jumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
+            }
+            else
+            {
+                airjumpDustEffect.SetActive(true);
+                airjumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0); 
+            }
+
+
         }
         // 카운터 갱신
         else
@@ -409,4 +473,5 @@ public class PlayerMove : MonoBehaviour
             isTouchingWall = false;
         }
     }
+
 }
