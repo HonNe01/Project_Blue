@@ -411,8 +411,7 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(drone.Co_EndStealth());
 
         // 5) 공격 명령
-        Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
-        StartCoroutine(drone.Co_FireOrb(droneTarget));
+        StartCoroutine(drone.Co_FireOrb(target));
 
         // 6) 재은신
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
@@ -575,8 +574,7 @@ public class GildalBoss : BossBase
             var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
 
             // 드론 조작
-            Vector2 droneTarget = new Vector2(target.position.x, target.position.y + 1f);
-            StartCoroutine(drone.Co_DroneAuto(droneTarget));
+            StartCoroutine(drone.Co_DroneAuto(target));
 
             // 다음 드론 소환 딜레이
             yield return new WaitForSeconds(eDokkaebiOrb_preDelay);

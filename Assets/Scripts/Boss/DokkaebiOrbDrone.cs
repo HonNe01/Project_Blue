@@ -13,14 +13,16 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
 
     [Header("Orb Setting")]
-    public Vector2 OrbOffset;
+    [SerializeField] private float lifeTime = 2f;
+    [SerializeField] private float chaseRatio = 0.6f;
     [SerializeField] private float dashSpeed = 10f;
-    [SerializeField] private float arriveThreshold = 0.15f;
-    [SerializeField] private float limitTime = 1f;
+    public Vector2 OrbOffset;
+    private Vector2 lastDir = Vector2.right;
+    
     private int baseDamage = 1;
 
+    private bool isChase = true;
     private bool isExploded = false;
-    private float spawntime;
 
     private void Awake()
     {
@@ -30,18 +32,17 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     private void OnEnable()
     {
-        spawntime = Time.time;
         if (expColl) expColl.enabled = false;
         if (bodyColl) bodyColl.enabled = true;
     }
 
     // 드론 자동 조작: 은신 해제 -> 돌진/폭발
-    public IEnumerator Co_DroneAuto(Vector2 target)
+    public IEnumerator Co_DroneAuto(Transform player)
     {
         yield return StartCoroutine(Co_EndStealth());
         yield return null;
 
-        StartCoroutine(Co_FireOrb(target));
+        StartCoroutine(Co_FireOrb(player));
     }
 
     // 은신
@@ -92,39 +93,63 @@ public class DokkaebiOrbDrone : MonoBehaviour
         }
     }
 
-    public IEnumerator Co_FireOrb(Vector2 target)
+    public IEnumerator Co_FireOrb(Transform player)
     {
-        Vector2 targetPos = target + OrbOffset;
+        isChase = true;
+        float total = lifeTime;
+        float chaseTime = Mathf.Clamp01(chaseRatio) * total;
+        float coastTime = Mathf.Max(0f, total - chaseTime);
 
-        Vector2 dir = targetPos.sqrMagnitude > 0.0001f 
-            ? targetPos.normalized : 
-            (transform.localScale.x >= 0f ? Vector2.right : Vector2.left);
+        float t = 0f;
 
-        float elapsed = 0f;
-
-        while (elapsed < limitTime && !isExploded)
+        // 1) Chase : 플레이어 추적
+        while (!isExploded && t < chaseTime)
         {
-            transform.Translate(dir * dashSpeed * Time.deltaTime, Space.World); 
-            elapsed += Time.deltaTime;
+            Vector2 toTarget;
+            if (player != null)
+            {
+                toTarget = (Vector2)player.position - (Vector2)transform.position + OrbOffset;
+            }
+            else
+            {
+                toTarget = lastDir.sqrMagnitude > 0.0001f ? lastDir : Vector2.right;
+            }
 
+            if (toTarget.sqrMagnitude > 0.0001f)
+            {
+                lastDir = toTarget.normalized;
+            }
+
+            transform.Translate(lastDir * dashSpeed * Time.deltaTime, Space.World);
+            t += Time.deltaTime;
             yield return null;
         }
 
-        // 시간 만료
+        // 2) Coast : 돌진
+        isChase = false;
+        float coastElapsed = 0f;
+        while (!isExploded && coastElapsed < coastTime)
+        {
+            transform.Translate(lastDir * dashSpeed * Time.deltaTime, Space.World);
+            coastElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 3) 폭발
         if (!isExploded)
         {
             yield return StartCoroutine(Co_Explosion());
         }
     }
 
-    private IEnumerator Co_Explosion()
+    private IEnumerator Co_Explosion(bool hasDamage = false)
     {
         if (isExploded) yield break;
         isExploded = true;
 
         // 콜라이더 전환
         if (bodyColl) bodyColl.enabled = false;
-        if (expColl) expColl.enabled = true;
+        if (expColl && !hasDamage) expColl.enabled = true;
 
         // 폭발 애니
         anim.SetTrigger("Explosion");
@@ -161,13 +186,13 @@ public class DokkaebiOrbDrone : MonoBehaviour
             // 폭발 중 아니면 폭발
             if (!isExploded)
             {
-                StartCoroutine(Co_Explosion());
+                StartCoroutine(Co_Explosion(true));
             }
         }
-        else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform"))
+        else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform") && !isChase)
         {
             // 지형 충돌 : 폭발
-            if (Time.time - spawntime >= limitTime)
+            if (!isExploded)
             {
                 StartCoroutine(Co_Explosion());
             }

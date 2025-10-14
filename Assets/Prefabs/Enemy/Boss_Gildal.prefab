@@ -93,7 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
-  playerstate: {fileID: 0}
 --- !u!1 &5924644709608940927
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
-  playerstate: {fileID: 0}
 --- !u!1 &6133158865817230817
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +279,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
-  playerstate: {fileID: 0}
 --- !u!1 &6428890711854167041
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +293,7 @@ GameObject:
   - component: {fileID: 5499621151267507001}
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
+  - component: {fileID: 4007408959771389423}
   m_Layer: 8
   m_Name: Boss_Gildal
   m_TagString: Enemy
@@ -437,7 +435,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -541,6 +539,20 @@ MonoBehaviour:
   spawnDelay: 0.1
   sprite: {fileID: 0}
   coll: {fileID: 0}
+--- !u!114 &4007408959771389423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428890711854167041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
+  baseDamage: 1
+  type: 2
 --- !u!1 &8355188705297284781
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,4 +646,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
-  playerstate: {fileID: 0}
