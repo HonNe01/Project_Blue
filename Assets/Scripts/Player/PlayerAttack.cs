@@ -24,17 +24,6 @@ public class PlayerAttack : MonoBehaviour
     private float AttackHoldTime = 0.5f;
 
 
-    [Header(" === Default Skill === ")]
-    public GameObject _skill;
-
-    [Header(" === Up Skill === ")]
-    public GameObject _upSkill;
-
-    [Header(" === Front Skill === ")]
-    public GameObject _frontSkill;
-
-    [Header(" === Down Skill === ")]
-    public GameObject _downSkill;
 
 
     // 참조
@@ -52,13 +41,28 @@ public class PlayerAttack : MonoBehaviour
         // 공격
         Attack();
 
-        // 스킬
-        Skill();
-        Skill_Up();
-        Skill_Down();
+
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.isGround)
+        {
+            Skill_Down();
+            return;
+        }
+        else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F))
+        {
+            Skill_Up();
+            return;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            Skill();
+            return;
+        }
+
+
     }
 
-    public void Attack()
+        public void Attack()
     {
         // 공격 실행
         if (Input.GetKeyDown(KeyCode.V) && PlayerState.instance.canAttack)
@@ -196,12 +200,11 @@ public class PlayerAttack : MonoBehaviour
     public virtual void Skill() // AttackSkill = 1
     {
 
-        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && Input.GetKeyDown(KeyCode.A) && PlayerState.instance.UseGauge(20))
+        if (Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
-            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
             Debug.Log("[PlayerAttack] 앞스킬 사용");
         }
@@ -209,13 +212,11 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Up() // AttackSkill = 2
     {
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.A) && PlayerState.instance.UseGauge(20))
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
-            anim.SetBool("IsGround", PlayerState.instance.isGround);
-
             Debug.Log("[PlayerAttack] 윗스킬 사용");
         }
     }
@@ -224,12 +225,11 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Down() // AttackSkill = 4
     {
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.A) &&PlayerState.instance.UseGauge(20))
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.UseGauge(20))
         {
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 4);
-            anim.SetBool("IsGround", PlayerState.instance.isGround);
 
             Debug.Log("[PlayerAttack] 아랫스킬 사용");
         }
@@ -280,47 +280,34 @@ public class PlayerAttack : MonoBehaviour
         isAttack = false;
     }
 
-    public void SkillStart()
+    public virtual void SkillStart()
     {
-        _skill.SetActive(true);    // 히트박스 활성화
     }
-    public void SkillEnd()
+    public virtual void SkillEnd()
     {
-        _skill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
+
     }
 
-    public void UpSkillStart()
+    public virtual void UpSkillStart()
     {
-        _upSkill.SetActive(true);    // 히트박스 활성화
+
     }
 
-    public void UpSkillEnd()
+    public virtual void UpSkillEnd()
     {
-        _upSkill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
+
     }
 
-    public void DownSkillStart()
+    public virtual void DownSkillStart()
     {
-        _downSkill.SetActive(true);    // 히트박스 활성화
+
     }
 
-    public void DownSkillEnd()
+    public virtual void DownSkillEnd()
     {
-        _downSkill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
+
     }
 
-    public void FrontSkillStart()
-    {
-        _frontSkill.SetActive(true);    // 히트박스 활성화
-    }
-    public void FrontSkillEnd()
-    {
-        _frontSkill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
-    }
 }
 
 

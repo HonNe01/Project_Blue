@@ -263,6 +263,9 @@ MonoBehaviour:
   dashSpeed: 15
   dashTime: 0.2
   dashCooldown: 1
+  dustEffect: {fileID: 0}
+  slidedustEffect: {fileID: 0}
+  jumpDustEffect: {fileID: 0}
 --- !u!114 &4785944710395483702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,17 +299,20 @@ MonoBehaviour:
   _attack: {fileID: 6115924602441622479}
   _downattack: {fileID: 3715023713301073391}
   _upAttack: {fileID: 7426174879121638492}
-  playerstate: {fileID: 7999001724466460867}
-  _skill: {fileID: 3290023737962266727}
-  _upSkill: {fileID: 5024971863099714177}
-  _frontSkill: {fileID: 3290023737962266727}
-  _downSkill: {fileID: 4987269162300799472}
   anim: {fileID: 0}
   rb: {fileID: 0}
-  KnockbackTime: 0.3
-  KnockbackXForce: 7
-  KnockbackYForce: 2
+  knockbackTime: 0.3
+  knockbackXForce: 7
+  knockbackYForce: 2
   shotGun: {fileID: 0}
+  _skill: {fileID: 3290023737962266727}
+  _upSkill: {fileID: 5024971863099714177}
+  boomPrefab: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
+  boomspawnpos: {x: 0, y: 0, z: 0}
+  throwXForce: 5
+  throwYForce: 5
+  _downSkill: {fileID: 4987269162300799472}
+  downKnockbackYForce: 7
 --- !u!1 &3290023737962266727
 GameObject:
   m_ObjectHideFlags: 0
