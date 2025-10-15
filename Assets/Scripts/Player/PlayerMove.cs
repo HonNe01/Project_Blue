@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rb;
     Collider2D coll;
     SpriteRenderer sprite;
+
 
     void Start()
     {
@@ -151,8 +153,15 @@ public class PlayerMove : MonoBehaviour
         }
         else if (inputValueX != 0)
         {
-            // 이동 시 좌우 반전
-            sprite.flipX = PlayerState.instance.isRight < 0;
+            // 이동 시 좌우 반전 (히트박스 움직이는거 때문에 플립에서 회전값으로 바꿈)
+            if (PlayerState.instance.isRight < 0)
+            {
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else 
+            {
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 
@@ -193,7 +202,7 @@ public class PlayerMove : MonoBehaviour
         rb.linearVelocity = new Vector2(inputValueX * moveSpeed, targetY);
     }
 
-    public void MoveEffectOn()
+    public void MoveEffectOn() // 움직일때 먼지 이펙트 
     {
         if (PlayerState.instance.isGround && Mathf.Abs(rb.linearVelocity.x) > 0.1f && !isDashing)
         {
@@ -202,6 +211,7 @@ public class PlayerMove : MonoBehaviour
                 dustEffect.SetActive(true);
                 dustEffect.transform.position = gameObject.transform.position + new Vector3(-1f, 0.1f, 0);
                 dustEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+
             }
             else
             {

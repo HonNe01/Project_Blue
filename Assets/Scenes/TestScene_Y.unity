@@ -1451,6 +1451,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4721613388448629241, guid: 2984abc03c423f64594a239404cc69a6, type: 3}
   m_PrefabInstance: {fileID: 1752134261}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1827699868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+  m_PrefabInstance: {fileID: 3428426610609118096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3e6c5dfeb08d94c854865ab1809146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musin_Attack
 --- !u!1 &1892133528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,6 +1959,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1455698403034985669, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455698403034985669, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2085269201776898949, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_Name
       value: Player_MuSin
@@ -1961,6 +1980,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 308204104}
     - target: {fileID: 3038832706818918881, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: playerattack
+      value: 
+      objectReference: {fileID: 1827699868}
+    - target: {fileID: 3038832706818918881, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: jumpDustEffect
       value: 
       objectReference: {fileID: 1388862672}
@@ -1972,6 +1995,10 @@ PrefabInstance:
       propertyPath: airjumpDustEffect
       value: 
       objectReference: {fileID: 677547935}
+    - target: {fileID: 6115924602441622479, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2035,7 +2062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x

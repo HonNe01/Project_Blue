@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Musin_Attack : PlayerAttack
 {
@@ -22,6 +23,9 @@ public class Musin_Attack : PlayerAttack
     [Header(" === Down Skill === ")]
     public GameObject _downSkill;
     public float downKnockbackYForce = 7f;
+
+
+
 
 
 
@@ -81,6 +85,19 @@ public class Musin_Attack : PlayerAttack
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 4);
+
+            if (PlayerState.instance.isRight > 0)
+            {
+                shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
+                shotGun.transform.rotation = Quaternion.Euler(0, 0, -90);
+                shotGun.SetActive(true);
+            }
+            else
+            {
+                shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
+                shotGun.transform.rotation = Quaternion.Euler(0, 180, -90);
+                shotGun.SetActive(true);
+            }
 
             Debug.Log("아래 스킬 사용");
 

@@ -266,6 +266,7 @@ MonoBehaviour:
   dustEffect: {fileID: 0}
   slidedustEffect: {fileID: 0}
   jumpDustEffect: {fileID: 0}
+  airjumpDustEffect: {fileID: 0}
 --- !u!114 &4785944710395483702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +715,7 @@ Transform:
   m_GameObject: {fileID: 6115924602441622479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 0.71593755, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

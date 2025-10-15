@@ -40,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
     {
         // АјАн
         Attack();
+       
 
 
         if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.isGround)
@@ -133,6 +134,7 @@ public class PlayerAttack : MonoBehaviour
             AttackPress = false;
         }
     }
+
 
     private IEnumerator Co_Attack()
     {
