@@ -119,17 +119,24 @@ public class PlayerMove : MonoBehaviour
 
         if (isDashing)
         {
-            sprite.flipX = dashDir < 0;
+            //sprite.flipX = dashDir < 0;
         }
         else if (isWallJumping)
         {
-            // 벽 점프시 좌우 반전
-            sprite.flipX = wallDir > 0;
+            
+           if(wallDir > 0)
+            {
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
         else if (isWallSliding)
         {
             // 벽 슬라이딩시 좌우 반전
-            sprite.flipX = wallDir < 0;
+           // sprite.flipX = wallDir < 0;
             // 벽 슬라이딩 먼지 이펙트
             if (Mathf.Abs(rb.linearVelocity.y) > 0.1f)
             {

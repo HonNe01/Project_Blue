@@ -10,10 +10,8 @@ public class Musin_Attack : PlayerAttack
     public float knockbackYForce = 2f;
     public GameObject shotGun;
 
-    public GameObject _skill;
 
     [Header(" === Up Skill === ")]
-    public GameObject _upSkill;
     public GameObject boomPrefab;
     public Vector3 boomspawnpos;
     public float throwXForce = 5f;
@@ -21,7 +19,6 @@ public class Musin_Attack : PlayerAttack
 
 
     [Header(" === Down Skill === ")]
-    public GameObject _downSkill;
     public float downKnockbackYForce = 7f;
 
 
@@ -36,23 +33,8 @@ public class Musin_Attack : PlayerAttack
 
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
-            anim.SetBool("IsGround", PlayerState.instance.isGround);
             Debug.Log("일반 스킬 사용");
 
-
-            if (PlayerState.instance.isRight > 0)
-            {
-                shotGun.transform.position = gameObject.transform.position + new Vector3(1f, 0.5f, 0);
-                shotGun.transform.rotation = Quaternion.Euler(0, 0, 0);
-                shotGun.SetActive(true);
-            }
-            else
-            {
-                shotGun.transform.position = gameObject.transform.position + new Vector3(-1f, 0.5f, 0);
-                shotGun.transform.rotation = Quaternion.Euler(0, 180, 0);
-                shotGun.SetActive(true);
-            }
-            
 
             // 넉백
             rb.linearVelocity = Vector2.zero;
@@ -76,6 +58,24 @@ public class Musin_Attack : PlayerAttack
                 StartCoroutine(Co_DisableOtherAction(knockbackTime));
             }
 
+            
+
+        }
+    }
+
+    public void SkillEfectOn()
+    {
+        if (PlayerState.instance.isRight > 0)
+        {
+            shotGun.transform.position = gameObject.transform.position + new Vector3(1f, 0.5f, 0);
+            shotGun.transform.rotation = Quaternion.Euler(0, 0, 0);
+            shotGun.SetActive(true);
+        }
+        else
+        {
+            shotGun.transform.position = gameObject.transform.position + new Vector3(-1f, 0.5f, 0);
+            shotGun.transform.rotation = Quaternion.Euler(0, 180, 0);
+            shotGun.SetActive(true);
         }
     }
 
@@ -86,18 +86,7 @@ public class Musin_Attack : PlayerAttack
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 4);
 
-            if (PlayerState.instance.isRight > 0)
-            {
-                shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
-                shotGun.transform.rotation = Quaternion.Euler(0, 0, -90);
-                shotGun.SetActive(true);
-            }
-            else
-            {
-                shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
-                shotGun.transform.rotation = Quaternion.Euler(0, 180, -90);
-                shotGun.SetActive(true);
-            }
+            
 
             Debug.Log("아래 스킬 사용");
 
@@ -106,6 +95,22 @@ public class Musin_Attack : PlayerAttack
         }
     }
 
+
+    public void DownSkillEffectOn()
+    {
+        if (PlayerState.instance.isRight > 0)
+        {
+            shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
+            shotGun.transform.rotation = Quaternion.Euler(0, 0, -90);
+            shotGun.SetActive(true);
+        }
+        else
+        {
+            shotGun.transform.position = gameObject.transform.position + new Vector3(0, -0.3f, 0);
+            shotGun.transform.rotation = Quaternion.Euler(0, 180, -90);
+            shotGun.SetActive(true);
+        }
+    }
     public override void Skill_Up()
     {
         if (PlayerState.instance.UseGauge(20))
@@ -137,39 +142,5 @@ public class Musin_Attack : PlayerAttack
 
         EnableOtherAction();
     }
-
-
-    public override void SkillStart()
-    {
-        _skill.SetActive(true);    // 히트박스 활성화
-    }
-    public override void SkillEnd()
-    {
-        _skill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
-    }
-
-    public override void UpSkillStart()
-    {
-        _upSkill.SetActive(true);    // 히트박스 활성화
-    }
-
-    public override void UpSkillEnd()
-    {
-        _upSkill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
-    }
-
-    public override void DownSkillStart()
-    {
-        _downSkill.SetActive(true);    // 히트박스 활성화
-    }
-
-    public override void DownSkillEnd()
-    {
-        _downSkill.SetActive(false);   // 히트박스 비활성화
-        anim.SetInteger("AttackSkill", 0);
-    }
-
 
 }
