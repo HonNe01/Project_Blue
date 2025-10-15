@@ -5,26 +5,24 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header(" === Default Attack === ")]
     [Header("Attack Setting")]
+    private bool isAttack = false;
     public int maxCombo = 3;
     public int curCombo = 0;
-
-    private bool isAttack = false;
-
     public float comboTime = 1f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
-
     public GameObject _attack;
-    public GameObject _downattack;
+
+    [Header("High Attack")]
     public GameObject _upAttack;
 
+    [Header("Down Attack")]
+    public GameObject _downattack;
+    
 
-    [Header("StrongAttack")]
+    [Header("ChargeAttack")]
     private bool AttackPress = false;
     private float AttackTimer = 0f;
     private float AttackHoldTime = 0.5f;
-
-
-
 
     // 참조
     [HideInInspector] public Animator anim;
@@ -40,30 +38,29 @@ public class PlayerAttack : MonoBehaviour
     {
         // 공격
         Attack();
-       
-
-
+        
+        // 아래스킬
         if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.isGround)
         {
             Skill_Down();
             return;
         }
+        // 윗스킬
         else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F))
         {
             Skill_Up();
             return;
 
         }
+        // 일반스킬
         else if (Input.GetKeyDown(KeyCode.F))
         {
             Skill();
             return;
         }
-
-
     }
 
-        public void Attack()
+    public void Attack()
     {
         // 공격 실행
         if (Input.GetKeyDown(KeyCode.V) && PlayerState.instance.canAttack)
@@ -92,15 +89,9 @@ public class PlayerAttack : MonoBehaviour
                     StartCoroutine(Co_HighAttack(PlayerState.instance.isGround));
                     Debug.Log("Up Attack");
                 }
-                else if (Input.GetKey(KeyCode.DownArrow))   // 아래 공격
-                {
-                    StartCoroutine(Co_DownAttack());
-                }
                 else
                 {
                     StartCoroutine(Co_Attack());// 일반 공격
-
-
                 }
             }
         }
@@ -134,7 +125,6 @@ public class PlayerAttack : MonoBehaviour
             AttackPress = false;
         }
     }
-
 
     private IEnumerator Co_Attack()
     {
@@ -171,7 +161,12 @@ public class PlayerAttack : MonoBehaviour
             ResetCombo();
         }
     }
-
+    public void AttackStart() { _attack.SetActive(true); }   // 공격 애니메이션
+    public void AttackEnd()      // 공격 애니메이션 
+    {
+        _attack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
+    }
     private IEnumerator Co_JumpAttack()
     {
         anim.SetTrigger("Attack");
@@ -184,6 +179,12 @@ public class PlayerAttack : MonoBehaviour
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
     }
+    public void HighAttackStart() { _upAttack.SetActive(true); }    // 히트박스 활성화 
+    public void HighAttackEnd()
+    {
+        _upAttack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
+    }
 
     private IEnumerator Co_DownAttack()
     {
@@ -191,6 +192,12 @@ public class PlayerAttack : MonoBehaviour
         anim.SetTrigger("IsDown");
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
+    }
+    public void DownAttackStart() { _downattack.SetActive(true); } // 히트박스 활성화
+    public void DownAttackEnd()
+    {
+        _downattack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
     }
 
     private void ResetCombo()
@@ -201,85 +208,13 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill() // AttackSkill = 1
     {
-
         if (Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
         {
-
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
 
             Debug.Log("[PlayerAttack] 앞스킬 사용");
         }
-    }
-
-    public virtual void Skill_Up() // AttackSkill = 2
-    {
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
-        {
-
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 2);
-            Debug.Log("[PlayerAttack] 윗스킬 사용");
-        }
-    }
-
-
-
-    public virtual void Skill_Down() // AttackSkill = 4
-    {
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.UseGauge(20))
-        {
-
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 4);
-
-            Debug.Log("[PlayerAttack] 아랫스킬 사용");
-        }
-    }
-
-    public void EnableOtherAction()
-    {
-        PlayerState.instance.canMove = true;
-        PlayerState.instance.canHeal = true;
-        PlayerState.instance.canGuard = true;
-    }
-
-    public void DisableOtherAction()
-    {
-        PlayerState.instance.canMove = false;
-        PlayerState.instance.canHeal = false;
-        PlayerState.instance.canGuard = false;
-    }
-
-
-    public void AttackStart()    // 공격 애니메이션 
-    {
-        _attack.SetActive(true);    // 히트박스 활성화
-    }
-    public void AttackEnd()      // 공격 애니메이션 
-    {
-        _attack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
-    }
-
-    public void UpAttackStart()
-    {
-        _upAttack.SetActive(true);    // 히트박스 활성화
-    }
-    public void UpAttackEnd()
-    {
-        _upAttack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
-    }
-
-    public void DownAttackStart()
-    {
-        _downattack.SetActive(true);    // 히트박스 활성화
-    }
-    public void DownAttackEnd()
-    {
-        _downattack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
     }
 
     public virtual void SkillStart()
@@ -288,6 +223,17 @@ public class PlayerAttack : MonoBehaviour
     public virtual void SkillEnd()
     {
 
+    }
+
+    public virtual void Skill_Up() // AttackSkill = 2
+    {
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 2);
+
+            Debug.Log("[PlayerAttack] 윗스킬 사용");
+        }
     }
 
     public virtual void UpSkillStart()
@@ -300,16 +246,38 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    public virtual void Skill_Down() // AttackSkill = 3
+    {
+        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 3);
+
+            Debug.Log("[PlayerAttack] 아랫스킬 사용");
+        }
+    }
+
     public virtual void DownSkillStart()
     {
 
     }
-
     public virtual void DownSkillEnd()
     {
 
     }
 
+    public void EnableOtherAction()
+    {
+        PlayerState.instance.canMove = true;
+        PlayerState.instance.canHeal = true;
+        PlayerState.instance.canGuard = true;
+    }
+    public void DisableOtherAction()
+    {
+        PlayerState.instance.canMove = false;
+        PlayerState.instance.canHeal = false;
+        PlayerState.instance.canGuard = false;
+    }
 }
 
 

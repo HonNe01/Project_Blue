@@ -295,19 +295,23 @@ MonoBehaviour:
   curCombo: 0
   comboTime: 1
   _attack: {fileID: 6115924602441622479}
-  _downattack: {fileID: 3715023713301073391}
   _upAttack: {fileID: 7426174879121638492}
+  _downattack: {fileID: 3715023713301073391}
   anim: {fileID: 0}
   rb: {fileID: 0}
-  knockbackTime: 0.3
+  shotGunEffect: {fileID: 0}
   knockbackXForce: 7
   knockbackYForce: 2
-  shotGun: {fileID: 0}
+  knockbackTime: 0.3
+  skillOffsetX: 2
+  skillOffsetY: 0.5
   boomPrefab: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
-  boomspawnpos: {x: 0, y: 0, z: 0}
+  upSkillOffsetX: 1
+  upSkillOffsetY: 1
   throwXForce: 5
   throwYForce: 5
   downKnockbackYForce: 7
+  downSkillOffset: {x: 0, y: -0.5, z: 0}
 --- !u!1 &3715023713301073391
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +375,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -466,7 +470,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -639,7 +643,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

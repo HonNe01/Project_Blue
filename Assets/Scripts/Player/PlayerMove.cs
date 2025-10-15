@@ -184,17 +184,12 @@ public class PlayerMove : MonoBehaviour
         // 입력값 받기
         inputValueX = Input.GetAxisRaw("Horizontal");
 
-
-
         // 좌우 체크
         if (inputValueX != 0)
         {
             PlayerState.instance.isRight = inputValueX > 0 ? 1 : -1;
 
         }
-
-        
- 
     }
 
     private void MovePhysics()
@@ -239,10 +234,9 @@ public class PlayerMove : MonoBehaviour
         }
 
         // 점프버튼 누르면 버퍼 카운트 시작
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && PlayerState.instance.canJump)
         {
-            if (PlayerState.instance.canJump)
-                jumpBufferCounter = jumpBufferTime;
+            jumpBufferCounter = jumpBufferTime;
 
             //점프 이펙트
             if (PlayerState.instance.isGround)
@@ -253,15 +247,15 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 airjumpDustEffect.SetActive(true);
-                airjumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0); 
+                airjumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
             }
-
-
         }
         // 카운터 갱신
         else
+        {
             jumpBufferCounter -= Time.deltaTime;
-
+        }
+        
         // 짧은 점프 (점프 중 키를 떼면 즉시 떨어지도록 처리)
         if (Input.GetKeyUp(KeyCode.Z))
         {
@@ -323,6 +317,11 @@ public class PlayerMove : MonoBehaviour
         {
             jumpTimeCounter -= Time.deltaTime;
         }
+    }
+
+    public void JumpCountReset()
+    {
+        jumpCount = 0;
     }
 
     public IEnumerator WallJumpLock(float duration)
@@ -490,5 +489,4 @@ public class PlayerMove : MonoBehaviour
             isTouchingWall = false;
         }
     }
-
 }

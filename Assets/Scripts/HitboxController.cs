@@ -25,6 +25,11 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
+                    if (!PlayerState.instance.isGround)
+                    {
+                        // 공중에선 점프 초기화
+                        PlayerState.instance.playerMove.JumpCountReset();
+                    }
 
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
@@ -35,6 +40,11 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    if (!PlayerState.instance.isGround)
+                    {
+                        // 공중에선 점프 초기화
+                        PlayerState.instance.playerMove.JumpCountReset();
+                    }
 
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
@@ -62,7 +72,12 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
-
+                    if (!PlayerState.instance.isGround)
+                    {
+                        // 공중에선 점프 초기화
+                        PlayerState.instance.playerMove.JumpCountReset();
+                    }
+                    
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
                         enemy.TakeDamage(baseDamage);
@@ -72,6 +87,11 @@ public class HitboxController : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    if (!PlayerState.instance.isGround)
+                    {
+                        // 공중에선 점프 초기화
+                        PlayerState.instance.playerMove.JumpCountReset();
+                    }                    
 
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
