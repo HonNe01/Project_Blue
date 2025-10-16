@@ -77,7 +77,6 @@ public abstract class BossBase : MonoBehaviour
             case BossState.ChoosePattern:
                 // 패턴 선택
                 StartPattern();
-                state = BossState.Attacking;
 
                 break;
             case BossState.Attacking:
@@ -113,7 +112,7 @@ public abstract class BossBase : MonoBehaviour
     ///     - 체력 감소 / 사망 체크
     ///     - 페이즈 전환 체크
     /// </summary>
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (state == BossState.Die) return;
         if (isInvulnerable) return;     // I-Frame 중 무시
@@ -219,7 +218,10 @@ public abstract class BossBase : MonoBehaviour
         choose.lastUsedTime = Time.time;
 
         // 패턴 실행
+        state = BossState.Attacking;
         yield return StartCoroutine(choose.execute());
+
+        // 패턴 종료
         curPatternCoroutine = null;
         state = BossState.Idle;
     }

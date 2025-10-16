@@ -20,8 +20,9 @@ public class GildalBoss : BossBase
     public int groundLayer;
     [SerializeField] private float[] floorHeights;
     public float pattern_Delay = 0.35f;
-    [Tooltip("재은신 연출/대기 시간")]
+    [Tooltip("Stealth Setting")]
     public float reStealth_Delay = 1f;
+    private Coroutine co_Fade;
     [Header("Map Limits")]
     public float wallXMin = -20f;      // 벽 x좌표
     public float wallXMax = 20f;
@@ -29,7 +30,7 @@ public class GildalBoss : BossBase
     [Header(" === 1 Phase Patterns === ")]
     [Header("Swing")]
     public float swing_weight = 3f;         // 가중치
-    public float swing_cooldowwn = 2.0f;    // 대기시간
+    public float swing_cooldown = 2.0f;    // 대기시간
     public float swing_preDelay = 0.2f;     // 선딜
     public float swing_postDelay = 0.4f;    // 후딜
     [Tooltip("Swing 히트 박스 오브젝트")]
@@ -38,7 +39,7 @@ public class GildalBoss : BossBase
     [Header("Slam")]
     public float slam_weight = 3f;
     public float slam_height = 5f;          // 점프 높이
-    public float slam_cooldowwn = 2.0f;
+    public float slam_cooldown = 2.0f;
     public float slam_preDelay = 0.2f;
     public float slam_postDelay = 0.4f;
     [Tooltip("Slam 히트 박스 오브젝트")]
@@ -46,7 +47,7 @@ public class GildalBoss : BossBase
 
     [Header("Dokkaebi Orb")]
     public float dokkaebiOrb_weight = 3f;
-    public float dokkaebiOrb_cooldowwn = 2.0f;
+    public float dokkaebiOrb_cooldown = 2.0f;
     public float dokkaebiOrb_preDelay = 0.2f;
     public float dokkaebiOrb_postDelay = 0.4f;
     [Tooltip("Dokkaebi Orb Drone 프리펩")]
@@ -55,7 +56,7 @@ public class GildalBoss : BossBase
     [Header(" === 2 Phase Patterns === ")]
     [Header("Double Slash")]
     public float slash_weight = 3f;
-    public float slash_cooldowwn = 2.0f;
+    public float slash_cooldown = 2.0f;
     public float slash_preDelay = 0.2f;
     public float slash_postDelay = 0.4f;
     [Tooltip("Slash 히트 박스 오브젝트")]
@@ -64,7 +65,7 @@ public class GildalBoss : BossBase
     [Header("Jump Slash")]
     public float jumpSlash_weight = 3f;
     public float jumpSlash_height = 5f;          // 점프 높이
-    public float jumpSlash_cooldowwn = 2.0f;
+    public float jumpSlash_cooldown = 2.0f;
     public float jumpSlash_preDelay = 0.2f;
     public float jumpSlash_postDelay = 0.4f;
     [Tooltip("Slam 히트 박스 오브젝트")]
@@ -72,7 +73,7 @@ public class GildalBoss : BossBase
 
     [Header("Enhanced Dokkaebi Orb")]
     public float eDokkaebiOrb_weight = 3f;
-    public float eDokkaebiOrb_cooldowwn = 2.0f;
+    public float eDokkaebiOrb_cooldown = 2.0f;
     public float eDokkaebiOrb_preDelay = 0.2f;
     public float eDokkaebiOrb_postDelay = 0.4f;
 
@@ -120,33 +121,33 @@ public class GildalBoss : BossBase
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern {name = "Swing", 
                                             weight = swing_weight, 
-                                            cooldown = swing_cooldowwn, 
+                                            cooldown = swing_cooldown, 
                                             execute = () => Co_Swing() });
         swing_Hitbox.SetActive(false);
         phase1Patterns.Add(new BossPattern {name = "Slam", 
                                             weight = slam_weight, 
-                                            cooldown = slam_cooldowwn, 
+                                            cooldown = slam_cooldown, 
                                             execute = () => Co_Slam() });
         slam_Hitbox.SetActive(false);
         phase1Patterns.Add(new BossPattern {name = "DokkaebiOrb", 
-                                            weight = dokkaebiOrb_cooldowwn, 
-                                            cooldown = dokkaebiOrb_cooldowwn, 
+                                            weight = dokkaebiOrb_weight, 
+                                            cooldown = dokkaebiOrb_cooldown, 
                                             execute = () => Co_DokkaebiOrb() });
 
         // ---- 페이즈2 패턴 등록 ----
         phase2Patterns.Add(new BossPattern {name = "DoubleSlash", 
                                             weight = slash_weight, 
-                                            cooldown = slash_cooldowwn, 
+                                            cooldown = slash_cooldown, 
                                             execute = () => Co_DoubleSlash() });
         slash_Hitbox.SetActive(false);
         phase2Patterns.Add(new BossPattern {name = "JumpSlash", 
                                             weight = jumpSlash_weight, 
-                                            cooldown = jumpSlash_cooldowwn, 
+                                            cooldown = jumpSlash_cooldown, 
                                             execute = () => Co_JumpSlash() });
         jumpSlash_Hitbox.SetActive(false);
         phase2Patterns.Add(new BossPattern {name = "EnhanceDokkaebi", 
                                             weight = eDokkaebiOrb_weight, 
-                                            cooldown = eDokkaebiOrb_cooldowwn, 
+                                            cooldown = eDokkaebiOrb_cooldown, 
                                             execute = () => Co_EDokkaebiOrb() });
 
         // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
@@ -158,7 +159,12 @@ public class GildalBoss : BossBase
         if (phaseChange)
         {
             phaseChange = false;
-            StartCoroutine(Co_PhaseChange());
+            // 페이즈 변경
+            yield return StartCoroutine(Co_PhaseChange());
+
+            // 패턴 재개
+            state = BossState.Idle;
+            curPatternCoroutine = null;
             yield break;
         }
 
@@ -189,6 +195,48 @@ public class GildalBoss : BossBase
         curPatternCoroutine = null;
     }
 
+    // 페이즈 변경
+    protected override IEnumerator Co_PhaseChange()
+    {
+        Debug.Log("[Gildal] 페이즈 전환");
+        state = BossState.Directing;
+
+        // 1) 플레이어 근처로 이동
+        MoveTo(5f);
+        FlipX();
+
+        // 2) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
+
+        // 3) 페이즈 변경 연출
+        anim?.SetTrigger("PhaseChange");
+        yield return null;
+        float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+        yield return new WaitForSeconds(animLength);
+        yield return null;
+
+        // 4) Animator Layer 변경
+        anim?.SetLayerWeight(2, 1f);
+        anim?.SetLayerWeight(1, 0f);
+
+        /* 5) 페이즈 시작 연출
+        anim?.SetTrigger("PhaseChaange");
+        yield return null;
+        animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);
+        yield return null;
+        */
+
+        // 6) 재은신
+        yield return StartCoroutine(Co_DoStealth());
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
+
+        // 7) 페이즈 변경 종료
+        inPhase2 = true;
+        Debug.Log("[Gildal] 2페이즈 돌입");
+    }
+
     // 은신 기믹
     private IEnumerator Co_DoStealth()
     {
@@ -197,48 +245,39 @@ public class GildalBoss : BossBase
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
 
         // 은신 로직
-        if (sprite != null)
-        {
-            float elapsed = 0f;
-            Color c = sprite.color;
+        if (co_Fade != null) StopCoroutine(co_Fade);
+        co_Fade = StartCoroutine(Co_Fade(sprite.color.a, 0f, reStealth_Delay));
 
-            while (elapsed < reStealth_Delay)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
-                c.a = Mathf.Lerp(1f, 0f, t);
-                sprite.color = c;
-                yield return null;
-            }
-
-            c.a = 0f;
-            sprite.color = c;
-        }
+        yield return co_Fade;
     }
     private IEnumerator Co_EndStealth()
     {
         // 은신 해제 로직
-        if (sprite != null)
-        {
-            float elapsed = 0f;
-            Color c = sprite.color;
+        if (co_Fade != null) StopCoroutine(co_Fade);
+        co_Fade = StartCoroutine(Co_Fade(sprite.color.a, 1f, reStealth_Delay));
 
-            while (elapsed < reStealth_Delay)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / reStealth_Delay);
-                c.a = Mathf.Lerp(0f, 1f, t);
-                sprite.color = c;
-                yield return null;
-            }
-
-            c.a = 1f;
-            sprite.color = c;
-        }
+        yield return co_Fade;
 
         // 피격 판정 설정
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
+    }
+
+    // 은신 로직
+    private IEnumerator Co_Fade(float from, float to, float duration)
+    {
+        float t = 0f;
+        var color = sprite.color;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(from, to, t / duration);
+            sprite.color = color;
+
+            yield return null;
+        }
+        color.a = to; 
+        sprite.color = color;
     }
 
     // 좌우 반전
@@ -418,57 +457,6 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_DoStealth());
     }
 
-#if UNITY_EDITOR
-    [ContextMenu("Test Damage 10")]
-    public void TestTakeDamage()    // 테스트용 데미지 10
-    {
-        TakeDamage(10);
-    }
-#endif
-
-    // 페이즈 변경
-    protected override IEnumerator Co_PhaseChange()
-    {
-        Debug.Log("[Gildal] 페이즈 전환");
-        state = BossState.Directing;
-
-        // 1) 플레이어 근처로 이동
-        MoveTo(5f);
-        FlipX();
-
-        // 2) 은신 해제
-        yield return StartCoroutine(Co_EndStealth());
-        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
-
-        // 3) 페이즈 변경 연출
-        anim?.SetTrigger("PhaseChange");
-        yield return null;
-        float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
-        yield return new WaitForSeconds(animLength);
-        yield return null;
-
-        // 4) Animator Layer 변경
-        anim?.SetLayerWeight(2, 1f);
-        anim?.SetLayerWeight(1, 0f);
-
-        /* 5) 페이즈 시작 연출
-        anim?.SetTrigger("PhaseChaange");
-        yield return null;
-        animLength = anim.GetCurrentAnimatorStateInfo(2).length;
-        yield return new WaitForSeconds(animLength);
-        yield return null;
-        */
-
-        // 6) 재은신
-        yield return StartCoroutine(Co_DoStealth());
-        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
-        
-        // 7) 페이즈 변경 종료
-        inPhase2 = true;
-        state = BossState.Idle;
-        Debug.Log("[Gildal] 2페이즈 돌입");
-    }
-
     // 2페이즈 패턴
     private IEnumerator Co_DoubleSlash()
     {
@@ -476,7 +464,7 @@ public class GildalBoss : BossBase
 
         // 1) 플레이어 위치로 이동
         MoveTo(2f);
-        FlipX(swing_Hitbox);
+        FlipX(slash_Hitbox);
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
@@ -589,7 +577,7 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(eDokkaebiOrb_postDelay);
     }
 
-    new public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
         CheckSpecialTrigger();
