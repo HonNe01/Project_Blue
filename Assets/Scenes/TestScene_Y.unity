@@ -1047,10 +1047,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musin Effect Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 4364466178451848582, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
-      propertyPath: m_TagString
-      value: PlayerAttack
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1129,42 +1125,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_MuSin
       objectReference: {fileID: 0}
-    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: skillEffect
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: shotGunEffect
-      value: 
       objectReference: {fileID: 2035995010}
-    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: skillUpPrefab
-      value: 
-      objectReference: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
-    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: SkillUpOffsetX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: SkillUpOffsetY
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: skillDownEffect
       value: 
       objectReference: {fileID: 1484296187}
-    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
-      propertyPath: skillDownOffset.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3038832706818918881, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: dustEffect
       value: 
@@ -1244,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 15.8125
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x

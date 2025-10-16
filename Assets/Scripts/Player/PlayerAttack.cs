@@ -12,7 +12,11 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttack = false;
     
     
-    public GameObject _attack;
+    public GameObject _attack1;
+    public GameObject _attack2;
+    public GameObject _attack3;
+    public GameObject _chargeAttack;
+    public GameObject _jumpAttack;
 
     [Header("High Attack")]
     public GameObject _upAttack;
@@ -177,16 +181,53 @@ public class PlayerAttack : MonoBehaviour
         curCombo = 0;
         anim.SetInteger("AttackCombo", 0);
     }
-    public void AttackStart() 
+    public void Attack1Start() 
     { 
-        _attack.SetActive(true); 
+        _attack1.SetActive(true); 
     }   
-    public void AttackEnd()
+    public void Attack1End()
     {
-        _attack.SetActive(false);
+        _attack1.SetActive(false);
         isAttack = false;
     }
-    
+    public void Attack2Start()
+    {
+        _attack2.SetActive(true);
+    }
+    public void Attack2End()
+    {
+        _attack2.SetActive(false);
+        isAttack = false;
+    }
+    public void Attack3Start()
+    {
+        _attack3.SetActive(true);
+    }
+    public void Attack3End()
+    {
+        _attack3.SetActive(false);
+        isAttack = false;
+    }
+
+    public void ChargeAttackStart()
+    {
+        _chargeAttack.SetActive(true);
+    }
+    public void ChargeAttackEnd()
+    {
+        _chargeAttack.SetActive(false);
+        isAttack = false;
+    }
+    public void JumpAttackStart()
+    {
+        _jumpAttack.SetActive(true);
+        isAttack = false;
+    }
+    public void JumpAttackEnd()
+    {
+        _jumpAttack.SetActive(false);
+        isAttack = false;
+    }
     private IEnumerator Co_JumpAttack()                 // 점프 공격
     {
         anim.SetTrigger("Attack");
