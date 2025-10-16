@@ -5,11 +5,12 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header(" === Default Attack === ")]
     [Header("Attack Setting")]
-    private bool isAttack = false;
     public int maxCombo = 3;
     public int curCombo = 0;
     public float comboTime = 1f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
+    private bool isAttack = false;
+    
     public GameObject _attack;
 
     [Header("High Attack")]
@@ -129,9 +130,8 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Co_Attack()
     {
         // 상태 정리
-        curCombo++;
         isAttack = true;
-        lastAttackTime = Time.time;
+        curCombo++;
         rb.linearVelocity = Vector2.zero;
         
         // 공격 애니메이션 실행
@@ -160,50 +160,64 @@ public class PlayerAttack : MonoBehaviour
         {
             ResetCombo();
         }
-    }
-    public void AttackStart() { _attack.SetActive(true); }   // 공격 애니메이션
-    public void AttackEnd()      // 공격 애니메이션 
-    {
-        _attack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
-    }
-    private IEnumerator Co_JumpAttack()
-    {
-        anim.SetTrigger("Attack");
-        yield return new WaitForEndOfFrame();
-    }
-
-    private IEnumerator Co_HighAttack(bool isGround)
-    {
-        anim.SetTrigger("IsUp");
-        anim.SetTrigger("Attack");
-        yield return new WaitForEndOfFrame();
-    }
-    public void HighAttackStart() { _upAttack.SetActive(true); }    // 히트박스 활성화 
-    public void HighAttackEnd()
-    {
-        _upAttack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
-    }
-
-    private IEnumerator Co_DownAttack()
-    {
-        Debug.Log("Down Attack Animation");
-        anim.SetTrigger("IsDown");
-        anim.SetTrigger("Attack");
-        yield return new WaitForEndOfFrame();
-    }
-    public void DownAttackStart() { _downattack.SetActive(true); } // 히트박스 활성화
-    public void DownAttackEnd()
-    {
-        _downattack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
+        else
+        {
+            lastAttackTime = Time.time;
+        }
     }
 
     private void ResetCombo()
     {
         curCombo = 0;
         anim.SetInteger("AttackCombo", 0);
+    }
+    public void AttackStart() 
+    { 
+        _attack.SetActive(true); 
+    }   
+    public void AttackEnd()
+    {
+        _attack.SetActive(false);
+        isAttack = false;
+    }
+    
+    private IEnumerator Co_JumpAttack()                 // 점프 공격
+    {
+        anim.SetTrigger("Attack");
+        yield return new WaitForEndOfFrame();
+    }
+
+    private IEnumerator Co_HighAttack(bool isGround)    // 윗 공격
+    {
+        anim.SetTrigger("IsUp");
+        anim.SetTrigger("Attack");
+        yield return new WaitForEndOfFrame();
+    }
+    public void HighAttackStart() 
+    { 
+        _upAttack.SetActive(true); 
+    }
+    public void HighAttackEnd()
+    {
+        _upAttack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
+    }
+
+    private IEnumerator Co_DownAttack()                 // 아래 공격
+    {
+        Debug.Log("Down Attack Animation");
+        anim.SetTrigger("IsDown");
+        anim.SetTrigger("Attack");
+        yield return new WaitForEndOfFrame();
+    }
+    public void DownAttackStart() 
+    { 
+        _downattack.SetActive(true); 
+    }
+    public void DownAttackEnd()
+    {
+        _downattack.SetActive(false);   // 히트박스 비활성화
+        isAttack = false;
     }
 
     public virtual void Skill() // AttackSkill = 1
@@ -235,12 +249,10 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("[PlayerAttack] 윗스킬 사용");
         }
     }
-
     public virtual void UpSkillStart()
     {
 
     }
-
     public virtual void UpSkillEnd()
     {
 
@@ -256,7 +268,6 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("[PlayerAttack] 아랫스킬 사용");
         }
     }
-
     public virtual void DownSkillStart()
     {
 

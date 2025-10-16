@@ -90,15 +90,15 @@ public class Musin_Attack : PlayerAttack
             anim.SetInteger("AttackSkill", 2);
             Debug.Log("À­½ºÅ³ »ç¿ë");
             GameObject grenade = Instantiate(boomPrefab, transform.position + new Vector3(upSkillOffsetX, upSkillOffsetY, 0), Quaternion.identity);
-            Rigidbody2D rb = grenade.GetComponent<Rigidbody2D>();
+            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
 
             if (PlayerState.instance.isRight > 0)
             {
-                rb.AddForce(new Vector2(throwXForce, throwYForce), ForceMode2D.Impulse);
+                grenadeRb.AddForce(new Vector2(throwXForce, throwYForce), ForceMode2D.Impulse);
             }
             else
             {
-                rb.AddForce(new Vector2(-throwXForce, throwYForce), ForceMode2D.Impulse);
+                grenadeRb.AddForce(new Vector2(-throwXForce, throwYForce), ForceMode2D.Impulse);
             }
         }
     }
