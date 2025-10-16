@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
     private bool isAttack = false;
     
+    
     public GameObject _attack;
 
     [Header("High Attack")]
@@ -70,7 +71,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.UpArrow))          // 윗 공격
                 {
-                    StartCoroutine(Co_HighAttack(PlayerState.instance.isGround));
+                    StartCoroutine(Co_UpAttack(PlayerState.instance.isGround));
                     Debug.Log("Up Attack");
                 }
                 else if (Input.GetKey(KeyCode.DownArrow))   // 아래 공격
@@ -87,12 +88,13 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.UpArrow))          // 윗 공격
                 {
-                    StartCoroutine(Co_HighAttack(PlayerState.instance.isGround));
+                    StartCoroutine(Co_UpAttack(PlayerState.instance.isGround));
                     Debug.Log("Up Attack");
                 }
                 else
                 {
-                    StartCoroutine(Co_Attack());// 일반 공격
+
+                        StartCoroutine(Co_Attack());// 일반 공격
                 }
             }
         }
@@ -138,11 +140,14 @@ public class PlayerAttack : MonoBehaviour
         anim.SetTrigger("Attack");
         anim.SetInteger("AttackCombo", curCombo);
 
+        yield return null;
         yield return new WaitForEndOfFrame();
 
         // 공격 중 멈춤
         float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
         float timer = 0;
+
+
 
         while (attackTime > timer)
         {
@@ -162,6 +167,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
+
             lastAttackTime = Time.time;
         }
     }
@@ -187,17 +193,17 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    private IEnumerator Co_HighAttack(bool isGround)    // 윗 공격
+    private IEnumerator Co_UpAttack(bool isGround)    // 윗 공격
     {
         anim.SetTrigger("IsUp");
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();
     }
-    public void HighAttackStart() 
+    public void UpAttackStart() 
     { 
         _upAttack.SetActive(true); 
     }
-    public void HighAttackEnd()
+    public void UpAttackEnd()
     {
         _upAttack.SetActive(false);   // 히트박스 비활성화
         isAttack = false;

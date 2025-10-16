@@ -57,7 +57,7 @@ public class HitboxController : MonoBehaviour
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
                     PlayerState.instance.TakeDamage(baseDamage);
-                }
+                } 
                 break;
         }
     }

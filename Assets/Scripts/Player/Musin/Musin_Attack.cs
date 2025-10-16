@@ -4,29 +4,30 @@ using UnityEngine;
 public class Musin_Attack : PlayerAttack
 {
     [Header(" === Default Skill === ")]
-    public GameObject shotGunEffect;
+    public GameObject skillEffect;
     [Header("Skill Power")]
-    public float knockbackXForce = 7f;
-    public float knockbackYForce = 2f;
-    public float knockbackTime = 0.3f;
+    public float skillknockbackXForce = 7f;
+    public float skillknockbackYForce = 2f;
+    public float skillknockbackTime = 0.3f;
     [Header("Skill Offset")]
     public float skillOffsetX;
     public float skillOffsetY;
 
 
     [Header(" === Up Skill === ")]
-    public GameObject boomPrefab;
+    public GameObject skillUpPrefab;
     [Header("Up Skill Offset")]
-    public float upSkillOffsetX;
-    public float upSkillOffsetY;
+    public float SkillUpOffsetX;
+    public float SkillUpOffsetY;
     [Header("Up Skill Power")]
-    public float throwXForce = 5f;
-    public float throwYForce = 5f;
+    public float skillUpthrowXForce = 5f;
+    public float skillUpthrowYForce = 5f;
 
 
     [Header(" === Down Skill === ")]
-    public float downKnockbackYForce = 7f;
-    [SerializeField] private Vector3 downSkillOffset;
+    public float skillDownKnockbackYForce = 7f;
+    [SerializeField] private Vector3 skillDownOffset;
+    public GameObject skillDownEffect;
 
 
     public override void Skill()
@@ -43,22 +44,22 @@ public class Musin_Attack : PlayerAttack
             rb.linearVelocity = Vector2.zero;
             if (!PlayerState.instance.isGround)
             {
-                StartCoroutine(Co_DisableOtherAction(knockbackTime));
+                StartCoroutine(Co_DisableOtherAction(skillknockbackTime));
 
                 if (PlayerState.instance.isRight > 0)
                 {
-                    rb.AddForce(new Vector2(-knockbackXForce, knockbackYForce), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(-skillknockbackXForce, skillknockbackYForce), ForceMode2D.Impulse);
 
                 }
                 else
                 {
-                    rb.AddForce(new Vector2(knockbackXForce, knockbackYForce), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(skillknockbackXForce, skillknockbackYForce), ForceMode2D.Impulse);
 
                 }
             }
             else
             {
-                StartCoroutine(Co_DisableOtherAction(knockbackTime));
+                StartCoroutine(Co_DisableOtherAction(skillknockbackTime));
             }
 
             
@@ -70,15 +71,15 @@ public class Musin_Attack : PlayerAttack
     {
         if (PlayerState.instance.isRight > 0)
         {
-            shotGunEffect.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
-            shotGunEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
-            shotGunEffect.SetActive(true);
+            skillEffect.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+            skillEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+            skillEffect.SetActive(true);
         }
         else
         {
-            shotGunEffect.transform.position = gameObject.transform.position + new Vector3(-skillOffsetX, skillOffsetY, 0);
-            shotGunEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
-            shotGunEffect.SetActive(true);
+            skillEffect.transform.position = gameObject.transform.position + new Vector3(-skillOffsetX, skillOffsetY, 0);
+            skillEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+            skillEffect.SetActive(true);
         }
     }
 
@@ -89,16 +90,16 @@ public class Musin_Attack : PlayerAttack
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
             Debug.Log("윗스킬 사용");
-            GameObject grenade = Instantiate(boomPrefab, transform.position + new Vector3(upSkillOffsetX, upSkillOffsetY, 0), Quaternion.identity);
+            GameObject grenade = Instantiate(skillUpPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
             Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
 
             if (PlayerState.instance.isRight > 0)
             {
-                grenadeRb.AddForce(new Vector2(throwXForce, throwYForce), ForceMode2D.Impulse);
+                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
             else
             {
-                grenadeRb.AddForce(new Vector2(-throwXForce, throwYForce), ForceMode2D.Impulse);
+                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
         }
     }
@@ -113,7 +114,7 @@ public class Musin_Attack : PlayerAttack
             Debug.Log("아래 스킬 사용");
 
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(0f, downKnockbackYForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0f, skillDownKnockbackYForce), ForceMode2D.Impulse);
         }
     }
 
@@ -121,15 +122,15 @@ public class Musin_Attack : PlayerAttack
     {
         if (PlayerState.instance.isRight > 0)
         {
-            shotGunEffect.transform.position = gameObject.transform.position + downSkillOffset;
-            shotGunEffect.transform.rotation = Quaternion.Euler(0, 0, -90);
-            shotGunEffect.SetActive(true);
+            skillDownEffect.transform.position = gameObject.transform.position + skillDownOffset;
+            skillDownEffect.transform.rotation = Quaternion.Euler(0, 0, -90);
+            skillDownEffect.SetActive(true);
         }
         else
         {
-            shotGunEffect.transform.position = gameObject.transform.position + downSkillOffset;
-            shotGunEffect.transform.rotation = Quaternion.Euler(0, 180, -90);
-            shotGunEffect.SetActive(true);
+            skillDownEffect.transform.position = gameObject.transform.position + skillDownOffset;
+            skillDownEffect.transform.rotation = Quaternion.Euler(0, 180, -90);
+            skillDownEffect.SetActive(true);
         }
     }
     

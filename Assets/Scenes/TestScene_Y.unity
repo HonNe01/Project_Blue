@@ -717,6 +717,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5321469983789882385, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
   m_PrefabInstance: {fileID: 713028813180640257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484296187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2699658809973287815, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+  m_PrefabInstance: {fileID: 713028813180640257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1649704192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musin Effect Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4364466178451848582, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1120,10 +1129,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_MuSin
       objectReference: {fileID: 0}
+    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: skillEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: shotGunEffect
       value: 
       objectReference: {fileID: 2035995010}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: skillUpPrefab
+      value: 
+      objectReference: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: SkillUpOffsetX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: SkillUpOffsetY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: skillDownEffect
+      value: 
+      objectReference: {fileID: 1484296187}
+    - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: skillDownOffset.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3038832706818918881, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: dustEffect
       value: 
@@ -1203,7 +1244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 6.75
+      value: 15.8125
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1250,83 +1291,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
---- !u!1001 &8240642965539381490
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1116658814278776765, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_Name
-      value: Player_MoonSin
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116658814278776765, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.37533
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.25004
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036112653013000339, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111206095679435112, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: dustEffect
-      value: 
-      objectReference: {fileID: 308204104}
-    - target: {fileID: 8111206095679435112, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: jumpDustEffect
-      value: 
-      objectReference: {fileID: 1388862672}
-    - target: {fileID: 8111206095679435112, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: slidedustEffect
-      value: 
-      objectReference: {fileID: 1047614107}
-    - target: {fileID: 8111206095679435112, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
-      propertyPath: airjumpDustEffect
-      value: 
-      objectReference: {fileID: 677547935}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6e7bdda8f30abfd4e92c1b444a500370, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1338,7 +1302,6 @@ SceneRoots:
   - {fileID: 1182628859115212026}
   - {fileID: 5287664}
   - {fileID: 3428426610609118096}
-  - {fileID: 8240642965539381490}
   - {fileID: 713028813180640257}
   - {fileID: 1953410975}
   - {fileID: 579018946}
