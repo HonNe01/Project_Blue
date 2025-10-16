@@ -231,6 +231,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_MuSin
       objectReference: {fileID: 0}
+    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601801381034097962, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2995258539916941256, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: shotGun
       value: 
@@ -251,6 +259,10 @@ PrefabInstance:
       propertyPath: airjumpDustEffect
       value: 
       objectReference: {fileID: 1461656304}
+    - target: {fileID: 6115924602441622479, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.66
@@ -973,6 +985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2124582058623581700, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2949560023103717438, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
