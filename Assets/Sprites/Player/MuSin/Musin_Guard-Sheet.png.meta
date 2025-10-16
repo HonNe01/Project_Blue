@@ -148,12 +148,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 0
         y: 0
-        width: 22
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_1
       rect:
         serializedVersion: 2
-        x: 94
+        x: 80
         y: 0
-        width: 37
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_2
       rect:
         serializedVersion: 2
-        x: 175
+        x: 160
         y: 0
-        width: 42
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -214,12 +214,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_3
       rect:
         serializedVersion: 2
-        x: 255
+        x: 240
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_4
       rect:
         serializedVersion: 2
-        x: 335
+        x: 320
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,12 +258,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_5
       rect:
         serializedVersion: 2
-        x: 415
+        x: 400
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -280,12 +280,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_6
       rect:
         serializedVersion: 2
-        x: 495
+        x: 480
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_7
       rect:
         serializedVersion: 2
-        x: 575
+        x: 560
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_8
       rect:
         serializedVersion: 2
-        x: 655
+        x: 640
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_9
       rect:
         serializedVersion: 2
-        x: 735
+        x: 720
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -368,12 +368,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_10
       rect:
         serializedVersion: 2
-        x: 815
+        x: 800
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -390,12 +390,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_11
       rect:
         serializedVersion: 2
-        x: 894
+        x: 880
         y: 0
-        width: 39
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -412,12 +412,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_12
       rect:
         serializedVersion: 2
-        x: 974
+        x: 960
         y: 0
-        width: 39
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -434,12 +434,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_13
       rect:
         serializedVersion: 2
-        x: 1055
+        x: 1040
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_14
       rect:
         serializedVersion: 2
-        x: 1135
+        x: 1120
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -478,12 +478,12 @@ TextureImporter:
       name: Musin_Guard-Sheet_15
       rect:
         serializedVersion: 2
-        x: 1215
+        x: 1200
         y: 0
-        width: 42
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 80
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -500,7 +500,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8a5dece3109c8416d90e5f2de08454cf
     internalID: 0
     vertices: []
     indices: 
@@ -508,7 +508,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Musin_Guard-Sheet_0: 2510575362526617251
       Musin_Guard-Sheet_1: 5342159136284386991
