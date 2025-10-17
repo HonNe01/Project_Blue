@@ -7,11 +7,12 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Setting")]
     public int maxCombo = 3;
     public int curCombo = 0;
-    public float comboTime = 1f;            // 콤보 유지 시간
+    public float comboTime = 1.5f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
     private bool isAttack = false;
-    
-    
+    private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
+
+
     public GameObject _attack1;
     public GameObject _attack2;
     public GameObject _attack3;
@@ -68,6 +69,11 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
+        // 콤보 시간 초과 -> 초기화
+        if (Time.time - lastAttackTime > comboTime)
+        {
+            ResetCombo();
+        }
         // 공격 실행
         if (Input.GetKeyDown(KeyCode.V) && PlayerState.instance.canAttack)
         {
@@ -103,77 +109,80 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        // 콤보 시간 초과 -> 초기화
-        if (Time.time - lastAttackTime > comboTime)
-        {
-            ResetCombo();
-        }
-
-        // 강공격
-        if (Input.GetKey(KeyCode.V))
-        {
-            isAttack = true;
-            if (!AttackPress)
-            {
-                AttackTimer += Time.deltaTime;
-                if (AttackTimer >= AttackHoldTime)
-                {
-                    Debug.Log("강공격 준비완료");
-                    AttackPress = true;
-                }
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.V))
-        {
-            anim.SetTrigger("Attack");
-            anim.SetTrigger("ChargeAttack");
-            isAttack = false;
-            AttackTimer = 0f;
-            AttackPress = false;
-        }
+        
     }
 
     private IEnumerator Co_Attack()
     {
-        // 상태 정리
-        isAttack = true;
-        curCombo++;
-        rb.linearVelocity = Vector2.zero;
-        
-        // 공격 애니메이션 실행
-        anim.SetTrigger("Attack");
-        anim.SetInteger("AttackCombo", curCombo);
+        if(isAttack) yield break;
 
-        yield return null;
-        yield return new WaitForEndOfFrame();
-
-        // 공격 중 멈춤
-        float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
-        float timer = 0;
-
-
-
-        while (attackTime > timer)
+            isAttack = true;
+            AttackTimer = 0f;
+        if (curCombo == 0)
         {
-            DisableOtherAction();
-            timer += Time.deltaTime;
+            curCombo++;
+        }
+
+
+        while (Input.GetKey(KeyCode.V))
+        {
+            AttackTimer += Time.deltaTime;
             yield return null;
         }
+        rb.linearVelocity = Vector2.zero;
 
-        // 멈춤 해제
-        EnableOtherAction();
-        isAttack = false;
 
-        // 콤보 완료 -> 초기화
-        if (curCombo >= maxCombo)
+        if (AttackTimer >= AttackHoldTime)
         {
-            ResetCombo();
+            anim.SetTrigger("Attack");
+            anim.SetTrigger("ChargeAttack");
+            Debug.Log("강공격 준비 완료");
         }
-        else
+        else 
         {
-
-            lastAttackTime = Time.time;
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackCombo", curCombo);
+            Debug.Log("일반공격 실행");
         }
+
+                yield return null;
+                yield return new WaitForEndOfFrame();
+
+                // 공격 중 멈춤
+                float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
+                float timer = 0f;
+
+
+                
+                while (attackTime > timer)
+                {
+                    DisableOtherAction();
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
+
+                // 멈춤 해제
+                EnableOtherAction();
+                isAttack = false;
+                AttackTimer = 0f;
+
+                // 콤보 완료 -> 초기화
+                if (curCombo >= maxCombo)
+                {
+                    ResetCombo();
+                }
+                else
+                {
+
+                    lastAttackTime = Time.time;
+                }
+            }
+
+    private void AddCombo()
+    { 
+        curCombo++;
+        lastAttackTime = Time.time;
+        Debug.Log($"콤보 증가 {curCombo}");
     }
 
     private void ResetCombo()
