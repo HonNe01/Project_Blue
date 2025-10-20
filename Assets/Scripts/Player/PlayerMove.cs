@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
-    [SerializeField] private int jumpCount = 0;          // 현재 점프 횟수
+    [SerializeField] public int jumpCount = 0;          // 현재 점프 횟수
     private int maxJumps = 2;           // 최대 점프 횟수
     //private bool isDroppingDown = false;// 아래 점프 중인지 체크
     private float jumpTimeCounter;      // 점프 키 유지 시간 카운트

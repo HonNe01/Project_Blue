@@ -7,6 +7,7 @@ public class HitboxController : MonoBehaviour
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitbotType type;
 
+
     private float bounceForce = 10f;
 
 
@@ -52,7 +53,7 @@ public class HitboxController : MonoBehaviour
                     if (!PlayerState.instance.isGround)
                     {
                         AttackBounce();
-                        PlayerState.instance.playerMove.JumpCountReset();
+                        PlayerState.instance.playerMove.jumpCount = 1;
                     }
 
                     var enemy = collision.GetComponent<BossBase>();
@@ -124,7 +125,7 @@ public class HitboxController : MonoBehaviour
                     if (!PlayerState.instance.isGround)
                     {
                         AttackBounce();
-                        PlayerState.instance.playerMove.JumpCountReset();
+                        PlayerState.instance.playerMove.jumpCount = 1;
                     }
 
                     var enemy = collision.gameObject.GetComponent<BossBase>();

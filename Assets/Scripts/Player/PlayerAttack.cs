@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
     private bool isAttack = false;
     private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
+    private bool isCharge = false;  
 
 
     public GameObject _attack1;
@@ -129,6 +130,11 @@ public class PlayerAttack : MonoBehaviour
         while (Input.GetKey(KeyCode.V))
         {
             AttackTimer += Time.deltaTime;
+            if (AttackTimer >= AttackHoldTime && !isCharge)
+            {
+                isCharge = true;
+                Debug.Log("차지공격 준비");
+            }
             yield return null;
         }
         
@@ -138,7 +144,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             anim.SetTrigger("ChargeAttack");
-            Debug.Log("강공격 준비 완료");
+            Debug.Log("차지공격 실행");
         }
         else 
         {
@@ -158,29 +164,30 @@ public class PlayerAttack : MonoBehaviour
 
 
                 
-                while (attackTime > timer)
-                {
-                    DisableOtherAction();
-                    timer += Time.deltaTime;
-                    yield return null;
-                }
+        while (attackTime > timer)
+        {
+            DisableOtherAction();
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
-                // 멈춤 해제
-                EnableOtherAction();
-                isAttack = false;
-                AttackTimer = 0f;
+        // 멈춤 해제
+        EnableOtherAction();
+        isAttack = false;   
+        isCharge = false;
+        AttackTimer = 0f;
 
-                // 콤보 완료 -> 초기화
-                if (curCombo >= maxCombo)
-                {
-                    ResetCombo();
-                }
-                else
-                {
+        // 콤보 완료 -> 초기화
+        if (curCombo >= maxCombo)
+        {
+            ResetCombo();
+        }
+        else
+        {
 
-                    lastAttackTime = Time.time;
-                }
-            }
+            lastAttackTime = Time.time;
+        }
+    }
 
     private void AddCombo()
     {
