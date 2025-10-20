@@ -22,6 +22,7 @@ public class PlayerState : MonoBehaviour
 
     [Header("=== Player State ===")]
     [Header("State")]
+    [SerializeField] private float damagedTime;
     public bool isDamaged = false;
     public bool isDie = false;
 
@@ -189,7 +190,7 @@ public class PlayerState : MonoBehaviour
         }
 
         // 이동 불능
-        Co_DisableAction(2f);
+        StartCoroutine(Co_DisableAction(damagedTime));
 
         // 피격 넉백
         if (isRight > 0)

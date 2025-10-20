@@ -1176,12 +1176,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7999001724466460867, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: damagedTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999001724466460867, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: damagedknockbackXForce
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7999001724466460867, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: damagedknockbackYForce
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x

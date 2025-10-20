@@ -219,6 +219,9 @@ MonoBehaviour:
   playerAttack: {fileID: 0}
   playerGuard: {fileID: 0}
   cinemachineCamera: {fileID: 0}
+  damagedTime: 0.3
+  isDamaged: 0
+  isDie: 0
   isRight: 0
   isGround: 1
   canMove: 1
@@ -235,6 +238,8 @@ MonoBehaviour:
   healHoldTime: 0.5
   maxGauge: 100
   currentGauge: 100
+  damagedknockbackXForce: 3
+  damagedknockbackYForce: 3
 --- !u!114 &3038832706818918881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &2979906348748911168
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &4121120796025748153
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 0
+  type: 2
 --- !u!95 &648328669084210216
 Animator:
   serializedVersion: 7
@@ -886,6 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &4138148513470597994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,6 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &6115924602441622479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &8052990509291645254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &8715432015965566512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,3 +1649,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
