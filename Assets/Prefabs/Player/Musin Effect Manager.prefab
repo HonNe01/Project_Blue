@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &2124582058623581700
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!61 &579802266120976246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -313,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
 --- !u!1 &2699658809973287815
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!61 &2699087354060918774
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -501,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
 --- !u!1 &3814591407498042224
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &4364466178451848582
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2949560023103717438}
+  - component: {fileID: 2267645019241695656}
   m_Layer: 0
   m_Name: Musin Effect Manager
   m_TagString: PlayerAttack
@@ -665,6 +670,19 @@ Transform:
   - {fileID: 2252444481477205368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2267645019241695656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364466178451848582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &4899065390228390472
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}
 --- !u!1 &5321469983789882385
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,3 +936,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  anim: {fileID: 0}

@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 7448614730079070422}
   m_Layer: 9
   m_Name: _Attack3
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 4614459662080286673}
   m_Layer: 9
   m_Name: _Attack2
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 6381510257296893161}
   m_Layer: 9
   m_Name: _DownAttack
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 2
+  type: 1
 --- !u!95 &648328669084210216
 Animator:
   serializedVersion: 7
@@ -909,8 +909,8 @@ GameObject:
   - component: {fileID: 8177480528037479312}
   - component: {fileID: 7533142454466668696}
   m_Layer: 9
-  m_Name: _CargeAttack
-  m_TagString: Untagged
+  m_Name: _ChargeAttack
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 7084311138571560007}
   m_Layer: 9
   m_Name: _Attack1
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1253,7 +1253,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.3125, y: 2.09375}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 4295329296318889912}
   m_Layer: 9
   m_Name: _UpAttack
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 4151825602345885870}
   m_Layer: 9
   m_Name: _JumpAttack
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

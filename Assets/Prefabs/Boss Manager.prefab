@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 8867788886742174365}
   - component: {fileID: 5857061176053283411}
   - component: {fileID: 1085734070256012868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d039338b4635f4db43fd972e440e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossManager
-  type: 0
-  prefab: {fileID: 5258845458500319665, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+  bossType: 0
+  bossPrefab: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
   spawnPoint: {fileID: 4960258645112669689}
   ArenaEntrance: {fileID: 1633158530475904723}
 --- !u!61 &1085734070256012868

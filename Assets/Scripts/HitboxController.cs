@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HitboxController : MonoBehaviour
 {
-    public enum HitbotType { PlayerAttack, PlayerSkill,PlayerJumpAttack,Trap, Enemy, Scarecrow}
+    public enum HitbotType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, Scarecrow}
 
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitbotType type;
@@ -45,7 +45,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerJumpAttack:
+            case HitbotType.PlayerDownAttack:
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -100,7 +100,6 @@ public class HitboxController : MonoBehaviour
         switch (type)
         {
             case HitbotType.PlayerAttack:
-
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -116,8 +115,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerJumpAttack:
-
+            case HitbotType.PlayerDownAttack:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -167,8 +165,6 @@ public class HitboxController : MonoBehaviour
         }
     }
 
-
-    
     void AttackBounce()  // 플레이어를 위로 튕겨올리는 함수
     {
         Rigidbody2D rb = PlayerState.instance.GetComponent<Rigidbody2D>();
