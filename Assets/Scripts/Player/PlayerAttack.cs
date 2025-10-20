@@ -103,8 +103,14 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else
                 {
+                    if (!comboQueue)
+                    {
+                        
+                        curCombo++;
+                        comboQueue = true;
+                    }
 
-                        StartCoroutine(Co_Attack());// 일반 공격
+                    StartCoroutine(Co_Attack());// 일반 공격
                 }
             }
         }
@@ -114,14 +120,10 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Co_Attack()
     {
-        if(isAttack) yield break;
-
+        if(isAttack && curCombo == 0) yield break;
             isAttack = true;
             AttackTimer = 0f;
-        if (curCombo == 0)
-        {
-            curCombo++;
-        }
+        
 
 
         while (Input.GetKey(KeyCode.V))
@@ -129,7 +131,7 @@ public class PlayerAttack : MonoBehaviour
             AttackTimer += Time.deltaTime;
             yield return null;
         }
-        rb.linearVelocity = Vector2.zero;
+        
 
 
         if (AttackTimer >= AttackHoldTime)
@@ -143,14 +145,16 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
             Debug.Log("일반공격 실행");
+            Debug.Log($"콤보{curCombo} 실행");
         }
+        rb.linearVelocity = Vector2.zero;
 
-                yield return null;
-                yield return new WaitForEndOfFrame();
+        yield return null;
+        yield return new WaitForEndOfFrame();
 
                 // 공격 중 멈춤
-                float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
-                float timer = 0f;
+        float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
+        float timer = 0f;
 
 
                 
@@ -179,8 +183,8 @@ public class PlayerAttack : MonoBehaviour
             }
 
     private void AddCombo()
-    { 
-        curCombo++;
+    {
+        comboQueue = false;
         lastAttackTime = Time.time;
         Debug.Log($"콤보 증가 {curCombo}");
     }
@@ -197,7 +201,7 @@ public class PlayerAttack : MonoBehaviour
     public void Attack1End()
     {
         _attack1.SetActive(false);
-        isAttack = false;
+
     }
     public void Attack2Start()
     {
@@ -206,7 +210,7 @@ public class PlayerAttack : MonoBehaviour
     public void Attack2End()
     {
         _attack2.SetActive(false);
-        isAttack = false;
+
     }
     public void Attack3Start()
     {
@@ -215,7 +219,6 @@ public class PlayerAttack : MonoBehaviour
     public void Attack3End()
     {
         _attack3.SetActive(false);
-        isAttack = false;
     }
 
     public void ChargeAttackStart()

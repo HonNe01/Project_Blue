@@ -174,6 +174,7 @@ public class PlayerState : MonoBehaviour
     private void Die()
     {
         canMove = false;
+        rb.linearVelocity = Vector2.zero;   
 
         Debug.Log("플레이어 사망!");
         anim.SetTrigger("IsDie");
