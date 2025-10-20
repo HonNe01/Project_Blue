@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 5499621151267507001}
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
-  - component: {fileID: 4007408959771389423}
   m_Layer: 8
   m_Name: Boss_Gildal
   m_TagString: Enemy
@@ -310,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 6428890711854167041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.33, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -498,34 +497,34 @@ MonoBehaviour:
   wallXMin: -9
   wallXMax: 9
   swing_weight: 4
-  swing_cooldowwn: 2
+  swing_cooldown: 2
   swing_preDelay: 0.1
   swing_postDelay: 0.4
   swing_Hitbox: {fileID: 6133158865817230817}
   slam_weight: 3
   slam_height: 5
-  slam_cooldowwn: 3
+  slam_cooldown: 2
   slam_preDelay: 0.3
   slam_postDelay: 0.4
   slam_Hitbox: {fileID: 5924644709608940927}
   dokkaebiOrb_weight: 1
-  dokkaebiOrb_cooldowwn: 6
+  dokkaebiOrb_cooldown: 2
   dokkaebiOrb_preDelay: 0.2
   dokkaebiOrb_postDelay: 0.4
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   slash_weight: 4
-  slash_cooldowwn: 2
+  slash_cooldown: 2
   slash_preDelay: 0.1
   slash_postDelay: 0.2
   slash_Hitbox: {fileID: 8355188705297284781}
   jumpSlash_weight: 3
   jumpSlash_height: 5
-  jumpSlash_cooldowwn: 2
+  jumpSlash_cooldown: 2
   jumpSlash_preDelay: 0.1
   jumpSlash_postDelay: 0.2
   jumpSlash_Hitbox: {fileID: 5816483574308687481}
   eDokkaebiOrb_weight: 1
-  eDokkaebiOrb_cooldowwn: 2
+  eDokkaebiOrb_cooldown: 2
   eDokkaebiOrb_preDelay: 0.1
   eDokkaebiOrb_postDelay: 0.2
   specialHpThresholds:
@@ -539,20 +538,6 @@ MonoBehaviour:
   spawnDelay: 0.1
   sprite: {fileID: 0}
   coll: {fileID: 0}
---- !u!114 &4007408959771389423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428890711854167041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
-  baseDamage: 1
-  type: 2
 --- !u!1 &8355188705297284781
 GameObject:
   m_ObjectHideFlags: 0

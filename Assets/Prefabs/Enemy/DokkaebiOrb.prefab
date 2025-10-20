@@ -231,7 +231,7 @@ MonoBehaviour:
   bodyColl: {fileID: 4384924984202429799}
   expColl: {fileID: 3607990473765895650}
   wavePrefab: {fileID: 5258680384805949804, guid: 391d72ece714d6c4a81e0d5bde152474, type: 3}
+  lifeTime: 4
+  chaseRatio: 0.6
+  dashSpeed: 5
   OrbOffset: {x: 0, y: 1}
-  dashSpeed: 10
-  arriveThreshold: 0.15
-  limitTime: 1

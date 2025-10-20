@@ -21,6 +21,10 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public CinemachinePositionComposer cinemachineCamera;
 
     [Header("=== Player State ===")]
+    [Header("State")]
+    public bool isDamaged = false;
+    public bool isDie = false;
+
     [Header("Move")]
     public int isRight;
     public bool isGround = true;
@@ -38,7 +42,6 @@ public class PlayerState : MonoBehaviour
     public bool canGuard = true;
     public bool canHeal = true;
     public bool isHeal = false;
-    public bool isDie = false;
     
     [Header("=== Health State ===")]
     public int maxHP = 5;
@@ -93,6 +96,8 @@ public class PlayerState : MonoBehaviour
 
     private void Update()
     {
+        if (isDie) return;
+
         // Ground Check
         if (rb.linearVelocityY <= 0)
         {
@@ -143,8 +148,11 @@ public class PlayerState : MonoBehaviour
             healPress = false;
         }
     }
+
     public void Heal(int amount = 1)
     {
+        healTimer = 0;
+
         curHP += amount;
         curHP = Mathf.Clamp(curHP, 0, maxHP);
         Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
@@ -152,6 +160,9 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int damage = 1)
     {
+        if (isDie) return;
+
+        // 방어 판정
         if (playerGuard.IsGuard())
         {
             if (playerGuard.IsParry())
@@ -169,50 +180,49 @@ public class PlayerState : MonoBehaviour
             }
         }
 
-        if (curHP <= 1)
+        // 이동 불능
+        Co_DisableAction(2f);
+
+        // 피격 넉백
+        if (isRight > 0)
         {
-            DisableAction();
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
         }
         else
         {
-            StartCoroutine(Co_DisableAction(0.3f));
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
         }
 
-        if (isRight > 0)
-            {
+        // 체력 감소
+        curHP -= damage;
+        curHP = Mathf.Clamp(curHP, 0, maxHP);
 
-                rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+        // 피격 애니메이션
+        anim.SetTrigger("IsDamaged");
+        Debug.Log($"[PlayerState] Damaged!, Current HP : {curHP}");
 
-            }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
-            }
-            curHP -= damage;
-            curHP = Mathf.Clamp(curHP, 0, maxHP);
-
-
-
-            Debug.Log("[PlayerState] Damaged!");
-            anim.SetTrigger("IsDamaged");
-
-            if (curHP <= 0)
-            {
-                Die();
-                isDie = true;
-            }
+        // 사망 판정
+        if (curHP <= 0)
+        {
+            Die();
+        }
 
     }
 
-
     private void Die()
     {
-        canMove = false;
+        Debug.Log("플레이어 사망!");
+
+        // 조작 해제
+        DisableAction();
+
+        // 상태 처리
+        isDie = true;
         rb.linearVelocity = Vector2.zero;   
 
-        Debug.Log("플레이어 사망!");
+        // 사망 애니메이션
         anim.SetTrigger("IsDie");
     }
 
@@ -246,6 +256,20 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    IEnumerator Co_DisableAction(float duration)
+    {
+        isDamaged = true;
+        DisableAction();
+
+        if (!isDie)
+        {
+            yield return new WaitForSeconds(duration);
+
+            isDamaged = false;
+            EnableAction();
+        }
+    }
+
     private void DisableAction()
     {
         canMove = false;
@@ -258,20 +282,6 @@ public class PlayerState : MonoBehaviour
         canMove = true;
         canGuard = true;
         canHeal = true;
-    }
-
-    IEnumerator Co_DisableAction(float duration)
-    {
-        if (!isDie)
-        {
-            DisableAction();
-
-            yield return new WaitForSeconds(duration);
-
-            EnableAction();
-        }
-        
-
     }
 
 

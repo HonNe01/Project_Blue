@@ -103,6 +103,8 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()  // 물리 로직
     {
+        if (PlayerState.instance.isDie) return;
+
         MovePhysics();
         JumpPhysics();
         DashPhysics();
@@ -110,6 +112,8 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()   // 그래픽 로직
     {
+        if (PlayerState.instance.isDie) return;
+
         anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
         anim.SetFloat("SpeedY", rb.linearVelocityY);
 
@@ -353,21 +357,29 @@ public class PlayerMove : MonoBehaviour
             dashCooldownCounter -= Time.deltaTime;
 
         // 대쉬 쿨타임 초기화
-        if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
+        if (PlayerState.instance.isDamaged)
         {
-            PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
-            canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
+            PlayerState.instance.canDash = false;
+            canAirDash = false;
         }
-        else if (isTouchingWall) // 벽에 닿으면 공중 대쉬 재사용 가능
+        else
         {
-            PlayerState.instance.canDash = !isDashing && canAirDash;
-            canAirDash = true; // 벽에 닿으면 재사용 가능
+            if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
+            {
+                PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
+                canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
+            }
+            else if (isTouchingWall) // 벽에 닿으면 공중 대쉬 재사용 가능
+            {
+                PlayerState.instance.canDash = !isDashing && canAirDash;
+                canAirDash = true; // 벽에 닿으면 재사용 가능
+            }
+            else // 공중
+            {
+                PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
+            }
         }
-        else // 공중
-        {
-            PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
-        }
-
+        
         // 대쉬 실행
         if (Input.GetKeyDown(KeyCode.X) && PlayerState.instance.canDash)
         {
