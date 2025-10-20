@@ -56,8 +56,8 @@ public class PlayerState : MonoBehaviour
     public int currentGauge = 0;
 
     [Header("Damaged")]
-    public float damagedknockbackXForce = 5f;
-    public float damagedknockbackYForce = 3f;
+    public float damagedknockbackXForce = 10f;
+    public float damagedknockbackYForce = 10f;
 
     public int GaugePercent => (currentGauge * 100) / maxGauge;
 
@@ -169,19 +169,26 @@ public class PlayerState : MonoBehaviour
             }
         }
 
-        if (!isDie)
+        if (curHP <= 1)
+        {
+            DisableAction();
+        }
+        else
         {
             StartCoroutine(Co_DisableAction(0.3f));
-            if (isRight > 0)
+        }
+
+        if (isRight > 0)
             {
+
                 rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
 
             }
             else
             {
                 rb.linearVelocity = Vector2.zero;
-                rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
             }
             curHP -= damage;
             curHP = Mathf.Clamp(curHP, 0, maxHP);
@@ -196,11 +203,7 @@ public class PlayerState : MonoBehaviour
                 Die();
                 isDie = true;
             }
-        }
-        else
-        {
-            
-        }
+
     }
 
 
@@ -267,6 +270,7 @@ public class PlayerState : MonoBehaviour
 
             EnableAction();
         }
+        
 
     }
 
