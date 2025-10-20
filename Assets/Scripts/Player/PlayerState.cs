@@ -106,7 +106,7 @@ public class PlayerState : MonoBehaviour
                                             LayerMask.GetMask("Ground"));
         }
 
-        // Behavior Check
+        // Behavior Check   
         isBehavior = isHeal || playerGuard.isGuard;
 
         Healing();
@@ -127,30 +127,38 @@ public class PlayerState : MonoBehaviour
     {
         if (!canHeal) return;
 
-        // 회복
+        
         if (Input.GetKey(KeyCode.F) && curHP < maxHP)
         {
+            // 회복 입력
             isHeal = true;
-            if (!healPress)
-            {
-                healTimer += Time.deltaTime;
-                if (healTimer >= healHoldTime)
-                {
-                    Heal(1);
-                    healPress = true;
-                }
-            }
+            healPress = true;
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
+            // 회복 취소
             isHeal = false;
-            healTimer = 0f;
             healPress = false;
+
+            healTimer = 0f;
+        }
+
+        if (healPress)
+        {
+            healTimer += Time.deltaTime;
+
+            if (healTimer >= healHoldTime)
+            {
+                isHeal = false;
+                Heal(1);
+            }
         }
     }
 
     public void Heal(int amount = 1)
     {
+        UseGauge(20);
+        healPress = false;
         healTimer = 0;
 
         curHP += amount;
