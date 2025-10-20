@@ -1,6 +1,8 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerState : MonoBehaviour
 {
@@ -36,6 +38,7 @@ public class PlayerState : MonoBehaviour
     public bool canGuard = true;
     public bool canHeal = true;
     public bool isHeal = false;
+    public bool isDie = false;
     
     [Header("=== Health State ===")]
     public int maxHP = 5;
@@ -51,6 +54,10 @@ public class PlayerState : MonoBehaviour
     [Header("Skill Gauge")]
     public int maxGauge = 100;
     public int currentGauge = 0;
+
+    [Header("Damaged")]
+    public float damagedknockbackXForce = 5f;
+    public float damagedknockbackYForce = 3f;
 
     public int GaugePercent => (currentGauge * 100) / maxGauge;
 
@@ -162,14 +169,40 @@ public class PlayerState : MonoBehaviour
             }
         }
 
-        curHP -= damage;
-        curHP = Mathf.Clamp(curHP, 0, maxHP);
+        if (!isDie)
+        {
+            StartCoroutine(Co_DisableAction(0.3f));
+            if (isRight > 0)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
 
-        Debug.Log("[PlayerState] Damaged!");
-        anim.SetTrigger("IsDamaged");
+            }
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+            }
+            curHP -= damage;
+            curHP = Mathf.Clamp(curHP, 0, maxHP);
 
-        if (curHP <= 0) Die();
+
+
+            Debug.Log("[PlayerState] Damaged!");
+            anim.SetTrigger("IsDamaged");
+
+            if (curHP <= 0)
+            {
+                Die();
+                isDie = true;
+            }
+        }
+        else
+        {
+            
+        }
     }
+
 
     private void Die()
     {
@@ -209,6 +242,34 @@ public class PlayerState : MonoBehaviour
             Gizmos.DrawWireCube(transform.position, groundCheck);
         }
     }
+
+    private void DisableAction()
+    {
+        canMove = false;
+        canGuard = false;
+        canHeal = false;
+    }
+
+    private void EnableAction()
+    {
+        canMove = true;
+        canGuard = true;
+        canHeal = true;
+    }
+
+    IEnumerator Co_DisableAction(float duration)
+    {
+        if (!isDie)
+        {
+            DisableAction();
+
+            yield return new WaitForSeconds(duration);
+
+            EnableAction();
+        }
+
+    }
+
 
     private void OnEnable()
     {
