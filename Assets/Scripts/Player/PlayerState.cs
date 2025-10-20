@@ -51,7 +51,7 @@ public class PlayerState : MonoBehaviour
 
 
     [Header("Healing Setting")]
-    public float healHoldTime = 0.5f;
+    public float healHoldTime = 1f;
     private float healTimer = 0f;
     private bool healPress = false;
 
@@ -121,7 +121,7 @@ public class PlayerState : MonoBehaviour
         }
 
         anim.SetBool("IsBehavior", isBehavior);
-        anim.SetBool("IsHeal", isHeal);
+        
     }
 
     private void Healing()
@@ -134,12 +134,14 @@ public class PlayerState : MonoBehaviour
             // 회복 입력
             isHeal = true;
             healPress = true;
+            anim.SetBool("IsHeal", isHeal);
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
             // 회복 취소
             isHeal = false;
             healPress = false;
+            anim.SetBool("IsHeal", isHeal);
 
             healTimer = 0f;
         }
