@@ -88,7 +88,7 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
-        curHP = maxHP; 
+        curHP = maxHP;
 
         Camera vcam = Camera.main;
         cinemachineCamera = vcam.GetComponent<CinemachinePositionComposer>();
@@ -117,7 +117,10 @@ public class PlayerState : MonoBehaviour
     {
         if (cinemachineCamera != null)
         {
-            cinemachineCamera.Composition.ScreenPosition.x = 0.1f * isRight;
+            var comp = cinemachineCamera.Composition.ScreenPosition;
+            comp.x *= isRight;
+
+            cinemachineCamera.Composition.ScreenPosition = comp;
         }
 
         anim.SetBool("IsBehavior", isBehavior);
@@ -126,10 +129,10 @@ public class PlayerState : MonoBehaviour
 
     public void Healing()
     {
-        if (!canHeal) return;
+        if (!canHeal && curHP >= maxHP) return;
 
         
-        if (Input.GetKey(KeyCode.F) && curHP < maxHP)
+        if (Input.GetKey(KeyCode.F))
         {
             // 회복 입력
             isHeal = true;
@@ -160,9 +163,18 @@ public class PlayerState : MonoBehaviour
 
     public void Heal(int amount = 1)
     {
-        UseGauge(20);
         healPress = false;
         healTimer = 0;
+
+        if (!UseGauge(20))  // 스킬 게이지 부족시 힐 실패
+        {
+            isHeal = false;
+            
+            anim.SetBool("IsHeal", isHeal);
+            Debug.Log("[PlayerState] Skill gauge lack!");
+
+            return;
+        }
 
         curHP += amount;
         curHP = Mathf.Clamp(curHP, 0, maxHP);
@@ -219,7 +231,6 @@ public class PlayerState : MonoBehaviour
         {
             Die();
         }
-
     }
 
     private void Die()
@@ -238,14 +249,14 @@ public class PlayerState : MonoBehaviour
     }
 
     //skill gauge 관련
-    public void AddGauge(int amount)
+    public void AddGauge(int amount)    // 게이지 회복
     {
         currentGauge += amount;
         currentGauge = Mathf.Clamp(currentGauge, 0, maxGauge);
         Debug.Log("게이지 증가");
     }
 
-    public bool UseGauge(int amount)
+    public bool UseGauge(int amount)    // 게이지 소모
     {
         if (currentGauge < amount)
         {
@@ -260,9 +271,9 @@ public class PlayerState : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Ground Check
-        if (PlayerState.instance != null)
+        if (instance != null)
         {
-            Gizmos.color = PlayerState.instance.isGround ? Color.green : Color.red;
+            Gizmos.color = isGround ? Color.green : Color.red;
             Gizmos.DrawWireCube(transform.position, groundCheck);
         }
     }

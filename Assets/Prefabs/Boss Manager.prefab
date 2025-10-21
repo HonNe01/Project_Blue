@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4994100558941247071}
   - component: {fileID: 6593369692589001656}
   - component: {fileID: 7978393746678822513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arena Entrance
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

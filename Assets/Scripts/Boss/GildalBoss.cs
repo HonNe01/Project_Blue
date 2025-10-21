@@ -149,10 +149,21 @@ public class GildalBoss : BossBase
                                             weight = eDokkaebiOrb_weight, 
                                             cooldown = eDokkaebiOrb_cooldown, 
                                             execute = () => Co_EDokkaebiOrb() });
-
-        // 시작은 은신 상태 비주얼로(피격 Off는 추후 레이어 매트릭스 적용)
-        StartCoroutine(Co_DoStealth());
     }
+
+    public override IEnumerator StartBattle()
+    {
+        base.StartBattle();
+        anim?.SetTrigger("PhaseStart");
+
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        yield return StartCoroutine(Co_DoStealth());
+        state = BossState.Idle;
+    }
+    
 
     protected override IEnumerator Co_ChoosePattern()
     {

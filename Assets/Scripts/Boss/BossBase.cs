@@ -12,7 +12,7 @@ using UnityEngine;
 public abstract class BossBase : MonoBehaviour
 {
     // Enum 상태 정의
-    public enum BossState { Idle, ChoosePattern, Attacking, Directing, Die }
+    public enum BossState { Idle, ChoosePattern, Attacking, Directing, Sturn, Die }
 
 
     // 패턴 클래스
@@ -40,10 +40,11 @@ public abstract class BossBase : MonoBehaviour
     public Transform target;                    // 플레이어(Tag:Player)
 
     [Header("Boss Base State")]
-    public BossState state = BossState.Idle;    // 보스 상태
+    public BossState state = BossState.Directing;    // 보스 상태
     public float curHp;                         // 현재 체력
     public bool phaseChange = false;            // 페이즈 변경
     public bool inPhase2 = false;               // 페이즈 상태
+    public bool isDie = false;
 
     // 현재 실행 중인 패턴
     protected Coroutine curPatternCoroutine;
@@ -87,8 +88,13 @@ public abstract class BossBase : MonoBehaviour
                 // 페이즈 전환
                 
                 break;
+            case BossState.Sturn:
+                StartCoroutine();
+
+                break;
             case BossState.Die:
                 // 사망
+                Die();
 
                 break;
         }
@@ -100,8 +106,6 @@ public abstract class BossBase : MonoBehaviour
     public virtual IEnumerator StartBattle()
     {
         Debug.Log("[Boss] Battle Start");
-
-        anim?.SetTrigger("PhaseStart");
 
         yield return null;
     }
@@ -128,7 +132,7 @@ public abstract class BossBase : MonoBehaviour
         if (curHp <= 0f)
         {
             curHp = 0f;
-            Die();
+            state = BossState.Die;
 
             return;
         }
@@ -151,6 +155,11 @@ public abstract class BossBase : MonoBehaviour
         isInvulnerable = false;
     }
 
+    protected virtual void Sturn()
+    {
+        Debug.Log("[BossBase] Boss Sturn");
+    }
+
     /// <summary>
     /// 사망 처리
     ///     - 패턴 중단
@@ -158,11 +167,21 @@ public abstract class BossBase : MonoBehaviour
     /// </summary>
     private void Die()
     {
+        if (isDie) return;
         Debug.Log("[Boss] 보스 사망");
 
+        isDie = true;
         StopPattern();
-        state = BossState.Die;
         anim?.SetTrigger("Die");
+    }
+
+    public void BossDestroy()
+    {
+        // 보스 아이템 드랍...
+
+
+        // 보스 파괴
+        Destroy(gameObject);
     }
 
     /// <summary>
