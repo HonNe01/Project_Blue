@@ -28,9 +28,14 @@ public class PlayerAttack : MonoBehaviour
     
 
     [Header("ChargeAttack")]
-    private bool AttackPress = false;
     private float AttackTimer = 0f;
     private float AttackHoldTime = 0.5f;
+
+
+    [Header("Skill")]
+    private float skillTimer = 0f;
+    private float skillHoldTime = 0.3f;
+    private bool isSkillCharge = false;
 
     // 참조
     [HideInInspector] public Animator anim;
@@ -42,29 +47,40 @@ public class PlayerAttack : MonoBehaviour
         rb = PlayerState.instance.rb;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // 공격
         Attack();
-        
-        // 아래스킬
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && !PlayerState.instance.isGround)
-        {
-            Skill_Down();
-            return;
-        }
-        // 윗스킬
-        else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F))
-        {
-            Skill_Up();
-            return;
 
-        }
-        // 일반스킬
-        else if (Input.GetKeyDown(KeyCode.F))
+
+        if (Input.GetKeyDown(KeyCode.F) && PlayerState.instance.canAttack)
         {
-            Skill();
-            return;
+            if (!PlayerState.instance.isGround)         // 공중
+            {
+                if (Input.GetKey(KeyCode.UpArrow))          // 윗 스킬
+                {
+                    Skill_Up();
+                }
+                else if (Input.GetKey(KeyCode.DownArrow))   // 아래 스킬
+                {
+                    Skill_Down();
+                }
+                else
+                {
+                    Skill();
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.UpArrow))          // 윗 스킬
+                {
+                    Skill_Up();
+                }
+                else
+                {
+                    Skill();
+                }
+            }
         }
     }
 
@@ -288,12 +304,35 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill() // AttackSkill = 1
     {
-        if (Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
+        if (Input.GetKey(KeyCode.F))
         {
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 1);
+            skillTimer += Time.deltaTime;
+            
+            
+            if (Input.GetKey(KeyCode.F))
+            {
+                skillTimer += Time.deltaTime;
+                if (skillTimer >= skillHoldTime && !isSkillCharge)
+                {
+                    isSkillCharge = true;
+                    Debug.Log("힐 준비");
+                }
+            }
 
-            Debug.Log("[PlayerAttack] 앞스킬 사용");
+            if (isSkillCharge)
+            {
+                PlayerState.instance.Healing();
+                Debug.Log("힐 사용");
+            }
+            else if (!isSkillCharge && Input.GetKeyUp(KeyCode.F))
+            {
+                anim.SetTrigger("Attack");
+                anim.SetInteger("AttackSkill", 1);
+                Debug.Log("일반스킬 사용");
+            }
+            rb.linearVelocity = Vector2.zero;
+            skillTimer = 0f;
+            isSkillCharge = false;
         }
     }
 
@@ -307,7 +346,7 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Up() // AttackSkill = 2
     {
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
+        if (PlayerState.instance.UseGauge(20))
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -326,7 +365,7 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Skill_Down() // AttackSkill = 3
     {
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKeyDown(KeyCode.F) && PlayerState.instance.UseGauge(20))
+        if (PlayerState.instance.UseGauge(20))
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 3);

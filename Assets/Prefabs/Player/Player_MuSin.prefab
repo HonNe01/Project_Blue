@@ -311,6 +311,9 @@ MonoBehaviour:
   _jumpAttack: {fileID: 8715432015965566512}
   _upAttack: {fileID: 8052990509291645254}
   _downattack: {fileID: 4121120796025748153}
+  skillTimer: 0
+  skillHoldTime: 0.3
+  isSkillCharge: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
   skillEffect: {fileID: 0}
@@ -800,7 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 1
+  type: 2
 --- !u!95 &648328669084210216
 Animator:
   serializedVersion: 7

@@ -124,7 +124,7 @@ public class PlayerState : MonoBehaviour
         
     }
 
-    private void Healing()
+    public void Healing()
     {
         if (!canHeal) return;
 

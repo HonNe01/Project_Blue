@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class HitboxController : MonoBehaviour
 {
-    public enum HitbotType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, Scarecrow}
+    public enum HitboxType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, Scarecrow }
+    public enum EffectType { Slash, Explosion }
+
 
     [SerializeField] private int baseDamage = 1;
-    [SerializeField] private HitbotType type;
+    [SerializeField] private HitboxType type;
 
 
     private float bounceForce = 10f;
@@ -13,23 +15,35 @@ public class HitboxController : MonoBehaviour
 
     void Awake()
     {
-        if (type == HitbotType.Trap)
+        if (type == HitboxType.Trap)
         {
             gameObject.SetActive(true);
         }
 
-        else if (type != HitbotType.Scarecrow)
+        else if (type != HitboxType.Scarecrow)
         {
             gameObject.SetActive(false);
         }
-  
+
     }
+
+    void HitCheck()
+    {
+        
+    }
+
+    void HitEffect()
+    {
+        
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (type)
         {
-            case HitbotType.PlayerAttack:
+            case HitboxType.PlayerAttack:
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -45,7 +59,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerDownAttack:
+            case HitboxType.PlayerDownAttack:
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -61,7 +75,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerSkill:
+            case HitboxType.PlayerSkill:
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -76,15 +90,15 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.Enemy:
+            case HitboxType.Enemy:
                 if (collision.CompareTag("Player"))
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
                     PlayerState.instance.TakeDamage(baseDamage);
-                } 
+                }
                 break;
-            case HitbotType.Trap:
+            case HitboxType.Trap:
                 if (collision.CompareTag("Player"))
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
@@ -95,11 +109,12 @@ public class HitboxController : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (type)
         {
-            case HitbotType.PlayerAttack:
+            case HitboxType.PlayerAttack:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -115,7 +130,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerDownAttack:
+            case HitboxType.PlayerDownAttack:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -131,7 +146,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.PlayerSkill:
+            case HitboxType.PlayerSkill:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
@@ -146,7 +161,7 @@ public class HitboxController : MonoBehaviour
                         enemy.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.Enemy:
+            case HitboxType.Enemy:
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
@@ -154,7 +169,7 @@ public class HitboxController : MonoBehaviour
                     PlayerState.instance.TakeDamage(baseDamage);
                 }
                 break;
-            case HitbotType.Trap:
+            case HitboxType.Trap:
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
