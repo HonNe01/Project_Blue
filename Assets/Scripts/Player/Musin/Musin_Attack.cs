@@ -37,17 +37,18 @@ public class Musin_Attack : PlayerAttack
 
     [Header(" === Slach Moduel === ")]
     public GameObject _slash1;
-    public Vector3 slash1position;
     public Rigidbody2D _slash1rb;
     
     public GameObject _slash2;
+    public Rigidbody2D _slash2rb;
     
     public GameObject _slash3;
+    public Rigidbody2D _slash3rb;
     
     public GameObject _slashCharge;
     
     public GameObject _slashJump;
-    public float slashspeed;
+    public float slashspeed = 20f;
     
 
 
@@ -227,14 +228,19 @@ public class Musin_Attack : PlayerAttack
     {
         if (musinstate.swordSlash)
         {
+            rb = _slash1rb;
             _slash1.SetActive(true);
             if (PlayerState.instance.isRight > 0)
             {
-                _slash1rb.linearVelocity = slash1position + new Vector3(slashspeed, 0, 0);
+                _slash1.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash1.transform.rotation = Quaternion.Euler(0, 0, 0);
+                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _slash1rb.linearVelocity = slash1position + new Vector3(-slashspeed, 0, 0);
+                _slash1.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash1.transform.rotation = Quaternion.Euler(0, 180, 0);
+                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
             }
         }
         else
@@ -247,7 +253,6 @@ public class Musin_Attack : PlayerAttack
     {
         if (musinstate.swordSlash)
         {
-            _slash1.transform.position = slash1position;
             _slash1.SetActive(false);
         }
         else
@@ -257,20 +262,75 @@ public class Musin_Attack : PlayerAttack
     }
     public override void Attack2Start()
     {
-        _attack2.SetActive(true);
+        if (musinstate.swordSlash)
+        {
+            rb = _slash2rb;
+            _slash1.SetActive(true);
+            if (PlayerState.instance.isRight > 0)
+            {
+                _slash2.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash2.transform.rotation = Quaternion.Euler(0, 0, 0);
+                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                _slash2.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash2.transform.rotation = Quaternion.Euler(0, 180, 0);
+                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            _attack2.SetActive(true);
+        }
+
     }
     public override void Attack2End()
     {
-        _attack2.SetActive(false);
-
+        if (musinstate.swordSlash)
+        {
+            _slash2.SetActive(false);
+        }
+        else
+        {
+            _attack2.SetActive(false);
+        }
     }
     public override void Attack3Start()
     {
-        _attack3.SetActive(true);
+        if (musinstate.swordSlash)
+        {
+            rb = _slash3rb;
+            _slash3.SetActive(true);
+            if (PlayerState.instance.isRight > 0)
+            {
+                _slash3.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash3.transform.rotation = Quaternion.Euler(0, 0, 0);
+                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                _slash3.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash3.transform.rotation = Quaternion.Euler(0, 180, 0);
+                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            _attack3.SetActive(true);
+        }
+
     }
     public override void Attack3End()
     {
-        _attack3.SetActive(false);
+        if (musinstate.swordSlash)
+        {
+            _slash3.SetActive(false);
+        }
+        else
+        {
+            _attack3.SetActive(false);
+        }
     }
 
     public override void ChargeAttackStart()

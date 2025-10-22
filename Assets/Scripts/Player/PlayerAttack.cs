@@ -166,6 +166,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
+            rb.linearVelocity = Vector2.zero;
             Debug.Log("일반공격 실행");
             Debug.Log($"콤보{curCombo} 실행");
         }

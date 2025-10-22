@@ -240,7 +240,7 @@ MonoBehaviour:
   currentGauge: 0
   damagedknockbackXForce: 10
   damagedknockbackYForce: 10
-  swordSlash: 0
+  swordSlash: 1
   firegranade: 0
   impactgranade: 0
   electricgranade: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   maxCombo: 3
   curCombo: 0
   comboTime: 1
+  isAttack: 0
   _attack1: {fileID: 6115924602441622479}
   _attack2: {fileID: 2979906348748911168}
   _attack3: {fileID: 2722666121366175620}
@@ -334,6 +335,14 @@ MonoBehaviour:
   skillDownKnockbackYForce: 7
   skillDownOffset: {x: 0, y: -1, z: 0}
   skillDownEffect: {fileID: 0}
+  _slash1: {fileID: 0}
+  _slash1rb: {fileID: 0}
+  _slash2: {fileID: 0}
+  _slash3: {fileID: 0}
+  _slashCharge: {fileID: 0}
+  _slashJump: {fileID: 0}
+  slashspeed: 20
+  musinstate: {fileID: 1784537063980934951}
 --- !u!1 &2722666121366175620
 GameObject:
   m_ObjectHideFlags: 0
