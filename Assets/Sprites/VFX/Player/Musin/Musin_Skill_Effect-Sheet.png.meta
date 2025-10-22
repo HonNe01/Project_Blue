@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 33c57e9b08f36fd4eb802f02d730eb67
+guid: 11d34f89a618b4684bc27b4b47f1ed7f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7392429186984259773
-    second: Musin_shotgun-Sheet_0
+      213: -5638217569464515357
+    second: Musin_Skill_Effect-Sheet_0
   - first:
-      213: -8630079521774951587
-    second: Musin_shotgun-Sheet_1
+      213: 3033099395119181911
+    second: Musin_Skill_Effect-Sheet_1
   - first:
-      213: -3164523630120293006
-    second: Musin_shotgun-Sheet_2
+      213: 1789645629403772716
+    second: Musin_Skill_Effect-Sheet_2
   - first:
-      213: -7379019852695964806
-    second: Musin_shotgun-Sheet_3
+      213: -6671816486339767077
+    second: Musin_Skill_Effect-Sheet_3
   - first:
-      213: 7321889994459708759
-    second: Musin_shotgun-Sheet_4
+      213: -9050020706557964790
+    second: Musin_Skill_Effect-Sheet_4
   - first:
-      213: 8210270369327417098
-    second: Musin_shotgun-Sheet_5
+      213: 2840798102123156
+    second: Musin_Skill_Effect-Sheet_5
   - first:
-      213: 4897030870932316520
-    second: Musin_shotgun-Sheet_6
+      213: 6523952615598988553
+    second: Musin_Skill_Effect-Sheet_6
+  - first:
+      213: -6532276082680365367
+    second: Musin_Skill_Effect-Sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Musin_Skill-Sheet_0
+      name: Musin_Skill_Effect-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,16 +134,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f1879531338194c0c83005d4b9cd5e00
-      internalID: 2012037799
+      spriteID: 3e483bd3ef601c1b0800000000000000
+      internalID: -5638217569464515357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_Skill-Sheet_1
+      name: Musin_Skill_Effect-Sheet_1
       rect:
         serializedVersion: 2
         x: 160
@@ -153,16 +156,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e9eaecab0a3734b1baad76f9b3252041
-      internalID: -1106244934
+      spriteID: 750f78e64dbb71a20800000000000000
+      internalID: 3033099395119181911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_Skill-Sheet_2
+      name: Musin_Skill_Effect-Sheet_2
       rect:
         serializedVersion: 2
         x: 320
@@ -175,16 +178,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 50487735136a84657b1da5f305bcc253
-      internalID: 1831835147
+      spriteID: c27317ec73916d810800000000000000
+      internalID: 1789645629403772716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_Skill-Sheet_3
+      name: Musin_Skill_Effect-Sheet_3
       rect:
         serializedVersion: 2
         x: 480
@@ -197,16 +200,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 75b40e8c66022499eb54c6648e5c3bb1
-      internalID: -227959741
+      spriteID: bd49f152142f863a0800000000000000
+      internalID: -6671816486339767077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_Skill-Sheet_4
+      name: Musin_Skill_Effect-Sheet_4
       rect:
         serializedVersion: 2
         x: 640
@@ -219,54 +222,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4f4b1e31d69b944088036f03e3b7de1d
-      internalID: -388406553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musin_Skill-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 160
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8d4a0c1d4e954646b2bbabf644b30f3
-      internalID: -1708113722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musin_Skill-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 160
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d314b229c1c424d2b83a2c86245befad
-      internalID: -1129255424
+      spriteID: a0eceafcd1ed76280800000000000000
+      internalID: -9050020706557964790
       vertices: []
       indices: 
       edges: []
@@ -275,7 +234,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a07dea4644e994f478d716a509b58f6f
+    spriteID: 13fa521c5cfc34445a4e13fc5bf8ddb1
     internalID: 0
     vertices: []
     indices: 
@@ -287,13 +246,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":60.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Musin_Skill-Sheet_0: 2012037799
-      Musin_Skill-Sheet_1: -1106244934
-      Musin_Skill-Sheet_2: 1831835147
-      Musin_Skill-Sheet_3: -227959741
-      Musin_Skill-Sheet_4: -388406553
-      Musin_Skill-Sheet_5: -1708113722
-      Musin_Skill-Sheet_6: -1129255424
+      Musin_Skill_Effect-Sheet_0: -5638217569464515357
+      Musin_Skill_Effect-Sheet_1: 3033099395119181911
+      Musin_Skill_Effect-Sheet_2: 1789645629403772716
+      Musin_Skill_Effect-Sheet_3: -6671816486339767077
+      Musin_Skill_Effect-Sheet_4: -9050020706557964790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
