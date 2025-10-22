@@ -93,6 +93,20 @@ public class HitboxController : MonoBehaviour
             case HitboxType.Enemy:
                 if (collision.CompareTag("Player"))
                 {
+                    // 패링 확인
+                    if (PlayerState.instance.playerGuard.IsParry())
+                    {
+                        // 보스 스턴
+                        var boss = GetComponentInParent<BossBase>();
+                        
+                        if (boss != null)
+                        {
+                            boss.state = BossBase.BossState.Sturn;
+                        }
+
+                        return;
+                    }
+
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
                     PlayerState.instance.TakeDamage(baseDamage);
@@ -164,6 +178,20 @@ public class HitboxController : MonoBehaviour
             case HitboxType.Enemy:
                 if (collision.gameObject.CompareTag("Player"))
                 {
+                    // 패링 확인
+                    if (PlayerState.instance.playerGuard.IsParry())
+                    {
+                        // 보스 스턴
+                        var boss = GetComponentInParent<BossBase>();
+
+                        if (boss != null)
+                        {
+                            boss.state = BossBase.BossState.Sturn;
+                        }
+
+                        return;
+                    }
+
                     Debug.Log($"[{gameObject.name}] Player Hit!");
 
                     PlayerState.instance.TakeDamage(baseDamage);

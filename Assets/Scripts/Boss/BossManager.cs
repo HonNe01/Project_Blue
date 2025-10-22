@@ -39,7 +39,7 @@ public class BossManager : MonoBehaviour
     {
         SetArenaLocked(false);
 
-        Debug.Log("[BossManager] 보스 전투 종료");
+        Debug.Log("[BossManager] Boss Battle Finish");
     }
 
     private void BossSpawn()
@@ -61,7 +61,9 @@ public class BossManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"[BossManager] {bossType} 보스 스폰 완료");
+        // 보스 전투 시작
+        Debug.Log($"[BossManager] {bossType} Boss Spawn Complete");
+        StartCoroutine(curBoss.StartBattle());
     }
 
     private void SetArenaLocked(bool locked)

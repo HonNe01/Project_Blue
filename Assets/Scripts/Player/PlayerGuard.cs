@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerGuard : MonoBehaviour
 {
     [Header("Guard Setting")]
-    [SerializeField] public bool isGuard;
-    [SerializeField] private float guardTime = 0f;  // 가드한 시간
+    [SerializeField] public bool isGuard;               // 가드 버튼 누르는지
+    [SerializeField] private float guardTime = 0f;      // 가드한 시간
     [SerializeField] private float guardDisableTime = 0.5f;
 
     [Header("Parry Setting")]
@@ -33,7 +33,7 @@ public class PlayerGuard : MonoBehaviour
             guardTime = 0f;
     }
 
-    public void Guard()
+    public void Guard()     // 가드 로직
     {
         Debug.Log("[PlayerState] Guard 성공!");
 
@@ -41,17 +41,17 @@ public class PlayerGuard : MonoBehaviour
         PlayerState.instance.anim.SetTrigger("IsBlock");
     }
 
-    public bool IsGuard()
+    public bool IsGuard()   // 가드 했는지
     {
-        return isGuard;
+        return isGuard && guardTime > parrytime;
     }
 
-    public bool IsParry()
+    public bool IsParry()   // 패링 되는지
     {
         return isGuard && guardTime <= parrytime;
     }
 
-    public void Parry()
+    public void Parry()     // 패링 로직
     {
         Debug.Log("[PlayerState] Parry 성공!");
 

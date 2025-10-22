@@ -480,14 +480,16 @@ MonoBehaviour:
   iFrameDuration: 0.5
   anim: {fileID: 7991700780297173686}
   target: {fileID: 0}
-  state: 0
+  state: 3
   curHp: 0
   phaseChange: 0
   inPhase2: 0
-  bossLayer: 0
-  playerLayer: 0
-  playerAttackLayer: 0
-  groundLayer: 0
+  isSturn: 0
+  isDie: 0
+  bossLayer: 8
+  playerLayer: 7
+  playerAttackLayer: 9
+  groundLayer: 6
   floorHeights:
   - -5
   - -2

@@ -14,7 +14,6 @@ public abstract class BossBase : MonoBehaviour
     // Enum 상태 정의
     public enum BossState { Idle, ChoosePattern, Attacking, Directing, Sturn, Die }
 
-
     // 패턴 클래스
     [System.Serializable]
     public class BossPattern
@@ -25,6 +24,7 @@ public abstract class BossBase : MonoBehaviour
         [HideInInspector] public float lastUsedTime = -999f;    // 마지막 사용 시간
         public System.Func<IEnumerator> execute;                // 실행할 패턴 함수(자식 클래스에서 등록)
     }
+
 
     private List<BossPattern> phase1Patterns = new List<BossPattern>();
     private List<BossPattern> phase2Patterns = new List<BossPattern>();
@@ -44,6 +44,7 @@ public abstract class BossBase : MonoBehaviour
     public float curHp;                         // 현재 체력
     public bool phaseChange = false;            // 페이즈 변경
     public bool inPhase2 = false;               // 페이즈 상태
+    public bool isSturn = false;
     public bool isDie = false;
 
     // 현재 실행 중인 패턴
@@ -89,7 +90,8 @@ public abstract class BossBase : MonoBehaviour
                 
                 break;
             case BossState.Sturn:
-                StartCoroutine();
+                StopAllCoroutines();
+                StartCoroutine(Co_Sturn());
 
                 break;
             case BossState.Die:
@@ -123,6 +125,7 @@ public abstract class BossBase : MonoBehaviour
 
         //anim?.SetTrigger("Hit");
         curHp -= damage;
+        Debug.Log($"[BossBase] Boss Hit! Current HP : {curHp}");
 
         // I-Frame
         if (iFrameDuration > 0f)
@@ -155,9 +158,12 @@ public abstract class BossBase : MonoBehaviour
         isInvulnerable = false;
     }
 
-    protected virtual void Sturn()
+    protected virtual IEnumerator Co_Sturn()
     {
         Debug.Log("[BossBase] Boss Sturn");
+        isSturn = true;
+
+        yield return null;
     }
 
     /// <summary>

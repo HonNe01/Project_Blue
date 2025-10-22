@@ -14,18 +14,22 @@ public class GildalBoss : BossBase
 {
     [Header(" === Gildal Boss === ")]
     [Header("All Pattern Setting")]
-    public int bossLayer;
-    public int playerLayer;
-    public int playerAttackLayer;
-    public int groundLayer;
+    [SerializeField] private int bossLayer;
+    [SerializeField] private int playerLayer;
+    [SerializeField] private int playerAttackLayer;
+    [SerializeField] private int groundLayer;
     [SerializeField] private float[] floorHeights;
     public float pattern_Delay = 0.35f;
-    [Tooltip("Stealth Setting")]
+    [SerializeField] private float sturn_Delay = 1f;
+
+    [Header("Stealth Settings")]
     public float reStealth_Delay = 1f;
     private Coroutine co_Fade;
+
     [Header("Map Limits")]
     public float wallXMin = -20f;      // 벽 x좌표
     public float wallXMax = 20f;
+
 
     [Header(" === 1 Phase Patterns === ")]
     [Header("Swing")]
@@ -153,7 +157,8 @@ public class GildalBoss : BossBase
 
     public override IEnumerator StartBattle()
     {
-        base.StartBattle();
+        StartCoroutine(base.StartBattle());
+        state = BossState.Directing;
         anim?.SetTrigger("PhaseStart");
 
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
@@ -163,7 +168,6 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
     }
-    
 
     protected override IEnumerator Co_ChoosePattern()
     {
@@ -197,6 +201,7 @@ public class GildalBoss : BossBase
             choose.lastUsedTime = Time.time;
 
             // 패턴 실행
+            state = BossState.Attacking;
             yield return StartCoroutine(choose.execute());
         }
 
@@ -592,6 +597,26 @@ public class GildalBoss : BossBase
     {
         base.TakeDamage(damage);
         CheckSpecialTrigger();
+    }
+
+    protected override IEnumerator Co_Sturn()
+    {
+        if (isSturn) yield break;   // 이중 스턴 방지
+
+        // 스턴 상태 변경
+        isSturn = true;
+        Debug.Log("[Gildal] Boss Sturn Start");
+
+        // 스턴 모션
+        anim.SetBool("Sturn", true);
+        yield return new WaitForSeconds(sturn_Delay);    // 스턴 딜레이
+        anim.SetBool("Sturn", false);
+
+        // 상태 복구
+        Debug.Log("[Gildal] Boss Sturn End");
+        isSturn = false;
+        yield return StartCoroutine(Co_DoStealth());
+        state = BossState.Idle;
     }
 
     // 특수 패턴
