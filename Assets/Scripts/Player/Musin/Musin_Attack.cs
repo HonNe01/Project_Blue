@@ -232,13 +232,13 @@ public class Musin_Attack : PlayerAttack
             _slash1.SetActive(true);
             if (PlayerState.instance.isRight > 0)
             {
-                _slash1.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash1.transform.position = gameObject.transform.position;
                 _slash1.transform.rotation = Quaternion.Euler(0, 0, 0);
                 rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _slash1.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash1.transform.position = gameObject.transform.position;
                 _slash1.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
             }
@@ -268,13 +268,13 @@ public class Musin_Attack : PlayerAttack
             _slash1.SetActive(true);
             if (PlayerState.instance.isRight > 0)
             {
-                _slash2.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash2.transform.position = gameObject.transform.position;
                 _slash2.transform.rotation = Quaternion.Euler(0, 0, 0);
                 rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _slash2.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash2.transform.position = gameObject.transform.position;
                 _slash2.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
             }
@@ -304,13 +304,13 @@ public class Musin_Attack : PlayerAttack
             _slash3.SetActive(true);
             if (PlayerState.instance.isRight > 0)
             {
-                _slash3.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash3.transform.position = gameObject.transform.position;
                 _slash3.transform.rotation = Quaternion.Euler(0, 0, 0);
                 rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _slash3.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
+                _slash3.transform.position = gameObject.transform.position;
                 _slash3.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
             }
