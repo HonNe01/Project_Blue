@@ -27,18 +27,6 @@ public class HitboxController : MonoBehaviour
 
     }
 
-    void HitCheck()
-    {
-        
-    }
-
-    void HitEffect()
-    {
-        
-    }
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (type)

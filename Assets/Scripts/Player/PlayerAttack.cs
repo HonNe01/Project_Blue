@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public int curCombo = 0;
     public float comboTime = 1.5f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
-    private bool isAttack = false;
+    [HideInInspector ]public bool isAttack = false;
     private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
     private bool isCharge = false;  
 
@@ -135,7 +135,7 @@ public class PlayerAttack : MonoBehaviour
         
     }
 
-    private IEnumerator Co_Attack()
+    public virtual IEnumerator Co_Attack()
     {
         if(isAttack && curCombo == 0) yield break;
             isAttack = true;
@@ -217,48 +217,48 @@ public class PlayerAttack : MonoBehaviour
         curCombo = 0;
         anim.SetInteger("AttackCombo", 0);
     }
-    public void Attack1Start() 
+    public virtual void Attack1Start() 
     { 
         _attack1.SetActive(true); 
     }   
-    public void Attack1End()
+    public virtual void Attack1End()
     {
         _attack1.SetActive(false);
 
     }
-    public void Attack2Start()
+    public virtual void Attack2Start()
     {
         _attack2.SetActive(true);
     }
-    public void Attack2End()
+    public virtual void Attack2End()
     {
         _attack2.SetActive(false);
 
     }
-    public void Attack3Start()
+    public virtual void Attack3Start()
     {
         _attack3.SetActive(true);
     }
-    public void Attack3End()
+    public virtual void Attack3End()
     {
         _attack3.SetActive(false);
     }
 
-    public void ChargeAttackStart()
+    public virtual void ChargeAttackStart()
     {
         _chargeAttack.SetActive(true);
     }
-    public void ChargeAttackEnd()
+    public virtual void ChargeAttackEnd()
     {
         _chargeAttack.SetActive(false);
         isAttack = false;
     }
-    public void JumpAttackStart()
+    public virtual void JumpAttackStart()
     {
         _jumpAttack.SetActive(true);
         isAttack = false;
     }
-    public void JumpAttackEnd()
+    public virtual void JumpAttackEnd()
     {
         _jumpAttack.SetActive(false);
         isAttack = false;

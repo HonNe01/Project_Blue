@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Musin_Attack : PlayerAttack
 {
@@ -15,7 +16,11 @@ public class Musin_Attack : PlayerAttack
 
 
     [Header(" === Up Skill === ")]
-    public GameObject skillUpPrefab;
+    public GameObject skillUpNormalPrefab;
+    public GameObject skillUpImpactPrefab;
+    public GameObject skillUpElectronicPrefab;
+    public GameObject skillUpFirePrefab;
+   
     [Header("Up Skill Offset")]
     public float SkillUpOffsetX;
     public float SkillUpOffsetY;
@@ -28,6 +33,28 @@ public class Musin_Attack : PlayerAttack
     public float skillDownKnockbackYForce = 7f;
     [SerializeField] private Vector3 skillDownOffset;
     public GameObject skillDownEffect;
+
+
+    [Header(" === Slach Moduel === ")]
+    public GameObject _slash1;
+    public Vector3 slash1position;
+    public Rigidbody2D _slash1rb;
+    
+    public GameObject _slash2;
+    
+    public GameObject _slash3;
+    
+    public GameObject _slashCharge;
+    
+    public GameObject _slashJump;
+    public float slashspeed;
+    
+
+
+    [Header("참조")]
+    public Musin_State musinstate;
+
+
 
 
     public override void Skill()
@@ -85,12 +112,63 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill_Up()
     {
-        if (PlayerState.instance.UseGauge(20))
+        if (Musin_State.instance.UseGauge(20) && musinstate.firegranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
             Debug.Log("윗스킬 사용");
-            GameObject grenade = Instantiate(skillUpPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+            GameObject grenade = Instantiate(skillUpFirePrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+            if (PlayerState.instance.isRight > 0)
+            {
+                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+        }
+        else if (musinstate.impactgranade)
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 2);
+            Debug.Log("윗스킬 사용");
+            GameObject grenade = Instantiate(skillUpImpactPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+            if (PlayerState.instance.isRight > 0)
+            {
+                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+        }
+        else if (musinstate.electricgranade)
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 2);
+            Debug.Log("윗스킬 사용");
+            GameObject grenade = Instantiate(skillUpElectronicPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+            if (PlayerState.instance.isRight > 0)
+            {
+                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            anim.SetTrigger("Attack");
+            anim.SetInteger("AttackSkill", 2);
+            Debug.Log("윗스킬 사용");
+            GameObject grenade = Instantiate(skillUpNormalPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
             Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
 
             if (PlayerState.instance.isRight > 0)
@@ -103,6 +181,8 @@ public class Musin_Attack : PlayerAttack
             }
         }
     }
+
+
 
     public override void Skill_Down()
     {
@@ -141,5 +221,75 @@ public class Musin_Attack : PlayerAttack
         yield return new WaitForSeconds(duration);
 
         EnableOtherAction();
+    }
+
+    public override void Attack1Start()
+    {
+        if (musinstate.swordSlash)
+        {
+            _slash1.SetActive(true);
+            if (PlayerState.instance.isRight > 0)
+            {
+                _slash1rb.linearVelocity = slash1position + new Vector3(slashspeed, 0, 0);
+            }
+            else
+            {
+                _slash1rb.linearVelocity = slash1position + new Vector3(-slashspeed, 0, 0);
+            }
+        }
+        else
+        {
+            _attack1.SetActive(true);
+        }
+        
+    }
+    public override void Attack1End()
+    {
+        if (musinstate.swordSlash)
+        {
+            _slash1.transform.position = slash1position;
+            _slash1.SetActive(false);
+        }
+        else
+        {
+            _attack1.SetActive(false);
+        }
+    }
+    public override void Attack2Start()
+    {
+        _attack2.SetActive(true);
+    }
+    public override void Attack2End()
+    {
+        _attack2.SetActive(false);
+
+    }
+    public override void Attack3Start()
+    {
+        _attack3.SetActive(true);
+    }
+    public override void Attack3End()
+    {
+        _attack3.SetActive(false);
+    }
+
+    public override void ChargeAttackStart()
+    {
+        _chargeAttack.SetActive(true);
+    }
+    public override void ChargeAttackEnd()
+    {
+        _chargeAttack.SetActive(false);
+        isAttack = false;
+    }
+    public override void JumpAttackStart()
+    {
+        _jumpAttack.SetActive(true);
+        isAttack = false;
+    }
+    public override void JumpAttackEnd()
+    {
+        _jumpAttack.SetActive(false);
+        isAttack = false;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7957847990682017753}
   - component: {fileID: 5779482375873306277}
   - component: {fileID: 2221849793830115849}
-  - component: {fileID: 7999001724466460867}
+  - component: {fileID: 1784537063980934951}
   - component: {fileID: 3038832706818918881}
   - component: {fileID: 4785944710395483702}
   - component: {fileID: 2995258539916941256}
@@ -199,7 +199,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.78, y: 1.25}
   m_EdgeRadius: 0
---- !u!114 &7999001724466460867
+--- !u!114 &1784537063980934951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2085269201776898949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9177781ea5923344fa0912f3d262438c, type: 3}
+  m_Script: {fileID: 11500000, guid: 078ef3a8ba40ad14baa498b148110cdf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerState
+  m_EditorClassIdentifier: Assembly-CSharp::Musin_State
   anim: {fileID: 0}
   rb: {fileID: 0}
   coll: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   playerAttack: {fileID: 0}
   playerGuard: {fileID: 0}
   cinemachineCamera: {fileID: 0}
-  damagedTime: 0.3
+  damagedTime: 0
   isDamaged: 0
   isDie: 0
   isRight: 0
@@ -235,11 +235,15 @@ MonoBehaviour:
   canHeal: 1
   isHeal: 0
   maxHP: 5
-  healHoldTime: 0.5
+  healHoldTime: 1
   maxGauge: 100
-  currentGauge: 100
-  damagedknockbackXForce: 3
-  damagedknockbackYForce: 3
+  currentGauge: 0
+  damagedknockbackXForce: 10
+  damagedknockbackYForce: 10
+  swordSlash: 0
+  firegranade: 0
+  impactgranade: 0
+  electricgranade: 0
 --- !u!114 &3038832706818918881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,9 +315,6 @@ MonoBehaviour:
   _jumpAttack: {fileID: 8715432015965566512}
   _upAttack: {fileID: 8052990509291645254}
   _downattack: {fileID: 4121120796025748153}
-  skillTimer: 0
-  skillHoldTime: 0.3
-  isSkillCharge: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
   skillEffect: {fileID: 0}
@@ -322,7 +323,10 @@ MonoBehaviour:
   skillknockbackTime: 0.3
   skillOffsetX: 2
   skillOffsetY: 0.5
-  skillUpPrefab: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
+  skillUpNormalPrefab: {fileID: 8055395044935525288, guid: e7e3c236e09b33d42bfc41d50b65f200, type: 3}
+  skillUpImpactPrefab: {fileID: 8055395044935525288, guid: fea9a452d46801448b9a31f8d413b0d2, type: 3}
+  skillUpElectronicPrefab: {fileID: 8055395044935525288, guid: 8913d488558b00c48b2e152730e30141, type: 3}
+  skillUpFirePrefab: {fileID: 8055395044935525288, guid: da6d702f6912d5e4292082f848a312b1, type: 3}
   SkillUpOffsetX: 1
   SkillUpOffsetY: 1
   skillUpthrowXForce: 5
