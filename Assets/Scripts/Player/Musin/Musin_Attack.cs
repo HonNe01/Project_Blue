@@ -35,7 +35,7 @@ public class Musin_Attack : PlayerAttack
     public GameObject skillDownEffect;
 
 
-    [Header(" === Slach Moduel === ")]
+    [Header(" === Slash Moduel === ")]
     public GameObject _slash1;
     public Rigidbody2D _slash1rb;
     
@@ -113,7 +113,7 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill_Up()
     {
-        if (Musin_State.instance.UseGauge(20) && musinstate.firegranade)
+        if (Musin_State.instance.UseGauge(20) && musinstate.fireGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -130,7 +130,7 @@ public class Musin_Attack : PlayerAttack
                 grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
         }
-        else if (musinstate.impactgranade)
+        else if (musinstate.impactGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -147,7 +147,7 @@ public class Musin_Attack : PlayerAttack
                 grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
         }
-        else if (musinstate.electricgranade)
+        else if (musinstate.electricGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);

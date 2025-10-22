@@ -90,8 +90,12 @@ public abstract class BossBase : MonoBehaviour
                 
                 break;
             case BossState.Sturn:
-                StopAllCoroutines();
-                StartCoroutine(Co_Sturn());
+                // Ω∫≈œ
+                if (!isSturn)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(Co_Sturn());
+                }
 
                 break;
             case BossState.Die:

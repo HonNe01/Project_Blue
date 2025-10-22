@@ -238,12 +238,12 @@ MonoBehaviour:
   healHoldTime: 1
   maxGauge: 100
   currentGauge: 0
-  damagedknockbackXForce: 10
-  damagedknockbackYForce: 10
+  damagedknockbackXForce: 5
+  damagedknockbackYForce: 5
   swordSlash: 1
-  firegranade: 0
-  impactgranade: 0
-  electricgranade: 0
+  fireGranade: 0
+  impactGranade: 0
+  electricGranade: 0
 --- !u!114 &3038832706818918881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +338,9 @@ MonoBehaviour:
   _slash1: {fileID: 0}
   _slash1rb: {fileID: 0}
   _slash2: {fileID: 0}
+  _slash2rb: {fileID: 0}
   _slash3: {fileID: 0}
+  _slash3rb: {fileID: 0}
   _slashCharge: {fileID: 0}
   _slashJump: {fileID: 0}
   slashspeed: 20

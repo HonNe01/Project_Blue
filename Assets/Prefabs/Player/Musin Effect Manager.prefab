@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 6086407689975729022}
   - component: {fileID: 8576610354428606100}
   - component: {fileID: 6819012854740360897}
+  - component: {fileID: 1330558205212803672}
   m_Layer: 9
   m_Name: _Slash3
   m_TagString: PlayerAttack
@@ -533,6 +534,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   anim: {fileID: 0}
+--- !u!50 &1330558205212803672
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913275986076285650}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2124582058623581700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1080,7 @@ GameObject:
   - component: {fileID: 5659393573018083142}
   - component: {fileID: 6296045423304182703}
   - component: {fileID: 9147895081064587180}
+  - component: {fileID: 8052460649781128840}
   m_Layer: 9
   m_Name: _Slash2
   m_TagString: PlayerAttack
@@ -1227,6 +1256,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   anim: {fileID: 0}
+--- !u!50 &8052460649781128840
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962963818411102976}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4364466178451848582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1607,7 @@ GameObject:
   - component: {fileID: 5950913508739718795}
   - component: {fileID: 8449512643945152432}
   - component: {fileID: 1031203482602020894}
+  - component: {fileID: 4156203105418154663}
   m_Layer: 9
   m_Name: _ChargeSlash
   m_TagString: PlayerAttack
@@ -1726,6 +1783,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   anim: {fileID: 0}
+--- !u!50 &4156203105418154663
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418570916834209198}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8617089759651578886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1824,7 @@ GameObject:
   - component: {fileID: 2217556460548842108}
   - component: {fileID: 8127116309107206788}
   - component: {fileID: 6974558816652288813}
+  - component: {fileID: 1924111338016170525}
   m_Layer: 9
   m_Name: _JumpSlash
   m_TagString: PlayerAttack
@@ -1915,3 +2000,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   anim: {fileID: 0}
+--- !u!50 &1924111338016170525
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617089759651578886}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

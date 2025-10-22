@@ -601,10 +601,9 @@ public class GildalBoss : BossBase
 
     protected override IEnumerator Co_Sturn()
     {
-        if (isSturn) yield break;   // 이중 스턴 방지
-
         // 스턴 상태 변경
         isSturn = true;
+        StopPattern();
         Debug.Log("[Gildal] Boss Sturn Start");
 
         // 스턴 모션
@@ -614,9 +613,9 @@ public class GildalBoss : BossBase
 
         // 상태 복구
         Debug.Log("[Gildal] Boss Sturn End");
-        isSturn = false;
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
+        isSturn = false;
     }
 
     // 특수 패턴
