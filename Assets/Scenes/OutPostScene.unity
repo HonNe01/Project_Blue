@@ -326,6 +326,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784537063980934951, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: swordSlash
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2085269201776898949, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_Name
       value: Player_MuSin
@@ -374,7 +378,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6381510257296893161, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 4295329296318889912, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 4151825602345885870, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 7533142454466668696, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 7448614730079070422, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 4614459662080286673, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+    - {fileID: 7084311138571560007, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -570,17 +581,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2124582058623581700, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 2949560023103717438, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949560023103717438, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949560023103717438, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1080
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949560023103717438, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -679,6 +686,10 @@ PrefabInstance:
     - target: {fileID: 2325098140813484785, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: m_Name
       value: Portal_ChyeongRyu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: toScene
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: targetScene
@@ -2127,6 +2138,10 @@ PrefabInstance:
     - target: {fileID: 2325098140813484785, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: m_Name
       value: Portal_Gildal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: toScene
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

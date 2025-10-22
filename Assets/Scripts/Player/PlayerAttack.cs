@@ -13,20 +13,6 @@ public class PlayerAttack : MonoBehaviour
     private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
     private bool isCharge = false;  
 
-
-    public GameObject _attack1;
-    public GameObject _attack2;
-    public GameObject _attack3;
-    public GameObject _chargeAttack;
-    public GameObject _jumpAttack;
-
-    [Header("High Attack")]
-    public GameObject _upAttack;
-
-    [Header("Down Attack")]
-    public GameObject _downattack;
-    
-
     [Header("ChargeAttack")]
     private float AttackTimer = 0f;
     private float AttackHoldTime = 0.5f;
@@ -52,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
         // 공격
         Attack();
 
-
+        // 스킬
         if (Input.GetKeyDown(KeyCode.F) && PlayerState.instance.canAttack)
         {
             if (!PlayerState.instance.isGround)         // 공중
@@ -70,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
                     Skill();
                 }
             }
-            else
+            else                                        // 지상
             {
                 if (Input.GetKey(KeyCode.UpArrow))          // 윗 스킬
                 {
@@ -138,11 +124,9 @@ public class PlayerAttack : MonoBehaviour
     public virtual IEnumerator Co_Attack()
     {
         if(isAttack && curCombo == 0) yield break;
-            isAttack = true;
-            AttackTimer = 0f;
+        isAttack = true;
+        AttackTimer = 0f;
         
-
-
         while (Input.GetKey(KeyCode.V))
         {
             AttackTimer += Time.deltaTime;
@@ -219,51 +203,30 @@ public class PlayerAttack : MonoBehaviour
         anim.SetInteger("AttackCombo", 0);
     }
     public virtual void Attack1Start() 
-    { 
-        _attack1.SetActive(true); 
-    }   
-    public virtual void Attack1End()
     {
-        _attack1.SetActive(false);
-
-    }
+        AddCombo();
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1, transform.position, PlayerState.instance.isRight < 0);
+    }   
     public virtual void Attack2Start()
     {
-        _attack2.SetActive(true);
-    }
-    public virtual void Attack2End()
-    {
-        _attack2.SetActive(false);
-
+        AddCombo();
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack2, transform.position, PlayerState.instance.isRight < 0);
     }
     public virtual void Attack3Start()
     {
-        _attack3.SetActive(true);
+        AddCombo();
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack3, transform.position, PlayerState.instance.isRight < 0);
     }
-    public virtual void Attack3End()
-    {
-        _attack3.SetActive(false);
-    }
-
     public virtual void ChargeAttackStart()
     {
-        _chargeAttack.SetActive(true);
-    }
-    public virtual void ChargeAttackEnd()
-    {
-        _chargeAttack.SetActive(false);
-        isAttack = false;
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
     }
     public virtual void JumpAttackStart()
     {
-        _jumpAttack.SetActive(true);
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
         isAttack = false;
     }
-    public virtual void JumpAttackEnd()
-    {
-        _jumpAttack.SetActive(false);
-        isAttack = false;
-    }
+
     private IEnumerator Co_JumpAttack()                 // 점프 공격
     {
         anim.SetTrigger("Attack");
@@ -278,12 +241,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void UpAttackStart() 
     { 
-        _upAttack.SetActive(true); 
-    }
-    public void UpAttackEnd()
-    {
-        _upAttack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.UpAttack, transform.position, PlayerState.instance.isRight < 0);
     }
 
     private IEnumerator Co_DownAttack()                 // 아래 공격
@@ -295,12 +253,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void DownAttackStart() 
     { 
-        _downattack.SetActive(true); 
-    }
-    public void DownAttackEnd()
-    {
-        _downattack.SetActive(false);   // 히트박스 비활성화
-        isAttack = false;
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.DownAttack, transform.position, PlayerState.instance.isRight < 0);
     }
 
     public virtual void Skill() // AttackSkill = 1

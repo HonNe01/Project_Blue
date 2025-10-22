@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Musin_Attack : PlayerAttack
 {
@@ -24,6 +23,7 @@ public class Musin_Attack : PlayerAttack
     [Header("Up Skill Offset")]
     public float SkillUpOffsetX;
     public float SkillUpOffsetY;
+
     [Header("Up Skill Power")]
     public float skillUpthrowXForce = 5f;
     public float skillUpthrowYForce = 5f;
@@ -49,20 +49,12 @@ public class Musin_Attack : PlayerAttack
     
     public GameObject _slashJump;
     public float slashspeed = 20f;
-    
-
-
-    [Header("참조")]
-    public Musin_State musinstate;
-
-
 
 
     public override void Skill()
     {
         if (PlayerState.instance.UseGauge(20))
         {
-
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
             Debug.Log("일반 스킬 사용");
@@ -77,21 +69,16 @@ public class Musin_Attack : PlayerAttack
                 if (PlayerState.instance.isRight > 0)
                 {
                     rb.AddForce(new Vector2(-skillknockbackXForce, skillknockbackYForce), ForceMode2D.Impulse);
-
                 }
                 else
                 {
                     rb.AddForce(new Vector2(skillknockbackXForce, skillknockbackYForce), ForceMode2D.Impulse);
-
                 }
             }
             else
             {
                 StartCoroutine(Co_DisableOtherAction(skillknockbackTime));
             }
-
-            
-
         }
     }
 
@@ -99,21 +86,17 @@ public class Musin_Attack : PlayerAttack
     {
         if (PlayerState.instance.isRight > 0)
         {
-            skillEffect.transform.position = gameObject.transform.position + new Vector3(skillOffsetX, skillOffsetY, 0);
-            skillEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
-            skillEffect.SetActive(true);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Skill, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
-            skillEffect.transform.position = gameObject.transform.position + new Vector3(-skillOffsetX, skillOffsetY, 0);
-            skillEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
-            skillEffect.SetActive(true);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Skill, transform.position, PlayerState.instance.isRight < 0);
         }
     }
 
     public override void Skill_Up()
     {
-        if (Musin_State.instance.UseGauge(20) && musinstate.fireGranade)
+        if (PlayerState.instance.UseGauge(20) && ((Musin_State)PlayerState.instance).fireGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -130,7 +113,7 @@ public class Musin_Attack : PlayerAttack
                 grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
         }
-        else if (musinstate.impactGranade)
+        else if (((Musin_State)PlayerState.instance).impactGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -147,7 +130,7 @@ public class Musin_Attack : PlayerAttack
                 grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
             }
         }
-        else if (musinstate.electricGranade)
+        else if (((Musin_State)PlayerState.instance).electricGranade)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 2);
@@ -183,8 +166,6 @@ public class Musin_Attack : PlayerAttack
         }
     }
 
-
-
     public override void Skill_Down()
     {
         if (PlayerState.instance.UseGauge(20))
@@ -198,20 +179,15 @@ public class Musin_Attack : PlayerAttack
             rb.AddForce(new Vector2(0f, skillDownKnockbackYForce), ForceMode2D.Impulse);
         }
     }
-
     public void DownSkillEffectOn()
     {
         if (PlayerState.instance.isRight > 0)
         {
-            skillDownEffect.transform.position = gameObject.transform.position + skillDownOffset;
-            skillDownEffect.transform.rotation = Quaternion.Euler(0, 0, -90);
-            skillDownEffect.SetActive(true);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
-            skillDownEffect.transform.position = gameObject.transform.position + skillDownOffset;
-            skillDownEffect.transform.rotation = Quaternion.Euler(0, 180, -90);
-            skillDownEffect.SetActive(true);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
         }
     }
     
@@ -226,130 +202,54 @@ public class Musin_Attack : PlayerAttack
 
     public override void Attack1Start()
     {
-        if (musinstate.swordSlash)
+        if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            rb = _slash1rb;
-            _slash1.SetActive(true);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash1, transform.position, PlayerState.instance.isRight < 0);
+            /*
             if (PlayerState.instance.isRight > 0)
             {
-                _slash1.transform.position = gameObject.transform.position;
-                _slash1.transform.rotation = Quaternion.Euler(0, 0, 0);
                 rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _slash1.transform.position = gameObject.transform.position;
-                _slash1.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
             }
+            */
         }
         else
         {
-            _attack1.SetActive(true);
-        }
-        
-    }
-    public override void Attack1End()
-    {
-        if (musinstate.swordSlash)
-        {
-            _slash1.SetActive(false);
-        }
-        else
-        {
-            _attack1.SetActive(false);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1, transform.position, PlayerState.instance.isRight < 0);
         }
     }
     public override void Attack2Start()
     {
-        if (musinstate.swordSlash)
+        if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            rb = _slash2rb;
-            _slash1.SetActive(true);
-            if (PlayerState.instance.isRight > 0)
-            {
-                _slash2.transform.position = gameObject.transform.position;
-                _slash2.transform.rotation = Quaternion.Euler(0, 0, 0);
-                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
-            }
-            else
-            {
-                _slash2.transform.position = gameObject.transform.position;
-                _slash2.transform.rotation = Quaternion.Euler(0, 180, 0);
-                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
-            }
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash2, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
-            _attack2.SetActive(true);
-        }
-
-    }
-    public override void Attack2End()
-    {
-        if (musinstate.swordSlash)
-        {
-            _slash2.SetActive(false);
-        }
-        else
-        {
-            _attack2.SetActive(false);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack2, transform.position, PlayerState.instance.isRight < 0);
         }
     }
     public override void Attack3Start()
     {
-        if (musinstate.swordSlash)
+        if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            rb = _slash3rb;
-            _slash3.SetActive(true);
-            if (PlayerState.instance.isRight > 0)
-            {
-                _slash3.transform.position = gameObject.transform.position;
-                _slash3.transform.rotation = Quaternion.Euler(0, 0, 0);
-                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
-            }
-            else
-            {
-                _slash3.transform.position = gameObject.transform.position;
-                _slash3.transform.rotation = Quaternion.Euler(0, 180, 0);
-                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
-            }
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash3, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
-            _attack3.SetActive(true);
-        }
-
-    }
-    public override void Attack3End()
-    {
-        if (musinstate.swordSlash)
-        {
-            _slash3.SetActive(false);
-        }
-        else
-        {
-            _attack3.SetActive(false);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack3, transform.position, PlayerState.instance.isRight < 0);
         }
     }
 
     public override void ChargeAttackStart()
     {
-        _chargeAttack.SetActive(true);
-    }
-    public override void ChargeAttackEnd()
-    {
-        _chargeAttack.SetActive(false);
-        isAttack = false;
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
     }
     public override void JumpAttackStart()
     {
-        _jumpAttack.SetActive(true);
-        isAttack = false;
-    }
-    public override void JumpAttackEnd()
-    {
-        _jumpAttack.SetActive(false);
-        isAttack = false;
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
     }
 }

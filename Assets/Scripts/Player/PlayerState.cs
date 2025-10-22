@@ -2,7 +2,6 @@ using Unity.Cinemachine;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
 
 public class PlayerState : MonoBehaviour
 {

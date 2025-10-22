@@ -3,8 +3,12 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public enum PortalType { OutPost, Gildal, ChyeongRyu }
-    [SerializeField] private PortalType targetScene;
 
+    [Header("Portal Setting")]
+    [SerializeField] private PortalType fromScene;  // 포탈 위치
+    [SerializeField] private PortalType toScene;    // 포탈 목적지
+
+    [Header("Portal UI")]
     [SerializeField] private GameObject promptUI;
     private bool playerInRange = false;
 
@@ -16,18 +20,18 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange)
+        if (playerInRange && Input.GetKeyDown(KeyCode.V))
         {
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                GoScene();
-            }
+            GoScene();
         }
     }
 
     private void GoScene()
     {
-        switch (targetScene)
+        // 이동 시 이전 위치를 기록
+        PortalTransit.SetNextFrom(toScene);
+
+        switch (toScene)
         {
             case PortalType.OutPost:
                 GameManager.instance.GoToOP();
@@ -42,6 +46,21 @@ public class Portal : MonoBehaviour
 
                 break;
         }
+    }
+
+    private void Start()
+    {
+        // 씬 로드시 실행
+        if (!PortalTransit.HasPending) return;
+        if (PortalTransit.NextFrom != fromScene) return;
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = transform.position;
+        }
+
+        PortalTransit.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

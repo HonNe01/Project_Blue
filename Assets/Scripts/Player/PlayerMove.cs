@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
     private float dashCooldownCounter;
     private float defaultGravity; // 현재 중력값 저장
 
-    [Header("Effect")]
+    [Header("Effect Setting")]
     public GameObject dustEffect;
     public GameObject slidedustEffect;
     public GameObject jumpDustEffect;
@@ -127,8 +127,7 @@ public class PlayerMove : MonoBehaviour
         }
         else if (isWallJumping)
         {
-            
-           if(wallDir > 0)
+            if(wallDir > 0)
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
@@ -146,20 +145,16 @@ public class PlayerMove : MonoBehaviour
             {
                 if (wallDir > 0)
                 {
-                    slidedustEffect.SetActive(true);  // 오른쪽
-                    slidedustEffect.transform.position = gameObject.transform.position + new Vector3(0.5f, 0.7f, 0);
-                    slidedustEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position + new Vector3(0.5f, 0.7f, 0), false);
                 }
                 else
                 {
-                    slidedustEffect.SetActive(true);
-                    slidedustEffect.transform.position = gameObject.transform.position + new Vector3(-0.5f, 0.7f, 0);
-                    slidedustEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position + new Vector3(-0.5f, 0.7f, 0), true);
                 }
             }
             else
             {
-                slidedustEffect.SetActive(false);
+                EffectManager.instance.StopEffect(EffectManager.EffectType.Slide);
             }
         }
         else if (inputValueX != 0)
@@ -214,16 +209,12 @@ public class PlayerMove : MonoBehaviour
         {
             if (PlayerState.instance.isRight > 0)
             {
-                dustEffect.SetActive(true);
-                dustEffect.transform.position = gameObject.transform.position + new Vector3(-1f, 0.1f, 0);
-                dustEffect.transform.rotation = Quaternion.Euler(0, 180, 0);
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.Walk, transform.position + new Vector3(-1f, 0, 0), true);
 
             }
             else
             {
-                dustEffect.SetActive(true);
-                dustEffect.transform.position = gameObject.transform.position + new Vector3(1f, 0.1f, 0);
-                dustEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.Walk, transform.position + new Vector3(1f, 0, 0), false);
             }
 
         }
@@ -245,13 +236,11 @@ public class PlayerMove : MonoBehaviour
             //점프 이펙트
             if (PlayerState.instance.isGround)
             {
-                jumpDustEffect.SetActive(true);
-                jumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.Jump, transform.position + new Vector3(0, 0.2f, 0));
             }
             else
             {
-                airjumpDustEffect.SetActive(true);
-                airjumpDustEffect.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.AirJump, transform.position + new Vector3(0, 0.2f, 0));
             }
         }
         // 카운터 갱신
