@@ -1355,6 +1355,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784537063980934951, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: swordSlash
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2085269201776898949, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_Name
       value: Player_MuSin
@@ -1415,6 +1419,14 @@ PrefabInstance:
       propertyPath: airjumpDustEffect
       value: 
       objectReference: {fileID: 942889972}
+    - target: {fileID: 5006329824984442882, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006329824984442882, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5625
+      objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48
