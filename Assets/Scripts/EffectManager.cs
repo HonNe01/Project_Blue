@@ -19,9 +19,9 @@ public class EffectManager : MonoBehaviour
         Skill, SkillDown,
 
         // Module
-        Slash1, Slash2, Slash3,
-        ChargeSlash, UpSlash,
-        JumpSlash, JumpUpSlash, DownSlash,
+        Attack1_Module, Attack2_Module, Attack3_Module,
+        ChargeAttack_Module, UpAttack_Module,
+        JumpAttack_Module, JumpUpAttack_Module, DownAttack_Module,
     }
 
     public GameObject[] MoveEffects;

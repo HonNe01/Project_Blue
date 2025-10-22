@@ -204,7 +204,7 @@ public class Musin_Attack : PlayerAttack
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash1, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1_Module, transform.position, PlayerState.instance.isRight < 0);
             /*
             if (PlayerState.instance.isRight > 0)
             {
@@ -225,7 +225,7 @@ public class Musin_Attack : PlayerAttack
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash2, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack2_Module, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
@@ -236,7 +236,7 @@ public class Musin_Attack : PlayerAttack
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
-            EffectManager.instance.PlayEffect(EffectManager.EffectType.Slash3, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack3_Module, transform.position, PlayerState.instance.isRight < 0);
         }
         else
         {
