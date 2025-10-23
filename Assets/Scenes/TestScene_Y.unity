@@ -849,6 +849,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3391462793467856909, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391462793467856909, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186983314230352507, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186983314230352507, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186983314230352507, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186983314230352507, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4364466178451848582, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
       propertyPath: m_Name
       value: Musin Effect Manager
