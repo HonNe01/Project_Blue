@@ -19,7 +19,7 @@ public class Musin_Attack : PlayerAttack
     public GameObject skillUpImpactPrefab;
     public GameObject skillUpElectronicPrefab;
     public GameObject skillUpFirePrefab;
-   
+
     [Header("Up Skill Offset")]
     public float SkillUpOffsetX;
     public float SkillUpOffsetY;
@@ -38,15 +38,15 @@ public class Musin_Attack : PlayerAttack
     [Header(" === Slash Moduel === ")]
     public GameObject _slash1;
     public Rigidbody2D _slash1rb;
-    
+
     public GameObject _slash2;
     public Rigidbody2D _slash2rb;
-    
+
     public GameObject _slash3;
     public Rigidbody2D _slash3rb;
-    
+
     public GameObject _slashCharge;
-    
+
     public GameObject _slashJump;
     public float slashspeed = 20f;
 
@@ -190,7 +190,7 @@ public class Musin_Attack : PlayerAttack
             EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
         }
     }
-    
+
     IEnumerator Co_DisableOtherAction(float duration)
     {
         DisableOtherAction();
@@ -200,21 +200,14 @@ public class Musin_Attack : PlayerAttack
         EnableOtherAction();
     }
 
+    
+
     public override void Attack1Start()
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1_Module, transform.position, PlayerState.instance.isRight < 0);
-            /*
-            if (PlayerState.instance.isRight > 0)
-            {
-                rb.AddForce(new Vector2(slashspeed, 0), ForceMode2D.Impulse);
-            }
-            else
-            {
-                rb.AddForce(new Vector2(-slashspeed, 0), ForceMode2D.Impulse);
-            }
-            */
+            EffectManager.instance.MoveEffect(EffectManager.EffectType.Attack1_Module, slashspeed);
         }
         else
         {
@@ -226,6 +219,7 @@ public class Musin_Attack : PlayerAttack
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack2_Module, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.MoveEffect(EffectManager.EffectType.Attack2_Module, slashspeed);
         }
         else
         {
@@ -237,6 +231,7 @@ public class Musin_Attack : PlayerAttack
         if (((Musin_State)PlayerState.instance).swordSlash)
         {
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack3_Module, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.MoveEffect(EffectManager.EffectType.Attack3_Module, slashspeed);
         }
         else
         {
@@ -247,9 +242,12 @@ public class Musin_Attack : PlayerAttack
     public override void ChargeAttackStart()
     {
         EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
+        //EffectManager.instance.MoveEffect(slashspeed);
+
     }
     public override void JumpAttackStart()
     {
         EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
+        //EffectManager.instance.MoveEffect(slashspeed);
     }
 }

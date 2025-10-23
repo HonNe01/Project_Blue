@@ -65,6 +65,21 @@ public class EffectManager : MonoBehaviour
         vfx.SetActive(true);
     }
 
+    public void MoveEffect(EffectType type, float moveSpeed)
+    {
+        GameObject vfx = GetEffect(type);
+        Rigidbody2D rb = vfx.GetComponent<Rigidbody2D>();
+
+        if (PlayerState.instance.isRight > 0 && rb != null)
+        {
+            rb.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Impulse);
+        }
+    }
+
     public void StopEffect(EffectType type)
     {
         // 이펙트 가져오기

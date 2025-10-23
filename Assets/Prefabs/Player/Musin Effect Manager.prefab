@@ -2361,9 +2361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   MoveEffects:
   - {fileID: 4899065390228390472}
-  - {fileID: 1049862196099539594}
   - {fileID: 5321469983789882385}
   - {fileID: 3814591407498042224}
+  - {fileID: 1049862196099539594}
   AttackEffects:
   - {fileID: 7287424512042862026}
   - {fileID: 84512982926245520}
