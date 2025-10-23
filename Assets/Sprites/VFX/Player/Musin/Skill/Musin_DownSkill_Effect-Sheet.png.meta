@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: aa8e8cab2ef14484ba04782da677afc9
+guid: e185ae61563524e54ba21ba025d10f1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8852946633259072908
-    second: Musin_DownSkill-Sheet_0
+      213: -2722982945596241920
+    second: Musin_DownSkill_Effect-Sheet_0
   - first:
-      213: 1286893602799852147
-    second: Musin_DownSkill-Sheet_1
+      213: -2482325813838488357
+    second: Musin_DownSkill_Effect-Sheet_1
   - first:
-      213: 8434863233030606293
-    second: Musin_DownSkill-Sheet_2
+      213: -5448801923177650627
+    second: Musin_DownSkill_Effect-Sheet_2
   - first:
-      213: -2189287900392718807
-    second: Musin_DownSkill-Sheet_3
+      213: 2355053015164453089
+    second: Musin_DownSkill_Effect-Sheet_3
   - first:
-      213: 5582249405331440908
-    second: Musin_DownSkill-Sheet_4
+      213: -4914589779456565968
+    second: Musin_DownSkill_Effect-Sheet_4
   - first:
-      213: 8022821791386227657
-    second: Musin_DownSkill-Sheet_5
+      213: -2075755215917507245
+    second: Musin_DownSkill_Effect-Sheet_5
+  - first:
+      213: -1429849398301928498
+    second: Musin_DownSkill_Effect-Sheet_6
+  - first:
+      213: -9077854314739601488
+    second: Musin_DownSkill_Effect-Sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_0
+      name: Musin_DownSkill_Effect-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8db5eade0cfbda70800000000000000
-      internalID: 8852946633259072908
+      spriteID: 0080a4e1075063ad0800000000000000
+      internalID: -2722982945596241920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_1
+      name: Musin_DownSkill_Effect-Sheet_1
       rect:
         serializedVersion: 2
         x: 80
@@ -152,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37a9b9ad9e6fbd110800000000000000
-      internalID: 1286893602799852147
+      spriteID: bdcdf5103d10d8dd0800000000000000
+      internalID: -2482325813838488357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_2
+      name: Musin_DownSkill_Effect-Sheet_2
       rect:
         serializedVersion: 2
         x: 160
@@ -174,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ddcacdab67ae0570800000000000000
-      internalID: 8434863233030606293
+      spriteID: d36e7851587f164b0800000000000000
+      internalID: -5448801923177650627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_3
+      name: Musin_DownSkill_Effect-Sheet_3
       rect:
         serializedVersion: 2
         x: 240
@@ -196,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92ef70201461e91e0800000000000000
-      internalID: -2189287900392718807
+      spriteID: 1e0071c5d34dea020800000000000000
+      internalID: 2355053015164453089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_4
+      name: Musin_DownSkill_Effect-Sheet_4
       rect:
         serializedVersion: 2
         x: 320
@@ -218,30 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c058a641242287d40800000000000000
-      internalID: 5582249405331440908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musin_DownSkill-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 100
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c3d6db99e9c65f60800000000000000
-      internalID: 8022821791386227657
+      spriteID: 03dd9ba52aedbcbb0800000000000000
+      internalID: -4914589779456565968
       vertices: []
       indices: 
       edges: []
@@ -250,7 +234,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9788e8287a2cc400092761df7d8db8ef
+    spriteID: da9fc48b042f94b96b68c909e72d69ce
     internalID: 0
     vertices: []
     indices: 
@@ -262,12 +246,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Musin_DownSkill-Sheet_0: 8852946633259072908
-      Musin_DownSkill-Sheet_1: 1286893602799852147
-      Musin_DownSkill-Sheet_2: 8434863233030606293
-      Musin_DownSkill-Sheet_3: -2189287900392718807
-      Musin_DownSkill-Sheet_4: 5582249405331440908
-      Musin_DownSkill-Sheet_5: 8022821791386227657
+      Musin_DownSkill_Effect-Sheet_0: -2722982945596241920
+      Musin_DownSkill_Effect-Sheet_1: -2482325813838488357
+      Musin_DownSkill_Effect-Sheet_2: -5448801923177650627
+      Musin_DownSkill_Effect-Sheet_3: 2355053015164453089
+      Musin_DownSkill_Effect-Sheet_4: -4914589779456565968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
