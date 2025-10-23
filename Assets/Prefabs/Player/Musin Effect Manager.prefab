@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 84512982926245520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1925.78, y: -1083.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &5733259749818562646
 Animator:
   serializedVersion: 7
@@ -247,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 102025264806346290}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1926.15, y: -1084.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &564592819259570030
 Animator:
   serializedVersion: 7
@@ -568,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &4820876342665315918
 Animator:
   serializedVersion: 7
@@ -829,7 +832,7 @@ GameObject:
   - component: {fileID: 703563212377410367}
   - component: {fileID: 1810381673578682714}
   m_Layer: 9
-  m_Name: DownSlash Effect
+  m_Name: DownAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -910,6 +913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 1
+  actType: 1
 --- !u!95 &1134256756312465476
 Animator:
   serializedVersion: 7
@@ -1100,17 +1104,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.35333252, y: 0.5690027}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.12, y: 0.16}
-    newSize: {x: 0.12, y: 0.16}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 3.75, y: 1.875}
+    newSize: {x: 3.75, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4818115, y: 0.70537317}
   m_EdgeRadius: 0
 --- !u!114 &6479037363811873658
 MonoBehaviour:
@@ -1126,6 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &6086407689975729022
 Animator:
   serializedVersion: 7
@@ -1421,6 +1426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
+  actType: 1
 --- !u!114 &7580485362988498751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,6 +1615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
+  actType: 1
 --- !u!114 &1909621073207492247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1652,7 +1659,7 @@ Transform:
   m_GameObject: {fileID: 3237517703278781254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1926.32, y: -1085.84, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1718,6 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 1
+  actType: 1
 --- !u!95 &2537332589844221115
 Animator:
   serializedVersion: 7
@@ -2034,17 +2042,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5270386, y: 0.87548286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.53125, y: 2.65625}
-    newSize: {x: 2.53125, y: 2.65625}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 3.75, y: 1.875}
+    newSize: {x: 3.75, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8831787, y: 1.7797161}
   m_EdgeRadius: 0
 --- !u!114 &4041003162178353598
 MonoBehaviour:
@@ -2060,6 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &5659393573018083142
 Animator:
   serializedVersion: 7
@@ -2195,7 +2204,7 @@ GameObject:
   - component: {fileID: 8397298471821871548}
   - component: {fileID: 1254415903618565506}
   m_Layer: 9
-  m_Name: JumpUpSlash Effect
+  m_Name: JumpUpAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2276,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &6356040378681170551
 Animator:
   serializedVersion: 7
@@ -2499,7 +2509,7 @@ Transform:
   m_GameObject: {fileID: 4784237049947859224}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1926.11, y: -1083.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2539,17 +2549,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.82}
+  m_Offset: {x: 0.43597412, y: 0.7680656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    oldSize: {x: 3.75, y: 1.875}
+    newSize: {x: 3.75, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.0201416, y: 1.5648816}
   m_EdgeRadius: 0
 --- !u!114 &2924758116629283792
 MonoBehaviour:
@@ -2565,6 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &3984999768772416938
 Animator:
   serializedVersion: 7
@@ -2639,7 +2650,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 3.75, y: 1.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2987,7 +2998,7 @@ GameObject:
   - component: {fileID: 4156203105418154663}
   - component: {fileID: 1498545674716341437}
   m_Layer: 9
-  m_Name: ChargeSlash Effect
+  m_Name: ChargeAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3042,7 +3053,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.022766113, y: -0.16723168}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3052,7 +3063,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.3221436, y: 2.8305295}
   m_EdgeRadius: 0
 --- !u!114 &733472495060179633
 MonoBehaviour:
@@ -3068,6 +3079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &5950913508739718795
 Animator:
   serializedVersion: 7
@@ -3256,7 +3268,7 @@ Transform:
   m_GameObject: {fileID: 7287424512042862026}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1925.78, y: -1083.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3322,6 +3334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &1441161971253313382
 Animator:
   serializedVersion: 7
@@ -3472,7 +3485,7 @@ Transform:
   m_GameObject: {fileID: 7627016051097969760}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1926.15, y: -1084.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3538,6 +3551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &8487561087950792831
 Animator:
   serializedVersion: 7
@@ -3688,7 +3702,7 @@ Transform:
   m_GameObject: {fileID: 8573519018317331678}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1925.78, y: -1083.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3754,6 +3768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &7793062844665369132
 Animator:
   serializedVersion: 7
@@ -3922,7 +3937,7 @@ GameObject:
   - component: {fileID: 1924111338016170525}
   - component: {fileID: 3603599088958980514}
   m_Layer: 9
-  m_Name: JumpSlash Effect
+  m_Name: JumpAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3977,17 +3992,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.61}
+  m_Offset: {x: 0.43597412, y: 0.7680656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    oldSize: {x: 3.75, y: 1.875}
+    newSize: {x: 3.75, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0201416, y: 1.5648816}
   m_EdgeRadius: 0
 --- !u!114 &612073025408900714
 MonoBehaviour:
@@ -4003,6 +4018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &2217556460548842108
 Animator:
   serializedVersion: 7
@@ -4153,7 +4169,7 @@ Transform:
   m_GameObject: {fileID: 8703667421010713632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1925.78, y: -1083.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4219,6 +4235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 1
 --- !u!95 &3601529214640776247
 Animator:
   serializedVersion: 7
