@@ -234,6 +234,16 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
   m_PrefabInstance: {fileID: 172209490}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &235959594 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2195055801461455536, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+  m_PrefabInstance: {fileID: 1414466415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &333636099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2195055801461455536, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+  m_PrefabInstance: {fileID: 7204146151443734414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,9 +698,17 @@ PrefabInstance:
       value: Portal_ChyeongRyu
       objectReference: {fileID: 0}
     - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: endB
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: toScene
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 235959594}
     - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: targetScene
       value: 2
@@ -2140,9 +2158,17 @@ PrefabInstance:
       value: Portal_Gildal
       objectReference: {fileID: 0}
     - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: endB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: toScene
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7393333872978293207, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 333636099}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

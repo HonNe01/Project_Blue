@@ -352,6 +352,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(cheongryuScene);
     }
 
+    public Portal.PortalType GetCurrentSceneType()
+    {
+        // 현재 씬 이름으로 씬 타입 반환
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // 씬 이름에 따른 씬 타입 매핑
+        return sceneName switch
+        {
+            var name when name == outpostScene => Portal.PortalType.OutPost,
+            var name when name == gildalScene => Portal.PortalType.Gildal,
+            var name when name == cheongryuScene => Portal.PortalType.CheongRyu,
+            _ => Portal.PortalType.OutPost,
+        };
+    }
+
     public void GameQuit()
     {
 #if UNITY_EDITOR
