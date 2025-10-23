@@ -233,7 +233,7 @@ MonoBehaviour:
   currentGauge: 0
   damagedknockbackXForce: 5
   damagedknockbackYForce: 5
-  swordSlash: 1
+  swordSlash: 0
   fireGranade: 0
   impactGranade: 0
   electricGranade: 0

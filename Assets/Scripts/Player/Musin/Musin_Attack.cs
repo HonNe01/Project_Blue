@@ -181,14 +181,7 @@ public class Musin_Attack : PlayerAttack
     }
     public void DownSkillEffectOn()
     {
-        if (PlayerState.instance.isRight > 0)
-        {
-            EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
-        }
-        else
-        {
-            EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
-        }
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillDown, transform.position, PlayerState.instance.isRight < 0);
     }
 
     IEnumerator Co_DisableOtherAction(float duration)
