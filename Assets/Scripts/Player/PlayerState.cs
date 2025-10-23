@@ -56,7 +56,7 @@ public class PlayerState : MonoBehaviour
 
     [Header("Skill Gauge")]
     public int maxGauge = 100;
-    public int currentGauge = 0;
+    public int currentGauge = 100;
 
     [Header("Damaged")]
     public float damagedknockbackXForce = 10f;
