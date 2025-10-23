@@ -1,0 +1,277 @@
+fileFormatVersion: 2
+guid: 5a5d93934ffd84f0494ddeeb9d9925b8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1937960298441868135
+    second: Bomb_NormalEffect-Sheet_0
+  - first:
+      213: -5638169319862369776
+    second: Bomb_NormalEffect-Sheet_1
+  - first:
+      213: -1529819738416204605
+    second: Bomb_NormalEffect-Sheet_2
+  - first:
+      213: 3671210789123125574
+    second: Bomb_NormalEffect-Sheet_3
+  - first:
+      213: 3131500545645394237
+    second: Bomb_NormalEffect-Sheet_4
+  - first:
+      213: -9211640594414967507
+    second: Bomb_NormalEffect-Sheet_5
+  - first:
+      213: -543007417227941677
+    second: Bomb_NormalEffect-Sheet_6
+  - first:
+      213: -2827295378946771246
+    second: Bomb_NormalEffect-Sheet_7
+  - first:
+      213: 5834306552406140457
+    second: Bomb_NormalEffect-Sheet_8
+  - first:
+      213: -1165691366397895980
+    second: Bomb_NormalEffect-Sheet_9
+  - first:
+      213: 1322263368229518848
+    second: Bomb_NormalEffect-Sheet_10
+  - first:
+      213: 4608122883240639180
+    second: Bomb_NormalEffect-Sheet_11
+  - first:
+      213: 4358707090099318836
+    second: Bomb_NormalEffect-Sheet_12
+  - first:
+      213: -8710657800093613353
+    second: Bomb_NormalEffect-Sheet_13
+  - first:
+      213: 4172438773019917152
+    second: Bomb_NormalEffect-Sheet_14
+  - first:
+      213: 7313085241288915028
+    second: Bomb_NormalEffect-Sheet_15
+  - first:
+      213: -1373766970400123375
+    second: Bomb_NormalEffect-Sheet_16
+  - first:
+      213: 6828990498238524442
+    second: Bomb_NormalEffect-Sheet_17
+  - first:
+      213: 4788008693084402071
+    second: Bomb_NormalEffect-Sheet_18
+  - first:
+      213: 2294206981756680548
+    second: Bomb_NormalEffect-Sheet_19
+  - first:
+      213: -6982678570522192243
+    second: Bomb_NormalEffect-Sheet_20
+  - first:
+      213: 1729738663739039847
+    second: Bomb_NormalEffect-Sheet_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bomb_NormalEffect-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7630079af9405ea10800000000000000
+      internalID: 1937960298441868135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_NormalEffect-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012091a30e231c1b0800000000000000
+      internalID: -5638169319862369776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_NormalEffect-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c43251ad0df4cae0800000000000000
+      internalID: -1529819738416204605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_NormalEffect-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 641f34503c2c2f230800000000000000
+      internalID: 3671210789123125574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bd74ba3d879b9495aa5500eae63f55c4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Bomb_NormalEffect-Sheet_0: 1937960298441868135
+      Bomb_NormalEffect-Sheet_1: -5638169319862369776
+      Bomb_NormalEffect-Sheet_2: -1529819738416204605
+      Bomb_NormalEffect-Sheet_3: 3671210789123125574
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
