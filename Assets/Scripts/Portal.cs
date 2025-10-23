@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -20,31 +21,34 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.V))
-        {
-            GoScene();
-        }
+        GoScene();
     }
 
     private void GoScene()
     {
-        // 이동 시 이전 위치를 기록
-        PortalTransit.SetNextFrom(toScene);
+        if (!playerInRange) return;
 
-        switch (toScene)
+        if (Input.GetKey(KeyCode.V))
         {
-            case PortalType.OutPost:
-                GameManager.instance.GoToOP();
+            // 이동 시 이전 위치를 기록
+            PortalTransit.SetNextFrom(fromScene);
 
-                break;
-            case PortalType.Gildal:
-                GameManager.instance.GoToGD();
+            // 해당 씬으로 이동
+            switch (toScene)
+            {
+                case PortalType.OutPost:
+                    GameManager.instance.GoToOP();
 
-                break;
-            case PortalType.ChyeongRyu:
-                GameManager.instance.GoToCR();
+                    break;
+                case PortalType.Gildal:
+                    GameManager.instance.GoToGD();
 
-                break;
+                    break;
+                case PortalType.ChyeongRyu:
+                    GameManager.instance.GoToCR();
+
+                    break;
+            }
         }
     }
 
@@ -54,8 +58,15 @@ public class Portal : MonoBehaviour
         if (!PortalTransit.HasPending) return;
         if (PortalTransit.NextFrom != fromScene) return;
 
+        StartCoroutine(Co_Start());
+    }
+
+    private IEnumerator Co_Start()
+    {
+        yield return null;
+
         var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (player != null && PortalTransit.NextFrom == fromScene)
         {
             player.transform.position = transform.position;
         }

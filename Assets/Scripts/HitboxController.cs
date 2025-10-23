@@ -5,9 +5,12 @@ public class HitboxController : MonoBehaviour
     public enum HitboxType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, Scarecrow }
     public enum EffectType { Slash, Explosion }
 
+    public enum ActiveType { True, False }
+
 
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitboxType type;
+    [SerializeField] private ActiveType actType;
 
 
     private float bounceForce = 10f;
@@ -15,16 +18,14 @@ public class HitboxController : MonoBehaviour
 
     void Awake()
     {
-        if (type == HitboxType.Trap)
-        {
-            gameObject.SetActive(true);
-        }
-
-        else if (type != HitboxType.Scarecrow)
+        if (actType == ActiveType.False)
         {
             gameObject.SetActive(false);
         }
-
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

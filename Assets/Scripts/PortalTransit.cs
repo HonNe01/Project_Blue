@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class PortalTransit
 {
     public static bool HasPending { get; private set; }
