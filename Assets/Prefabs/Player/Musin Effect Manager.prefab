@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5733259749818562646}
   - component: {fileID: 5271888779218224798}
   - component: {fileID: 7059782036259678742}
+  - component: {fileID: 7664949942534021210}
   m_Layer: 9
   m_Name: Attack2 Effect
   m_TagString: PlayerAttack
@@ -188,6 +189,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &7664949942534021210
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84512982926245520}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &102025264806346290
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +230,7 @@ GameObject:
   - component: {fileID: 564592819259570030}
   - component: {fileID: 5047352962555323141}
   - component: {fileID: 1818849587941486606}
+  - component: {fileID: 3190499573918465012}
   m_Layer: 9
   m_Name: UpAttack Effect
   m_TagString: PlayerAttack
@@ -376,6 +405,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &3190499573918465012
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102025264806346290}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &585526812531894919
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4367470185040217456
 Transform:
   m_ObjectHideFlags: 0
@@ -1579,13 +1635,14 @@ GameObject:
   - component: {fileID: 2537332589844221115}
   - component: {fileID: 3391462793467856909}
   - component: {fileID: 5459098302983449716}
+  - component: {fileID: 8527610195622889491}
   m_Layer: 9
   m_Name: DownAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2994309132757092981
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,6 +1810,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &8527610195622889491
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237517703278781254}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3814591407498042224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2482,7 @@ GameObject:
   - component: {fileID: 3984999768772416938}
   - component: {fileID: 79205082561595626}
   - component: {fileID: 4132127718906262308}
+  - component: {fileID: 1475714592828329909}
   m_Layer: 9
   m_Name: JumpAttack Effect
   m_TagString: PlayerAttack
@@ -2572,6 +2657,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &1475714592828329909
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784237049947859224}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4899065390228390472
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,13 +3239,14 @@ GameObject:
   - component: {fileID: 1441161971253313382}
   - component: {fileID: 8664355236601756414}
   - component: {fileID: 8454412657069341494}
+  - component: {fileID: 1161068721311228449}
   m_Layer: 9
   m_Name: Attack1 Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5133540312083609863
 Transform:
   m_ObjectHideFlags: 0
@@ -3193,7 +3306,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.0201416, y: 1.5648816}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &3339073012049575418
 MonoBehaviour:
@@ -3301,6 +3414,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &1161068721311228449
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7287424512042862026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7627016051097969760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,6 +3455,7 @@ GameObject:
   - component: {fileID: 8487561087950792831}
   - component: {fileID: 5279191352331325125}
   - component: {fileID: 353895479123346627}
+  - component: {fileID: 7262884986564647516}
   m_Layer: 9
   m_Name: JumpUpAttack Effect
   m_TagString: PlayerAttack
@@ -3489,6 +3630,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &7262884986564647516
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7627016051097969760}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8573519018317331678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3671,7 @@ GameObject:
   - component: {fileID: 7793062844665369132}
   - component: {fileID: 7168347623556767327}
   - component: {fileID: 6569776001294462639}
+  - component: {fileID: 5044486260352265421}
   m_Layer: 9
   m_Name: Attack3 Effect
   m_TagString: PlayerAttack
@@ -3677,6 +3846,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &5044486260352265421
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573519018317331678}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8582075067469294432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,13 +4136,14 @@ GameObject:
   - component: {fileID: 3601529214640776247}
   - component: {fileID: 1868756098155789844}
   - component: {fileID: 2399220338378248586}
+  - component: {fileID: 8509458013376062098}
   m_Layer: 9
   m_Name: ChargeAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8289545192385226358
 Transform:
   m_ObjectHideFlags: 0
@@ -4114,3 +4311,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de6ffc9409a24aa9aa51882c98fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
+--- !u!50 &8509458013376062098
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703667421010713632}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

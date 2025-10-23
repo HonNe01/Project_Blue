@@ -9,6 +9,15 @@ public class PlayerInventory : MonoBehaviour
 
     private Coroutine co_Fade;
 
+    [Header(" === UI Slash === ")]
+    public GameObject slashImage;
+
+    [Header(" === UI Granade === ")]
+    public GameObject impactImage;
+    public GameObject electronicImage;
+    public GameObject fireImage;
+
+
     public bool IsOpen { get; private set; } = false;
 
     private void Awake()
@@ -52,4 +61,73 @@ public class PlayerInventory : MonoBehaviour
         canvas.interactable = isShow;
         canvas.blocksRaycasts = isShow;
     }
+
+    public void SlashModuel()
+    {
+        if (((Musin_State)PlayerState.instance).swordSlash)
+        {
+            slashImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).swordSlash = false;
+        }
+        else
+        {
+            slashImage.SetActive(true);
+            ((Musin_State)PlayerState.instance).swordSlash = true;
+        }
+    }
+
+    public void FireModuel()
+    {
+        if (((Musin_State)PlayerState.instance).fireGranade)
+        {
+            fireImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).fireGranade = false;
+        }
+        else
+        {
+            fireImage.SetActive(true);
+            impactImage.SetActive(false);
+            electronicImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).fireGranade = true;
+            ((Musin_State)PlayerState.instance).electricGranade = false;
+            ((Musin_State)PlayerState.instance).impactGranade = false;
+        }
+    }
+
+    public void ElectronicModuel()
+    {
+        if (((Musin_State)PlayerState.instance).electricGranade)
+        {
+            electronicImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).electricGranade = false;
+        }
+        else
+        {
+            fireImage.SetActive(false);
+            impactImage.SetActive(false);
+            electronicImage.SetActive(true);
+            ((Musin_State)PlayerState.instance).fireGranade = false;
+            ((Musin_State)PlayerState.instance).electricGranade = true;
+            ((Musin_State)PlayerState.instance).impactGranade = false;
+        }
+    }
+
+    public void ImpactModuel()
+    {
+        if (((Musin_State)PlayerState.instance).impactGranade)
+        {
+            impactImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).impactGranade = false;
+        }
+        else
+        {
+            fireImage.SetActive(false);
+            impactImage.SetActive(true);
+            electronicImage.SetActive(false);
+            ((Musin_State)PlayerState.instance).fireGranade = false;
+            ((Musin_State)PlayerState.instance).electricGranade = false;
+            ((Musin_State)PlayerState.instance).impactGranade = true;
+        }
+    }
+
 }

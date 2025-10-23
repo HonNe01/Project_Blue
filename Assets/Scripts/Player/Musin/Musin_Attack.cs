@@ -241,13 +241,27 @@ public class Musin_Attack : PlayerAttack
 
     public override void ChargeAttackStart()
     {
-        EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
-        //EffectManager.instance.MoveEffect(slashspeed);
+        if (((Musin_State)PlayerState.instance).swordSlash)
+        {
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack_Module, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.MoveEffect(EffectManager.EffectType.ChargeAttack_Module, slashspeed);
+        }
+        else 
+        {
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
+        }
 
     }
     public override void JumpAttackStart()
     {
-        EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
-        //EffectManager.instance.MoveEffect(slashspeed);
+        if (((Musin_State)PlayerState.instance).swordSlash)
+        {
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack_Module, transform.position, PlayerState.instance.isRight < 0);
+            EffectManager.instance.MoveEffect(EffectManager.EffectType.JumpAttack_Module, slashspeed);
+        }
+        else
+        {
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
+        }
     }
 }

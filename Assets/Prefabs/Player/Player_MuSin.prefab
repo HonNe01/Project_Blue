@@ -302,13 +302,6 @@ MonoBehaviour:
   curCombo: 0
   comboTime: 1
   isAttack: 0
-  _attack1: {fileID: 0}
-  _attack2: {fileID: 0}
-  _attack3: {fileID: 0}
-  _chargeAttack: {fileID: 0}
-  _jumpAttack: {fileID: 0}
-  _upAttack: {fileID: 0}
-  _downattack: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 0}
   skillEffect: {fileID: 0}
@@ -337,4 +330,3 @@ MonoBehaviour:
   _slashCharge: {fileID: 0}
   _slashJump: {fileID: 0}
   slashspeed: 20
-  musinstate: {fileID: 1784537063980934951}
