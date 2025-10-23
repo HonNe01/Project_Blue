@@ -853,6 +853,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musin Effect Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5047352962555323141, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047352962555323141, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047352962555323141, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3560880591541681547, guid: 3a09ab7c55a6544a4922687668875849, type: 3}
+    - target: {fileID: 5047352962555323141, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734122013855344666, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
