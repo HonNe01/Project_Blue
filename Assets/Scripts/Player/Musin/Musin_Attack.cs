@@ -25,8 +25,8 @@ public class Musin_Attack : PlayerAttack
     public float SkillUpOffsetY;
 
     [Header("Up Skill Power")]
-    public float skillUpthrowXForce = 5f;
-    public float skillUpthrowYForce = 5f;
+    public float skillUpthrowXForce = 10f;
+    public float skillUpthrowYForce = 2f;
 
 
     [Header(" === Down Skill === ")]
