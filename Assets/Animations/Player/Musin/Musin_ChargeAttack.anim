@@ -21,17 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 8897098341860192251, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: 5428065974446063838, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     - time: 0.083333336
-      value: {fileID: 288645697000342294, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: -2904744176512859792, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     - time: 0.16666667
-      value: {fileID: -8420008182168331267, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: 3035239845011345700, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     - time: 0.25
-      value: {fileID: -3864557610428683219, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: -8209619791781820113, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     - time: 0.33333334
-      value: {fileID: -1277187732233948744, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: -7111210723933800169, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     - time: 0.41666666
-      value: {fileID: 1323914245893780189, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+      value: {fileID: 7001149640725728845, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - time: 0.5
+      value: {fileID: -3473932053381665339, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,18 +56,19 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 8897098341860192251, guid: 18bf5b799561b4da898515121b90532a, type: 3}
-    - {fileID: 288645697000342294, guid: 18bf5b799561b4da898515121b90532a, type: 3}
-    - {fileID: -8420008182168331267, guid: 18bf5b799561b4da898515121b90532a, type: 3}
-    - {fileID: -3864557610428683219, guid: 18bf5b799561b4da898515121b90532a, type: 3}
-    - {fileID: -1277187732233948744, guid: 18bf5b799561b4da898515121b90532a, type: 3}
-    - {fileID: 1323914245893780189, guid: 18bf5b799561b4da898515121b90532a, type: 3}
+    - {fileID: 5428065974446063838, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: -2904744176512859792, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: 3035239845011345700, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: -8209619791781820113, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: -7111210723933800169, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: 7001149640725728845, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
+    - {fileID: -3473932053381665339, guid: 8a0fe08e3ff9941178c3ab7e9cdccbb3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,7 +88,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.25
     functionName: ChargeAttackStart
     data: 
     objectReferenceParameter: {fileID: 0}
