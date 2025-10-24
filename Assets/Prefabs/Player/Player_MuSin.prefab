@@ -230,7 +230,7 @@ MonoBehaviour:
   maxHP: 5
   healHoldTime: 1
   maxGauge: 100
-  currentGauge: 0
+  currentGauge: 100
   damagedknockbackXForce: 5
   damagedknockbackYForce: 5
   swordSlash: 0

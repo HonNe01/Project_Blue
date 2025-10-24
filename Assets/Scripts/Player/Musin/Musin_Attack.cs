@@ -96,72 +96,75 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill_Up()
     {
-        if (PlayerState.instance.UseGauge(20) && ((Musin_State)PlayerState.instance).fireGranade)
+        if (PlayerState.instance.UseGauge(20))
         {
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 2);
-            Debug.Log("À­½ºÅ³ »ç¿ë");
-            GameObject grenade = Instantiate(skillUpFirePrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
-            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
-
-            if (PlayerState.instance.isRight > 0)
+            if (((Musin_State)PlayerState.instance).fireGranade)
             {
-                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                anim.SetTrigger("Attack");
+                anim.SetInteger("AttackSkill", 2);
+                Debug.Log("À­½ºÅ³ »ç¿ë");
+                GameObject grenade = Instantiate(skillUpFirePrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+                Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+                if (PlayerState.instance.isRight > 0)
+                {
+                    grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+            }
+            else if (((Musin_State)PlayerState.instance).impactGranade)
+            {
+                anim.SetTrigger("Attack");
+                anim.SetInteger("AttackSkill", 2);
+                Debug.Log("À­½ºÅ³ »ç¿ë");
+                GameObject grenade = Instantiate(skillUpImpactPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+                Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+                if (PlayerState.instance.isRight > 0)
+                {
+                    grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+            }
+            else if (((Musin_State)PlayerState.instance).electricGranade)
+            {
+                anim.SetTrigger("Attack");
+                anim.SetInteger("AttackSkill", 2);
+                Debug.Log("À­½ºÅ³ »ç¿ë");
+                GameObject grenade = Instantiate(skillUpElectronicPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+                Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+
+                if (PlayerState.instance.isRight > 0)
+                {
+                    grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
             }
             else
             {
-                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-        }
-        else if (((Musin_State)PlayerState.instance).impactGranade)
-        {
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 2);
-            Debug.Log("À­½ºÅ³ »ç¿ë");
-            GameObject grenade = Instantiate(skillUpImpactPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
-            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
+                anim.SetTrigger("Attack");
+                anim.SetInteger("AttackSkill", 2);
+                Debug.Log("À­½ºÅ³ »ç¿ë");
+                GameObject grenade = Instantiate(skillUpNormalPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
+                Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
 
-            if (PlayerState.instance.isRight > 0)
-            {
-                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-            else
-            {
-                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-        }
-        else if (((Musin_State)PlayerState.instance).electricGranade)
-        {
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 2);
-            Debug.Log("À­½ºÅ³ »ç¿ë");
-            GameObject grenade = Instantiate(skillUpElectronicPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
-            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
-
-            if (PlayerState.instance.isRight > 0)
-            {
-                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-            else
-            {
-                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-        }
-        else
-        {
-            anim.SetTrigger("Attack");
-            anim.SetInteger("AttackSkill", 2);
-            Debug.Log("À­½ºÅ³ »ç¿ë");
-            GameObject grenade = Instantiate(skillUpNormalPrefab, transform.position + new Vector3(SkillUpOffsetX, SkillUpOffsetY, 0), Quaternion.identity);
-            Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
-
-            if (PlayerState.instance.isRight > 0)
-            {
-                grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
-            }
-            else
-            {
-                grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                if (PlayerState.instance.isRight > 0)
+                {
+                    grenadeRb.AddForce(new Vector2(skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    grenadeRb.AddForce(new Vector2(-skillUpthrowXForce, skillUpthrowYForce), ForceMode2D.Impulse);
+                }
             }
         }
     }
