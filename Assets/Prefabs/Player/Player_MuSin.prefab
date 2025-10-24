@@ -314,10 +314,10 @@ MonoBehaviour:
   skillUpImpactPrefab: {fileID: 8055395044935525288, guid: fea9a452d46801448b9a31f8d413b0d2, type: 3}
   skillUpElectronicPrefab: {fileID: 8055395044935525288, guid: 8913d488558b00c48b2e152730e30141, type: 3}
   skillUpFirePrefab: {fileID: 8055395044935525288, guid: da6d702f6912d5e4292082f848a312b1, type: 3}
-  SkillUpOffsetX: 1
-  SkillUpOffsetY: 1
-  skillUpthrowXForce: 5
-  skillUpthrowYForce: 5
+  SkillUpOffsetX: 0.2
+  SkillUpOffsetY: 0.5
+  skillUpthrowXForce: 10
+  skillUpthrowYForce: 2
   skillDownKnockbackYForce: 7
   skillDownOffset: {x: 0, y: -1, z: 0}
   skillDownEffect: {fileID: 0}
