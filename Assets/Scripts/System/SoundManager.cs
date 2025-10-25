@@ -37,11 +37,31 @@ public class SoundManager : MonoBehaviour
     }
 
     [Header(" === SFX Settings === ")]
-    public AudioClip[] sfxClip;
     public float sfxVolume = 0.2f;
     public int channelCount = 5;
     AudioSource[] sfxPlayers;
     int channelIndex = 0;
+
+    [Header("System")]
+    [Tooltip("")]
+    public AudioClip[] systemSFXClips;
+
+    [Header("Player")]
+    [Tooltip("")]
+    public AudioClip[] playerSFXClips;
+    [Tooltip("")]
+    public AudioClip[] musinSFXClips;
+    [Tooltip("")]
+    public AudioClip[] moonsinSFXClips;
+
+    [Header("Enemy")]
+    [Tooltip("")]
+    public AudioClip[] enemySFXClips;
+    [Tooltip("")]
+    public AudioClip[] gildalSFXClips;
+    [Tooltip("")]
+    public AudioClip[] cheongRyuSFXClips;
+
 
     [Header(" === Volume Sliders === ")]
     [Range(0, 1)] public float bgmSlider;
@@ -171,6 +191,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(SFX sfx)
     {
+        AudioClip clip = GetSFX(sfx);
+        if (clip == null) return;
+
         for (int i = 0; i < sfxPlayers.Length; i++)
         {
             int loopIndex = (i + channelIndex) % sfxPlayers.Length;
@@ -188,10 +211,67 @@ public class SoundManager : MonoBehaviour
 
 
             channelIndex = loopIndex;
-            sfxPlayers[loopIndex].clip = sfxClip[(int)sfx]; // Random Sound 예시 : sfxPlayers[loopIndex].clip = sfxClip[(int)sfx + ranIndex];
+            sfxPlayers[loopIndex].clip = clip; // Random Sound 예시 : sfxPlayers[loopIndex].clip = sfxClip[(int)sfx + ranIndex];
             sfxPlayers[loopIndex].Play();
             break;
         }
+    }
+
+    public AudioClip GetSFX(SFX sfx)
+    {
+        int index = (int)sfx;
+
+        // System SFX Clips 배열 범위 체크
+        if (index < systemSFXClips.Length)
+        {
+            return systemSFXClips[index];
+        }
+        index -= systemSFXClips.Length;
+
+        // Player SFX Clips 배열 범위 체크
+        if (index < playerSFXClips.Length)
+        {
+            return playerSFXClips[index];
+        }
+        index -= playerSFXClips.Length;
+
+        //      MuSin SFX Clips 배열 범위 체크
+        if (index < musinSFXClips.Length)
+        {
+            return musinSFXClips[index];
+        }
+        index -= musinSFXClips.Length;
+
+        //      MoonSin SFX Clips 배열 범위 체크
+        if (index < moonsinSFXClips.Length)
+        {
+            return moonsinSFXClips[index];
+        }
+        index -= moonsinSFXClips.Length;
+
+        // Enemy SFX Clips 배열 범위 체크
+        if (index < enemySFXClips.Length)
+        {
+            return enemySFXClips[index];
+        }
+        index -= enemySFXClips.Length;
+
+        //      Gildal SFX Clips 배열 범위 체크
+        if (index < gildalSFXClips.Length)
+        {
+            return gildalSFXClips[index];
+        }
+        index -= gildalSFXClips.Length;
+
+        //      CheongRyu SFX Clips 배열 범위 체크
+        if (index < cheongRyuSFXClips.Length)
+        {
+            return cheongRyuSFXClips[index];
+        }
+
+        // 찾지 못했을 경우
+        Debug.LogWarning($"[EffectManager] GetEffect: Unknown type {sfx}");
+        return null;
     }
 
     public void UpdateVolumeSFX()
