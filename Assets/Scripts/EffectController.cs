@@ -20,4 +20,9 @@ public class EffectController : MonoBehaviour
 
         EffectOff();
     }
+
+    public void HitEffectOff()
+    {
+        gameObject.SetActive(false);
+    }
 }

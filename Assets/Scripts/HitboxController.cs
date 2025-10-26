@@ -37,6 +37,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         // 공중에선 점프 초기화
@@ -45,7 +46,9 @@ public class HitboxController : MonoBehaviour
 
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    {
+                        enemy.TakeDamage(baseDamage);                        
+                    }
                 }
                 break;
             case HitboxType.PlayerDownAttack:
@@ -53,10 +56,12 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         AttackBounce();
                         PlayerState.instance.playerMove.jumpCount = 1;
+                        Debug.Log("튀어오르기");
                     }
 
                     var enemy = collision.GetComponent<BossBase>();
@@ -68,6 +73,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillHit, transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         // 공중에선 점프 초기화
@@ -82,6 +88,7 @@ public class HitboxController : MonoBehaviour
             case HitboxType.Enemy:
                 if (collision.CompareTag("Player"))
                 {
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, transform.position, PlayerState.instance.isRight < 0);
                     // 패링 확인
                     if (PlayerState.instance.playerGuard.IsParry())
                     {
@@ -122,6 +129,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         // 공중에선 점프 초기화
@@ -137,6 +145,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
                     PlayerState.instance.AddGauge(5);
                     if (!PlayerState.instance.isGround)
                     {
@@ -153,6 +162,7 @@ public class HitboxController : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillHit, transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         // 공중에선 점프 초기화
@@ -167,6 +177,7 @@ public class HitboxController : MonoBehaviour
             case HitboxType.Enemy:
                 if (collision.gameObject.CompareTag("Player"))
                 {
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, transform.position, PlayerState.instance.isRight < 0);
                     // 패링 확인
                     if (PlayerState.instance.playerGuard.IsParry())
                     {

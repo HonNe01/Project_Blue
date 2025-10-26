@@ -702,26 +702,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3814591407498042224, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
   m_PrefabInstance: {fileID: 1282992562}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1046651587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1415166212797198082, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
-  m_PrefabInstance: {fileID: 1953410975}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1046651591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046651587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
-  baseDamage: 1
-  type: 3
-  actType: 0
 --- !u!1 &1052595749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 803034581812765428, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
@@ -1095,10 +1075,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1415166212797198082, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1046651591}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
 --- !u!1 &2076629505 stripped
 GameObject:
@@ -1190,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 7.90625
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x

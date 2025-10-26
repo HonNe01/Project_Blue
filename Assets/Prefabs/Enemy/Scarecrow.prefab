@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1145733315036640454}
   - component: {fileID: 4380575710568449922}
   - component: {fileID: 8667780126873706258}
+  - component: {fileID: 518224479812225942}
   m_Layer: 8
   m_Name: Scarecrow
   m_TagString: Enemy
@@ -137,3 +138,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &518224479812225942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415166212797198082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82692cce9914604aab655e95903a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitboxController
+  baseDamage: 1
+  type: 4
+  actType: 0

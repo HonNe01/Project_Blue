@@ -22,12 +22,17 @@ public class EffectManager : MonoBehaviour
         Attack1_Module, Attack2_Module, Attack3_Module,
         ChargeAttack_Module, UpAttack_Module,
         JumpAttack_Module, JumpUpAttack_Module, DownAttack_Module,
+
+        // Hit
+        AttackHit, SkillHit, ExplosionNormalHit, MusinHit,
+        ExplosionElectronicHit, ExplosionFireHit,
     }
 
     public GameObject[] MoveEffects;
     public GameObject[] AttackEffects;
     public GameObject[] SkillEffects;
     public GameObject[] ModuleEffects;
+    public GameObject[] HitEffect;
 
 
     private void Awake()
@@ -40,7 +45,6 @@ public class EffectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(gameObject);
     }
 
@@ -119,6 +123,14 @@ public class EffectManager : MonoBehaviour
         if (index < ModuleEffects.Length)
         {
             return ModuleEffects[index];
+        }
+
+        index -= ModuleEffects.Length;
+
+        // HitEffect 배열 범위 체크
+        if (index < HitEffect.Length)
+        {
+            return HitEffect[index];
         }
 
         // 찾지 못했을 경우
