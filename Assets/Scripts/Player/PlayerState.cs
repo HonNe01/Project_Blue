@@ -128,7 +128,7 @@ public class PlayerState : MonoBehaviour
 
     public void Healing()
     {
-        if (!canHeal && curHP >= maxHP) return;
+        if (!canHeal || curHP >= maxHP) return;
 
         
         if (Input.GetKey(KeyCode.F))
