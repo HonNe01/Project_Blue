@@ -1167,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1222,6 +1222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784537063980934951, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: currentGauge
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2085269201776898949, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_Name
       value: Player_MuSin
