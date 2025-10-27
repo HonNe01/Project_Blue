@@ -146,7 +146,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("ChargeAttack");
             Debug.Log("차지공격 실행");
         }
-        else 
+        else if(isAttack)
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
