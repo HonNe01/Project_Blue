@@ -199,6 +199,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void ResetCombo()
     {
+        isAttack = false;
+        comboQueue = false;
         curCombo = 0;
         anim.SetInteger("AttackCombo", 0);
     }
@@ -220,6 +222,11 @@ public class PlayerAttack : MonoBehaviour
     public virtual void ChargeAttackStart()
     {
         EffectManager.instance.PlayEffect(EffectManager.EffectType.ChargeAttack, transform.position, PlayerState.instance.isRight < 0);
+    }
+    public void ChargeAttackEnd()
+    {
+        isAttack = false;
+        comboQueue = false;
     }
     public virtual void JumpAttackStart()
     {
