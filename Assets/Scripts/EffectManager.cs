@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -7,25 +8,26 @@ public class EffectManager : MonoBehaviour
 
     public enum EffectType 
     { 
-        // Move
+        // Move : 4
         Walk, Jump, AirJump, Slide,
 
-        // Attack
+        // Attack : 8
         Attack1, Attack2, Attack3,
         ChargeAttack, UpAttack,
         JumpAttack, JumpUpAttack, DownAttack,
 
-        // Skill
+        // Skill : 2
         Skill, SkillDown,
 
-        // Module
+        // Module : 7
         Attack1_Module, Attack2_Module, Attack3_Module,
         ChargeAttack_Module, UpAttack_Module,
         JumpAttack_Module, JumpUpAttack_Module, DownAttack_Module,
 
-        // Hit
-        AttackHit, SkillHit, ExplosionNormalHit, MusinHit,
-        ExplosionElectronicHit, ExplosionFireHit,
+        // Hit : 6
+        MusinHit,
+        AttackHit, SkillHit, 
+        ExplosionNormalHit, ExplosionElectronicHit, ExplosionFireHit,
     }
 
     public GameObject[] MoveEffects;
@@ -45,7 +47,27 @@ public class EffectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         DontDestroyOnLoad(gameObject);
+        EffectsCheck();
+    }
+
+    private void EffectsCheck() // 이펙트 개수 체크
+    {
+        int totalEnumCount = Enum.GetNames(typeof(EffectType)).Length;
+        int totalArrayCount = MoveEffects.Length + AttackEffects.Length + SkillEffects.Length + ModuleEffects.Length + HitEffect.Length;
+
+        if (totalEnumCount != totalArrayCount)
+        {
+            Debug.LogError($"[EffectManager] 이펙트 개수 불일치! : Enum {totalEnumCount} vs Array {totalArrayCount}");
+        }
+
+        Vector3 farPos = new Vector3(9999f, 9999f, 0f);
+
+        foreach(EffectType t in Enum.GetValues(typeof(EffectType)))
+        {
+            PlayEffect(t, farPos, false);            
+        }
     }
 
     public void PlayEffect(EffectType type, Vector3 position, bool flipX = false)

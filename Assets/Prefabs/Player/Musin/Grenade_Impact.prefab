@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6945947157295548128}
   - component: {fileID: 8237689237887363859}
   m_Layer: 9
-  m_Name: TestImpactBoom
+  m_Name: Grenade_Impact
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6248397529878094446, guid: 025ffbd2d527f47ac95400a95372d7f6, type: 3}
-  m_Color: {r: 1, g: 0.9183227, b: 0.23113209, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

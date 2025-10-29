@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3271974770088337025}
   - component: {fileID: 298460683248597651}
   m_Layer: 9
-  m_Name: TestFireBoom
+  m_Name: Grenade_Fire
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
