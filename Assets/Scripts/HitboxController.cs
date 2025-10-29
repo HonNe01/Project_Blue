@@ -37,7 +37,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, collision.gameObject.transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         // 공중에선 점프 초기화
@@ -56,7 +56,7 @@ public class HitboxController : MonoBehaviour
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
                     PlayerState.instance.AddGauge(5);
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, transform.position, PlayerState.instance.isRight < 0);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, collision.gameObject.transform.position, PlayerState.instance.isRight < 0);
                     if (!PlayerState.instance.isGround)
                     {
                         AttackBounce();

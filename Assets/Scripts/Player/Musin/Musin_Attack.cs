@@ -260,4 +260,9 @@ public class Musin_Attack : PlayerAttack
             EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);
         }
     }
+
+    public void UpSkillReset()
+    {
+        anim.SetInteger("AttackSkill", 0);
+    }
 }

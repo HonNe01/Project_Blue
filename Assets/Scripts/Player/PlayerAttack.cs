@@ -9,8 +9,8 @@ public class PlayerAttack : MonoBehaviour
     public int curCombo = 0;
     public float comboTime = 1.5f;            // 콤보 유지 시간
     private float lastAttackTime = -1f;         // 마지막 공격 시작 시간
-    [HideInInspector ]public bool isAttack = false;
-    private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
+    [SerializeField ]public bool isAttack = false;
+    [SerializeField] private bool comboQueue = false;        // 콤보 입력 대기 중인지 여부
     private bool isCharge = false;  
 
     [Header("ChargeAttack")]
@@ -123,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual IEnumerator Co_Attack()
     {
-        if(isAttack && curCombo == 0) yield break;
+        if(isAttack || curCombo == 0) yield break;
         isAttack = true;
         AttackTimer = 0f;
         
@@ -146,7 +146,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("ChargeAttack");
             Debug.Log("차지공격 실행");
         }
-        else if(isAttack)
+        else
         {
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
@@ -174,7 +174,6 @@ public class PlayerAttack : MonoBehaviour
 
         // 멈춤 해제
         EnableOtherAction();
-        isAttack = false;   
         isCharge = false;
         AttackTimer = 0f;
 
@@ -192,6 +191,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void AddCombo()
     {
+        isAttack = false;
         comboQueue = false;
         lastAttackTime = Time.time;
         Debug.Log($"콤보 증가 {curCombo}");
