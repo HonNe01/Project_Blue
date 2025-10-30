@@ -42,6 +42,7 @@ public class PlayerState : MonoBehaviour
     public bool canGuard = true;
     public bool canHeal = true;
     public bool isHeal = false;
+    public bool ishealing = false;
     
     [Header("=== Health State ===")]
     public int maxHP = 5;
@@ -128,22 +129,28 @@ public class PlayerState : MonoBehaviour
 
     public void Healing()
     {
-        if (!canHeal || curHP >= maxHP) return;
-
+        if (!canHeal || curHP >= maxHP)
+        {
+            return;
+        }
         
         if (Input.GetKey(KeyCode.F))
         {
             // 회복 입력
             isHeal = true;
+            ishealing = true;
             healPress = true;
+            anim.SetBool("Healing", ishealing);
             anim.SetBool("IsHeal", isHeal);
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
             // 회복 취소
             isHeal = false;
+            ishealing = false;
             healPress = false;
             anim.SetBool("IsHeal", isHeal);
+            anim.SetBool("Healing", ishealing);
 
             healTimer = 0f;
         }
@@ -154,10 +161,26 @@ public class PlayerState : MonoBehaviour
 
             if (healTimer >= healHoldTime)
             {
-                isHeal = false;
                 Heal(1);
+                isHeal = false;
             }
         }
+    }
+
+    public void HPCheck()
+    {
+        if (!canHeal || curHP >= maxHP)
+        {
+            isHeal = false;
+            ishealing = false;
+            anim.SetBool("IsHeal", isHeal);
+            anim.SetBool("Healing", ishealing);
+        }
+    }
+
+    public void HealSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Healing);
     }
 
     public void Heal(int amount = 1)
