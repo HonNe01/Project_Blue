@@ -501,6 +501,7 @@ public class GildalBoss : BossBase
         yield return null;
     }
 
+    // 공격 중 돌진
     public void OnAttackForward(float distance)
     {
         Vector3 dir = sprite.flipX ? Vector2.left : Vector2.right;
@@ -508,7 +509,7 @@ public class GildalBoss : BossBase
         Vector2 targetPos = transform.position + dir * distance;
 
         StartCoroutine(Co_MoveTo(targetPos, 0.2f));
-    }
+    }   
 
     public void OnSlashHitStart() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
     public void OnSlashHitEnd() { if (slash_Hitbox) slash_Hitbox.SetActive(false); }
