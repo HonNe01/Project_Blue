@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307768977753520341, guid: d7c257af91873be449023b8c4c87880c, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3163840857716004558, guid: d7c257af91873be449023b8c4c87880c, type: 3}
       propertyPath: m_Name
       value: MuSin UI Canvas
