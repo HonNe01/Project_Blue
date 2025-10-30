@@ -44,3 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370a4b27a28101243a71941be1c8b3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  bgmClip: {fileID: 8300000, guid: 139982ee37a243d40aab3b2b96b2c253, type: 3}
+  bgmVolume: 0.8
+  sfxVolume: 0.5
+  channelCount: 5
+  systemSFXClips:
+  - {fileID: 8300000, guid: d537bec9433fb3443ba68f616404d141, type: 3}
+  playerSFXClips:
+  - {fileID: 8300000, guid: ada4319dc7b507547bfefbeda133745b, type: 3}
+  - {fileID: 8300000, guid: ac1cb04ab9cfeb74c8de45aa81c06351, type: 3}
+  - {fileID: 8300000, guid: d42124e8c3d90094ca1acc58c53cb903, type: 3}
+  musinSFXClips:
+  - {fileID: 8300000, guid: 792be152b215a48fdb3d086593b0111b, type: 3}
+  - {fileID: 8300000, guid: a1aadf2828b6840428f1c09a54ddc896, type: 3}
+  - {fileID: 8300000, guid: 792be152b215a48fdb3d086593b0111b, type: 3}
+  moonsinSFXClips: []
+  enemySFXClips: []
+  gildalSFXClips: []
+  cheongRyuSFXClips: []
+  bgmSlider: 1
+  sfxSlider: 1

@@ -22,10 +22,12 @@ public class SoundManager : MonoBehaviour
     public enum SFX
     {
         // System
-
+        Click,
 
         // Player
+        Walk, Jump, Dash,
         // - Musin
+        Attack1_Musin, Attack2_Musin, Attack3_Musin,
 
         // - Moonsin
 
@@ -294,8 +296,8 @@ public class SoundManager : MonoBehaviour
 
     public void LoadVolume()
     {
-        bgmSlider = PlayerPrefs.GetFloat("BGM Volume", 0.5f);
-        sfxSlider = PlayerPrefs.GetFloat("SFX Volume", 0.2f);
+        bgmSlider = PlayerPrefs.GetFloat("BGM Volume", 1f);
+        sfxSlider = PlayerPrefs.GetFloat("SFX Volume", 1f);
 
         UpdateVolumeBGM();
         UpdateVolumeSFX();
