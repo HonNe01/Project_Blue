@@ -219,6 +219,11 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void MoveSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Walk);
+    }
+
     void JumpInput()
     {
         // 코요테타임 카운트 (지상일 때 리셋, 공중일 때 감소)
@@ -338,6 +343,11 @@ public class PlayerMove : MonoBehaviour
         PlayerState.instance.canJump = true;
     }
 
+    public void JumpSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Jump);
+    }
+
     void DashInput()
     {
         // 대쉬 쿨타임 감소
@@ -437,6 +447,11 @@ public class PlayerMove : MonoBehaviour
             PlayerState.instance.canSkill = true;
             rb.gravityScale = defaultGravity;
         }
+    }
+
+    public void DashSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Dash);
     }
 
     private bool IsOnPlatform()
