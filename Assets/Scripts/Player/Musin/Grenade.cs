@@ -54,10 +54,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, transform.position, false);
-                    var enemy = collision.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Fire:
@@ -67,10 +70,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionFireHit, transform.position, false);
-                    var enemy = collision.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionFireHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Electronic:
@@ -80,10 +86,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionElectronicHit, transform.position, false);
-                    var enemy = collision.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionElectronicHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Impact:
@@ -93,7 +102,7 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, transform.position, false);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, collision.gameObject.transform.position, false);
                     StartCoroutine(Co_Explosion());
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
@@ -114,10 +123,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, transform.position, false);
-                    var enemy = collision.gameObject.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.gameObject.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Fire:
@@ -127,10 +139,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionFireHit, transform.position, false);
-                    var enemy = collision.gameObject.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionFireHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.gameObject.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Electronic:
@@ -140,10 +155,13 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionElectronicHit, transform.position, false);
-                    var enemy = collision.gameObject.GetComponent<BossBase>();
-                    if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                    if (expColl.enabled)
+                    {
+                        EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionElectronicHit, collision.gameObject.transform.position, false);
+                        var enemy = collision.gameObject.GetComponent<BossBase>();
+                        if (enemy != null)
+                            enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case GrenadeType.Impact:
@@ -153,7 +171,7 @@ public class Grenade : MonoBehaviour
                 }
                 else if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, transform.position, false);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.ExplosionNormalHit, collision.gameObject.transform.position, false);
                     StartCoroutine(Co_Explosion());
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
