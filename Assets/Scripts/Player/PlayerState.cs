@@ -43,7 +43,7 @@ public class PlayerState : MonoBehaviour
     public bool canHeal = true;
     public bool isHeal = false;
     public bool ishealing = false;
-    
+
     [Header("=== Health State ===")]
     public int maxHP = 5;
     private int curHP;
@@ -124,16 +124,15 @@ public class PlayerState : MonoBehaviour
         }
 
         anim.SetBool("IsBehavior", isBehavior);
-        
+
     }
 
     public void Healing()
     {
-        if (!canHeal || curHP >= maxHP)
+        if (!canHeal || curHP >= maxHP || currentGauge < 20)
         {
             return;
         }
-        
         if (Input.GetKey(KeyCode.F))
         {
             // 회복 입력
@@ -178,6 +177,18 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void GaugeCheck()
+    {
+        if (currentGauge < 20)
+        {
+            isHeal = false;
+            ishealing = false;
+            healPress = false;
+            healTimer = 0;
+            anim.SetBool("IsHeal", isHeal);
+            anim.SetBool("Healing", ishealing);
+        }
+    }
     public void HealSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Healing);
@@ -185,22 +196,21 @@ public class PlayerState : MonoBehaviour
 
     public void Heal(int amount = 1)
     {
-        healPress = false;
-        healTimer = 0;
-
-        if (!UseGauge(20))  // 스킬 게이지 부족시 힐 실패
+        if (!UseGauge(20))
         {
             isHeal = false;
-            
+            ishealing = false;
             anim.SetBool("IsHeal", isHeal);
-            Debug.Log("[PlayerState] Skill gauge lack!");
-
-            return;
+            anim.SetBool("Healing", ishealing);
         }
-
-        curHP += amount;
-        curHP = Mathf.Clamp(curHP, 0, maxHP);
-        Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
+        else
+        {
+            healPress = false;
+            healTimer = 0;
+            curHP += amount;
+            curHP = Mathf.Clamp(curHP, 0, maxHP);
+            Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
+        }
     }
 
     public void TakeDamage(int damage = 1)
