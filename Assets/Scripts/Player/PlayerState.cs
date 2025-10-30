@@ -54,6 +54,7 @@ public class PlayerState : MonoBehaviour
     public float healHoldTime = 1f;
     private float healTimer = 0f;
     private bool healPress = false;
+    private bool healContinew = false;
 
     [Header("Skill Gauge")]
     public int maxGauge = 100;
@@ -133,9 +134,9 @@ public class PlayerState : MonoBehaviour
         {
             return;
         }
+
         if (Input.GetKey(KeyCode.F))
         {
-            // 회복 입력
             isHeal = true;
             ishealing = true;
             healPress = true;
@@ -143,8 +144,7 @@ public class PlayerState : MonoBehaviour
             anim.SetBool("IsHeal", isHeal);
         }
         else if (Input.GetKeyUp(KeyCode.F))
-        {
-            // 회복 취소
+        {          
             isHeal = false;
             ishealing = false;
             healPress = false;
@@ -152,16 +152,27 @@ public class PlayerState : MonoBehaviour
             anim.SetBool("Healing", ishealing);
 
             healTimer = 0f;
+            healContinew = false; 
         }
 
         if (healPress)
         {
             healTimer += Time.deltaTime;
 
-            if (healTimer >= healHoldTime)
+            // 첫 힐 (healHoldTime = 1초)
+            if (!healContinew && healTimer >= healHoldTime)
             {
                 Heal(1);
                 isHeal = false;
+                healTimer = 0f;
+                healContinew = true; 
+            }
+            // 이후 반복 힐 (0.5초 간격)
+            else if (healContinew && healTimer >= 0.5f)
+            {
+                Heal(1);
+                isHeal = false;
+                healTimer = 0f;
             }
         }
     }
