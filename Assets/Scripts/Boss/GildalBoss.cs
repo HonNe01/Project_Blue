@@ -279,6 +279,11 @@ public class GildalBoss : BossBase
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
 
+    public void DoStealthSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
+    }
+
     // 은신 로직
     private IEnumerator Co_Fade(float from, float to, float duration)
     {
@@ -408,6 +413,11 @@ public class GildalBoss : BossBase
     public void OnSwingHitStart() { if (swing_Hitbox) swing_Hitbox.SetActive(true); }
     public void OnSwingHitEnd() { if (swing_Hitbox) swing_Hitbox.SetActive(false); }
 
+    public void SwingSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Attack1_Gildal);
+    }
+
     private IEnumerator Co_Slam()
     {
         Debug.Log("[Gildal] Slam");
@@ -442,6 +452,11 @@ public class GildalBoss : BossBase
     }
     public void OnSlamHitStart() { if (slam_Hitbox) slam_Hitbox.SetActive(true); }
     public void OnSlamHitEnd() { if (slam_Hitbox) slam_Hitbox.SetActive(false); }
+
+    public void SlamSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Attack2_Gildal);
+    }
 
     private IEnumerator Co_DokkaebiOrb()
     {
