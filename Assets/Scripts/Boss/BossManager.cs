@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
@@ -16,13 +17,32 @@ public class BossManager : MonoBehaviour
 
      
     [Header("Boss Arena")]
-    public GameObject ArenaEntrance;
+    public GameObject arenaEntrance;
+    public Collider2D bossCameraArena;
+
+    private CinemachineConfiner2D confiner;
+    private Collider2D originCameraArena;
 
     public void Awake()
     {
-        if (ArenaEntrance != null)
+        if (arenaEntrance != null)
         {
-            ArenaEntrance.SetActive(false);
+            arenaEntrance.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        // 가상 카메라 참조
+        var vcam = FindAnyObjectByType<CinemachineCamera>();
+
+        if (vcam != null)
+        {
+            confiner = vcam.GetComponent<CinemachineConfiner2D>();
+        }
+        if (confiner != null)   // 원래 카메라 영역 저장
+        {
+            originCameraArena = confiner.BoundingShape2D;
         }
     }
 
@@ -32,12 +52,14 @@ public class BossManager : MonoBehaviour
         isBattle = true;
 
         SetArenaLocked(true);
+        SetBossCamera(true);
         BossSpawn();
     }
 
     public void BattleFinish()
     {
         SetArenaLocked(false);
+        SetBossCamera(false);
 
         Debug.Log("[BossManager] Boss Battle Finish");
     }
@@ -68,7 +90,26 @@ public class BossManager : MonoBehaviour
 
     private void SetArenaLocked(bool locked)
     {
-        ArenaEntrance.SetActive(locked);
+        arenaEntrance.SetActive(locked);
+    }
+
+    private void SetBossCamera(bool enable)
+    {
+        if (confiner == null) return;
+
+        if (enable)     // 보스 카메라 영역으로 변경
+        {
+            if (bossCameraArena != null)
+            {
+                confiner.BoundingShape2D = bossCameraArena;
+                confiner.InvalidateBoundingShapeCache();
+            }
+        }
+        else            // 원래 카메라 영역으로 변경
+        {
+            confiner.BoundingShape2D = originCameraArena;
+            confiner.InvalidateBoundingShapeCache();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

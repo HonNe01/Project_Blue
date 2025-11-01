@@ -5,7 +5,7 @@ public class DokkaebiWave : MonoBehaviour
 {
     [Header("Projectile Setting")]
     public int fireTime = 2;
-    [SerializeField] private float baseDamage = 1f;
+    [SerializeField] private int baseDamage = 1;
 
     private Animator anim;
     private Collider2D coll;
@@ -75,8 +75,7 @@ public class DokkaebiWave : MonoBehaviour
         {
             Debug.Log($"[{gameObject.name}] Player Hit!");
 
-            float damage = baseDamage;
-            //collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            PlayerState.instance.TakeDamage(baseDamage);
         }
     }
 }

@@ -207,7 +207,8 @@ MonoBehaviour:
   bossType: 0
   bossPrefab: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
   spawnPoint: {fileID: 4960258645112669689}
-  ArenaEntrance: {fileID: 1633158530475904723}
+  arenaEntrance: {fileID: 1633158530475904723}
+  bossCameraArena: {fileID: 5801229070439120409}
 --- !u!61 &1085734070256012868
 BoxCollider2D:
   m_ObjectHideFlags: 0

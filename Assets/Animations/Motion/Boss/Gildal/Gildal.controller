@@ -404,7 +404,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 36d6013c1833a2748bf0fb5ef9e8401c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -728,7 +728,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phase1_Stealth
+  m_Name: Phase2_Stealth
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -742,7 +742,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9357b2f2fe5efab4e8528f30d6ef2f6d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3bdbd9c17aa658940b47f68c4f3a65fa, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

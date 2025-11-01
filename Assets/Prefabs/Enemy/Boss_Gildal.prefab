@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a318193937b69448909e8ea48e1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GildalBoss
-  maxHp: 100
+  maxHp: 10
   phase2ThresholdRatio: 0.35
   iFrameDuration: 0.5
   anim: {fileID: 7991700780297173686}
@@ -883,9 +883,9 @@ MonoBehaviour:
   eDokkaebiOrb_preDelay: 0.1
   eDokkaebiOrb_postDelay: 0.2
   specialHpThresholds:
-  - 75
-  - 50
-  - 25
+  - 80
+  - 60
+  - 40
   special_preDelay: 0.2
   special_postDelay: 0.2
   baseDronesPerLayer: 2

@@ -256,6 +256,9 @@ public class GildalBoss : BossBase
     // 은신 기믹
     private IEnumerator Co_DoStealth()
     {
+        anim.SetTrigger("Stealth");
+
+
         // 충돌 판정 해제
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
@@ -268,6 +271,9 @@ public class GildalBoss : BossBase
     }
     private IEnumerator Co_EndStealth()
     {
+        anim.SetTrigger("Stealth");
+
+
         // 은신 해제 로직
         if (co_Fade != null) StopCoroutine(co_Fade);
         co_Fade = StartCoroutine(Co_Fade(sprite.color.a, 1f, reStealth_Delay));
@@ -279,7 +285,7 @@ public class GildalBoss : BossBase
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
 
-    public void DoStealthSound()
+    public void StealthSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
     }
@@ -611,6 +617,7 @@ public class GildalBoss : BossBase
 
     public override void TakeDamage(float damage)
     {
+        Debug.Log($"[Gildal] Boss Hit! Current HP : {curHp}");
         base.TakeDamage(damage);
         CheckSpecialTrigger();
     }
