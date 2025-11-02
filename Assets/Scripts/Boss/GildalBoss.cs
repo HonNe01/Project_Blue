@@ -466,9 +466,9 @@ public class GildalBoss : BossBase
         Physics2D.IgnoreLayerCollision(bossLayer, groundLayer, true);
 
         // 3) 공격
-        anim?.SetTrigger("Slam");
         Vector2 dest = new Vector2(target.position.x + 1f, transform.position.y - slam_height);
-        StartCoroutine(Co_MoveTo(dest, 0.2f));
+        yield return StartCoroutine(Co_MoveTo(dest, 0.2f));
+        anim?.SetTrigger("Slam");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
@@ -500,7 +500,7 @@ public class GildalBoss : BossBase
 
         // 3) 드론 소환
         bool playerIsRight = target.position.x > transform.position.x;
-        int sign = playerIsRight ? 1 : -1;
+        int sign = playerIsRight ? -1 : 1;
         Vector2 spawnPos = transform.position + new Vector3(sign * 2f, 2f, 0);
 
         var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
