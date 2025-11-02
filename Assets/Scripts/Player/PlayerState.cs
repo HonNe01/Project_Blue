@@ -93,7 +93,8 @@ public class PlayerState : MonoBehaviour
 
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
-        vcam.Follow = transform;
+
+            vcam.Follow = transform;
     }
 
 
