@@ -219,7 +219,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void MoveSound()
+    public void AE_MoveSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Walk);
     }
@@ -343,7 +343,7 @@ public class PlayerMove : MonoBehaviour
         PlayerState.instance.canJump = true;
     }
 
-    public void JumpSound()
+    public void AE_JumpSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Jump);
     }
@@ -449,7 +449,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void DashSound()
+    public void AE_DashSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Dash);
     }
