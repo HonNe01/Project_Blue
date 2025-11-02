@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5026501836725320976}
   - component: {fileID: -883975355490530163}
   m_Layer: 10
-  m_Name: Dokkaebi_Wave
+  m_Name: DokkaebiOrb_Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3607990473765895650}
   - component: {fileID: 6197773163846005556}
   m_Layer: 10
-  m_Name: DokkaebiOrb
+  m_Name: DokkaebiOrb_Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

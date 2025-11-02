@@ -49,48 +49,25 @@ public class DokkaebiOrbDrone : MonoBehaviour
     public IEnumerator Co_DoStealth()
     {
         // 은신 로직
-        if (sprite != null)
-        {
-            float elapsed = 0f;
-            Color c = sprite.color;
-
-            while (elapsed < 0.5f)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / 0.5f);
-                c.a = Mathf.Lerp(1f, 0f, t);
-                sprite.color = c;
-                yield return null;
-            }
-
-            c.a = 0f;
-            sprite.color = c;
-        }
-
+        anim.SetTrigger("Stealth");
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
         yield return null;
+
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
         Destroy(gameObject);
     }
 
     public IEnumerator Co_EndStealth()
     {
         // 은신 해제 로직
-        if (sprite != null)
-        {
-            float elapsed = 0f;
-            Color c = sprite.color;
+        anim.SetTrigger("Stealth");
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
+        yield return null;
 
-            while (elapsed < 0.5f)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / 0.5f);
-                c.a = Mathf.Lerp(0f, 1f, t);
-                sprite.color = c;
-                yield return null;
-            }
-
-            c.a = 1f;
-            sprite.color = c;
-        }
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
     }
 
     public IEnumerator Co_FireOrb(Transform player)
