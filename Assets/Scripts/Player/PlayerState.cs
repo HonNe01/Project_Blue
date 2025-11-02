@@ -17,7 +17,7 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public PlayerAttack playerAttack;
     [HideInInspector] public PlayerGuard playerGuard;
 
-    [HideInInspector] public CinemachinePositionComposer cinemachineCamera;
+    [HideInInspector] public CinemachinePositionComposer cinemachineComposer;
 
     [Header("=== Player State ===")]
     [Header("State")]
@@ -91,8 +91,9 @@ public class PlayerState : MonoBehaviour
     {
         curHP = maxHP;
 
-        Camera vcam = Camera.main;
-        cinemachineCamera = vcam.GetComponent<CinemachinePositionComposer>();
+        CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
+        cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
+        vcam.Follow = transform;
     }
 
 
@@ -116,12 +117,12 @@ public class PlayerState : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (cinemachineCamera != null)
+        if (cinemachineComposer != null)
         {
-            var comp = cinemachineCamera.Composition.ScreenPosition;
+            var comp = cinemachineComposer.Composition.ScreenPosition;
             comp.x *= isRight;
 
-            cinemachineCamera.Composition.ScreenPosition = comp;
+            cinemachineComposer.Composition.ScreenPosition = comp;
         }
 
         anim.SetBool("IsBehavior", isBehavior);
@@ -365,7 +366,7 @@ public class PlayerState : MonoBehaviour
         // 씬 전환시 카메라 할당
         Camera vcam = Camera.main;
         if (vcam != null)
-            cinemachineCamera = vcam.GetComponent<CinemachinePositionComposer>();
+            cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
     }
 }
 
