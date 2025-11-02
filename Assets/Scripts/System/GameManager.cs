@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
     private Stack<MenuType> menuStack = new Stack<MenuType>();
 
     [Header(" === Scene Names === ")]
-    [SerializeField] private string mainMenuScene = "MainMenu";
-    [SerializeField] private string outpostScene = "OutPostScene";
-    [SerializeField] private string gildalScene = "GildalScene";
-    [SerializeField] private string cheongryuScene = "CheongRyuScene";
+    [SerializeField] public string mainMenuScene = "MainMenu";
+    [SerializeField] public string selectScene = "Choose Charater";
+    [SerializeField] public string outpostScene = "OutPostScene";
+    [SerializeField] public string gildalScene = "GildalScene";
+    [SerializeField] public string cheongryuScene = "CheongRyuScene";
 
     [Header(" === UI Reference === ")]
     [SerializeField] private MenuType curMenu = MenuType.None;
@@ -416,11 +417,15 @@ public class GameManager : MonoBehaviour
             // 마우스 커서 활성화
             CursorEnable();
         }
+        else if (scene.name == selectScene)
+        {
+            CursorEnable();
+        }
         else
         {
             // 게임 씬
             State = GameState.Playing;
-            
+
             // 마우스 커서 비활성화
             CursorDisable();
         }
