@@ -141,12 +141,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     public IEnumerator Co_FireWave(bool isRight)
     {
-        // 방향 설정
-        int dir = isRight ? 1 : -1;
-        Vector3 firePos = transform.position + Vector3.right * dir;
-
         // 발사
-        var proj = Instantiate(wavePrefab, firePos, Quaternion.identity);
+        var proj = Instantiate(wavePrefab, transform.position, Quaternion.identity);
         yield return StartCoroutine(proj.GetComponent<DokkaebiWave>().Fire(isRight));
 
         StartCoroutine(Co_DoStealth());

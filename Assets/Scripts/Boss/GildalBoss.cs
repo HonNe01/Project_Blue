@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -17,7 +18,6 @@ public class GildalBoss : BossBase
     [SerializeField] private int bossLayer;
     [SerializeField] private int playerLayer;
     [SerializeField] private int playerAttackLayer;
-    [SerializeField] private int groundLayer;
     [SerializeField] private float[] floorHeights;
     public float pattern_Delay = 0.35f;
     [SerializeField] private float sturn_Delay = 1f;
@@ -54,6 +54,7 @@ public class GildalBoss : BossBase
     public float dokkaebiOrb_cooldown = 2.0f;
     public float dokkaebiOrb_preDelay = 0.2f;
     public float dokkaebiOrb_postDelay = 0.4f;
+    public Vector2 dokkaebiOrb_Offset;
     [Tooltip("Dokkaebi Orb Drone 프리펩")]
     public GameObject dronePrefab;
 
@@ -73,7 +74,8 @@ public class GildalBoss : BossBase
     public float jumpSlash_preDelay = 0.2f;
     public float jumpSlash_postDelay = 0.4f;
     [Tooltip("Slam 히트 박스 오브젝트")]
-    public GameObject jumpSlash_Hitbox;
+    public GameObject jumpSlash_Hitbox1;
+    public GameObject jumpSlash_Hitbox2;
 
     [Header("Enhanced Dokkaebi Orb")]
     public float eDokkaebiOrb_weight = 3f;
@@ -120,7 +122,6 @@ public class GildalBoss : BossBase
         bossLayer = LayerMask.NameToLayer("Enemy");
         playerLayer = LayerMask.NameToLayer("Player");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
-        groundLayer = LayerMask.NameToLayer("Ground");
 
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern {name = "Swing", 
@@ -148,7 +149,8 @@ public class GildalBoss : BossBase
                                             weight = jumpSlash_weight, 
                                             cooldown = jumpSlash_cooldown, 
                                             execute = () => Co_JumpSlash() });
-        jumpSlash_Hitbox.SetActive(false);
+        jumpSlash_Hitbox1.SetActive(false);
+        jumpSlash_Hitbox2.SetActive(false);
         phase2Patterns.Add(new BossPattern {name = "EnhanceDokkaebi", 
                                             weight = eDokkaebiOrb_weight, 
                                             cooldown = eDokkaebiOrb_cooldown, 
@@ -329,7 +331,7 @@ public class GildalBoss : BossBase
     }
 
     // 좌우 반전
-    private void FlipX(GameObject hitbox = null)
+    private void FlipX(GameObject hitbox1 = null, GameObject hitbox2 = null)
     {
         if (sprite == null || target == null) return;
 
@@ -337,10 +339,15 @@ public class GildalBoss : BossBase
         bool playerIsRight = target.position.x > transform.position.x;
         sprite.flipX = !playerIsRight;
 
-        if (hitbox != null)
+        if (hitbox1 != null)
         {
             int sign = playerIsRight ? 1 : -1;
-            hitbox.transform.localScale = new Vector3(sign, 1, 1);
+            hitbox1.transform.localScale = new Vector3(sign, 1, 1);
+        }
+        if (hitbox2 != null)
+        {
+            int sign = playerIsRight ? 1 : -1;
+            hitbox2.transform.localScale = new Vector3(sign, 1, 1);
         }
     }
 
@@ -363,10 +370,8 @@ public class GildalBoss : BossBase
 
         // 충돌 복구
         int playerLayer = LayerMask.NameToLayer("Player");
-        int groundLayer = LayerMask.NameToLayer("Ground");
 
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
-        Physics2D.IgnoreLayerCollision(bossLayer, groundLayer, false);
 
         // 위치 보정
         transform.position = pos;
@@ -451,7 +456,8 @@ public class GildalBoss : BossBase
 
         // 1) 플레이어 위치로 이동
         MoveTo(1.5f, slam_height);
-        FlipX();
+        FlipX(slam_Hitbox);
+        Vector2 dest = new Vector2(target.position.x + 1f, transform.position.y - slam_height);
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth(true));
@@ -460,13 +466,10 @@ public class GildalBoss : BossBase
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
         int playerLayer = LayerMask.NameToLayer("Player");
-        int groundLayer = LayerMask.NameToLayer("Ground");
 
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
-        Physics2D.IgnoreLayerCollision(bossLayer, groundLayer, true);
 
         // 3) 공격
-        Vector2 dest = new Vector2(target.position.x + 1f, transform.position.y - slam_height);
         yield return StartCoroutine(Co_MoveTo(dest, 0.2f));
         anim?.SetTrigger("Slam");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
@@ -499,10 +502,7 @@ public class GildalBoss : BossBase
         anim?.SetTrigger("DokkaebiOrb");
 
         // 3) 드론 소환
-        bool playerIsRight = target.position.x > transform.position.x;
-        int sign = playerIsRight ? -1 : 1;
-        Vector2 spawnPos = transform.position + new Vector3(sign * 2f, 2f, 0);
-
+        Vector2 spawnPos = SetOrbSpawnPos(dokkaebiOrb_Offset);
         var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
         var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
         yield return StartCoroutine(drone.Co_EndStealth());
@@ -513,6 +513,16 @@ public class GildalBoss : BossBase
         // 6) 재은신
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
         yield return StartCoroutine(Co_DoStealth());
+    }
+
+    private Vector2 SetOrbSpawnPos(Vector2 offset)
+    {
+        bool playerIsRight = target.position.x > transform.position.x;
+        int sign = playerIsRight ? 1 : -1;
+        float x = transform.position.x + sign * offset.x;
+        float y = transform.position.y + offset.y;
+
+        return new Vector2(x, y);
     }
 
     public void AE_DokkaebiOrb()
@@ -567,8 +577,9 @@ public class GildalBoss : BossBase
 
         // 1) 플레이어 위치로 이동
         MoveTo(0, slam_height);
-        FlipX();
-        
+        FlipX(jumpSlash_Hitbox1, jumpSlash_Hitbox2);
+        Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
+
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth(true));
         anim?.SetTrigger("JumpSlashPrep");
@@ -579,7 +590,6 @@ public class GildalBoss : BossBase
 
         // 3) 공격
         anim?.SetTrigger("JumpSlash");
-        Vector2 dest = new Vector2(transform.position.x, transform.position.y - slam_height);
         StartCoroutine(Co_MoveTo(dest, 0.1f));
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
@@ -597,8 +607,10 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(jumpSlash_postDelay);
         yield return StartCoroutine(Co_DoStealth());
     }
-    public void OnJumpSlashHitStart() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(true); }
-    public void OnJumpSlashHitEnd() { if (jumpSlash_Hitbox) jumpSlash_Hitbox.SetActive(false); }
+    public void OnJumpSlash1HitStart() { if (jumpSlash_Hitbox1) jumpSlash_Hitbox1.SetActive(true); }
+    public void OnJumpSlash1HitEnd() { if (jumpSlash_Hitbox1) jumpSlash_Hitbox1.SetActive(false); }
+    public void OnJumpSlash2HitStart() { if (jumpSlash_Hitbox2) jumpSlash_Hitbox2.SetActive(true); }
+    public void OnJumpSlash2HitEnd() { if (jumpSlash_Hitbox2) jumpSlash_Hitbox2.SetActive(false); }
 
     private IEnumerator Co_EDokkaebiOrb()
     {
@@ -620,7 +632,8 @@ public class GildalBoss : BossBase
         for (int i = 0; i < 3; i++)
         {
             // 드론 위치 조금식 오프셋
-            Vector2 spawnPos = transform.position + new Vector3(sign * (2f + i * 1.5f), 2f + i * 1.2f, 0);
+            Vector2 basePos = SetOrbSpawnPos(dokkaebiOrb_Offset);
+            Vector2 spawnPos = basePos + new Vector2(sign * (1f + i * 1.5f), 2f + i * 1.2f);
 
             var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
             var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
@@ -842,5 +855,17 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(drone.Co_FireWave(true));
 
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 도깨비불 소환 위치
+        Gizmos.color = Color.magenta;
+        Vector2 orbPos = Application.isPlaying ? SetOrbSpawnPos(dokkaebiOrb_Offset) : (Vector2)transform.position + dokkaebiOrb_Offset;
+        Gizmos.DrawWireSphere(orbPos, 0.1f);
+
+#if UNITY_EDITOR
+        Handles.Label(orbPos + Vector2.up * (0.1f + 0.1f), "Drone Spawn Position");
+#endif
     }
 }
