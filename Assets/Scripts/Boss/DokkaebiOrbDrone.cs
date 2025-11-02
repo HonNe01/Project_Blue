@@ -62,7 +62,6 @@ public class DokkaebiOrbDrone : MonoBehaviour
     public IEnumerator Co_EndStealth()
     {
         // 은신 해제 로직
-        anim.SetTrigger("Stealth");
         SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
         yield return null;
 

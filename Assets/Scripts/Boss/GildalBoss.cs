@@ -277,11 +277,18 @@ public class GildalBoss : BossBase
             float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
             yield return new WaitForSeconds(animLength);
         }
+        
 
         // 피격 판정 해제
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
     }
+
+    public void AE_DoStealth()
+    {
+        sprite.color = new Color(1, 1, 1, 0);
+    }
+
     private IEnumerator Co_EndStealth(bool isAir = false)
     {
         // 은신 해제
@@ -309,6 +316,11 @@ public class GildalBoss : BossBase
         // 피격 판정 설정
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
+    }
+
+    public void AE_EndStealth()
+    {
+        sprite.color = new Color(1, 1, 1, 1);
     }
 
     public void AE_StealthSound()
@@ -442,8 +454,8 @@ public class GildalBoss : BossBase
         FlipX();
 
         // 2) 은신 해제
-        anim?.SetTrigger("SlamPrep");
         yield return StartCoroutine(Co_EndStealth(true));
+        anim?.SetTrigger("SlamPrep");
         yield return new WaitForSeconds(slam_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
@@ -558,8 +570,8 @@ public class GildalBoss : BossBase
         FlipX();
         
         // 2) 은신 해제
-        anim?.SetTrigger("JumpSlashPrep");
         yield return StartCoroutine(Co_EndStealth(true));
+        anim?.SetTrigger("JumpSlashPrep");
         yield return new WaitForSeconds(jumpSlash_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)

@@ -140,8 +140,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -412854893
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -316,8 +316,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -412854893
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -586,8 +586,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -412854893
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -854,18 +854,18 @@ MonoBehaviour:
   swing_weight: 4
   swing_cooldown: 2
   swing_preDelay: 0.1
-  swing_postDelay: 0.4
+  swing_postDelay: 1
   swing_Hitbox: {fileID: 6133158865817230817}
   slam_weight: 3
   slam_height: 5
   slam_cooldown: 2
   slam_preDelay: 0.3
-  slam_postDelay: 0.4
+  slam_postDelay: 1
   slam_Hitbox: {fileID: 5924644709608940927}
-  dokkaebiOrb_weight: 2
+  dokkaebiOrb_weight: 5
   dokkaebiOrb_cooldown: 2
   dokkaebiOrb_preDelay: 0.2
-  dokkaebiOrb_postDelay: 0.4
+  dokkaebiOrb_postDelay: 2
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   slash_weight: 4
   slash_cooldown: 2
@@ -1033,8 +1033,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -412854893
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

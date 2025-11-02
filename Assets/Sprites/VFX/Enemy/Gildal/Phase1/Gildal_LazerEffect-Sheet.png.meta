@@ -163,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_0
+      name: Gildal_LazerEffect-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -171,307 +171,307 @@ TextureImporter:
         width: 640
         height: 160
       alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31d421579dc4a1250800000000000000
-      internalID: 5916125557360315667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 480
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc9bef08f7da09950800000000000000
-      internalID: 6453849029158549967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 480
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7f696bcecac1e2bd0800000000000000
-      internalID: -2653151601443301641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 480
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab6c0ad37efb74150800000000000000
-      internalID: 5856860840310916794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f751413419f224330800000000000000
-      internalID: 3693566945339381119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 320
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 658e58e29b0428890800000000000000
-      internalID: -7457326868878464938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 320
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b3b443f497e98aa0800000000000000
-      internalID: -6158136388529900618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 320
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aca6273fc3c28e580800000000000000
-      internalID: -8797733231774242102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eaabea62971ed8d50800000000000000
-      internalID: 6741292127699778222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 160
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9be3ab45ee139be70800000000000000
-      internalID: 9131384619163860665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 160
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71723d2e86375f0f0800000000000000
-      internalID: -1083833240993454313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 160
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81424141cb7b567e0800000000000000
-      internalID: -1772808859881823208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 11c4a272b2b34dd50800000000000000
-      internalID: 6761093997116673041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 640
-        height: 160
-      alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
+      pivot: {x: 0.0625, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9525dd1267814482bab89175fa2b5b1a
-      internalID: -3113437784919527953
+      spriteID: e5390972ab480c549be0e6503465d488
+      internalID: 1611199410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildar_LazerEffect-Sheet_14
+      name: Gildal_LazerEffect-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 480
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e54cd2537a34bf42a7e9cadabe132dc
+      internalID: 1534165812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 480
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21858c1108890a54d9f87ea905e9f04b
+      internalID: 832768291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 480
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50a9e1074551a04296122d38ba31b4f
+      internalID: 553098209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b184a9cc5ba4e4abd3c09d4724f866
+      internalID: 1268203568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c434084f66df749b8b1d5337b55556
+      internalID: 256448005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 320
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d368cb953ab98c448a0e106c2db358c3
+      internalID: -1286060992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 320
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1c91d13dd28c448a083ab0a2505549
+      internalID: -134535227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850d1144b942c484e87c4426133be52b
+      internalID: -1395740604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4ae14305a193f429575ad25d7c303b
+      internalID: -1910152537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 160
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784724573d356e347a460332c5622dc2
+      internalID: -1316411169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 160
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c97045979d23f44a83d2a26067e2ff
+      internalID: 1114234108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb009ca6e737be44843cd73504056fa
+      internalID: 453588415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 160
+      alignment: 9
+      pivot: {x: 0.0625, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d2f334db3007524684c57ada9751483
+      internalID: -1377891826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_LazerEffect-Sheet_14
       rect:
         serializedVersion: 2
         x: 1280
@@ -479,15 +479,15 @@ TextureImporter:
         width: 640
         height: 160
       alignment: 9
-      pivot: {x: 0.09375, y: 0.5}
+      pivot: {x: 0.0625, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33a92b75299f94687a0cdddae023f5b5
-      internalID: -6831522251721923319
+      spriteID: 02e93916f09218e40a3f5a006305708e
+      internalID: 1746865233
       vertices: []
       indices: 
       edges: []
@@ -506,23 +506,23 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":640.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.09375,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":640.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0625,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gildar_LazerEffect-Sheet_0: 5916125557360315667
-      Gildar_LazerEffect-Sheet_1: 6453849029158549967
-      Gildar_LazerEffect-Sheet_10: -1083833240993454313
-      Gildar_LazerEffect-Sheet_11: -1772808859881823208
-      Gildar_LazerEffect-Sheet_12: 6761093997116673041
-      Gildar_LazerEffect-Sheet_13: -3113437784919527953
-      Gildar_LazerEffect-Sheet_14: -6831522251721923319
-      Gildar_LazerEffect-Sheet_2: -2653151601443301641
-      Gildar_LazerEffect-Sheet_3: 5856860840310916794
-      Gildar_LazerEffect-Sheet_4: 3693566945339381119
-      Gildar_LazerEffect-Sheet_5: -7457326868878464938
-      Gildar_LazerEffect-Sheet_6: -6158136388529900618
-      Gildar_LazerEffect-Sheet_7: -8797733231774242102
-      Gildar_LazerEffect-Sheet_8: 6741292127699778222
-      Gildar_LazerEffect-Sheet_9: 9131384619163860665
+      Gildal_LazerEffect-Sheet_0: 1611199410
+      Gildal_LazerEffect-Sheet_1: 1534165812
+      Gildal_LazerEffect-Sheet_10: -1316411169
+      Gildal_LazerEffect-Sheet_11: 1114234108
+      Gildal_LazerEffect-Sheet_12: 453588415
+      Gildal_LazerEffect-Sheet_13: -1377891826
+      Gildal_LazerEffect-Sheet_14: 1746865233
+      Gildal_LazerEffect-Sheet_2: 832768291
+      Gildal_LazerEffect-Sheet_3: 553098209
+      Gildal_LazerEffect-Sheet_4: 1268203568
+      Gildal_LazerEffect-Sheet_5: 256448005
+      Gildal_LazerEffect-Sheet_6: -1286060992
+      Gildal_LazerEffect-Sheet_7: -134535227
+      Gildal_LazerEffect-Sheet_8: -1395740604
+      Gildal_LazerEffect-Sheet_9: -1910152537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

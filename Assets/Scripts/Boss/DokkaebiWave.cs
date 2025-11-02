@@ -39,10 +39,7 @@ public class DokkaebiWave : MonoBehaviour
 
         // 발사
         anim.SetTrigger("Wave");
-        yield return null;
-
-        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+        yield return new WaitForSeconds(fireTime);
 
         StartCoroutine(WaveEnd());
     }

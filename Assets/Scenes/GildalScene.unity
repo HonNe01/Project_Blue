@@ -1218,11 +1218,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.18128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.8828936
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1259,6 +1259,10 @@ PrefabInstance:
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

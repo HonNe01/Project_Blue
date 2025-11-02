@@ -201,5 +201,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16424e47a370d984287b601db50b35c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DokkaebiWave
-  fireTime: 1
+  fireTime: 5
   baseDamage: 1
