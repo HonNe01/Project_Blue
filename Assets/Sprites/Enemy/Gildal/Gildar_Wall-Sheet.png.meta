@@ -328,7 +328,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -342,7 +342,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -363,10 +363,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -394,12 +394,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_0
       rect:
         serializedVersion: 2
-        x: 376
-        y: 371
-        width: 10
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 300
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,12 +416,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_1
       rect:
         serializedVersion: 2
-        x: 536
-        y: 378
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 300
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -438,12 +438,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_2
       rect:
         serializedVersion: 2
-        x: 538
-        y: 371
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 300
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -460,12 +460,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_3
       rect:
         serializedVersion: 2
-        x: 541
-        y: 364
-        width: 12
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 480
+        y: 300
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -482,12 +482,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_4
       rect:
         serializedVersion: 2
-        x: 381
-        y: 364
-        width: 12
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 200
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -504,12 +504,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_5
       rect:
         serializedVersion: 2
-        x: 386
-        y: 357
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 200
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -526,12 +526,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_6
       rect:
         serializedVersion: 2
-        x: 392
-        y: 357
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 200
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -548,12 +548,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_7
       rect:
         serializedVersion: 2
-        x: 546
-        y: 357
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 480
+        y: 200
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -570,12 +570,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_8
       rect:
         serializedVersion: 2
-        x: 552
-        y: 357
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -592,12 +592,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_9
       rect:
         serializedVersion: 2
-        x: 559
-        y: 357
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -614,12 +614,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_10
       rect:
         serializedVersion: 2
-        x: 566
-        y: 357
-        width: 8
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -636,12 +636,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_11
       rect:
         serializedVersion: 2
-        x: 390
-        y: 350
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 480
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -658,12 +658,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_12
       rect:
         serializedVersion: 2
-        x: 392
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -680,12 +680,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_13
       rect:
         serializedVersion: 2
-        x: 399
-        y: 350
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -702,12 +702,12 @@ TextureImporter:
       name: Gildar_Wall-Sheet_14
       rect:
         serializedVersion: 2
-        x: 399
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -720,1837 +720,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f81cb86095bfbc00800000000000000
-      internalID: 918652480843946226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 550
-        y: 350
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6a6eba0e3fff08a0800000000000000
-      internalID: -6336565508753692053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 552
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60951fed2dd799220800000000000000
-      internalID: 2493162213363243270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 350
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84f72d4d607f4cb90800000000000000
-      internalID: -7222376293683003576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_19
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b974625ebe2140120800000000000000
-      internalID: 2379047307529570203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_20
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 350
-        width: 12
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15eedc2eade63a500800000000000000
-      internalID: 406290277780549201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_21
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 343
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6f2fe79c2a6b08c0800000000000000
-      internalID: -4032012301620007058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_22
-      rect:
-        serializedVersion: 2
-        x: 226
-        y: 322
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 010ff825acdc75710800000000000000
-      internalID: 1682039254698422288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_23
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 336
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 691ef0c471ce12250800000000000000
-      internalID: 5918270970146054550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_24
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d33cf3e940d7da8d0800000000000000
-      internalID: -2833471131757853891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_25
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ec65712f3a433ee0800000000000000
-      internalID: -1282599833865720606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_26
-      rect:
-        serializedVersion: 2
-        x: 386
-        y: 322
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6581aec01dd6dd4f0800000000000000
-      internalID: -802364413969819562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_27
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 336
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 18bcff63cf16b0560800000000000000
-      internalID: 7281020958456925057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_28
-      rect:
-        serializedVersion: 2
-        x: 392
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3a23cdd887166c3f0800000000000000
-      internalID: -880909506700365149
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_29
-      rect:
-        serializedVersion: 2
-        x: 399
-        y: 336
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa21b2942804636e0800000000000000
-      internalID: -1858226867926265174
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_30
-      rect:
-        serializedVersion: 2
-        x: 399
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad3a4e8409c598910800000000000000
-      internalID: 1840103697525547994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_31
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 336
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f6b5129f1e2b14ad0800000000000000
-      internalID: -2719696016337970321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_32
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 659588c914a4d1dd0800000000000000
-      internalID: -2513771371343357610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_33
-      rect:
-        serializedVersion: 2
-        x: 413
-        y: 329
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b5c725b343d04140800000000000000
-      internalID: 4701990298730350001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_34
-      rect:
-        serializedVersion: 2
-        x: 546
-        y: 322
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d34408f30c3ae6810800000000000000
-      internalID: 1760524550442861629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_35
-      rect:
-        serializedVersion: 2
-        x: 549
-        y: 336
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a835a253eaf8b0e0800000000000000
-      internalID: -2253775759247853403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_36
-      rect:
-        serializedVersion: 2
-        x: 552
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e5476cabf808c1fb0800000000000000
-      internalID: -4675720958315170722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_37
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 336
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47ef9a987ffa6fa90800000000000000
-      internalID: -7280438269896425868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_38
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 730ebe86ad2101030800000000000000
-      internalID: 3463288842720370743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_39
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 336
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3291546c930332f70800000000000000
-      internalID: 9161219091699407139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_40
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 329
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 88e5b8113725254c0800000000000000
-      internalID: -4300284040016339320
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_41
-      rect:
-        serializedVersion: 2
-        x: 573
-        y: 329
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 526d797051587d170800000000000000
-      internalID: 8203171571646846501
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_42
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f47e1193923788010800000000000000
-      internalID: 1191328722327824207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_43
-      rect:
-        serializedVersion: 2
-        x: 225
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6af310be1c6af920800000000000000
-      internalID: 3024848978791627371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_44
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4deeb23a6dde651f0800000000000000
-      internalID: -1056395556455452972
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_45
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 315
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7de69cbb55f94be90800000000000000
-      internalID: -7010803529337442601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_46
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 323
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c04cb856f35f20d0800000000000000
-      internalID: -3445442872399347514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_47
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 312
-        width: 22
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5bd3e29db15b508b0800000000000000
-      internalID: -5186540264634827339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_48
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f7b5f6d48408861d0800000000000000
-      internalID: -3357292474179560577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_49
-      rect:
-        serializedVersion: 2
-        x: 392
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9eb9a71a63144ccb0800000000000000
-      internalID: -4844675596250604567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_50
-      rect:
-        serializedVersion: 2
-        x: 392
-        y: 315
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 709d810c149459880800000000000000
-      internalID: -8604890966276908793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_51
-      rect:
-        serializedVersion: 2
-        x: 399
-        y: 323
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b3c1bebca8fdded60800000000000000
-      internalID: 7921233106834234427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_52
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 323
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc5a5148c0c4f5cf0800000000000000
-      internalID: -261406636724869683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_53
-      rect:
-        serializedVersion: 2
-        x: 413
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3782dd4b4d3a1da0800000000000000
-      internalID: -5973394562116057282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_54
-      rect:
-        serializedVersion: 2
-        x: 417
-        y: 312
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6747649a28b430f60800000000000000
-      internalID: 7999320387697931382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_55
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 322
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10c0506422e701e70800000000000000
-      internalID: 9083899134075014145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_56
-      rect:
-        serializedVersion: 2
-        x: 427
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77f65219c32738f40800000000000000
-      internalID: 5729548755404156791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_57
-      rect:
-        serializedVersion: 2
-        x: 427
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 57f6c9e6596399ab0800000000000000
-      internalID: -5000905895784452235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_58
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47a6fabc932adf220800000000000000
-      internalID: 2521349735511452276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_59
-      rect:
-        serializedVersion: 2
-        x: 545
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bda19d71d7893b4d0800000000000000
-      internalID: -3119982453799183653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_60
-      rect:
-        serializedVersion: 2
-        x: 552
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de9981ccb6d4da1f0800000000000000
-      internalID: -1032083614216971795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_61
-      rect:
-        serializedVersion: 2
-        x: 552
-        y: 315
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db9e0edfa9b8deff0800000000000000
-      internalID: -5194526756902467
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_62
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 323
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 03446a197197cc2c0800000000000000
-      internalID: -4410016792967756752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_63
-      rect:
-        serializedVersion: 2
-        x: 566
-        y: 323
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05ffa93d582540710800000000000000
-      internalID: 1658541297513463632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_64
-      rect:
-        serializedVersion: 2
-        x: 573
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8d29d3d7bfb27b0a0800000000000000
-      internalID: -6865970747765058856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_65
-      rect:
-        serializedVersion: 2
-        x: 577
-        y: 312
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7484de5fa0f188510800000000000000
-      internalID: 1551524203565238343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_66
-      rect:
-        serializedVersion: 2
-        x: 580
-        y: 322
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d220cafb2d0196940800000000000000
-      internalID: 5289777734668255789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_67
-      rect:
-        serializedVersion: 2
-        x: 587
-        y: 322
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 68cb9d0c7bdf8ae40800000000000000
-      internalID: 5668059096702106758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_68
-      rect:
-        serializedVersion: 2
-        x: 587
-        y: 315
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20a9b2d80d6329680800000000000000
-      internalID: -8749870856677910014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_69
-      rect:
-        serializedVersion: 2
-        x: 594
-        y: 315
-        width: 8
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe39246325eb8a530800000000000000
-      internalID: 3866549540404499439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_70
-      rect:
-        serializedVersion: 2
-        x: 601
-        y: 315
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 457f2921ed5493520800000000000000
-      internalID: 2682251873172518740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_71
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 308
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5578e0b0717bf8710800000000000000
-      internalID: 1697776894139598677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_72
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 301
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc2d89ff38b571670800000000000000
-      internalID: 8509370643426890447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_73
-      rect:
-        serializedVersion: 2
-        x: 219
-        y: 308
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7d7eb19d38f1dda0800000000000000
-      internalID: -5921679091693617794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_74
-      rect:
-        serializedVersion: 2
-        x: 219
-        y: 301
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f7a0f428f1525f6a0800000000000000
-      internalID: -6416181276858971521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_75
-      rect:
-        serializedVersion: 2
-        x: 379
-        y: 308
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b2e14c876cb9de30800000000000000
-      internalID: 4528858053218525880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_76
-      rect:
-        serializedVersion: 2
-        x: 379
-        y: 301
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f9bef0cfa91de920800000000000000
-      internalID: 3021099167683361266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_77
-      rect:
-        serializedVersion: 2
-        x: 429
-        y: 308
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4690fe5d415a00c50800000000000000
-      internalID: 6629480160396511588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_78
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 308
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bcbb5dbbc92ed2a70800000000000000
-      internalID: 8803942009373309899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_79
-      rect:
-        serializedVersion: 2
-        x: 435
-        y: 302
-        width: 13
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52ae82d39bc439250800000000000000
-      internalID: 5950183891165309477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_80
-      rect:
-        serializedVersion: 2
-        x: 441
-        y: 308
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 065570d88fa1aaa30800000000000000
-      internalID: 4227220855060911456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_81
-      rect:
-        serializedVersion: 2
-        x: 539
-        y: 308
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f7521b20e42411e80800000000000000
-      internalID: -8209707742899657345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_82
-      rect:
-        serializedVersion: 2
-        x: 539
-        y: 301
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 03b7ce8caa26146c0800000000000000
-      internalID: -4160936095058724048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_83
-      rect:
-        serializedVersion: 2
-        x: 589
-        y: 308
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bde6a13f92380cd0800000000000000
-      internalID: -2591765926237508168
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_84
-      rect:
-        serializedVersion: 2
-        x: 594
-        y: 308
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5828f677d90f75330800000000000000
-      internalID: 3699690178012480133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_85
-      rect:
-        serializedVersion: 2
-        x: 595
-        y: 302
-        width: 13
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9460225ae86379dd0800000000000000
-      internalID: -2479453083560442295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_86
-      rect:
-        serializedVersion: 2
-        x: 601
-        y: 308
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec8c9f0c7b08776c0800000000000000
-      internalID: -4145703405266286386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_87
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 200
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e681b33022ac69680800000000000000
-      internalID: -8748582978688706450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_88
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 200
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 396b767c3bdb36bd0800000000000000
-      internalID: -2638056376866720109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_89
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 200
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4c4816424cc6a13d0800000000000000
-      internalID: -3235153792632519484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_90
-      rect:
-        serializedVersion: 2
-        x: 536
-        y: 200
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30cbd20c1f214b040800000000000000
-      internalID: 4662372343755947011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_91
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 100
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9fc22bfcdc574d850800000000000000
-      internalID: 6400870497213623545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_92
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 100
-        width: 75
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2486932941b66d2a0800000000000000
-      internalID: -6713060458452391870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_93
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 101
-        width: 82
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72d2356fd42dd6f00800000000000000
-      internalID: 1111775915317341479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_94
-      rect:
-        serializedVersion: 2
-        x: 534
-        y: 101
-        width: 82
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20999289c9878ce00800000000000000
-      internalID: 1065233925836216578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_95
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 1
-        width: 82
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24f62afbfa57529f0800000000000000
-      internalID: -493859186432381118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_96
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 1
-        width: 82
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4f2d428728e73b10800000000000000
-      internalID: 1961291419130605389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildar_Wall-Sheet_97
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 0
-        width: 75
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d987bcace57a94420800000000000000
-      internalID: 2614805084236380317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 09225971c26fe4214b894ea7691d3a15
     internalID: 0
     vertices: []
     indices: 
@@ -2558,7 +732,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Gildar_Wall-Sheet_0: -2491003775566179756
       Gildar_Wall-Sheet_1: -1508820386420191903
@@ -2567,97 +743,14 @@ TextureImporter:
       Gildar_Wall-Sheet_12: 3616394912432910025
       Gildar_Wall-Sheet_13: -3630983109179346910
       Gildar_Wall-Sheet_14: -878490218642198734
-      Gildar_Wall-Sheet_15: 918652480843946226
-      Gildar_Wall-Sheet_16: -6336565508753692053
-      Gildar_Wall-Sheet_17: 2493162213363243270
-      Gildar_Wall-Sheet_18: -7222376293683003576
-      Gildar_Wall-Sheet_19: 2379047307529570203
       Gildar_Wall-Sheet_2: -7865421627105814691
-      Gildar_Wall-Sheet_20: 406290277780549201
-      Gildar_Wall-Sheet_21: -4032012301620007058
-      Gildar_Wall-Sheet_22: 1682039254698422288
-      Gildar_Wall-Sheet_23: 5918270970146054550
-      Gildar_Wall-Sheet_24: -2833471131757853891
-      Gildar_Wall-Sheet_25: -1282599833865720606
-      Gildar_Wall-Sheet_26: -802364413969819562
-      Gildar_Wall-Sheet_27: 7281020958456925057
-      Gildar_Wall-Sheet_28: -880909506700365149
-      Gildar_Wall-Sheet_29: -1858226867926265174
       Gildar_Wall-Sheet_3: -5721909944653565079
-      Gildar_Wall-Sheet_30: 1840103697525547994
-      Gildar_Wall-Sheet_31: -2719696016337970321
-      Gildar_Wall-Sheet_32: -2513771371343357610
-      Gildar_Wall-Sheet_33: 4701990298730350001
-      Gildar_Wall-Sheet_34: 1760524550442861629
-      Gildar_Wall-Sheet_35: -2253775759247853403
-      Gildar_Wall-Sheet_36: -4675720958315170722
-      Gildar_Wall-Sheet_37: -7280438269896425868
-      Gildar_Wall-Sheet_38: 3463288842720370743
-      Gildar_Wall-Sheet_39: 9161219091699407139
       Gildar_Wall-Sheet_4: 1620303433258950450
-      Gildar_Wall-Sheet_40: -4300284040016339320
-      Gildar_Wall-Sheet_41: 8203171571646846501
-      Gildar_Wall-Sheet_42: 1191328722327824207
-      Gildar_Wall-Sheet_43: 3024848978791627371
-      Gildar_Wall-Sheet_44: -1056395556455452972
-      Gildar_Wall-Sheet_45: -7010803529337442601
-      Gildar_Wall-Sheet_46: -3445442872399347514
-      Gildar_Wall-Sheet_47: -5186540264634827339
-      Gildar_Wall-Sheet_48: -3357292474179560577
-      Gildar_Wall-Sheet_49: -4844675596250604567
       Gildar_Wall-Sheet_5: -3559726092354004776
-      Gildar_Wall-Sheet_50: -8604890966276908793
-      Gildar_Wall-Sheet_51: 7921233106834234427
-      Gildar_Wall-Sheet_52: -261406636724869683
-      Gildar_Wall-Sheet_53: -5973394562116057282
-      Gildar_Wall-Sheet_54: 7999320387697931382
-      Gildar_Wall-Sheet_55: 9083899134075014145
-      Gildar_Wall-Sheet_56: 5729548755404156791
-      Gildar_Wall-Sheet_57: -5000905895784452235
-      Gildar_Wall-Sheet_58: 2521349735511452276
-      Gildar_Wall-Sheet_59: -3119982453799183653
       Gildar_Wall-Sheet_6: 8394182136666041856
-      Gildar_Wall-Sheet_60: -1032083614216971795
-      Gildar_Wall-Sheet_61: -5194526756902467
-      Gildar_Wall-Sheet_62: -4410016792967756752
-      Gildar_Wall-Sheet_63: 1658541297513463632
-      Gildar_Wall-Sheet_64: -6865970747765058856
-      Gildar_Wall-Sheet_65: 1551524203565238343
-      Gildar_Wall-Sheet_66: 5289777734668255789
-      Gildar_Wall-Sheet_67: 5668059096702106758
-      Gildar_Wall-Sheet_68: -8749870856677910014
-      Gildar_Wall-Sheet_69: 3866549540404499439
       Gildar_Wall-Sheet_7: -1800154215344825995
-      Gildar_Wall-Sheet_70: 2682251873172518740
-      Gildar_Wall-Sheet_71: 1697776894139598677
-      Gildar_Wall-Sheet_72: 8509370643426890447
-      Gildar_Wall-Sheet_73: -5921679091693617794
-      Gildar_Wall-Sheet_74: -6416181276858971521
-      Gildar_Wall-Sheet_75: 4528858053218525880
-      Gildar_Wall-Sheet_76: 3021099167683361266
-      Gildar_Wall-Sheet_77: 6629480160396511588
-      Gildar_Wall-Sheet_78: 8803942009373309899
-      Gildar_Wall-Sheet_79: 5950183891165309477
       Gildar_Wall-Sheet_8: 3917256973200378192
-      Gildar_Wall-Sheet_80: 4227220855060911456
-      Gildar_Wall-Sheet_81: -8209707742899657345
-      Gildar_Wall-Sheet_82: -4160936095058724048
-      Gildar_Wall-Sheet_83: -2591765926237508168
-      Gildar_Wall-Sheet_84: 3699690178012480133
-      Gildar_Wall-Sheet_85: -2479453083560442295
-      Gildar_Wall-Sheet_86: -4145703405266286386
-      Gildar_Wall-Sheet_87: -8748582978688706450
-      Gildar_Wall-Sheet_88: -2638056376866720109
-      Gildar_Wall-Sheet_89: -3235153792632519484
       Gildar_Wall-Sheet_9: -3249363592915197131
-      Gildar_Wall-Sheet_90: 4662372343755947011
-      Gildar_Wall-Sheet_91: 6400870497213623545
-      Gildar_Wall-Sheet_92: -6713060458452391870
-      Gildar_Wall-Sheet_93: 1111775915317341479
-      Gildar_Wall-Sheet_94: 1065233925836216578
-      Gildar_Wall-Sheet_95: -493859186432381118
-      Gildar_Wall-Sheet_96: 1961291419130605389
-      Gildar_Wall-Sheet_97: 2614805084236380317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

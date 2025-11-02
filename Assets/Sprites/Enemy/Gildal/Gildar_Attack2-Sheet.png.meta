@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,10 +102,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,12 +133,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_0
       rect:
         serializedVersion: 2
-        x: 101
-        y: 239
-        width: 95
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 240
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_1
       rect:
         serializedVersion: 2
-        x: 361
-        y: 239
-        width: 99
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 260
+        y: 240
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_2
       rect:
         serializedVersion: 2
-        x: 621
-        y: 239
-        width: 65
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 240
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_3
       rect:
         serializedVersion: 2
-        x: 879
-        y: 239
-        width: 59
-        height: 79
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 780
+        y: 240
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 119
-        width: 60
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 120
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_5
       rect:
         serializedVersion: 2
-        x: 356
-        y: 119
-        width: 60
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 260
+        y: 120
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,12 +265,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_6
       rect:
         serializedVersion: 2
-        x: 619
-        y: 119
-        width: 59
-        height: 79
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 120
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,12 +287,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_7
       rect:
         serializedVersion: 2
-        x: 883
-        y: 119
-        width: 107
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 780
+        y: 120
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_8
       rect:
         serializedVersion: 2
-        x: 103
+        x: 0
         y: 0
-        width: 98
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,12 +331,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_9
       rect:
         serializedVersion: 2
-        x: 363
+        x: 260
         y: 0
-        width: 98
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,12 +353,12 @@ TextureImporter:
       name: Gildar_Attack2-Sheet_10
       rect:
         serializedVersion: 2
-        x: 623
+        x: 520
         y: 0
-        width: 98
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 260
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fe78c12083b834819a3acad38f72b932
     internalID: 0
     vertices: []
     indices: 
@@ -383,7 +383,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":260.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Gildar_Attack2-Sheet_0: 7114011078818904236
       Gildar_Attack2-Sheet_1: 7349012589847401852
