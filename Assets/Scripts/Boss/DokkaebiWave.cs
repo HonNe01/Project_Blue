@@ -42,6 +42,11 @@ public class DokkaebiWave : MonoBehaviour
         StartCoroutine(WaveEnd());
     }
 
+    public void AE_FireSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Special_Wave_Gildal);
+    }
+
     public IEnumerator WaveEnd()
     {
         anim.SetTrigger("End");

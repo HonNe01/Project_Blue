@@ -419,7 +419,7 @@ public class GildalBoss : BossBase
     public void OnSwingHitStart() { if (swing_Hitbox) swing_Hitbox.SetActive(true); }
     public void OnSwingHitEnd() { if (swing_Hitbox) swing_Hitbox.SetActive(false); }
 
-    public void SwingSound()
+    public void AE_SwingSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Attack1_Gildal);
     }
@@ -459,7 +459,7 @@ public class GildalBoss : BossBase
     public void OnSlamHitStart() { if (slam_Hitbox) slam_Hitbox.SetActive(true); }
     public void OnSlamHitEnd() { if (slam_Hitbox) slam_Hitbox.SetActive(false); }
 
-    public void SlamSound()
+    public void AE_SlamSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Attack2_Gildal);
     }
@@ -492,6 +492,11 @@ public class GildalBoss : BossBase
         // 6) 재은신
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
         yield return StartCoroutine(Co_DoStealth());
+    }
+
+    public void AE_DokkaebiOrb()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack3_Gildal);
     }
 
     // 2페이즈 패턴
@@ -639,6 +644,11 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
         isSturn = false;
+    }
+
+    public void AE_SturnSound()
+    {
+        //SoundManager.instance.PlaySFX(SoundManager.SFX.Sturn_Gidal);
     }
 
     // 특수 패턴

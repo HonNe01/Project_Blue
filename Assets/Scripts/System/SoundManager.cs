@@ -36,6 +36,9 @@ public class SoundManager : MonoBehaviour
         // - Gildal
         Stealth_Gidal,
         Phase1_Attack1_Gildal, Phase1_Attack2_Gildal,
+        Phase2_Attack1_Gildal, Phase2_Attack2_Gildal,
+        Attack3_Gildal, 
+        Special_Cry_Gildal, Special_Wave_Gildal,
 
         // - CheongRyu
     }

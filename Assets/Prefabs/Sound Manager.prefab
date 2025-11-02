@@ -64,7 +64,12 @@ MonoBehaviour:
   gildalSFXClips:
   - {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
+  - {fileID: 8300000, guid: 5ff823f546b52574a931e1d9b44290a6, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
+  - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
+  - {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
+  - {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
+  - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   cheongRyuSFXClips: []
   bgmSlider: 1
   sfxSlider: 1
