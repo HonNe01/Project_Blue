@@ -22,6 +22,11 @@ public class DokkaebiWave : MonoBehaviour
         if (sprite == null) Debug.LogError($"{name}: SpriteRenderer is null!");
     }
 
+    public void AE_Charge()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Special_Charge_Gildal);
+    }
+
     public IEnumerator Fire(bool isRight)
     {
         // 메모리 세팅 대기
