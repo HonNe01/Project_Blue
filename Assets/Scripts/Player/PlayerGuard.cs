@@ -11,6 +11,14 @@ public class PlayerGuard : MonoBehaviour
     [Header("Parry Setting")]
     [SerializeField] private float parrytime = 0.2f;    // 패링 판단 시간
 
+    Rigidbody2D rb;
+
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Update()
     {
         GuardInput();
@@ -28,9 +36,16 @@ public class PlayerGuard : MonoBehaviour
         isGuard = Input.GetKey(KeyCode.C);
 
         if (isGuard)
+        {
             guardTime += Time.deltaTime;
+            rb.linearVelocity = Vector2.zero;
+            PlayerState.instance.canMove = false;
+        }
         else
+        {
             guardTime = 0f;
+            PlayerState.instance.canMove = true;
+        }
     }
 
     public void Guard()     // 가드 로직
