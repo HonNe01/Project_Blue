@@ -254,57 +254,66 @@ public class GildalBoss : BossBase
     }
 
     // 은신 기믹
-    private IEnumerator Co_DoStealth()
+    private IEnumerator Co_DoStealth(bool isWall = false)
     {
-        anim.SetTrigger("Stealth");
+        // 은신
+        if (isWall)
+        {
+            anim.SetTrigger("DoWallStealth");
+        }
+        else
+        {
+            anim.SetTrigger("DoStealth");
+        }
+        yield return null;
 
+        if (inPhase2)
+        {
+            float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+            yield return new WaitForSeconds(animLength);
+        }
+        else
+        {
+            float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+            yield return new WaitForSeconds(animLength);
+        }
 
-        // 충돌 판정 해제
+        // 피격 판정 해제
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
-
-        // 은신 로직
-        if (co_Fade != null) StopCoroutine(co_Fade);
-        co_Fade = StartCoroutine(Co_Fade(sprite.color.a, 0f, reStealth_Delay));
-
-        yield return co_Fade;
     }
-    private IEnumerator Co_EndStealth()
+    private IEnumerator Co_EndStealth(bool isAir = false)
     {
-        anim.SetTrigger("Stealth");
+        // 은신 해제
+        if (isAir)
+        {
+            anim.SetTrigger("EndAirStealth");
+        }
+        else
+        {
+            anim.SetTrigger("EndStealth");
+        }
+        yield return null;
 
-
-        // 은신 해제 로직
-        if (co_Fade != null) StopCoroutine(co_Fade);
-        co_Fade = StartCoroutine(Co_Fade(sprite.color.a, 1f, reStealth_Delay));
-
-        yield return co_Fade;
-
+        if (inPhase2)
+        {
+            float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+            yield return new WaitForSeconds(animLength);
+        }
+        else
+        {
+            float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+            yield return new WaitForSeconds(animLength);
+        }
+        
         // 피격 판정 설정
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
 
-    public void StealthSound()
+    public void AE_StealthSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
-    }
-
-    // 은신 로직
-    private IEnumerator Co_Fade(float from, float to, float duration)
-    {
-        float t = 0f;
-        var color = sprite.color;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            color.a = Mathf.Lerp(from, to, t / duration);
-            sprite.color = color;
-
-            yield return null;
-        }
-        color.a = to; 
-        sprite.color = color;
     }
 
     // 좌우 반전
@@ -434,7 +443,7 @@ public class GildalBoss : BossBase
 
         // 2) 은신 해제
         anim?.SetTrigger("SlamPrep");
-        yield return StartCoroutine(Co_EndStealth());
+        yield return StartCoroutine(Co_EndStealth(true));
         yield return new WaitForSeconds(slam_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
@@ -550,7 +559,7 @@ public class GildalBoss : BossBase
         
         // 2) 은신 해제
         anim?.SetTrigger("JumpSlashPrep");
-        yield return StartCoroutine(Co_EndStealth());
+        yield return StartCoroutine(Co_EndStealth(true));
         yield return new WaitForSeconds(jumpSlash_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
@@ -727,7 +736,7 @@ public class GildalBoss : BossBase
         else
             yield return StartCoroutine(Co_DoPungNyeon());
 
-        yield return StartCoroutine(Co_DoStealth());
+        yield return StartCoroutine(Co_DoStealth(true));
     }
 
     // 각 층 중심 y좌표 반환

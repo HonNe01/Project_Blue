@@ -1194,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dokkaebi_Wave
       objectReference: {fileID: 0}
+    - target: {fileID: 5258680384805949804, guid: 391d72ece714d6c4a81e0d5bde152474, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1613,6 +1617,10 @@ PrefabInstance:
     - target: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
       propertyPath: m_Name
       value: DokkaebiOrb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

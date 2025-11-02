@@ -862,7 +862,7 @@ MonoBehaviour:
   slam_preDelay: 0.3
   slam_postDelay: 0.4
   slam_Hitbox: {fileID: 5924644709608940927}
-  dokkaebiOrb_weight: 5000
+  dokkaebiOrb_weight: 2
   dokkaebiOrb_cooldown: 2
   dokkaebiOrb_preDelay: 0.2
   dokkaebiOrb_postDelay: 0.4
