@@ -670,6 +670,7 @@ public class GildalBoss : BossBase
 
         // 스턴 모션
         anim.SetBool("Sturn", true);
+        anim.SetTrigger("DoSturn");
         yield return new WaitForSeconds(sturn_Delay);    // 스턴 딜레이
         anim.SetBool("Sturn", false);
 
