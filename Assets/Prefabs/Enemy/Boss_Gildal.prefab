@@ -1025,7 +1025,7 @@ MonoBehaviour:
   pattern_Delay: 0.35
   sturn_Delay: 2
   reStealth_Delay: 0.8
-  wallXMin: -9
+  wallXMin: -9.65
   wallXMax: 9
   swing_weight: 4
   swing_cooldown: 2

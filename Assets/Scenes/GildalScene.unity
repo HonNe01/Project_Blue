@@ -217,6 +217,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
     - target: {fileID: 3321525004647849168, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -1206,11 +1234,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1247,6 +1275,10 @@ PrefabInstance:
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783108065526105649, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

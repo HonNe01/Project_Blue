@@ -172,6 +172,11 @@ public class GildalBoss : BossBase
         state = BossState.Idle;
     }
 
+    public void AE_CrySound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Cry_Gildal);
+    }
+
     protected override IEnumerator Co_ChoosePattern()
     {
         if (phaseChange)
@@ -535,7 +540,10 @@ public class GildalBoss : BossBase
 
     public void AE_DroneFire()
     {
+        if (drone == null) return;
         StartCoroutine(drone.Co_FireOrb(target));
+
+        drone = null;
     }
 
     public void AE_DokkaebiOrb()
@@ -831,10 +839,12 @@ public class GildalBoss : BossBase
         Vector2 spawnPosA = new Vector2(transform.position.x, centers[idxA]);
         var objA = Instantiate(dronePrefab, spawnPosA, Quaternion.identity);
         drones[0] = objA.GetComponent<DokkaebiOrbDrone>();
+        drones[0].sprite.flipX = true;
 
         Vector2 spawnPosB = new Vector2(transform.position.x, centers[idxB]);
         var objB = Instantiate(dronePrefab, spawnPosB, Quaternion.identity);
         drones[1] = objB.GetComponent<DokkaebiOrbDrone>();
+        drones[1].sprite.flipX = true;
 
         // 3) 은신 해제
         StartCoroutine(drones[0].Co_EndStealth());
@@ -860,6 +870,7 @@ public class GildalBoss : BossBase
         Vector2 spawnPos = new Vector2(transform.position.x, centers[floor]);
         var obj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
         var drone = obj.GetComponent<DokkaebiOrbDrone>();
+        drone.sprite.flipX = false;
 
         // 3) 은신해제
         yield return StartCoroutine(drone.Co_EndStealth());

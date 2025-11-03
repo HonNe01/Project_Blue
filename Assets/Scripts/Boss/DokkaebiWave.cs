@@ -9,9 +9,9 @@ public class DokkaebiWave : MonoBehaviour
 
     private Animator anim;
     private Collider2D coll;
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
 
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
@@ -20,7 +20,10 @@ public class DokkaebiWave : MonoBehaviour
         if (anim == null) Debug.LogError($"{name}: Animator is null!");
         if (coll == null) Debug.LogError($"{name}: Collider2D is null!");
         if (sprite == null) Debug.LogError($"{name}: SpriteRenderer is null!");
+    }
 
+    private void Start()
+    {
         coll.enabled = false; // 충돌 비활성화
     }
 
@@ -34,14 +37,14 @@ public class DokkaebiWave : MonoBehaviour
         // 좌우반전
         sprite.flipX = !isRight;
         int dir = isRight ? 1 : -1;
+
+        coll.enabled = true;
         coll.offset = new Vector2(9 * dir, 0);
 
         // 발사
-        coll.enabled = true; // 충돌 활성화
         anim.SetTrigger("Wave");
         yield return new WaitForSeconds(fireTime);
-
-        StartCoroutine(WaveEnd());
+        yield return StartCoroutine(WaveEnd());
     }
 
     public void AE_FireSound()

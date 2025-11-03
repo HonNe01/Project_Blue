@@ -8,7 +8,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
     [SerializeField] private Collider2D expColl;
     [SerializeField] private GameObject wavePrefab;
 
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     private Animator anim;
 
 
@@ -34,8 +34,6 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         if (expColl) expColl.enabled = false;
         if (bodyColl) bodyColl.enabled = true;
-
-        UpdateFacing(lastDir);
     }
 
     private void UpdateFacing(Vector2 dir)
@@ -43,29 +41,6 @@ public class DokkaebiOrbDrone : MonoBehaviour
         if (!sprite) return;
         if (dir.x >= 0.01f)         sprite.flipX = false;
         else if (dir.x < -0.01f)    sprite.flipX = true;
-    }
-
-    // 드론 자동 조작: 은신 해제 -> 돌진/폭발
-    public IEnumerator Co_DroneAuto(Transform player)
-    {
-        // 정렬
-        if (player)
-        {
-            Vector2 toPlayer = (Vector2)player.position - (Vector2)transform.position + OrbOffset;
-            lastDir = toPlayer.normalized;
-            UpdateFacing(lastDir);
-        }
-
-        // 은신 해제
-        yield return StartCoroutine(Co_EndStealth());
-        yield return null;
-
-        // 불타오름
-        anim.SetTrigger("Fire");
-        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
-
-        StartCoroutine(Co_FireOrb(player));
     }
 
     // 은신
@@ -95,14 +70,42 @@ public class DokkaebiOrbDrone : MonoBehaviour
         SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gildal);
     }
 
+    // 드론 자동 조작: 은신 해제 -> 돌진/폭발
+    public IEnumerator Co_DroneAuto(Transform player)
+    {
+        // 정렬
+        if (player)
+        {
+            Vector2 toPlayer = (Vector2)player.position - (Vector2)transform.position + OrbOffset;
+            lastDir = toPlayer.normalized;
+            UpdateFacing(lastDir);
+        }
+
+        // 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+        yield return null;
+
+        // 불타오름
+        anim.SetTrigger("Fire");
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        StartCoroutine(Co_FireOrb(player));
+    }
+
     public IEnumerator Co_FireOrb(Transform player)
     {
         anim.SetTrigger("Fire");
         yield return null;
 
-        //float timeout = 2f, t = 0f;
+        float timeout = 2f, t = 0f;
         while (!anim.GetCurrentAnimatorStateInfo(0).IsName("Fire_Idle"))
         {
+            t += Time.deltaTime;
+            if (t > timeout)
+            {
+                StartCoroutine(Co_DoStealth());
+            }
             yield return null;
         }
         
@@ -111,7 +114,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
         float chaseTime = Mathf.Clamp01(chaseRatio) * total;
         float coastTime = Mathf.Max(0f, total - chaseTime);
 
-        float t = 0f;
+        t = 0f;
 
         // 1) Chase : 플레이어 추적
         while (!isExploded && t < chaseTime)
@@ -182,7 +185,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         // 발사
         var proj = Instantiate(wavePrefab, transform.position, Quaternion.identity);
-        yield return StartCoroutine(proj.GetComponent<DokkaebiWave>().Fire(isRight));
+        var wave = proj.GetComponent<DokkaebiWave>();
+        yield return StartCoroutine(wave.Fire(isRight));
 
         StartCoroutine(Co_DoStealth());
     }
