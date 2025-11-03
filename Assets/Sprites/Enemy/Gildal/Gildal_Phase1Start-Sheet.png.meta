@@ -1,0 +1,770 @@
+fileFormatVersion: 2
+guid: eb5487c603baf4a338b5ac1e252018ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7029372928321407177
+    second: Gildal_Phase1Start-Sheet_0
+  - first:
+      213: 5207816832600980326
+    second: Gildal_Phase1Start-Sheet_1
+  - first:
+      213: 1956792301338591482
+    second: Gildal_Phase1Start-Sheet_2
+  - first:
+      213: 8795750245068479189
+    second: Gildal_Phase1Start-Sheet_3
+  - first:
+      213: -4761202926956428610
+    second: Gildal_Phase1Start-Sheet_4
+  - first:
+      213: 2750620635986268601
+    second: Gildal_Phase1Start-Sheet_5
+  - first:
+      213: 3022088120715244882
+    second: Gildal_Phase1Start-Sheet_6
+  - first:
+      213: 5268751476734697937
+    second: Gildal_Phase1Start-Sheet_7
+  - first:
+      213: 3163891119075668812
+    second: Gildal_Phase1Start-Sheet_8
+  - first:
+      213: 1149515866907259725
+    second: Gildal_Phase1Start-Sheet_9
+  - first:
+      213: -3545376243038951120
+    second: Gildal_Phase1Start-Sheet_10
+  - first:
+      213: -9218523710558653187
+    second: Gildal_Phase1Start-Sheet_11
+  - first:
+      213: 2532990397161320596
+    second: Gildal_Phase1Start-Sheet_12
+  - first:
+      213: 5193421835923938790
+    second: Gildal_Phase1Start-Sheet_13
+  - first:
+      213: -2464592475580897807
+    second: Gildal_Phase1Start-Sheet_14
+  - first:
+      213: -1402418200036590549
+    second: Gildal_Phase1Start-Sheet_15
+  - first:
+      213: 8510350822374129269
+    second: Gildal_Phase1Start-Sheet_16
+  - first:
+      213: 4573021203699754932
+    second: Gildal_Phase1Start-Sheet_17
+  - first:
+      213: 6678664957568795903
+    second: Gildal_Phase1Start-Sheet_18
+  - first:
+      213: 6420418978483100849
+    second: Gildal_Phase1Start-Sheet_19
+  - first:
+      213: -7955319425812791689
+    second: Gildal_Phase1Start-Sheet_20
+  - first:
+      213: 3722697635946215441
+    second: Gildal_Phase1Start-Sheet_21
+  - first:
+      213: 5475260771960371144
+    second: Gildal_Phase1Start-Sheet_22
+  - first:
+      213: 3909212233485448681
+    second: Gildal_Phase1Start-Sheet_23
+  - first:
+      213: -5462583951863580411
+    second: Gildal_Phase1Start-Sheet_24
+  - first:
+      213: 597357489626471278
+    second: Gildal_Phase1Start-Sheet_25
+  - first:
+      213: -29485516981224496
+    second: Gildal_Phase1Start-Sheet_26
+  - first:
+      213: 485397713609062118
+    second: Gildal_Phase1Start-Sheet_27
+  - first:
+      213: -2852112538455387830
+    second: Gildal_Phase1Start-Sheet_28
+  - first:
+      213: -3978375029963369974
+    second: Gildal_Phase1Start-Sheet_29
+  - first:
+      213: -3465249998403682254
+    second: Gildal_Phase1Start-Sheet_30
+  - first:
+      213: 2030261692702702006
+    second: Gildal_Phase1Start-Sheet_31
+  - first:
+      213: 6151049451175192318
+    second: Gildal_Phase1Start-Sheet_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c848526f695d8160800000000000000
+      internalID: 7029372928321407177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 480
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b3b7a21d1e54840800000000000000
+      internalID: 5207816832600980326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 480
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af081840b3ce72b10800000000000000
+      internalID: 1956792301338591482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da9c5afe38c01a70800000000000000
+      internalID: 8795750245068479189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 480
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb24633f92fccedb0800000000000000
+      internalID: -4761202926956428610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b112df15ea2c2620800000000000000
+      internalID: 2750620635986268601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 360
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255f823522d90f920800000000000000
+      internalID: 3022088120715244882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 360
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d126949d8d5e1940800000000000000
+      internalID: 5268751476734697937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 360
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c43b484b53668eb20800000000000000
+      internalID: 3163891119075668812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 360
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43beae2796e3ff00800000000000000
+      internalID: 1149515866907259725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 039ed86571b4ccec0800000000000000
+      internalID: -3545376243038951120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df4b2aee689311080800000000000000
+      internalID: -9218523710558653187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 240
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 490b64a885df62320800000000000000
+      internalID: 2532990397161320596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 240
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6edd003d4adb21840800000000000000
+      internalID: 5193421835923938790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 240
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f566e093320ccdd0800000000000000
+      internalID: -2464592475580897807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2cb640d31c998ce0800000000000000
+      internalID: -1402418200036590549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 120
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e3091bbf6da1670800000000000000
+      internalID: 8510350822374129269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 120
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b76adc4e82a67f30800000000000000
+      internalID: 4573021203699754932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 120
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4ccb1d4626fac50800000000000000
+      internalID: 6678664957568795903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 120
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc59a94b09e91950800000000000000
+      internalID: 6420418978483100849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77ef9ad9127099190800000000000000
+      internalID: -7955319425812791689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118b2c4b6cda9a330800000000000000
+      internalID: 3722697635946215441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c73455b9a80cfb40800000000000000
+      internalID: 5475260771960371144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase1Start-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5f28080df404630800000000000000
+      internalID: 3909212233485448681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5ffcb50d7cbb6457d8eaa973d81cb99a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Gildal_Phase1Start-Sheet_0: 7029372928321407177
+      Gildal_Phase1Start-Sheet_1: 5207816832600980326
+      Gildal_Phase1Start-Sheet_10: -3545376243038951120
+      Gildal_Phase1Start-Sheet_11: -9218523710558653187
+      Gildal_Phase1Start-Sheet_12: 2532990397161320596
+      Gildal_Phase1Start-Sheet_13: 5193421835923938790
+      Gildal_Phase1Start-Sheet_14: -2464592475580897807
+      Gildal_Phase1Start-Sheet_15: -1402418200036590549
+      Gildal_Phase1Start-Sheet_16: 8510350822374129269
+      Gildal_Phase1Start-Sheet_17: 4573021203699754932
+      Gildal_Phase1Start-Sheet_18: 6678664957568795903
+      Gildal_Phase1Start-Sheet_19: 6420418978483100849
+      Gildal_Phase1Start-Sheet_2: 1956792301338591482
+      Gildal_Phase1Start-Sheet_20: -7955319425812791689
+      Gildal_Phase1Start-Sheet_21: 3722697635946215441
+      Gildal_Phase1Start-Sheet_22: 5475260771960371144
+      Gildal_Phase1Start-Sheet_23: 3909212233485448681
+      Gildal_Phase1Start-Sheet_3: 8795750245068479189
+      Gildal_Phase1Start-Sheet_4: -4761202926956428610
+      Gildal_Phase1Start-Sheet_5: 2750620635986268601
+      Gildal_Phase1Start-Sheet_6: 3022088120715244882
+      Gildal_Phase1Start-Sheet_7: 5268751476734697937
+      Gildal_Phase1Start-Sheet_8: 3163891119075668812
+      Gildal_Phase1Start-Sheet_9: 1149515866907259725
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
