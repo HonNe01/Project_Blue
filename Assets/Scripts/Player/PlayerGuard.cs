@@ -31,6 +31,7 @@ public class PlayerGuard : MonoBehaviour
 
     private void GuardInput()
     {
+        if (!PlayerState.instance.isGround) return;
         if (!PlayerState.instance.canGuard) return;
 
         isGuard = Input.GetKey(KeyCode.C);
