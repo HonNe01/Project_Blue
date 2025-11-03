@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wave_Fire_End
+  m_Name: Drone_Idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1377891826, guid: 6d016690c132b5846a7a1a1ff96e3636, type: 3}
-    - time: 0.083333336
-      value: {fileID: 1746865233, guid: 6d016690c132b5846a7a1a1ff96e3636, type: 3}
+      value: {fileID: -1000435162, guid: 9fe3e2d4645ea4ef3b791795a730b78d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,14 +44,13 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1377891826, guid: 6d016690c132b5846a7a1a1ff96e3636, type: 3}
-    - {fileID: 1746865233, guid: 6d016690c132b5846a7a1a1ff96e3636, type: 3}
+    - {fileID: -1000435162, guid: 9fe3e2d4645ea4ef3b791795a730b78d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.083333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

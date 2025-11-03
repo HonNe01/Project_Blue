@@ -21,7 +21,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
     
     private int baseDamage = 1;
 
-    private bool isChase = true;
+    private bool isChase = false;
     private bool isExploded = false;
 
     private void Awake()
@@ -34,13 +34,36 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         if (expColl) expColl.enabled = false;
         if (bodyColl) bodyColl.enabled = true;
+
+        UpdateFacing(lastDir);
+    }
+
+    private void UpdateFacing(Vector2 dir)
+    {
+        if (!sprite) return;
+        if (dir.x >= 0.01f)         sprite.flipX = false;
+        else if (dir.x < -0.01f)    sprite.flipX = true;
     }
 
     // 드론 자동 조작: 은신 해제 -> 돌진/폭발
     public IEnumerator Co_DroneAuto(Transform player)
     {
+        // 정렬
+        if (player)
+        {
+            Vector2 toPlayer = (Vector2)player.position - (Vector2)transform.position + OrbOffset;
+            lastDir = toPlayer.normalized;
+            UpdateFacing(lastDir);
+        }
+
+        // 은신 해제
         yield return StartCoroutine(Co_EndStealth());
         yield return null;
+
+        // 불타오름
+        anim.SetTrigger("Fire");
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
         StartCoroutine(Co_FireOrb(player));
     }
@@ -50,7 +73,6 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         // 은신 로직
         anim.SetTrigger("Stealth");
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
         yield return null;
 
         float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
@@ -62,17 +84,19 @@ public class DokkaebiOrbDrone : MonoBehaviour
     public IEnumerator Co_EndStealth()
     {
         // 은신 해제 로직
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
         yield return null;
 
         float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
     }
 
+    public void AE_StealthSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gildal);
+    }
+
     public IEnumerator Co_FireOrb(Transform player)
     {
-        anim.SetTrigger("Fire");
-
         isChase = true;
         float total = lifeTime;
         float chaseTime = Mathf.Clamp01(chaseRatio) * total;
@@ -96,6 +120,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
             if (toTarget.sqrMagnitude > 0.0001f)
             {
                 lastDir = toTarget.normalized;
+                UpdateFacing(lastDir);
             }
 
             transform.Translate(lastDir * dashSpeed * Time.deltaTime, Space.World);
@@ -137,6 +162,11 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
         // 폭발 모션 이후 파괴
         Destroy(gameObject);
+    }
+
+    public void AE_ExplosionSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Explosion_Drone);
     }
 
     public IEnumerator Co_FireWave(bool isRight)

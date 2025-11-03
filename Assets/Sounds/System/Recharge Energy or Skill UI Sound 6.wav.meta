@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 958408b32ccf3714ea02821877b0870c
-timeCreated: 1570803015
+guid: 72ba85c415ad5437fa0a559a4ad9f36a
+timeCreated: 1463874557
 licenseType: Store
 AudioImporter:
   serializedVersion: 6
@@ -16,15 +16,14 @@ AudioImporter:
   normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
-  ambisonic: 0
   3D: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 155776
-  packageName: Free Sound Effects Pack
+  productId: 36617
+  packageName: Epic Game Hits SFX
   packageVersion: 1.0
-  assetPath: Assets/Free Pack/Metal impact 5.wav
-  uploadId: 333958
+  assetPath: Assets/Epic Game Hits SFX/Recharge Energy or Skill UI Sound 6.wav
+  uploadId: 118949

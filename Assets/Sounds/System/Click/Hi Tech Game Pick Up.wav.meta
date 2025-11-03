@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 958408b32ccf3714ea02821877b0870c
-timeCreated: 1570803015
+guid: 68378f764d6b3426fb75496eeb422abb
+timeCreated: 1463874556
 licenseType: Store
 AudioImporter:
   serializedVersion: 6
@@ -16,15 +16,14 @@ AudioImporter:
   normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
-  ambisonic: 0
   3D: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 155776
-  packageName: Free Sound Effects Pack
+  productId: 36617
+  packageName: Epic Game Hits SFX
   packageVersion: 1.0
-  assetPath: Assets/Free Pack/Metal impact 5.wav
-  uploadId: 333958
+  assetPath: Assets/Epic Game Hits SFX/Hi Tech Game Pick Up.wav
+  uploadId: 118949

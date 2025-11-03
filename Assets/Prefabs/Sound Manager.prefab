@@ -47,7 +47,7 @@ MonoBehaviour:
   bgmClip: {fileID: 8300000, guid: 139982ee37a243d40aab3b2b96b2c253, type: 3}
   bgmVolume: 0.8
   sfxVolume: 0.5
-  channelCount: 5
+  channelCount: 10
   systemSFXClips:
   - {fileID: 8300000, guid: d537bec9433fb3443ba68f616404d141, type: 3}
   playerSFXClips:
@@ -63,12 +63,15 @@ MonoBehaviour:
   enemySFXClips: []
   gildalSFXClips:
   - {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
+  - {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
-  - {fileID: 8300000, guid: 5ff823f546b52574a931e1d9b44290a6, type: 3}
+  - {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
   - {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
   - {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
+  - {fileID: 8300000, guid: 6a32a0d49cd240b4cb9934adf37a49a5, type: 3}
+  - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   cheongRyuSFXClips: []
   bgmSlider: 1

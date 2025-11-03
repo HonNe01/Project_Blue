@@ -57,6 +57,7 @@ public class GildalBoss : BossBase
     public Vector2 dokkaebiOrb_Offset;
     [Tooltip("Dokkaebi Orb Drone 프리펩")]
     public GameObject dronePrefab;
+    private DokkaebiOrbDrone drone;
 
     [Header(" === 2 Phase Patterns === ")]
     [Header("Double Slash")]
@@ -327,7 +328,7 @@ public class GildalBoss : BossBase
 
     public void AE_StealthSound()
     {
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gidal);
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gildal);
     }
 
     // 좌우 반전
@@ -499,16 +500,13 @@ public class GildalBoss : BossBase
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
         yield return new WaitForSeconds(dokkaebiOrb_preDelay);
+
+        // 3) 드론 공격
         anim?.SetTrigger("DokkaebiOrb");
+        yield return null;
 
-        // 3) 드론 소환
-        Vector2 spawnPos = SetOrbSpawnPos(dokkaebiOrb_Offset);
-        var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
-        var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
-        yield return StartCoroutine(drone.Co_EndStealth());
-
-        // 5) 공격 명령
-        StartCoroutine(drone.Co_FireOrb(target));
+        float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
         // 6) 재은신
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
@@ -523,6 +521,21 @@ public class GildalBoss : BossBase
         float y = transform.position.y + offset.y;
 
         return new Vector2(x, y);
+    }
+
+    public void AE_DroneSet()
+    {
+        // 3) 드론 소환
+        Vector2 spawnPos = SetOrbSpawnPos(dokkaebiOrb_Offset);
+        var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
+        drone = droneObj.GetComponent<DokkaebiOrbDrone>();
+
+        StartCoroutine(drone.Co_EndStealth());
+    }
+
+    public void AE_DroneFire()
+    {
+        StartCoroutine(drone.Co_FireOrb(target));
     }
 
     public void AE_DokkaebiOrb()
@@ -683,7 +696,7 @@ public class GildalBoss : BossBase
 
     public void AE_SturnSound()
     {
-        //SoundManager.instance.PlaySFX(SoundManager.SFX.Sturn_Gidal);
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Sturn_Gildal);
     }
 
     // 특수 패턴
