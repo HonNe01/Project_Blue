@@ -62,14 +62,15 @@ MonoBehaviour:
   moonsinSFXClips: []
   enemySFXClips: []
   gildalSFXClips:
+  - {fileID: 8300000, guid: 0ad45b478f08e0343865631890a076ac, type: 3}
+  - {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
   - {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
   - {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
+  - {fileID: 8300000, guid: b5b5fdf5b3429c64d8e6c7319aa36935, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
-  - {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
   - {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
-  - {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
   - {fileID: 8300000, guid: 6a32a0d49cd240b4cb9934adf37a49a5, type: 3}
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}

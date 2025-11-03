@@ -95,6 +95,9 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     public IEnumerator Co_FireOrb(Transform player)
     {
+        yield return null;
+
+        // 불타오름
         anim.SetTrigger("Fire");
         yield return null;
 

@@ -14,6 +14,7 @@ public class BossManager : MonoBehaviour
 
     private BossBase curBoss;
     private bool isBattle = false;
+    private bool isFirst = true;
 
      
     [Header("Boss Arena")]
@@ -46,14 +47,32 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        BossStateCheck();
+    }
+
     public void BattleStart()
     {
-        if (isBattle) return;
+        if (isBattle && !isFirst) return;
         isBattle = true;
+        isFirst = false;
 
         SetArenaLocked(true);
         SetBossCamera(true);
         BossSpawn();
+    }
+
+    public void BossStateCheck()
+    {
+        if (!isBattle) return;
+
+        if (curBoss.state == BossBase.BossState.Die)
+        {
+            isBattle = false;
+
+            BattleFinish();
+        }
     }
 
     public void BattleFinish()
@@ -114,7 +133,7 @@ public class BossManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isBattle && collision.CompareTag("Player"))
+        if (!isBattle && isFirst && collision.CompareTag("Player"))
         {
             BattleStart();
         }

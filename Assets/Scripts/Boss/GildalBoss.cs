@@ -24,7 +24,6 @@ public class GildalBoss : BossBase
 
     [Header("Stealth Settings")]
     public float reStealth_Delay = 1f;
-    private Coroutine co_Fade;
 
     [Header("Map Limits")]
     public float wallXMin = -20f;      // 벽 x좌표
@@ -100,7 +99,8 @@ public class GildalBoss : BossBase
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
     public SpriteRenderer sprite;
-    public Collider2D coll;
+    public Collider2D coll_Normal;
+    public Collider2D coll_Special;
     private Material stealthMat;
 
     // 길달 패턴 리스트
@@ -115,11 +115,17 @@ public class GildalBoss : BossBase
 
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
         if (stealthMat == null) stealthMat = sprite.material;
-        if (coll == null) coll = GetComponent<Collider2D>();
+        if (coll_Normal == null) coll_Normal = GetComponents<Collider2D>()[0];
+        if (coll_Special == null) coll_Special = GetComponents<Collider2D>()[1];
     }
 
     private void Start()
     {
+        sprite.enabled = false;
+
+        coll_Normal.enabled = true;
+        coll_Special.enabled = false;
+        
         bossLayer = LayerMask.NameToLayer("Enemy");
         playerLayer = LayerMask.NameToLayer("Player");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
@@ -162,6 +168,25 @@ public class GildalBoss : BossBase
     {
         StartCoroutine(base.StartBattle());
         state = BossState.Directing;
+        yield return null;
+
+        anim?.SetTrigger("PhaseStart");
+        Landing();
+    }
+
+    public void Landing()
+    {
+        Debug.Log("[Gildal] Boss Dispatch");
+        transform.position = transform.position + new Vector3(0, 15f, 0);
+        sprite.enabled = true;
+
+        StartCoroutine(Co_Landing());
+    }
+
+    private IEnumerator Co_Landing()
+    {
+        yield return StartCoroutine(Co_MoveTo(new Vector2(transform.position.x, transform.position.y - 15f), 0.4f));
+        yield return null;
         anim?.SetTrigger("PhaseStart");
 
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
@@ -170,6 +195,16 @@ public class GildalBoss : BossBase
 
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
+    }
+
+    public void AE_LandingSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Landing_Gildal);
+    }
+
+    public void AE_StartSound()
+    {
+
     }
 
     public void AE_CrySound()
@@ -707,6 +742,11 @@ public class GildalBoss : BossBase
         SoundManager.instance.PlaySFX(SoundManager.SFX.Sturn_Gildal);
     }
 
+    public void AE_ShockSound()
+    {
+        //SoundManager.instance.PlaySFX(SoundManager.SFX.Shork_Gildal);
+    }
+
     // 특수 패턴
     private void CheckSpecialTrigger()
     {
@@ -763,6 +803,8 @@ public class GildalBoss : BossBase
         float wallX = isHyungNyeon ? wallXMin : wallXMax;
         transform.position = new Vector2(wallX, groundYWall);
         FlipX();
+        coll_Normal.enabled = false;
+        coll_Special.enabled = true;
         anim?.SetTrigger("SpecialPrep2");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         if (inPhase2)
@@ -784,6 +826,8 @@ public class GildalBoss : BossBase
             yield return StartCoroutine(Co_DoPungNyeon());
 
         yield return StartCoroutine(Co_DoStealth(true));
+        coll_Normal.enabled = true;
+        coll_Special.enabled = false;
     }
 
     // 각 층 중심 y좌표 반환

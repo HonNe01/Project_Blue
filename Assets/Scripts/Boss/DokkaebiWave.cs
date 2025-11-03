@@ -9,7 +9,7 @@ public class DokkaebiWave : MonoBehaviour
 
     private Animator anim;
     private Collider2D coll;
-    public SpriteRenderer sprite;
+    private SpriteRenderer sprite;
 
     private void Awake()
     {
@@ -34,6 +34,8 @@ public class DokkaebiWave : MonoBehaviour
 
     public IEnumerator Fire(bool isRight)
     {
+        yield return null;
+
         // ÁÂ¿ì¹ÝÀü
         sprite.flipX = !isRight;
         int dir = isRight ? 1 : -1;

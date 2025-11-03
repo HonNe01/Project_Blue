@@ -217,34 +217,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[3]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[4]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[6]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
-    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
-      propertyPath: 'gildalSFXClips.Array.data[7]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
     - target: {fileID: 3321525004647849168, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -626,11 +598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.08
+      value: -16.26
       objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.72
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1110,11 +1082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3022223
+      value: -14.482223
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2799999
+      value: 0.53999984
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1234,11 +1206,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.18
+      value: -3.95
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.92
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 1439300101132665714, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1276,8 +1248,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
-    - target: {fileID: 7783108065526105649, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
-      propertyPath: m_Color.a
+    - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1295,11 +1267,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3022223
+      value: -14.482223
       objectReference: {fileID: 0}
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2799999
+      value: 0.53999984
       objectReference: {fileID: 0}
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1596,11 +1568,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7626849617957574984, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.959
+      value: -1.587
       objectReference: {fileID: 0}
     - target: {fileID: 7626849617957574984, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.581
+      value: 2.968
       objectReference: {fileID: 0}
     - target: {fileID: 7626849617957574984, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2051,7 +2023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3844423571995196673, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.15255
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 3844423571995196673, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2109,6 +2081,14 @@ PrefabInstance:
     - target: {fileID: 4217294650187569526, guid: 707cd93a3f456804fb8f1959373190fb, type: 3}
       propertyPath: m_Name
       value: Boss Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960258645112669689, guid: 707cd93a3f456804fb8f1959373190fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960258645112669689, guid: 707cd93a3f456804fb8f1959373190fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8867788886742174365, guid: 707cd93a3f456804fb8f1959373190fb, type: 3}
       propertyPath: m_LocalPosition.x
