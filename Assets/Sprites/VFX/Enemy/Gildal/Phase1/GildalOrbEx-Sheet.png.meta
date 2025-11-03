@@ -1,19 +1,46 @@
 fileFormatVersion: 2
-guid: 058e64defaa534c6dafa7a9e224d18d3
+guid: 232c0cec475724da09b96f00500bca62
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2586491042967525339
-    second: Gildal_OrbEffect-Sheet_0
+      213: 2884028167702582917
+    second: GildalOrbEx-Sheet_0
   - first:
-      213: 6675891710088851667
-    second: Gildal_OrbEffect-Sheet_1
+      213: -6660419756333382075
+    second: GildalOrbEx-Sheet_1
   - first:
-      213: -6655648920353485455
-    second: Gildal_OrbEffect-Sheet_2
+      213: 6372949694835839958
+    second: GildalOrbEx-Sheet_2
   - first:
-      213: -7095686667578336433
-    second: Gildal_OrbEffect-Sheet_3
+      213: -1816958820472351174
+    second: GildalOrbEx-Sheet_3
+  - first:
+      213: -1239320368273876305
+    second: GildalOrbEx-Sheet_4
+  - first:
+      213: -3473096379356114678
+    second: GildalOrbEx-Sheet_5
+  - first:
+      213: -9130620408384984747
+    second: GildalOrbEx-Sheet_6
+  - first:
+      213: -8309693833446787410
+    second: GildalOrbEx-Sheet_7
+  - first:
+      213: -3377810355957379191
+    second: GildalOrbEx-Sheet_8
+  - first:
+      213: -5432805425169016592
+    second: GildalOrbEx-Sheet_9
+  - first:
+      213: 2078973675715863831
+    second: GildalOrbEx-Sheet_10
+  - first:
+      213: 2646977770127321331
+    second: GildalOrbEx-Sheet_11
+  - first:
+      213: 8737052719805310257
+    second: GildalOrbEx-Sheet_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,155 +136,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_0
+      name: GildalOrbEx-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 80
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd71fc656ef05e320800000000000000
-      internalID: 2586491042967525339
+      spriteID: 586122a9650260820800000000000000
+      internalID: 2884028167702582917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_1
+      name: GildalOrbEx-Sheet_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 80
         y: 80
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d032d2d32885ac50800000000000000
-      internalID: 6675891710088851667
+      spriteID: 54641c0258f6193a0800000000000000
+      internalID: -6660419756333382075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_2
+      name: GildalOrbEx-Sheet_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 160
         y: 80
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17d4e90f19262a3a0800000000000000
-      internalID: -6655648920353485455
+      spriteID: 6d3df1c6bf3417850800000000000000
+      internalID: 6372949694835839958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 40
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4b9485029e078d90800000000000000
-      internalID: -7095686667578336433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 40
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e3b99475a8104d60aa14188fc249e61
-      internalID: 813715446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 40
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dd7ad7f1600c425a9a30140d797c237
-      internalID: 970317983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gildal_OrbEffect-Sheet_6
+      name: GildalOrbEx-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 40
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6e60aea63574348fb93001fd0d4e434c
-      internalID: -1478837750
+      spriteID: a369b36549dd8c6e0800000000000000
+      internalID: -1816958820472351174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GildalOrbEx-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa1126f0bc0dcee0800000000000000
+      internalID: -1239320368273876305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GildalOrbEx-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0198c58e351dcfc0800000000000000
+      internalID: -3473096379356114678
       vertices: []
       indices: 
       edges: []
@@ -266,7 +271,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a56ab78a5a5624b90935fb8c0dae3ff2
+    spriteID: f516699fdbf964baea6f4df6b5acda76
     internalID: 0
     vertices: []
     indices: 
@@ -276,15 +281,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":20.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.25},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gildal_OrbEffect-Sheet_0: 2586491042967525339
-      Gildal_OrbEffect-Sheet_1: 6675891710088851667
-      Gildal_OrbEffect-Sheet_2: -6655648920353485455
-      Gildal_OrbEffect-Sheet_3: -7095686667578336433
-      Gildal_OrbEffect-Sheet_4: 813715446
-      Gildal_OrbEffect-Sheet_5: 970317983
-      Gildal_OrbEffect-Sheet_6: -1478837750
+      GildalOrbEx-Sheet_0: 2884028167702582917
+      GildalOrbEx-Sheet_1: -6660419756333382075
+      GildalOrbEx-Sheet_2: 6372949694835839958
+      GildalOrbEx-Sheet_3: -1816958820472351174
+      GildalOrbEx-Sheet_4: -1239320368273876305
+      GildalOrbEx-Sheet_5: -3473096379356114678
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

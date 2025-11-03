@@ -116,7 +116,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -138,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -160,7 +160,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -181,8 +181,8 @@ TextureImporter:
       name: Gildal_DoggaebiOrb-Sheet_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 480
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -203,8 +203,8 @@ TextureImporter:
       name: Gildal_DoggaebiOrb-Sheet_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
+        x: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -217,6 +217,138 @@ TextureImporter:
       bones: []
       spriteID: eb0acd5e1d8618370800000000000000
       internalID: 8323048837071282366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e18e423b052418486e7749da740c1c
+      internalID: -30746542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab71acad94bf4d11a1adf2a25b935d5
+      internalID: -987698875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a021b930556745389bf910dd120e761
+      internalID: -41827665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cab71074963f4f23881183ef56d8373
+      internalID: -362103356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57afa6cdea1d4df99bfe44941195f65
+      internalID: -270376330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_DoggaebiOrb-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97918fc70b6d847719ca165dc50a44b9
+      internalID: 1028000348
       vertices: []
       indices: 
       edges: []
@@ -239,9 +371,15 @@ TextureImporter:
     nameFileIdTable:
       Gildal_DoggaebiOrb-Sheet_0: -7219268252817834962
       Gildal_DoggaebiOrb-Sheet_1: 8292888300914890482
+      Gildal_DoggaebiOrb-Sheet_10: 1028000348
       Gildal_DoggaebiOrb-Sheet_2: -2932164539264068157
       Gildal_DoggaebiOrb-Sheet_3: 1757580037019673785
       Gildal_DoggaebiOrb-Sheet_4: 8323048837071282366
+      Gildal_DoggaebiOrb-Sheet_5: -30746542
+      Gildal_DoggaebiOrb-Sheet_6: -987698875
+      Gildal_DoggaebiOrb-Sheet_7: -41827665
+      Gildal_DoggaebiOrb-Sheet_8: -362103356
+      Gildal_DoggaebiOrb-Sheet_9: -270376330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
