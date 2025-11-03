@@ -41,14 +41,15 @@ public class CharaterSelect : MonoBehaviour
             {
                 Instantiate(musin, Vector2.zero, Quaternion.identity);
                 Instantiate(musinEffect, Vector2.zero, Quaternion.identity);
-                SceneManager.sceneLoaded -= OnSceneLoaded;
             }
             else if (moonsinSelect)
             {
                 Instantiate(moonsin, Vector2.zero, Quaternion.identity);
                 Instantiate(moonsinEffect, Vector2.zero, Quaternion.identity);
-                SceneManager.sceneLoaded -= OnSceneLoaded;
             }
+
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(gameObject);
         }
     }
 

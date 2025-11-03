@@ -168,6 +168,8 @@ public class GildalBoss : BossBase
     {
         StartCoroutine(base.StartBattle());
         state = BossState.Directing;
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
         yield return null;
 
         anim?.SetTrigger("PhaseStart");
@@ -204,7 +206,7 @@ public class GildalBoss : BossBase
 
     public void AE_StartSound()
     {
-
+        //SoundManager.instance.PlaySFX(SoundManager.SFX.Start_Gildal);
     }
 
     public void AE_CrySound()
@@ -266,6 +268,7 @@ public class GildalBoss : BossBase
 
         // 2) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
 
         // 3) 페이즈 변경 연출
@@ -276,24 +279,21 @@ public class GildalBoss : BossBase
         yield return null;
 
         // 4) Animator Layer 변경
-        anim?.SetLayerWeight(2, 1f);
         anim?.SetLayerWeight(1, 0f);
-
-        /* 5) 페이즈 시작 연출
-        anim?.SetTrigger("PhaseChaange");
+        anim?.SetLayerWeight(2, 1f);
+        
+        // 5) 페이즈 시작 연출
+        anim?.SetTrigger("PhaseStart");
         yield return null;
         animLength = anim.GetCurrentAnimatorStateInfo(2).length;
         yield return new WaitForSeconds(animLength);
-        yield return null;
-        */
 
-        // 6) 재은신
-        yield return StartCoroutine(Co_DoStealth());
-        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
-
-        // 7) 페이즈 변경 종료
+        // 6) 페이즈 변경 종료
         inPhase2 = true;
         Debug.Log("[Gildal] 2페이즈 돌입");
+
+        // 7) 재은신
+        yield return StartCoroutine(Co_DoStealth());
     }
 
     // 은신 기믹
@@ -506,8 +506,6 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(slam_preDelay);
 
         // 충돌 무시 (복구는 Co_MoveTo에서)
-        int playerLayer = LayerMask.NameToLayer("Player");
-
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
 
         // 3) 공격
@@ -556,7 +554,7 @@ public class GildalBoss : BossBase
     private Vector2 SetOrbSpawnPos(Vector2 offset)
     {
         bool playerIsRight = target.position.x > transform.position.x;
-        int sign = playerIsRight ? 1 : -1;
+        int sign = playerIsRight ? -1 : 1;
         float x = transform.position.x + sign * offset.x;
         float y = transform.position.y + offset.y;
 
@@ -721,6 +719,8 @@ public class GildalBoss : BossBase
     {
         // 스턴 상태 변경
         isSturn = true;
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+
         StopPattern();
         Debug.Log("[Gildal] Boss Sturn Start");
 
@@ -735,6 +735,7 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
         isSturn = false;
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
     }
 
     public void AE_SturnSound()
@@ -803,8 +804,12 @@ public class GildalBoss : BossBase
         float wallX = isHyungNyeon ? wallXMin : wallXMax;
         transform.position = new Vector2(wallX, groundYWall);
         FlipX();
+        bool playerIsRight = target.position.x > transform.position.x;
+        int sign = playerIsRight ? -1 : 1;
+        coll_Special.offset = new Vector2(coll_Special.offset.x * sign, coll_Special.offset.y);
         coll_Normal.enabled = false;
         coll_Special.enabled = true;
+
         anim?.SetTrigger("SpecialPrep2");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         if (inPhase2)
@@ -818,7 +823,7 @@ public class GildalBoss : BossBase
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
 
-        // 4) 공격
+        // 5) 공격
         anim?.SetTrigger("SpecialAttack");
         if (isHyungNyeon)
             yield return StartCoroutine(Co_DoHyungNyeon());

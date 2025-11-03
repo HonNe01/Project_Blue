@@ -71,7 +71,10 @@ public class PlayerState : MonoBehaviour
     {
         // 인스턴스
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
             Destroy(gameObject);
 
@@ -94,7 +97,7 @@ public class PlayerState : MonoBehaviour
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
 
-            vcam.Follow = transform;
+        vcam.Follow = transform;
     }
 
 
@@ -121,7 +124,8 @@ public class PlayerState : MonoBehaviour
         if (cinemachineComposer != null)
         {
             var comp = cinemachineComposer.Composition.ScreenPosition;
-            comp.x *= isRight;
+            float screenX = comp.x;
+            comp.x *= screenX * -isRight;
 
             cinemachineComposer.Composition.ScreenPosition = comp;
         }
@@ -364,10 +368,14 @@ public class PlayerState : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == GameManager.instance.mainMenuScene) Destroy(gameObject);
+
         // 씬 전환시 카메라 할당
-        Camera vcam = Camera.main;
-        if (vcam != null)
-            cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
+        CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
+        cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
+
+        vcam.Follow = transform;
     }
 }
 

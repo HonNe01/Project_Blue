@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class EffectManager : MonoBehaviour
 {
     public static EffectManager instance;
 
-    public enum EffectType 
-    { 
+    public enum EffectType
+    {
         // Move : 4
         Walk, Jump, AirJump, Slide,
 
@@ -26,7 +27,7 @@ public class EffectManager : MonoBehaviour
 
         // Hit : 6
         MusinHit,
-        AttackHit, SkillHit, 
+        AttackHit, SkillHit,
         ExplosionNormalHit, ExplosionElectronicHit, ExplosionFireHit,
     }
 
@@ -64,9 +65,9 @@ public class EffectManager : MonoBehaviour
 
         Vector3 farPos = new Vector3(9999f, 9999f, 0f);
 
-        foreach(EffectType t in Enum.GetValues(typeof(EffectType)))
+        foreach (EffectType t in Enum.GetValues(typeof(EffectType)))
         {
-            PlayEffect(t, farPos, false);            
+            PlayEffect(t, farPos, false);
         }
     }
 
@@ -158,5 +159,21 @@ public class EffectManager : MonoBehaviour
         // 찾지 못했을 경우
         Debug.LogWarning($"[EffectManager] GetEffect: Unknown type {type}");
         return null;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == GameManager.instance.mainMenuScene) Destroy(gameObject);
     }
 }

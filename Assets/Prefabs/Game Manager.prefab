@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainMenuScene: MainMenu
+  selectScene: SelectScene
   outpostScene: OutPostScene
   gildalScene: GildalScene
   cheongryuScene: CheongRyuScene

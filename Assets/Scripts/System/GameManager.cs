@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene(outpostScene);
+        SceneManager.LoadScene(selectScene);
     }
 
     public void GameOption()
