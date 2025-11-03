@@ -750,20 +750,20 @@ public class GildalBoss : BossBase
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
 
-        // 4) 벽 이동;
+        // 4) 벽 이동
         float groundYWall = floorHeights[1];
         float wallX = isHyungNyeon ? wallXMin : wallXMax;
         transform.position = new Vector2(wallX, groundYWall);
+        FlipX();
         anim?.SetTrigger("SpecialPrep2");
+        yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
         if (inPhase2)
         {
-            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
             float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }
         else
         {
-            yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
             float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
             yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
         }

@@ -97,6 +97,15 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     public IEnumerator Co_FireOrb(Transform player)
     {
+        anim.SetTrigger("Fire");
+        yield return null;
+
+        //float timeout = 2f, t = 0f;
+        while (!anim.GetCurrentAnimatorStateInfo(0).IsName("Fire_Idle"))
+        {
+            yield return null;
+        }
+        
         isChase = true;
         float total = lifeTime;
         float chaseTime = Mathf.Clamp01(chaseRatio) * total;

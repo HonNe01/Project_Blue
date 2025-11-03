@@ -888,7 +888,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -676993076, guid: 68ee07c4d0a7b4bb1a9737ed09036a82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.827451}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5, y: 3.125}

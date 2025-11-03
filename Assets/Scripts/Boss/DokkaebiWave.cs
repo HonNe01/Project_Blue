@@ -20,6 +20,8 @@ public class DokkaebiWave : MonoBehaviour
         if (anim == null) Debug.LogError($"{name}: Animator is null!");
         if (coll == null) Debug.LogError($"{name}: Collider2D is null!");
         if (sprite == null) Debug.LogError($"{name}: SpriteRenderer is null!");
+
+        coll.enabled = false; // 충돌 비활성화
     }
 
     public void AE_Charge()
@@ -34,12 +36,8 @@ public class DokkaebiWave : MonoBehaviour
         int dir = isRight ? 1 : -1;
         coll.offset = new Vector2(9 * dir, 0);
 
-        // Charge
-        yield return null;
-        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
-        
         // 발사
+        coll.enabled = true; // 충돌 활성화
         anim.SetTrigger("Wave");
         yield return new WaitForSeconds(fireTime);
 
@@ -53,6 +51,7 @@ public class DokkaebiWave : MonoBehaviour
 
     public IEnumerator WaveEnd()
     {
+        coll.enabled = false; // 충돌 비활성화
         anim.SetTrigger("End");
         yield return null;
 
