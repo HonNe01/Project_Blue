@@ -44,8 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370a4b27a28101243a71941be1c8b3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  bgmClip: {fileID: 8300000, guid: 139982ee37a243d40aab3b2b96b2c253, type: 3}
-  bgmVolume: 0.8
+  bgmClips:
+  - {fileID: 8300000, guid: ab0125e1d557a1d4d8fa2c80c3060810, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 6cb9ff74a536944baab35afe99fc17ba, type: 3}
+  - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
+  - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
+  - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
+  - {fileID: 8300000, guid: d4b927ced4f632e4e975188119e8674c, type: 3}
+  - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
+  bgmVolume: 0.4
   sfxVolume: 0.5
   channelCount: 10
   systemSFXClips:
@@ -69,7 +77,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 33707f5f9cde4524c958129b46e31af9, type: 3}
   - {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
   - {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
-  - {fileID: 8300000, guid: 3f713fb2918ea01479c838d49bf4edb3, type: 3}
+  - {fileID: 8300000, guid: 47d7d11a2a2e4a64d97476b10b856f8a, type: 3}
   - {fileID: 8300000, guid: b5b5fdf5b3429c64d8e6c7319aa36935, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}
   - {fileID: 8300000, guid: 2682de9ee28833647af29fbabb18974d, type: 3}

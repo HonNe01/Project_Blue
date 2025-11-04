@@ -26,7 +26,6 @@ public class SoundManager : MonoBehaviour
     public float bgmVolume = 0.5f;
     AudioSource bgmPlayer;
 
-
     public enum SFX
     {
         // System
@@ -136,27 +135,13 @@ public class SoundManager : MonoBehaviour
     {
         if (bgmPlayer == null) return;
 
-        // 오디오 페이드
-        AudioClip nextClip = null ; // 변경할 클립 설정
-        switch (bgm)
-        {
-            case BGM.Main:
-            case BGM.Select:
-                
-                break;
-            case BGM.Helicopter:
-            case BGM.Fallen:
-            case BGM.YeonhwaEntrance:
-            case BGM.OutPost:
-            case BGM.Gildal_Normal:
-            case BGM.CheongRyu_Normal:
-                break;
-        }
-
+        // 오디오 선택
+        AudioClip nextClip = bgmClips[(int)bgm];
         if (bgmPlayer.clip == nextClip) return;
 
-        FadeBGM(nextClip, 1f);
-        bgmPlayer.Play();
+        // 오디오 페이드
+        Debug.Log($"[SoundManager] BGM : {bgm} Play");
+        FadeBGM(nextClip, 3f);
     }
 
     public void UpdateVolumeBGM()
@@ -173,19 +158,21 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator Co_FadeBGM(AudioClip newClip, float fadeTime)
     {
-        if (!bgmPlayer.isPlaying) yield break;
-
-        // 페이드 아웃
         float startVolume = bgmPlayer.volume;
-        float time = 0f;
-        while (time < fadeTime)
-        {
-            time += Time.deltaTime;
-            bgmPlayer.volume = Mathf.Lerp(startVolume, 0f, time / fadeTime);
 
-            yield return null;
+        float time = 0f;
+        if (bgmPlayer.isPlaying)
+        {
+            // 페이드 아웃    
+            while (time < fadeTime)
+            {
+                time += Time.deltaTime;
+                bgmPlayer.volume = Mathf.Lerp(startVolume, 0f, time / fadeTime);
+
+                yield return null;
+            }
+            bgmPlayer.Stop();
         }
-        bgmPlayer.Stop();
         bgmPlayer.volume = 0f;
 
         // 다음 클립 세팅

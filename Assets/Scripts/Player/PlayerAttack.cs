@@ -138,8 +138,6 @@ public class PlayerAttack : MonoBehaviour
             yield return null;
         }
         
-
-
         if (AttackTimer >= AttackHoldTime)
         {
             anim.SetTrigger("Attack");
@@ -151,7 +149,6 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
             rb.linearVelocity = Vector2.zero;
-            Debug.Log("일반공격 실행");
             Debug.Log($"콤보{curCombo} 실행");
         }
         rb.linearVelocity = Vector2.zero;
@@ -184,7 +181,6 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-
             lastAttackTime = Time.time;
         }
     }
@@ -194,7 +190,6 @@ public class PlayerAttack : MonoBehaviour
         isAttack = false;
         comboQueue = false;
         lastAttackTime = Time.time;
-        Debug.Log($"콤보 증가 {curCombo}");
     }
 
     private void ResetCombo()
