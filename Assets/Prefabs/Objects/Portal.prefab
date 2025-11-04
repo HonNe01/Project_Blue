@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2252317273211384787}
   - component: {fileID: 4817280626660956517}
   - component: {fileID: 7393333872978293207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d0dcaab54b31046b62602b003922c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Portal
-  targetScene: 1
+  endA: 0
+  endB: 0
+  routeId: 0
+  thisScene: 0
+  useOverride: 0
+  spawnPoint: {fileID: 0}
   promptUI: {fileID: 8442478810448821774}
 --- !u!1 &8442478810448821774
 GameObject:

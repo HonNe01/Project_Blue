@@ -81,7 +81,7 @@ public class TimelineManager : MonoBehaviour
             director.playableAsset = helicopterTimeline;
             director.Play();
         }
-        else if (scene.name == GameManager.instance.falenScene)
+        else if (scene.name == GameManager.instance.fallenScene)
         {
             director.playableAsset = fallenTimeline;
             director.Play();

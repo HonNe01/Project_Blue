@@ -7,14 +7,22 @@ public class SoundManager : MonoBehaviour
 
     public enum BGM 
     { 
+        // 메인
         Main, 
-        OutPost, 
-        Gildal, 
-        CheongRyu 
+
+        // 시나리오
+        Select, Helicopter, Fallen,
+
+        // 플레이
+        YeonhwaEntrance, OutPost, 
+
+        // 보스
+        Gildal_Normal, Gildal_Battle,
+        CheongRyu_Normal, CheongRyu_Battle,
     }
 
     [Header(" === BGM Settings === ")]
-    public AudioClip bgmClip;
+    public AudioClip[] bgmClips;
     public float bgmVolume = 0.5f;
     AudioSource bgmPlayer;
 
@@ -29,12 +37,15 @@ public class SoundManager : MonoBehaviour
         // - Musin
         Attack1_Musin, Attack2_Musin, Attack3_Musin, ChargeAttack_Musin,
 
+
+        Attack_Hit,
         // - Moonsin
 
 
         // Enemy
         // - Gildal
-        Landing_Gildal, Cry_Gildal, Stealth_Gildal, Sturn_Gildal,
+        Landing_Gildal, Start_Gildal, Cry_Gildal, Stealth_Gildal, 
+        Sturn_Gildal, Shock_Gildal,
         Phase1_Attack1_Gildal, Phase1_Attack2_Gildal,
         Phase2_Attack1_Gildal, Phase2_Attack2_Gildal,
         Attack3_Gildal, 
@@ -106,7 +117,6 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmVolume;
-        bgmPlayer.clip = bgmClip;
 
         // SFX 플레이어 초기화
         GameObject sfxObject = new GameObject("SFX Player");
@@ -122,32 +132,30 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayBGM()
+    public void PlayBGM(BGM bgm)
     {
         if (bgmPlayer == null) return;
 
         // 오디오 페이드
-        /*
         AudioClip nextClip = null ; // 변경할 클립 설정
-        switch (bgmName)
+        switch (bgm)
         {
-            case "Start":
-            case "Map":
-                nextClip = mainClip;
+            case BGM.Main:
+            case BGM.Select:
+                
                 break;
-            case "Stage":
-                nextClip = battleClip;
-                break;
-            case "Boss":
-                nextClip = bossClip;
+            case BGM.Helicopter:
+            case BGM.Fallen:
+            case BGM.YeonhwaEntrance:
+            case BGM.OutPost:
+            case BGM.Gildal_Normal:
+            case BGM.CheongRyu_Normal:
                 break;
         }
 
         if (bgmPlayer.clip == nextClip) return;
 
         FadeBGM(nextClip, 1f);
-        */
-
         bgmPlayer.Play();
     }
 
@@ -204,8 +212,8 @@ public class SoundManager : MonoBehaviour
 
         for (int i = 0; i < sfxPlayers.Length; i++)
         {
+            // 비어있는 플레이어 찾기
             int loopIndex = (i + channelIndex) % sfxPlayers.Length;
-
             if (sfxPlayers[loopIndex].isPlaying) continue;
 
             //Random Sound 예시
@@ -222,6 +230,22 @@ public class SoundManager : MonoBehaviour
             sfxPlayers[loopIndex].clip = clip; // Random Sound 예시 : sfxPlayers[loopIndex].clip = sfxClip[(int)sfx + ranIndex];
             sfxPlayers[loopIndex].Play();
             break;
+        }
+    }
+
+    public void StopSFX(SFX sfx, bool all = false)
+    {
+        AudioClip clip = GetSFX(sfx);
+        if (clip == null) return;
+
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+            if (sfxPlayers[i].isPlaying && sfxPlayers[i].clip == clip)
+            {
+                sfxPlayers[i].Stop();
+
+                if (!all) break;
+            }
         }
     }
 

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string mainMenuScene = "MainMenu";
     [SerializeField] public string selectScene = "Choose Charater";
     [SerializeField] public string helicopterScene = "Helicopter";
-    [SerializeField] public string falenScene = "YeonhwaEntrace";
+    [SerializeField] public string fallenScene = "YeonhwaEntrace";
     [SerializeField] public string outpostScene = "OutPostScene";
     [SerializeField] public string gildalScene = "GildalScene";
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
@@ -420,13 +420,59 @@ public class GameManager : MonoBehaviour
         {
             // 메인 메뉴 씬
             State = GameState.MainMenu;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
 
             // 마우스 커서 활성화
             CursorEnable();
         }
         else if (scene.name == selectScene)
         {
+            State = GameState.Directing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Select);
+
             CursorEnable();
+        }
+        else if (scene.name == helicopterScene)
+        {
+            State = GameState.Directing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Helicopter);
+
+            CursorEnable();
+        }
+        else if (scene.name == fallenScene)
+        {
+            State = GameState.Directing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Fallen);
+
+            CursorEnable();
+
+        }
+        else if (scene.name == outpostScene)
+        {
+            // 게임 씬
+            State = GameState.Playing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.OutPost);
+
+            // 마우스 커서 비활성화
+            CursorDisable();
+        }
+        else if (scene.name == gildalScene)
+        {
+            // 게임 씬
+            State = GameState.Playing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Gildal_Normal);
+
+            // 마우스 커서 비활성화
+            CursorDisable();
+        }
+        else if (scene.name == cheongryuScene)
+        {
+            // 게임 씬
+            State = GameState.Playing;
+            SoundManager.instance.PlayBGM(SoundManager.BGM.CheongRyu_Normal);
+
+            // 마우스 커서 비활성화
+            CursorDisable();
         }
         else
         {

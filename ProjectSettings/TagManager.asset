@@ -55,17 +55,17 @@ TagManager:
   - name: NPC
     uniqueID: 526649557
     locked: 0
-  - name: Player
-    uniqueID: 4126554619
-    locked: 0
   - name: Enemy
     uniqueID: 4233769271
     locked: 0
-  - name: PlayerAttack
-    uniqueID: 2250172645
-    locked: 0
   - name: EnemyAttack
     uniqueID: 3882112403
+    locked: 0
+  - name: Player
+    uniqueID: 4126554619
+    locked: 0
+  - name: PlayerAttack
+    uniqueID: 2250172645
     locked: 0
   - name: UI
     uniqueID: 3802851853

@@ -36,12 +36,12 @@ public class CharaterSelect : MonoBehaviour
     public void EndHelicopter()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(GameManager.instance.falenScene);
+        SceneManager.LoadScene(GameManager.instance.fallenScene);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == GameManager.instance.falenScene)
+        if (scene.name == GameManager.instance.fallenScene)
         {
             if (musinSelect)
             {

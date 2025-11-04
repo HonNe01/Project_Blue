@@ -217,7 +217,7 @@ public class GildalBoss : BossBase
 
     public void AE_StartSound()
     {
-        //SoundManager.instance.PlaySFX(SoundManager.SFX.Start_Gildal);
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Start_Gildal);
     }
 
     public void AE_CrySound()
@@ -762,7 +762,12 @@ public class GildalBoss : BossBase
 
     public void AE_ShockSound()
     {
-        //SoundManager.instance.PlaySFX(SoundManager.SFX.Shork_Gildal);
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Shock_Gildal);
+    }
+
+    public void AE_ShockSoundOff()
+    {
+        SoundManager.instance.StopSFX(SoundManager.SFX.Shock_Gildal);
     }
 
     // 특수 패턴
