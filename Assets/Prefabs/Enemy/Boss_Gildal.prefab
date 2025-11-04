@@ -1110,9 +1110,9 @@ MonoBehaviour:
   inPhase2: 0
   isSturn: 0
   isDie: 0
-  bossLayer: 8
-  playerLayer: 7
-  playerAttackLayer: 9
+  bossLayer: 7
+  playerLayer: 8
+  playerAttackLayer: 10
   floorHeights:
   - -5
   - -2
