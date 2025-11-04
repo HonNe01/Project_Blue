@@ -769,6 +769,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musin Effect Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5595234428722836637, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595234428722836637, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8910274010772779664, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5885f38dfe10a9d46b6654165367f334, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1224,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Header(" === Scene Names === ")]
     [SerializeField] public string mainMenuScene = "MainMenu";
     [SerializeField] public string selectScene = "Choose Charater";
+    [SerializeField] public string helicopterScene = "Helicopter";
+    [SerializeField] public string falenScene = "YeonhwaEntrace";
     [SerializeField] public string outpostScene = "OutPostScene";
     [SerializeField] public string gildalScene = "GildalScene";
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
@@ -394,6 +396,11 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnAble()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -22,7 +22,7 @@ public class CharaterSelect : MonoBehaviour
         musinSelect = true;
         moonsinSelect = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(GameManager.instance.outpostScene);
+        SceneManager.LoadScene(GameManager.instance.helicopterScene);
     }
 
     public void SelectMoonsin()
@@ -30,12 +30,18 @@ public class CharaterSelect : MonoBehaviour
         moonsinSelect = true;
         musinSelect = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(GameManager.instance.outpostScene);
+        SceneManager.LoadScene(GameManager.instance.helicopterScene);
+    }
+
+    public void EndHelicopter()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(GameManager.instance.falenScene);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == GameManager.instance.outpostScene)
+        if (scene.name == GameManager.instance.falenScene)
         {
             if (musinSelect)
             {

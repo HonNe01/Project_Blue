@@ -148,17 +148,20 @@ public class PlayerState : MonoBehaviour
             healPress = true;
             anim.SetBool("Healing", ishealing);
             anim.SetBool("IsHeal", isHeal);
+            canMove = false;
+            rb.linearVelocity = Vector2.zero;
         }
         else if (Input.GetKeyUp(KeyCode.F))
-        {          
+        {
             isHeal = false;
             ishealing = false;
             healPress = false;
             anim.SetBool("IsHeal", isHeal);
             anim.SetBool("Healing", ishealing);
-
             healTimer = 0f;
-            healContinew = false; 
+            healContinew = false;
+            StartCoroutine(DisableHeal());
+            canMove = true;            
         }
 
         if (healPress)
@@ -181,6 +184,11 @@ public class PlayerState : MonoBehaviour
                 healTimer = 0f;
             }
         }
+    }
+
+    private IEnumerator DisableHeal()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 
     public void HPCheck()
