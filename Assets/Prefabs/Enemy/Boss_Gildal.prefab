@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6744656018390249419}
   - component: {fileID: 5910109785052565260}
   - component: {fileID: 4806439534254849888}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Hitbox_Phase2_Attack2-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    oldSize: {x: 12, y: 6}
+    newSize: {x: 12, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -143,15 +143,15 @@ SpriteRenderer:
   m_SortingLayerID: -412854893
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3018378566514827451, guid: a3a4e23314a3d4d81aba147de39e0973, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 12, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4806439534254849888
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 308779845844477620}
   - component: {fileID: 2480886907468151602}
   - component: {fileID: 5296343789256515771}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Hitbox_Phase2_Attack2-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,8 +249,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    oldSize: {x: 13, y: 6}
+    newSize: {x: 12, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -319,15 +319,15 @@ SpriteRenderer:
   m_SortingLayerID: -412854893
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6854707194548595683, guid: f0a39e8005aa79a4f97e6be4d022674b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 12, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5296343789256515771
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 2584652441422187708}
   - component: {fileID: 6387907059559171045}
   - component: {fileID: 3159343617161283911}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Hitbox_Phase1_Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ SpriteRenderer:
   m_SortingLayerID: -412854893
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6854707194548595683, guid: f0a39e8005aa79a4f97e6be4d022674b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -503,7 +503,7 @@ SpriteRenderer:
   m_Size: {x: 13, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3159343617161283911
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 8815849992785037117}
   - component: {fileID: 5192498163131547830}
   - component: {fileID: 5068103672591028458}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Hitbox_Phase1_Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +812,7 @@ SpriteRenderer:
   m_SortingLayerID: -412854893
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3018378566514827451, guid: a3a4e23314a3d4d81aba147de39e0973, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -820,7 +820,7 @@ SpriteRenderer:
   m_Size: {x: 12, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5068103672591028458
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
   - component: {fileID: 8670731891582766443}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Boss_Gildal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1053,7 +1053,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.1936812, y: 2.3192062}
+  m_Offset: {x: 1.193681, y: 2.3192062}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -1124,20 +1124,23 @@ MonoBehaviour:
   wallXMax: 7.46
   swing_weight: 4
   swing_cooldown: 2
-  swing_preDelay: 0.1
+  swing_preDelay: 0
   swing_postDelay: 1
+  swing_offsetX: 2.5
   swing_Hitbox: {fileID: 6133158865817230817}
   slam_weight: 3
   slam_height: 5
   slam_cooldown: 2
-  slam_preDelay: 0.3
+  slam_preDelay: 0
   slam_postDelay: 1
+  slam_offset: {x: 2, y: 5}
   slam_Hitbox: {fileID: 5924644709608940927}
   dokkaebiOrb_weight: 5
   dokkaebiOrb_cooldown: 2
   dokkaebiOrb_preDelay: 0.2
-  dokkaebiOrb_postDelay: 2
-  dokkaebiOrb_Offset: {x: 1.54, y: 3.73}
+  dokkaebiOrb_postDelay: 1
+  dokkaebiOrbSpawn_Offset: {x: 1.51, y: 4}
+  dokkaebiOrb_offsetX: 0
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   slash_weight: 4
   slash_cooldown: 2
@@ -1195,7 +1198,7 @@ GameObject:
   - component: {fileID: 6943410192139023981}
   - component: {fileID: 232824377379332128}
   - component: {fileID: 5656267106015568271}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Hitbox_Phase2_Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,8 +1258,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    oldSize: {x: 12, y: 6}
+    newSize: {x: 12, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1325,15 +1328,15 @@ SpriteRenderer:
   m_SortingLayerID: -412854893
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3018378566514827451, guid: a3a4e23314a3d4d81aba147de39e0973, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 12, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5656267106015568271

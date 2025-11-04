@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5271888779218224798}
   - component: {fileID: 7059782036259678742}
   - component: {fileID: 7664949942534021210}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack2 Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5047352962555323141}
   - component: {fileID: 1818849587941486606}
   - component: {fileID: 3190499573918465012}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: UpAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 3609130407955180067}
   - component: {fileID: 8100041833897125565}
   - component: {fileID: 8051309336102450721}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack1 Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 5595234428722836637}
   - component: {fileID: 8910274010772779664}
   - component: {fileID: 6721813896328600537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slide Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 7629995053755800649}
   - component: {fileID: 3901037519139229384}
   - component: {fileID: 1103393501594892156}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Attack Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 8535501773500891979}
   - component: {fileID: 8959745563378061598}
   - component: {fileID: 2929255610022327985}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Explosion Fire Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 5068472883984468818}
   - component: {fileID: 703563212377410367}
   - component: {fileID: 1810381673578682714}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DownAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 8576610354428606100}
   - component: {fileID: 4661782849202307524}
   - component: {fileID: 8690655944725750506}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack3 Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 579802266120976246}
   - component: {fileID: 6580916934721251114}
   - component: {fileID: 7580485362988498751}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Skill Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -1742,7 +1742,7 @@ GameObject:
   - component: {fileID: 2699087354060918774}
   - component: {fileID: 4051785557300832234}
   - component: {fileID: 1909621073207492247}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: SkillDown Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -1932,7 +1932,7 @@ GameObject:
   - component: {fileID: 3391462793467856909}
   - component: {fileID: 5459098302983449716}
   - component: {fileID: 8527610195622889491}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DownAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -2146,7 +2146,7 @@ GameObject:
   - component: {fileID: 6902984434911913303}
   - component: {fileID: 1253245618948617225}
   - component: {fileID: 4327539340780055505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AirJump Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2275,7 @@ GameObject:
   - component: {fileID: 6296045423304182703}
   - component: {fileID: 7135310212466162020}
   - component: {fileID: 8660351358692953128}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack2 Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -2492,7 +2492,7 @@ GameObject:
   - component: {fileID: 3154824332807888541}
   - component: {fileID: 8397298471821871548}
   - component: {fileID: 1254415903618565506}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: JumpUpAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -2791,7 +2791,7 @@ GameObject:
   - component: {fileID: 79205082561595626}
   - component: {fileID: 4132127718906262308}
   - component: {fileID: 1475714592828329909}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: JumpAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -3005,7 +3005,7 @@ GameObject:
   - component: {fileID: 5681322849675642229}
   - component: {fileID: 8496745606743122592}
   - component: {fileID: 1212094223734297487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walk Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3131,7 +3131,7 @@ GameObject:
   - component: {fileID: 2818659869854545745}
   - component: {fileID: 1884667894978919530}
   - component: {fileID: 101975890160718081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jump Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3295,7 +3295,7 @@ GameObject:
   - component: {fileID: 8449512643945152432}
   - component: {fileID: 4156203105418154663}
   - component: {fileID: 1498545674716341437}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ChargeAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -3509,7 +3509,7 @@ GameObject:
   - component: {fileID: 9145628557764024129}
   - component: {fileID: 4402431097426635183}
   - component: {fileID: 3319595666130948983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Explosion Electronic Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3674,7 +3674,7 @@ GameObject:
   - component: {fileID: 5482316274912928069}
   - component: {fileID: 1791715463972464047}
   - component: {fileID: 6672692945456375102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Explosion Normal Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3800,7 +3800,7 @@ GameObject:
   - component: {fileID: 3656520829063266864}
   - component: {fileID: 2480024956189099652}
   - component: {fileID: 1561467781820633515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Musin Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3929,7 +3929,7 @@ GameObject:
   - component: {fileID: 8664355236601756414}
   - component: {fileID: 8454412657069341494}
   - component: {fileID: 1161068721311228449}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack1 Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -4146,7 +4146,7 @@ GameObject:
   - component: {fileID: 5279191352331325125}
   - component: {fileID: 353895479123346627}
   - component: {fileID: 7262884986564647516}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: JumpUpAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -4360,7 +4360,7 @@ GameObject:
   - component: {fileID: 4547385877330104648}
   - component: {fileID: 3847004592662948845}
   - component: {fileID: 1295536416839504167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skill Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4489,7 +4489,7 @@ GameObject:
   - component: {fileID: 7168347623556767327}
   - component: {fileID: 6569776001294462639}
   - component: {fileID: 5044486260352265421}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Attack3 Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -4739,7 +4739,7 @@ GameObject:
   - component: {fileID: 8191851402480542076}
   - component: {fileID: 629372377184162935}
   - component: {fileID: 2760240827408868700}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: UpAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -4956,7 +4956,7 @@ GameObject:
   - component: {fileID: 8127116309107206788}
   - component: {fileID: 1924111338016170525}
   - component: {fileID: 3603599088958980514}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: JumpAttack Module Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -5173,7 +5173,7 @@ GameObject:
   - component: {fileID: 1868756098155789844}
   - component: {fileID: 2399220338378248586}
   - component: {fileID: 8509458013376062098}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ChargeAttack Effect
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}

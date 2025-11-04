@@ -73,6 +73,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
     // 드론 자동 조작: 은신 해제 -> 돌진/폭발
     public IEnumerator Co_DroneAuto(Transform player)
     {
+        yield return null;
+
         // 정렬
         if (player)
         {
@@ -186,6 +188,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     public IEnumerator Co_FireWave(bool isRight)
     {
+        yield return null;
+
         // 발사
         var proj = Instantiate(wavePrefab, transform.position, Quaternion.identity);
         var wave = proj.GetComponent<DokkaebiWave>();

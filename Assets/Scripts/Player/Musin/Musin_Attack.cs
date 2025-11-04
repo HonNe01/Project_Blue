@@ -210,6 +210,12 @@ public class Musin_Attack : PlayerAttack
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1, transform.position, PlayerState.instance.isRight < 0);
         }
     }
+
+    public void AE_Attack1Sound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack1_Musin);
+    }
+
     public override void Attack2Start()
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
@@ -222,6 +228,11 @@ public class Musin_Attack : PlayerAttack
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack2, transform.position, PlayerState.instance.isRight < 0);
         }
     }
+    public void AE_Attack2Sound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack2_Musin);
+    }
+
     public override void Attack3Start()
     {
         if (((Musin_State)PlayerState.instance).swordSlash)
@@ -233,6 +244,11 @@ public class Musin_Attack : PlayerAttack
         {
             EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack3, transform.position, PlayerState.instance.isRight < 0);
         }
+    }
+
+    public void AE_Attack3Sound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack3_Musin);
     }
 
     public override void ChargeAttackStart()
@@ -248,6 +264,12 @@ public class Musin_Attack : PlayerAttack
         }
 
     }
+
+    public void AE_ChargeAttackSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.ChargeAttack_Musin);
+    }
+
     public override void JumpAttackStart()
     {
         if (((Musin_State)PlayerState.instance).swordSlash)

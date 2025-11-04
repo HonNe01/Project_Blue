@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
         // Player
         Walk, Jump, Dash, Healing,
         // - Musin
-        Attack1_Musin, Attack2_Musin, Attack3_Musin,
+        Attack1_Musin, Attack2_Musin, Attack3_Musin, ChargeAttack_Musin,
 
         // - Moonsin
 

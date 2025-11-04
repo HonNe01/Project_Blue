@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7046893708861215557}
   - component: {fileID: 5026501836725320976}
   - component: {fileID: -883975355490530163}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: DokkaebiOrb_Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,4 +203,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DokkaebiWave
   fireTime: 3
   baseDamage: 1
-  sprite: {fileID: 0}
