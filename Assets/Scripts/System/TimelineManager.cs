@@ -22,8 +22,9 @@ public class TimelineManager : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.OnAble();
         DontDestroyOnLoad(gameObject);
+        OnDisable();
+        OnEnable();
     }
     void Start()
     {
@@ -52,7 +53,15 @@ public class TimelineManager : MonoBehaviour
         if (impulseSource != null)
             impulseSource.GenerateImpulse();
     }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     void Update()
     {
         // 일시정지 중 키 입력 → 타임라인 재개
@@ -70,18 +79,19 @@ public class TimelineManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(scene);
-        if (scene.name == GameManager.instance.selectScene)
+        director = FindObjectOfType<PlayableDirector>();
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == GameManager.instance.selectScene)
         {
             director.playableAsset = selectTimeline;
             director.Play();
         }
-        else if (scene.name == GameManager.instance.helicopterScene)
+        else if (sceneName == GameManager.instance.helicopterScene)
         {
             director.playableAsset = helicopterTimeline;
             director.Play();
         }
-        else if (scene.name == GameManager.instance.fallenScene)
+        else if (sceneName == GameManager.instance.fallenScene)
         {
             director.playableAsset = fallenTimeline;
             director.Play();
