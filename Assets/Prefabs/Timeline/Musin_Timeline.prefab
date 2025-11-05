@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 2261865886138406088}
   - component: {fileID: 8872908311816172780}
   - component: {fileID: 6022181557154587734}
-  - component: {fileID: 5471193515792717446}
   - component: {fileID: 2114220876081923655}
   - component: {fileID: 4643992676005884629}
   m_Layer: 0
-  m_Name: Select Scene Musin
+  m_Name: Musin_Timeline
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -168412677
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5798957361778897971, guid: 8322c2d9ae16645bbb72d09e947dc7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -144,80 +143,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!320 &5471193515792717446
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081873599107768940}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 0
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 762086858875059220, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 2081873599107768940}
-  - key: {fileID: -2607304455940900781, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 6022181557154587734}
-  - key: {fileID: 2558181143584820410, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 6022181557154587734}
-  - key: {fileID: -4295708659657512325, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3072496276112804146, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 8187817909308539527, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1572809688032433182, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 4316960148245968851, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8517440725444216479, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 2395888061120557739, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -7382360031440968681, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8722012146939356878, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -577887559048244487, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -6632442328440214831, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -4643228912934884574, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7721997600876330257, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 3550146027216191001, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 4895824474352391546, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -4731889483839397333, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -4686797456946565366, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -6671337836310585389, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8664741794326712519, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 7413786520084158731, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 4098987363052208096, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 5254690963531119433, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 6022181557154587734}
-  - key: {fileID: -647666132019987818, guid: 048099d9ab9c0ca4db55df5f3a868119, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References:
-    - 3c7eb824993df50479c0f40df14a88b0: {fileID: 0}
-    - 8c363012532580a4db5fe1e3ab959fc0: {fileID: 0}
-    - 765e1524e4a675f4092a914ee23b2210: {fileID: 0}
-    - 46e2aa6ccbc37d441814087587492a68: {fileID: 0}
-    - bbbf0b2735e2d9f48b5c7825d91dea48: {fileID: 0}
 --- !u!61 &2114220876081923655
 BoxCollider2D:
   m_ObjectHideFlags: 0

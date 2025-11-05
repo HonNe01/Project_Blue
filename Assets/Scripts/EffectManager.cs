@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class EffectManager : MonoBehaviour
@@ -46,6 +45,7 @@ public class EffectManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("[EffectManager] Instance Destroy");
             Destroy(gameObject);
         }
 
@@ -159,21 +159,5 @@ public class EffectManager : MonoBehaviour
         // 찾지 못했을 경우
         Debug.LogWarning($"[EffectManager] GetEffect: Unknown type {type}");
         return null;
-    }
-
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == GameManager.instance.mainMenuScene) Destroy(gameObject);
     }
 }

@@ -1,26 +1,36 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
-    private static TimelineManager instance;
+    public static TimelineManager instance;
 
-    [Header("Timeline Reference")]
+    [Header(" === Timeline Setting === ")]
+    [Header(" Timeline Reference")]
     public PlayableDirector director;
-    public CinemachineImpulseSource impulseSource;
+    public CinemachineImpulseSource impulse;
+    public SignalReceiver receiver;
 
-    [Header("UI 안내문")]
+    [Header(" Timeline UI")]
     public GameObject continueText;
+
+    [Header(" === Signal Setting ===")]
+    [Header("Normal Signal")]
+    public SignalAsset holdScene;
+    public SignalAsset shakeCamera;
+
+    [Header("Select Scene Signal")]
+    public SignalAsset SelectPanelOpen;
+    
+    [Header("Helicopter Scene Signal")]
+    public SignalAsset redLightOn;
+    public SignalAsset redLightOff;
 
     private bool isHolding = false;
     private double holdTime = 0;
-
-    public TimelineAsset selectTimeline;
-    public TimelineAsset helicopterTimeline;
-    public TimelineAsset fallenTimeline;
 
     private void Awake()
     {
@@ -32,9 +42,12 @@ public class TimelineManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("[TimeLineManager] Instance Destroy");
             Destroy(gameObject);
             return;
         }
+
+        impulse = GetComponent<CinemachineImpulseSource>();
     }
 
     void Start()
@@ -58,6 +71,40 @@ public class TimelineManager : MonoBehaviour
         }
     }
 
+    // 타임라인 초기화
+    public void InitTimeline()
+    {
+        director = FindAnyObjectByType<PlayableDirector>();
+        if (director != null) receiver = director.gameObject.GetComponent<SignalReceiver>();
+
+        // 시그널 초기화
+        RegistSignal(holdScene, HoldTimeline);
+        RegistSignal(shakeCamera, ShakeCamera);
+        RegistSignal(SelectPanelOpen, OpenSelectPanel);
+    }
+
+    public void RegistSignal(SignalAsset asset, UnityAction action)
+    {
+        // 신호 가져오기
+        UnityEvent unityEvent = receiver.GetReaction(holdScene);
+
+        if (unityEvent == null)
+        {
+            // 신호 추가 
+            unityEvent = new UnityEvent();
+            receiver.AddReaction(holdScene, unityEvent);
+        }
+        
+        // 리액션 할당
+        unityEvent.AddListener(HoldTimeline);
+    }
+
+    // 타임라인 재생
+    public void PlayTimeline()
+    {
+        director.Play();
+    }
+
     // 타임라인 일시정지
     public void HoldTimeline()
     {
@@ -76,39 +123,12 @@ public class TimelineManager : MonoBehaviour
     // 카메라 흔들기
     public void ShakeCamera()
     {
-        if (impulseSource != null)
-            impulseSource.GenerateImpulse();
+        impulse.GenerateImpulse();
     }
 
-    void OnEnable()
+    // 캐릭터 선택창
+    public void OpenSelectPanel()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        director = FindAnyObjectByType<PlayableDirector>();
-
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == GameManager.instance.selectScene)
-        {
-            director.playableAsset = selectTimeline;
-            director.Play();
-        }
-        else if (sceneName == GameManager.instance.helicopterScene)
-        {
-            director.playableAsset = helicopterTimeline;
-            director.Play();
-        }
-        else if (sceneName == GameManager.instance.fallenScene)
-        {
-            director.playableAsset = fallenTimeline;
-            director.Play();
-        }
+        director.Pause();
     }
 }

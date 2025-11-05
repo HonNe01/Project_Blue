@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7758580179715250033}
   - component: {fileID: 8883574828553166131}
   - component: {fileID: 5492261627543966704}
+  - component: {fileID: 1829169094017959369}
   m_Layer: 0
-  m_Name: Select Scene Moonsin
+  m_Name: Moonsin_Timeline
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -168412677
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 2550031880526908428, guid: 8322c2d9ae16645bbb72d09e947dc7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,3 +189,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.36, y: 1.5625}
   m_EdgeRadius: 0
+--- !u!114 &1829169094017959369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133521236845001597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f905288243d7d7e4cbb961a6c0649b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Musin_Timeline

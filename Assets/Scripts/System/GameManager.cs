@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("[GameManager] Instance Destroy");
             Destroy(gameObject);
             return;
         }
@@ -61,8 +62,8 @@ public class GameManager : MonoBehaviour
         {
             ResolutionsInit();
         }
+
         State = GameState.MainMenu;
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -348,7 +349,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-
     // ===== 씬 이동 관련 =====
     public void GoToMainMenu()
     {
@@ -410,13 +410,20 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnDestroy()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("[GameManager] Scene Load");
+
         // 상태 정리
         curMenu = MenuType.None;
         Time.timeScale = 1f;
@@ -428,37 +435,55 @@ public class GameManager : MonoBehaviour
                 panel.SetActive(false);
         }
 
-        // BGM 재생
+        // 타임라인 초기화
+        if (TimelineManager.instance) TimelineManager.instance.InitTimeline();
+
+        // 씬 구분
         if (scene.name == mainMenuScene)
         {
             // 메인 메뉴 씬
             State = GameState.MainMenu;
             SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
 
+            // 이펙트 매니저 파괴
+            if (EffectManager.instance != null)
+            {
+                Debug.Log("[GameManager] EffectManager Destroy");
+                Destroy(EffectManager.instance.gameObject);
+            }
+
             // 마우스 커서 활성화
             CursorEnable();
         }
         else if (scene.name == selectScene)
         {
+            // 시나리오 씬
             State = GameState.Directing;
             SoundManager.instance.PlayBGM(SoundManager.BGM.Select);
+            TimelineManager.instance.PlayTimeline();
 
+            // 마우스 커서 비활성화
             CursorEnable();
         }
         else if (scene.name == helicopterScene)
         {
+            // 시나리오 씬
             State = GameState.Directing;
             SoundManager.instance.PlayBGM(SoundManager.BGM.Helicopter);
+            TimelineManager.instance.PlayTimeline();
 
+            // 마우스 커서 비활성화
             CursorEnable();
         }
         else if (scene.name == fallenScene)
         {
+            // 시나리오 씬
             State = GameState.Directing;
             SoundManager.instance.PlayBGM(SoundManager.BGM.Fallen);
+            TimelineManager.instance.PlayTimeline();
 
+            // 마우스 커서 비활성화
             CursorEnable();
-
         }
         else if (scene.name == outpostScene)
         {
@@ -483,14 +508,6 @@ public class GameManager : MonoBehaviour
             // 게임 씬
             State = GameState.Playing;
             SoundManager.instance.PlayBGM(SoundManager.BGM.CheongRyu_Normal);
-
-            // 마우스 커서 비활성화
-            CursorDisable();
-        }
-        else
-        {
-            // 게임 씬
-            State = GameState.Playing;
 
             // 마우스 커서 비활성화
             CursorDisable();

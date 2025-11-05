@@ -3,39 +3,44 @@ using UnityEngine.SceneManagement;
 
 public class CharaterSelect : MonoBehaviour
 {
+    [Header("Musin")]
     public bool musinSelected = false;
-    public bool moonsinSelected = false;
-    public GameObject musin;
-    public GameObject moonsin;
-    public GameObject musinEffect;
-    public GameObject moonsinEffect;
     private bool musinSelect = false;
-    private bool moonsinSelect = false;
+    public GameObject musin;
+    public GameObject musinEffect;
 
+    [Header("Moonsin")]
+    public bool moonsinSelected = false;
+    private bool moonsinSelect = false;
+    public GameObject moonsin;
+    public GameObject moonsinEffect;
+    
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     public void SelectMusin()
     {
         musinSelect = true;
         moonsinSelect = false;
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(GameManager.instance.helicopterScene);
+        
     }
 
     public void SelectMoonsin()
     {
         moonsinSelect = true;
         musinSelect = false;
-        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void EndSelect()
+    {
         SceneManager.LoadScene(GameManager.instance.helicopterScene);
     }
 
     public void EndHelicopter()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(GameManager.instance.fallenScene);
     }
 

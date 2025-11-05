@@ -96,16 +96,17 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("[SoundManager] Instance Destroy");
             Destroy(gameObject);
             return;
         }
+
+        // 플레이어 초기화
+        Init();
     }
 
     private void Start()
     {
-        // 플레이어 초기화
-        Init();
-
         // 플레이어 볼륨 로드
         LoadVolume();
     }
@@ -150,7 +151,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM(BGM bgm)
     {
-        if (bgmPlayer == null) return;
+        if (bgmPlayer == null)
+        {
+            Debug.Log("[SoundManager] Player Loading...");
+        }
 
         // 오디오 선택
         AudioClip nextClip = bgmClips[(int)bgm];
