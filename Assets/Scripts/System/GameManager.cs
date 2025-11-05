@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // 닫기 & 정지
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 인벤토리 닫기
@@ -111,14 +112,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    // ===== 게임 화면 관련 =====
     public void GameStart()
     {
         SceneManager.LoadScene(selectScene);
-    }
-
-    public void GameOption()
-    {
-        OpenMenu(MenuType.Option);
     }
 
     public void GameGraphic()
@@ -132,14 +130,6 @@ public class GameManager : MonoBehaviour
         resolutions.Add(new Resolution { width = 1920, height = 1080 });
         resolutions.Add(new Resolution { width = 2560, height = 1440 });
         resolutions.Add(new Resolution { width = 3840, height = 2160 });
-
-        /* 16:10
-        resolutions.Add(new Resolution { width = 1920, height = 1200 });
-        resolutions.Add(new Resolution { width = 2048, height = 1280 });
-        resolutions.Add(new Resolution { width = 2560, height = 1600 });
-        resolutions.Add(new Resolution { width = 2880, height = 1800 });
-        */
-
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
@@ -194,16 +184,6 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log($"[GameManager] VSync : {enable}");
-    }
-
-    public void GameAudio()
-    {
-        OpenMenu(MenuType.Audio);
-    }
-
-    public void GameControl()
-    {
-        OpenMenu(MenuType.Control);
     }
 
     public void OpenMenu(MenuType type)
@@ -325,6 +305,51 @@ public class GameManager : MonoBehaviour
         Debug.Log(sb.ToString());
     }
 
+    public void GameQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+
+    // ===== 게임 설정 관련 =====
+    public void GameOption()
+    {
+        OpenMenu(MenuType.Option);
+    }
+
+    public void GameAudio()
+    {
+        OpenMenu(MenuType.Audio);
+    }
+
+    public void MasterAudio()
+    {
+        BGMAudio();
+        SFXAudio();
+    }
+
+    public void BGMAudio()
+    {
+        SoundManager.instance.UpdateVolumeBGM();
+    }
+
+    public void SFXAudio()
+    {
+        SoundManager.instance.UpdateVolumeSFX();
+    }
+
+    public void GameControl()
+    {
+        OpenMenu(MenuType.Control);
+    }
+
+
+
+    // ===== 씬 이동 관련 =====
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
@@ -370,15 +395,7 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    public void GameQuit()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-    }
-
+    // ===== 마우스 커서 상태 관련 =====
     public void CursorEnable()
     {
         // 커서 보이기, 활성화
@@ -398,11 +415,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void OnAble()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 상태 정리
@@ -416,6 +428,7 @@ public class GameManager : MonoBehaviour
                 panel.SetActive(false);
         }
 
+        // BGM 재생
         if (scene.name == mainMenuScene)
         {
             // 메인 메뉴 씬

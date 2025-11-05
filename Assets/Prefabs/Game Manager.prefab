@@ -121,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainMenuScene: MainMenu
   selectScene: SelectScene
+  helicopterScene: Helicopter
+  fallenScene: YeonhwaEntrace
   outpostScene: OutPostScene
   gildalScene: GildalScene
   cheongryuScene: CheongRyuScene
@@ -926,8 +928,8 @@ GameObject:
   - component: {fileID: 8933740972257760859}
   - component: {fileID: 39183971503109171}
   m_Layer: 5
-  m_Name: Slider
-  m_TagString: Untagged
+  m_Name: Master Slider
+  m_TagString: Master_Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1004,7 +1006,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1802108068063848191}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MasterAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1010439536001976638
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,8 +4744,8 @@ GameObject:
   - component: {fileID: 7381133055103367595}
   - component: {fileID: 2945402418921736159}
   m_Layer: 5
-  m_Name: Slider
-  m_TagString: Untagged
+  m_Name: BGM Slider
+  m_TagString: BGM_Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4808,7 +4822,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1802108068063848191}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: BGMAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3935917557061483041
 GameObject:
   m_ObjectHideFlags: 0
@@ -6402,8 +6428,8 @@ GameObject:
   - component: {fileID: 71391362401794197}
   - component: {fileID: 7742804280388172182}
   m_Layer: 5
-  m_Name: Slider
-  m_TagString: Untagged
+  m_Name: SFX Slider
+  m_TagString: SFX_Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6480,7 +6506,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1802108068063848191}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5437895554540224496
 GameObject:
   m_ObjectHideFlags: 0

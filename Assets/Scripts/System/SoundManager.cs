@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class SoundManager : MonoBehaviour
         Gildal_Normal, Gildal_Battle,
         CheongRyu_Normal, CheongRyu_Battle,
     }
+
+    [Header(" === Volume Sliders === ")]
+    public Slider masterSlider;
+    public Slider bgmSlider;
+    public Slider sfxSlider;
 
     [Header(" === BGM Settings === ")]
     public AudioClip[] bgmClips;
@@ -80,12 +86,6 @@ public class SoundManager : MonoBehaviour
     [Tooltip("")]
     public AudioClip[] cheongRyuSFXClips;
 
-
-    [Header(" === Volume Sliders === ")]
-    [Range(0, 1)] public float bgmSlider;
-    [Range(0, 1)] public float sfxSlider;
-
-
     private void Awake()
     {
         // 인스턴스 초기화
@@ -93,12 +93,6 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // 플레이어 초기화
-            Init();
-
-            // 플레이어 볼륨 로드
-            LoadVolume();
         }
         else
         {
@@ -107,15 +101,38 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // 플레이어 초기화
+        Init();
+
+        // 플레이어 볼륨 로드
+        LoadVolume();
+    }
+
     private void Init()
     {
+        // UI Sldier 할당
+        if (masterSlider == null && bgmSlider == null && sfxSlider == null)
+        {
+            // 슬라이더 오브젝트 찾기
+            Slider[] sliders = GameManager.instance.gameObject.GetComponentsInChildren<Slider>(true);
+
+            foreach (var slider in sliders)
+            {
+                if (slider.CompareTag("Master_Slider")) masterSlider = slider.GetComponent<Slider>();
+                if (slider.CompareTag("BGM_Slider")) bgmSlider = slider.GetComponent<Slider>();
+                if (slider.CompareTag("SFX_Slider")) sfxSlider = slider.GetComponent<Slider>();
+            }
+        }
+        
         // BGM 플레이어 초기화
         GameObject bgmObject = new GameObject("BGM Player");
         bgmObject.transform.parent = transform;
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
-        bgmPlayer.volume = bgmVolume;
+        bgmPlayer.volume = bgmVolume * bgmSlider.value * masterSlider.value;
 
         // SFX 플레이어 초기화
         GameObject sfxObject = new GameObject("SFX Player");
@@ -127,7 +144,7 @@ public class SoundManager : MonoBehaviour
             sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[i].playOnAwake = false;
             sfxPlayers[i].loop = false;
-            sfxPlayers[i].volume = sfxVolume;
+            sfxPlayers[i].volume = sfxVolume * sfxSlider.value * masterSlider.value;
         }
     }
 
@@ -148,7 +165,7 @@ public class SoundManager : MonoBehaviour
     {
         if (bgmPlayer == null) return;
         
-        bgmPlayer.volume = bgmVolume * bgmSlider;
+        bgmPlayer.volume = bgmVolume * bgmSlider.value * masterSlider.value;
     }
 
     public void FadeBGM(AudioClip nextClip, float fadeTime = 1f)
@@ -180,7 +197,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.Play();
 
         // 페이드 인
-        float targetVolume = bgmVolume * bgmSlider;
+        float targetVolume = bgmVolume * bgmSlider.value * masterSlider.value;
         time = 0f;
         while (time < fadeTime)
         {
@@ -299,22 +316,24 @@ public class SoundManager : MonoBehaviour
 
         foreach (var sfxPlayer in sfxPlayers)
         {
-            sfxPlayer.volume = sfxVolume * sfxSlider;
+            sfxPlayer.volume = sfxVolume * sfxSlider.value * masterSlider.value;
         }
     }
 
     public void SaveVolume()
     {
-        PlayerPrefs.SetFloat("BGM Volume", bgmSlider);
-        PlayerPrefs.SetFloat("SFX Volume", sfxSlider);
+        PlayerPrefs.SetFloat("Master Volume", masterSlider.value);
+        PlayerPrefs.SetFloat("BGM Volume", bgmSlider.value);
+        PlayerPrefs.SetFloat("SFX Volume", sfxSlider.value);
         
         PlayerPrefs.Save();
     }
 
     public void LoadVolume()
     {
-        bgmSlider = PlayerPrefs.GetFloat("BGM Volume", 1f);
-        sfxSlider = PlayerPrefs.GetFloat("SFX Volume", 1f);
+        masterSlider.value = PlayerPrefs.GetFloat("Master Volume", 1f);
+        bgmSlider.value = PlayerPrefs.GetFloat("BGM Volume", 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume", 1f);
 
         UpdateVolumeBGM();
         UpdateVolumeSFX();

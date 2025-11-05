@@ -882,17 +882,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c257af91873be449023b8c4c87880c, type: 3}
---- !u!114 &927158442 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2881486485378565519, guid: d7c257af91873be449023b8c4c87880c, type: 3}
-  m_PrefabInstance: {fileID: 927158441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c120d40797eb764bacee2de311f42d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
 --- !u!1 &936351361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Gildal
       objectReference: {fileID: 0}
+    - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1387,10 +1380,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 1802108068063848191, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 927158442}
     - target: {fileID: 8816039320820066561, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

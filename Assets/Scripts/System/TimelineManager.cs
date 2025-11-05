@@ -6,6 +6,8 @@ using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
+    private static TimelineManager instance;
+
     [Header("Timeline Reference")]
     public PlayableDirector director;
     public CinemachineImpulseSource impulseSource;
@@ -22,14 +24,38 @@ public class TimelineManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        OnDisable();
-        OnEnable();
+        // 인스턴스
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
+
     void Start()
     {
         if (continueText != null)
             continueText.SetActive(false);
+    }
+
+    void Update()
+    {
+        // 일시정지 중 키 입력 → 타임라인 재개
+        if (isHolding && Input.anyKeyDown)
+        {
+            isHolding = false;
+
+            if (continueText != null)
+                continueText.SetActive(false);
+
+            director.time = holdTime;
+            director.Play();
+        }
     }
 
     // 타임라인 일시정지
@@ -53,6 +79,7 @@ public class TimelineManager : MonoBehaviour
         if (impulseSource != null)
             impulseSource.GenerateImpulse();
     }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -62,24 +89,11 @@ public class TimelineManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    void Update()
-    {
-        // 일시정지 중 키 입력 → 타임라인 재개
-        if (isHolding && Input.anyKeyDown)
-        {
-            isHolding = false;
-
-            if (continueText != null)
-                continueText.SetActive(false);
-
-            director.time = holdTime;
-            director.Play();
-        }
-    }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        director = FindObjectOfType<PlayableDirector>();
+        director = FindAnyObjectByType<PlayableDirector>();
+
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == GameManager.instance.selectScene)
         {

@@ -330,6 +330,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541919287}
   m_CullTransparentMesh: 1
+--- !u!114 &589145088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 39183971503109171, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
+  m_PrefabInstance: {fileID: 8744208930667522526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &702260268
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +711,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonProxy
   action: 3
+--- !u!114 &907744718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2945402418921736159, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
+  m_PrefabInstance: {fileID: 8744208930667522526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1028266860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1520,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520923116}
   m_CullTransparentMesh: 1
+--- !u!1001 &1523583008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: bgmSlider
+      value: 
+      objectReference: {fileID: 907744718}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: sfxSlider
+      value: 
+      objectReference: {fileID: 1716217444}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: masterSlider
+      value: 
+      objectReference: {fileID: 589145088}
+    - target: {fileID: 3321525004647849168, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_Name
+      value: Sound Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
 --- !u!1 &1575834709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +1975,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706849572}
   m_CullTransparentMesh: 1
+--- !u!114 &1716217444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7742804280388172182, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
+  m_PrefabInstance: {fileID: 8744208930667522526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1716359738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,10 +2363,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 460576981526732222, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1076650788}
     - target: {fileID: 8816039320820066561, guid: f85f9a5c5a34ce6439948fe6bc01ac7e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2358,3 +2456,4 @@ SceneRoots:
   - {fileID: 1973941933}
   - {fileID: 8744208930667522526}
   - {fileID: 736359855}
+  - {fileID: 1523583008}

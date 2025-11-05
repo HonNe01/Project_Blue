@@ -9,6 +9,9 @@ TagManager:
   - OneWayPlatform
   - PlayerAttack
   - Wall
+  - BGM_Slider
+  - SFX_Slider
+  - Master_Slider
   layers:
   - Default
   - TransparentFX
