@@ -12,12 +12,14 @@ public class TimelineManager : MonoBehaviour
     [Header(" Timeline Reference")]
     public PlayableDirector director;
     public CinemachineImpulseSource impulse;
-    public SignalReceiver receiver;
 
     [Header(" Timeline UI")]
     public GameObject continueText;
 
     [Header(" === Signal Setting ===")]
+    [Header(" Signal Reference")]
+    public SignalReceiver receiver;
+
     [Header("Normal Signal")]
     public SignalAsset holdScene;
     public SignalAsset shakeCamera;
@@ -66,8 +68,8 @@ public class TimelineManager : MonoBehaviour
             if (continueText != null)
                 continueText.SetActive(false);
 
-            director.time = holdTime;
-            director.Play();
+            var rootPlayable = director.playableGraph.GetRootPlayable(0);
+            rootPlayable.SetSpeed(1);
         }
     }
 
@@ -86,17 +88,17 @@ public class TimelineManager : MonoBehaviour
     public void RegistSignal(SignalAsset asset, UnityAction action)
     {
         // 신호 가져오기
-        UnityEvent unityEvent = receiver.GetReaction(holdScene);
+        UnityEvent unityEvent = receiver.GetReaction(asset);
 
         if (unityEvent == null)
         {
             // 신호 추가 
             unityEvent = new UnityEvent();
-            receiver.AddReaction(holdScene, unityEvent);
+            receiver.AddReaction(asset, unityEvent);
         }
         
         // 리액션 할당
-        unityEvent.AddListener(HoldTimeline);
+        unityEvent.AddListener(action);
     }
 
     // 타임라인 재생
@@ -109,12 +111,11 @@ public class TimelineManager : MonoBehaviour
     public void HoldTimeline()
     {
         if (director == null) return;
-
-        holdTime = director.time;
         isHolding = true;
 
-        // 타임라인 완전 일시정지
-        director.Pause();
+        // 타임라인 일시정지
+        var rootPlayable = director.playableGraph.GetRootPlayable(0);
+        rootPlayable.SetSpeed(0);
 
         if (continueText != null)
             continueText.SetActive(true);
@@ -129,6 +130,7 @@ public class TimelineManager : MonoBehaviour
     // 캐릭터 선택창
     public void OpenSelectPanel()
     {
-        director.Pause();
+        var rootPlayable = director.playableGraph.GetRootPlayable(0);
+        rootPlayable.SetSpeed(0);
     }
 }

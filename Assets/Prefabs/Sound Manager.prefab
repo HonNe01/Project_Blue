@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370a4b27a28101243a71941be1c8b3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  masterSlider: {fileID: 0}
+  bgmSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
   bgmClips:
   - {fileID: 8300000, guid: ab0125e1d557a1d4d8fa2c80c3060810, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
   - {fileID: 8300000, guid: 6cb9ff74a536944baab35afe99fc17ba, type: 3}
   - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
   - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
@@ -87,5 +90,3 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   cheongRyuSFXClips: []
-  bgmSlider: 1
-  sfxSlider: 1
