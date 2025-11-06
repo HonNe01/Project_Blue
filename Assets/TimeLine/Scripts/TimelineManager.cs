@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -11,10 +12,10 @@ public class TimelineManager : MonoBehaviour
     [Header(" === Timeline Setting === ")]
     [Header(" Timeline Reference")]
     public PlayableDirector director;
-    public CinemachineImpulseSource impulse;
 
     [Header(" Timeline UI")]
     public GameObject continueText;
+    public Image fade;
 
     [Header(" === Signal Setting ===")]
     [Header(" Signal Reference")]
@@ -22,7 +23,6 @@ public class TimelineManager : MonoBehaviour
 
     [Header("Normal Signal")]
     public SignalAsset holdScene;
-    public SignalAsset shakeCamera;
 
     [Header("Select Scene Signal")]
     public SignalAsset SelectPanelOpen;
@@ -47,8 +47,6 @@ public class TimelineManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        impulse = GetComponent<CinemachineImpulseSource>();
     }
 
     void Start()
@@ -80,7 +78,6 @@ public class TimelineManager : MonoBehaviour
 
         // 시그널 초기화
         RegistSignal(holdScene, HoldTimeline);
-        RegistSignal(shakeCamera, ShakeCamera);
         RegistSignal(SelectPanelOpen, OpenSelectPanel);
     }
 
@@ -121,15 +118,21 @@ public class TimelineManager : MonoBehaviour
             continueText.SetActive(true);
     }
 
-    // 카메라 흔들기
-    public void ShakeCamera()
+    // 타임라인 재개
+    public void ResumeTimeline()
     {
-        impulse.GenerateImpulse();
+        if (director == null) return;
+        isHolding = false;
+
+        var rootPlayable = director.playableGraph.GetRootPlayable(0);
+        rootPlayable.SetSpeed(1);
     }
 
     // 캐릭터 선택창
     public void OpenSelectPanel()
     {
+        CharaterSelect.instance.OnSelect();
+
         var rootPlayable = director.playableGraph.GetRootPlayable(0);
         rootPlayable.SetSpeed(0);
     }

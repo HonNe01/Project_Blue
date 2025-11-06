@@ -5,6 +5,9 @@ public class CharaterSelect : MonoBehaviour
 {
     public static CharaterSelect instance;
 
+    [Header("Select")]
+    public GameObject selectPanel;
+
     [Header("Musin")]
     public bool musinSelected = false;
     private bool musinSelect = false;
@@ -16,7 +19,7 @@ public class CharaterSelect : MonoBehaviour
     private bool moonsinSelect = false;
     public GameObject moonsin;
     public GameObject moonsinEffect;
-    
+
 
     private void Awake()
     {
@@ -30,34 +33,35 @@ public class CharaterSelect : MonoBehaviour
             Debug.Log("[Character] Instance Destroy");
             Destroy(gameObject);
         }
-        
     }
+
+    public void OnSelect()
+    {
+        Debug.Log("[Character] Select Panel Open");
+
+        selectPanel.SetActive(true);
+    }
+
     public void SelectMusin()
     {
+        Debug.Log("[Character] Musin Select");
+
         musinSelect = true;
         moonsinSelect = false;
-        
+
+        selectPanel.SetActive(false);
+        TimelineManager.instance.ResumeTimeline();
     }
 
     public void SelectMoonsin()
     {
+        Debug.Log("[Character] Moonsin Select");
+
         moonsinSelect = true;
         musinSelect = false;
-    }
 
-    public void EndSelect()
-    {
-        SceneManager.LoadScene(GameManager.instance.helicopterScene);
-    }
-
-    public void EndHelicopter()
-    {
-        SceneManager.LoadScene(GameManager.instance.fallenScene);
-    }
-
-    private void OnDisable()
-    {
-        
+        selectPanel.SetActive(false);
+        TimelineManager.instance.ResumeTimeline();
     }
 
     private void OnEnable()
@@ -79,7 +83,6 @@ public class CharaterSelect : MonoBehaviour
                 Instantiate(moonsin, Vector2.zero, Quaternion.identity);
                 Instantiate(moonsinEffect, Vector2.zero, Quaternion.identity);
             }
-
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(gameObject);
         }

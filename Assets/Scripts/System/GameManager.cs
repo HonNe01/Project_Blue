@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string outpostScene = "OutPostScene";
     [SerializeField] public string gildalScene = "GildalScene";
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
+    [HideInInspector] public string nextScene;
 
     [Header(" === UI Reference === ")]
     [SerializeField] private MenuType curMenu = MenuType.None;
@@ -427,6 +428,7 @@ public class GameManager : MonoBehaviour
         // 상태 정리
         curMenu = MenuType.None;
         Time.timeScale = 1f;
+        nextScene = null;
 
         // 메뉴 전부 닫기
         foreach (var panel in menuPanels)
@@ -459,6 +461,8 @@ public class GameManager : MonoBehaviour
         {
             // 시나리오 씬
             State = GameState.Directing;
+            nextScene = helicopterScene;
+            
             SoundManager.instance.PlayBGM(SoundManager.BGM.Select);
             TimelineManager.instance.PlayTimeline();
 
@@ -469,6 +473,8 @@ public class GameManager : MonoBehaviour
         {
             // 시나리오 씬
             State = GameState.Directing;
+            nextScene = fallenScene;
+
             SoundManager.instance.PlayBGM(SoundManager.BGM.Helicopter);
             TimelineManager.instance.PlayTimeline();
 
@@ -479,6 +485,8 @@ public class GameManager : MonoBehaviour
         {
             // 시나리오 씬
             State = GameState.Directing;
+            nextScene = outpostScene;
+
             SoundManager.instance.PlayBGM(SoundManager.BGM.Fallen);
             TimelineManager.instance.PlayTimeline();
 
