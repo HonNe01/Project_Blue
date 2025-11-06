@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class CharaterSelect : MonoBehaviour
 {
+    public static CharaterSelect instance;
+
     [Header("Musin")]
     public bool musinSelected = false;
     private bool musinSelect = false;
@@ -18,8 +20,17 @@ public class CharaterSelect : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Log("[Character] Instance Destroy");
+            Destroy(gameObject);
+        }
+        
     }
     public void SelectMusin()
     {
@@ -42,6 +53,16 @@ public class CharaterSelect : MonoBehaviour
     public void EndHelicopter()
     {
         SceneManager.LoadScene(GameManager.instance.fallenScene);
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

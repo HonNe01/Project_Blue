@@ -32,7 +32,6 @@ public class TimelineManager : MonoBehaviour
     public SignalAsset redLightOff;
 
     private bool isHolding = false;
-    private double holdTime = 0;
 
     private void Awake()
     {
@@ -85,6 +84,7 @@ public class TimelineManager : MonoBehaviour
         RegistSignal(SelectPanelOpen, OpenSelectPanel);
     }
 
+    // 시그널 초기화
     public void RegistSignal(SignalAsset asset, UnityAction action)
     {
         // 신호 가져오기
