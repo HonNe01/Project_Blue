@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3038832706818918881}
   - component: {fileID: 4785944710395483702}
   - component: {fileID: 2995258539916941256}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Player_MuSin
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -168412677
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5798957361778897971, guid: 8322c2d9ae16645bbb72d09e947dc7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -211,7 +211,7 @@ MonoBehaviour:
   playerMove: {fileID: 0}
   playerAttack: {fileID: 0}
   playerGuard: {fileID: 0}
-  cinemachineCamera: {fileID: 0}
+  cinemachineComposer: {fileID: 0}
   damagedTime: 0
   isDamaged: 0
   isDie: 0

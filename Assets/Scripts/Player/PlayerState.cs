@@ -24,6 +24,8 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private float damagedTime;
     public bool isDamaged = false;
     public bool isDie = false;
+    private bool isHit = false;
+    private float hitTime = 0.5f;
 
     [Header("Move")]
     public int isRight;
@@ -241,6 +243,7 @@ public class PlayerState : MonoBehaviour
     public void TakeDamage(int damage = 1)
     {
         if (isDie) return;
+        if (isHit) return;
 
         // 방어 판정
         if (playerGuard.IsGuard())
@@ -259,9 +262,11 @@ public class PlayerState : MonoBehaviour
                 return;
             }
         }
-
+        
         // 이동 불능
         StartCoroutine(Co_DisableAction(damagedTime));
+        // 이미 피격 상태면 무시
+        StartCoroutine(DisableHitbox());
 
         // 피격 넉백
         if (isRight > 0)
@@ -288,6 +293,12 @@ public class PlayerState : MonoBehaviour
         {
             Die();
         }
+    }
+    IEnumerator DisableHitbox()
+    {
+        isHit = true;
+        yield return new WaitForSeconds(hitTime);
+        isHit = false;
     }
 
     private void Die()
