@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Effect_Gildal_Phase2_Attack1
+  m_Name: Effect_Gildal_Phase2_Attack1-2
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -51,7 +51,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phase2_Attack1
+  m_Name: Phase2_Attack1-2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 475b8807e62d3f84e92aef38b39f9365, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2aeafe7f4ecb2f94089233a7d2234d3c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

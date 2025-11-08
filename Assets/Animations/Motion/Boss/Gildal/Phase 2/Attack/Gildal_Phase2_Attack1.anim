@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gildal_JumpSlash2
+  m_Name: Gildal_Phase2_Attack1
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,27 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 3526c33af5b23944eb9c3e46d4608515, type: 3}
+      value: {fileID: -7340805382639792583, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: b9896de48399ac848888ace3aca3e796, type: 3}
+      value: {fileID: -4402160129411954680, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 44975d05d903351498d0e666fb026a86, type: 3}
+      value: {fileID: 4284261249122775289, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 273335addacac794b8af6de090d5b549, type: 3}
+      value: {fileID: -18727699501328817, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 19812a6af0744b44593a1a00ac72d804, type: 3}
+      value: {fileID: 8976183631918988797, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: b3ac3b476e7b4eb44bc3a888f7d70da2, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 607d7be39970d2f44b544b92140bffc1, type: 3}
-    - time: 0.5833333
-      value: {fileID: 21300000, guid: e9523b75825c3bc49a8e21e3fce82f1d, type: 3}
-    - time: 0.6666667
-      value: {fileID: 21300000, guid: 6b7d21ca2b417574aa89625f9ca252cc, type: 3}
-    - time: 0.75
-      value: {fileID: 21300000, guid: 4517bb1b3e3de5248bc9e051056aaa85, type: 3}
-    - time: 0.8333333
-      value: {fileID: 21300000, guid: 433e0818af2f829419a64921b669f091, type: 3}
+      value: {fileID: 2024933779745614701, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -64,23 +54,18 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 3526c33af5b23944eb9c3e46d4608515, type: 3}
-    - {fileID: 21300000, guid: b9896de48399ac848888ace3aca3e796, type: 3}
-    - {fileID: 21300000, guid: 44975d05d903351498d0e666fb026a86, type: 3}
-    - {fileID: 21300000, guid: 273335addacac794b8af6de090d5b549, type: 3}
-    - {fileID: 21300000, guid: 19812a6af0744b44593a1a00ac72d804, type: 3}
-    - {fileID: 21300000, guid: b3ac3b476e7b4eb44bc3a888f7d70da2, type: 3}
-    - {fileID: 21300000, guid: 607d7be39970d2f44b544b92140bffc1, type: 3}
-    - {fileID: 21300000, guid: e9523b75825c3bc49a8e21e3fce82f1d, type: 3}
-    - {fileID: 21300000, guid: 6b7d21ca2b417574aa89625f9ca252cc, type: 3}
-    - {fileID: 21300000, guid: 4517bb1b3e3de5248bc9e051056aaa85, type: 3}
-    - {fileID: 21300000, guid: 433e0818af2f829419a64921b669f091, type: 3}
+    - {fileID: -7340805382639792583, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
+    - {fileID: -4402160129411954680, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
+    - {fileID: 4284261249122775289, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
+    - {fileID: -18727699501328817, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
+    - {fileID: 8976183631918988797, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
+    - {fileID: 2024933779745614701, guid: 95bb747534d73459caf691f0cb4a7739, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.9166666
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -100,24 +85,24 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: OnAttackForward
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 2
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: OnSlashHit1Start
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.16666667
     functionName: OnAttackForward
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 3
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.25
-    functionName: OnSlamHitStart
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6666667
-    functionName: OnSlamHitEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 2
     intParameter: 0
     messageOptions: 0

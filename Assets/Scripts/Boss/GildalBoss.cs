@@ -192,7 +192,7 @@ public class GildalBoss : BossBase
     {
         OnSwingHitStart();
         OnSlamHitStart();
-        OnSlashHitStart();
+        OnSlashHit1Start();
         OnJumpSlash1HitStart();
         OnJumpSlash2HitStart();
         yield return new WaitForSeconds(2f);
@@ -637,8 +637,8 @@ public class GildalBoss : BossBase
         StartCoroutine(Co_MoveTo(targetPos, 0.2f));
     }   
 
-    public void OnSlashHitStart() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
-    public void OnSlashHitEnd() { if (slash_Hitbox) slash_Hitbox.SetActive(false); }
+    public void OnSlashHit1Start() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
+    public void OnSlashHit1End() { if (slash_Hitbox) slash_Hitbox.SetActive(false); }
 
     private IEnumerator Co_JumpSlash()
     {
