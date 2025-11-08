@@ -453,6 +453,10 @@ public class PlayerMove : MonoBehaviour
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Dash);
     }
+    public void AE_DashEffect()
+    {
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Dash, transform.position, PlayerState.instance.isRight < 0);
+    }
 
     private bool IsOnPlatform()
     {

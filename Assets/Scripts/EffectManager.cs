@@ -9,7 +9,7 @@ public class EffectManager : MonoBehaviour
     public enum EffectType
     {
         // Move : 4
-        Walk, Jump, AirJump, Slide,
+        Walk, Dash, Jump, AirJump, Slide,
 
         // Attack : 8
         Attack1, Attack2, Attack3,

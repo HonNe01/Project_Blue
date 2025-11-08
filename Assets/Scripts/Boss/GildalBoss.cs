@@ -310,6 +310,10 @@ public class GildalBoss : BossBase
     // 은신 기믹
     private IEnumerator Co_DoStealth(bool isWall = false)
     {
+        // 피격 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
+
         // 은신
         if (isWall)
         {
@@ -331,11 +335,6 @@ public class GildalBoss : BossBase
             float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
             yield return new WaitForSeconds(animLength);
         }
-        
-
-        // 피격 판정 해제
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
-        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
     }
 
     public void AE_DoStealth()
