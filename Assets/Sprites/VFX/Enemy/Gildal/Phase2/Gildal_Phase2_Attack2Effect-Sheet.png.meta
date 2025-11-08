@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: 4230b48e1289844fc8f9b99c3475fc28
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8844987626715924177
+    second: Gildal_Phase2_Attack2Effect-Sheet_0
+  - first:
+      213: 6422950596569773920
+    second: Gildal_Phase2_Attack2Effect-Sheet_1
+  - first:
+      213: 7812078577131417866
+    second: Gildal_Phase2_Attack2Effect-Sheet_2
+  - first:
+      213: -6462258152511583603
+    second: Gildal_Phase2_Attack2Effect-Sheet_3
+  - first:
+      213: -4201594697905551452
+    second: Gildal_Phase2_Attack2Effect-Sheet_4
+  - first:
+      213: 8486901286297925225
+    second: Gildal_Phase2_Attack2Effect-Sheet_5
+  - first:
+      213: -7924259944484333429
+    second: Gildal_Phase2_Attack2Effect-Sheet_6
+  - first:
+      213: -91928173490557922
+    second: Gildal_Phase2_Attack2Effect-Sheet_7
+  - first:
+      213: 1287340639349320042
+    second: Gildal_Phase2_Attack2Effect-Sheet_8
+  - first:
+      213: -6952397987810031246
+    second: Gildal_Phase2_Attack2Effect-Sheet_9
+  - first:
+      213: -2691901181622684067
+    second: Gildal_Phase2_Attack2Effect-Sheet_10
+  - first:
+      213: -3286099051370268135
+    second: Gildal_Phase2_Attack2Effect-Sheet_11
+  - first:
+      213: 7115066650128061475
+    second: Gildal_Phase2_Attack2Effect-Sheet_12
+  - first:
+      213: -3887620019105808410
+    second: Gildal_Phase2_Attack2Effect-Sheet_13
+  - first:
+      213: 8122138352327255962
+    second: Gildal_Phase2_Attack2Effect-Sheet_14
+  - first:
+      213: -5831494097456872186
+    second: Gildal_Phase2_Attack2Effect-Sheet_15
+  - first:
+      213: 1105127369769442395
+    second: Gildal_Phase2_Attack2Effect-Sheet_16
+  - first:
+      213: 6326601082847014602
+    second: Gildal_Phase2_Attack2Effect-Sheet_17
+  - first:
+      213: 3335616780914347408
+    second: Gildal_Phase2_Attack2Effect-Sheet_18
+  - first:
+      213: -5761552087880697687
+    second: Gildal_Phase2_Attack2Effect-Sheet_19
+  - first:
+      213: -2441504314255674042
+    second: Gildal_Phase2_Attack2Effect-Sheet_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gildal_Phase2_Attack2Effect-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 160
+        width: 300
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d6c02d3265bfba70800000000000000
+      internalID: 8844987626715924177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Attack2Effect-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 160
+        width: 300
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067bc6e8987e22950800000000000000
+      internalID: 6422950596569773920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Attack2Effect-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a017b5363141a6c60800000000000000
+      internalID: 7812078577131417866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Attack2Effect-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8acca4e2727156a0800000000000000
+      internalID: -6462258152511583603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 295f6e40c7d154f05a72568cfca4d062
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Gildal_Phase2_Attack2Effect-Sheet_0: 8844987626715924177
+      Gildal_Phase2_Attack2Effect-Sheet_1: 6422950596569773920
+      Gildal_Phase2_Attack2Effect-Sheet_2: 7812078577131417866
+      Gildal_Phase2_Attack2Effect-Sheet_3: -6462258152511583603
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
