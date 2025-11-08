@@ -1373,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[2].m_ColliderPaths.Array.data[0].Array.data[3].Y
       value: -187020
       objectReference: {fileID: 0}
+    - target: {fileID: 2986117634561265590, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6428890711854167041, guid: a5ba0cd383e06184cbf2665a82295479, type: 3}
       propertyPath: m_Name
       value: Boss_Gildal

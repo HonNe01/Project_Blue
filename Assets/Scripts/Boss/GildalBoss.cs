@@ -192,7 +192,7 @@ public class GildalBoss : BossBase
     {
         OnSwingHitStart();
         OnSlamHitStart();
-        OnSlashHit1Start();
+        OnSlashHitStart();
         OnJumpSlash1HitStart();
         OnJumpSlash2HitStart();
         yield return new WaitForSeconds(2f);
@@ -213,6 +213,7 @@ public class GildalBoss : BossBase
     public void AE_LandingSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Landing_Gildal);
+        SoundManager.instance.PlayBGM(SoundManager.BGM.Gildal_Battle);
     }
 
     public void AE_StartSound()
@@ -402,6 +403,22 @@ public class GildalBoss : BossBase
             int sign = playerIsRight ? 1 : -1;
             hitbox2.transform.localScale = new Vector3(sign, 1, 1);
         }
+    }
+
+    // 특수 패턴 좌우 반전
+    private void FlipX_Special()
+    {
+        if (sprite == null || target == null) return;
+        if (coll_Normal == null || coll_Special) return;
+
+        // FlipX ( 길달 FlipX = true는 왼쪽, -1 )
+        bool playerIsRight = target.position.x > transform.position.x;
+        float sign = playerIsRight ? 1 : -1;
+        sprite.flipX = !playerIsRight;
+
+        coll_Special.offset = new Vector2(Mathf.Abs(coll_Special.offset.x) * sign, coll_Special.offset.y);
+        coll_Special.enabled = true;
+        coll_Normal.enabled = false;
     }
 
     private IEnumerator Co_MoveTo(Vector2 pos, float duration, float margin = 0.5f)
@@ -636,8 +653,8 @@ public class GildalBoss : BossBase
         StartCoroutine(Co_MoveTo(targetPos, 0.2f));
     }   
 
-    public void OnSlashHit1Start() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
-    public void OnSlashHit1End() { if (slash_Hitbox) slash_Hitbox.SetActive(false); }
+    public void OnSlashHitStart() { if (slash_Hitbox) slash_Hitbox.SetActive(true); }
+    public void OnSlashHitEnd() { if (slash_Hitbox) slash_Hitbox.SetActive(false); }
 
     private IEnumerator Co_JumpSlash()
     {
@@ -726,19 +743,19 @@ public class GildalBoss : BossBase
 
     public override void TakeDamage(float damage)
     {
-        Debug.Log($"[Gildal] Boss Hit! Current HP : {curHp}");
         base.TakeDamage(damage);
+        Debug.Log($"[Gildal] Boss Hit! Current HP : {curHp}");
+
         CheckSpecialTrigger();
     }
 
     protected override IEnumerator Co_Sturn()
     {
         // 스턴 상태 변경
-        isSturn = true;
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
-
-        StopPattern();
         Debug.Log("[Gildal] Boss Sturn Start");
+        isSturn = true;
+        StopPattern();
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
 
         // 스턴 모션
         anim.SetBool("Sturn", true);
@@ -824,12 +841,7 @@ public class GildalBoss : BossBase
         float groundYWall = floorHeights[1];
         float wallX = isHyungNyeon ? wallXMin : wallXMax;
         transform.position = new Vector2(wallX, groundYWall);
-        FlipX();
-        bool playerIsRight = target.position.x > transform.position.x;
-        int sign = playerIsRight ? -1 : 1;
-        coll_Special.offset = new Vector2(coll_Special.offset.x * sign, coll_Special.offset.y);
-        coll_Normal.enabled = false;
-        coll_Special.enabled = true;
+        FlipX_Special();
 
         anim?.SetTrigger("SpecialPrep2");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기

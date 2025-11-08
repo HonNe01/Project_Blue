@@ -127,9 +127,7 @@ public abstract class BossBase : MonoBehaviour
         if (state == BossState.Die) return;
         if (isInvulnerable) return;     // I-Frame Áß ¹«½Ã
 
-        //anim?.SetTrigger("Hit");
         curHp -= damage;
-        Debug.Log($"[BossBase] Boss Hit! Current HP : {curHp}");
 
         // I-Frame
         if (isInvulnerable == false)
@@ -182,6 +180,7 @@ public abstract class BossBase : MonoBehaviour
 
         isDie = true;
         StopPattern();
+        StopAllCoroutines();
         anim?.SetTrigger("Die");
     }
 

@@ -40,7 +40,6 @@ public class DokkaebiWave : MonoBehaviour
         sprite.flipX = !isRight;
         int dir = isRight ? 1 : -1;
 
-        coll.enabled = true;
         coll.offset = new Vector2(9 * dir, 0);
 
         // น฿ป็
@@ -52,6 +51,11 @@ public class DokkaebiWave : MonoBehaviour
     public void AE_FireSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Special_Wave_Fire_Gildal);
+    }
+
+    public void AE_OnWave()
+    {
+        coll.enabled = true;
     }
 
     public IEnumerator WaveEnd()
@@ -66,7 +70,7 @@ public class DokkaebiWave : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
