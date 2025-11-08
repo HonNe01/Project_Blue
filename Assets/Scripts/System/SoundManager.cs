@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -102,16 +103,41 @@ public class SoundManager : MonoBehaviour
         }
 
         // 플레이어 초기화
-        Init();
+        InitPlayer();
     }
 
     private void Start()
     {
+        // 슬라이더 초기화
+        InitSlider();
+
         // 플레이어 볼륨 로드
         LoadVolume();
     }
 
-    private void Init()
+    private void InitPlayer()
+    {
+        // BGM 플레이어 초기화
+        GameObject bgmObject = new GameObject("BGM Player");
+        bgmObject.transform.parent = transform;
+        bgmPlayer = bgmObject.AddComponent<AudioSource>();
+        bgmPlayer.playOnAwake = false;
+        bgmPlayer.loop = true;
+
+        // SFX 플레이어 초기화
+        GameObject sfxObject = new GameObject("SFX Player");
+        sfxObject.transform.parent = transform;
+        sfxPlayers = new AudioSource[channelCount];
+
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+            sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
+            sfxPlayers[i].playOnAwake = false;
+            sfxPlayers[i].loop = false;
+        }
+    }
+
+    private void InitSlider()
     {
         // UI Sldier 할당
         if (masterSlider == null && bgmSlider == null && sfxSlider == null)
@@ -126,25 +152,11 @@ public class SoundManager : MonoBehaviour
                 if (slider.CompareTag("SFX_Slider")) sfxSlider = slider.GetComponent<Slider>();
             }
         }
-        
-        // BGM 플레이어 초기화
-        GameObject bgmObject = new GameObject("BGM Player");
-        bgmObject.transform.parent = transform;
-        bgmPlayer = bgmObject.AddComponent<AudioSource>();
-        bgmPlayer.playOnAwake = false;
-        bgmPlayer.loop = true;
+
+        // 플레이어 사운드 초기화
         bgmPlayer.volume = bgmVolume * bgmSlider.value * masterSlider.value;
-
-        // SFX 플레이어 초기화
-        GameObject sfxObject = new GameObject("SFX Player");
-        sfxObject.transform.parent = transform;
-        sfxPlayers = new AudioSource[channelCount];
-
         for (int i = 0; i < sfxPlayers.Length; i++)
         {
-            sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
-            sfxPlayers[i].playOnAwake = false;
-            sfxPlayers[i].loop = false;
             sfxPlayers[i].volume = sfxVolume * sfxSlider.value * masterSlider.value;
         }
     }
@@ -179,6 +191,7 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator Co_FadeBGM(AudioClip newClip, float fadeTime)
     {
+        // 사운드 세팅
         float startVolume = bgmPlayer.volume;
 
         float time = 0f;
@@ -200,11 +213,21 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.clip = newClip;
         bgmPlayer.Play();
 
-        // 페이드 인
-        float targetVolume = bgmVolume * bgmSlider.value * masterSlider.value;
+        // 사운드 세팅
+        float targetVolume;
+        if (bgmSlider == null && masterSlider == null)
+        {
+            targetVolume = 0.5f;
+        }
+        else
+        {
+            targetVolume = bgmVolume * bgmSlider.value * masterSlider.value;
+        }
+
         time = 0f;
         while (time < fadeTime)
         {
+            // 페이드 인
             time += Time.deltaTime;
             bgmPlayer.volume = Mathf.Lerp(0f, targetVolume, time / fadeTime);
 

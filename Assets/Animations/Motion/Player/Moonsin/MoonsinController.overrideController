@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MoonsinController
+  m_Controller: {fileID: 9100000, guid: 9d36343493cc0604ebb577d17eacb235, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9862c5a8a45479048954811c8f5bf4f0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4dda69d2cf96a8342887adfa6613d3ea, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d2a44872dbd1924da17462bda238a6e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 569a775299dbdfb4292c08b74232aedc, type: 2}
