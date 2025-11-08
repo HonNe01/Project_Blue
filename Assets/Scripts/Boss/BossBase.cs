@@ -109,7 +109,7 @@ public abstract class BossBase : MonoBehaviour
 
     // ===================== [전투 처리] =====================
     // 전투 시작
-    public virtual IEnumerator StartBattle()
+    public virtual IEnumerator Co_StartBattle()
     {
         Debug.Log("[Boss] Battle Start");
 
@@ -132,7 +132,7 @@ public abstract class BossBase : MonoBehaviour
         Debug.Log($"[BossBase] Boss Hit! Current HP : {curHp}");
 
         // I-Frame
-        if (iFrameDuration > 0f)
+        if (isInvulnerable == false)
             StartCoroutine(Co_IFrame());
 
         // 사망 체크

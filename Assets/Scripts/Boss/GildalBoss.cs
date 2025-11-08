@@ -167,9 +167,9 @@ public class GildalBoss : BossBase
                                             execute = () => Co_EDokkaebiOrb() });
     }
 
-    public override IEnumerator StartBattle()
+    public override IEnumerator Co_StartBattle()
     {
-        StartCoroutine(base.StartBattle());
+        StartCoroutine(base.Co_StartBattle());
         state = BossState.Directing;
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);

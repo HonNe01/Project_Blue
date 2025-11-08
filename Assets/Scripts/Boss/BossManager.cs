@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
     public enum BossType { Gildal, Chyeongryu }
-
 
     [Header(" === Boss Manager === ")]
     public BossType bossType;
@@ -104,7 +102,7 @@ public class BossManager : MonoBehaviour
 
         // 보스 전투 시작
         Debug.Log($"[BossManager] {bossType} Boss Spawn Complete");
-        StartCoroutine(curBoss.StartBattle());
+        StartCoroutine(curBoss.Co_StartBattle());
     }
 
     private void SetArenaLocked(bool locked)

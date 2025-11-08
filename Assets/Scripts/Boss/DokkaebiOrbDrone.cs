@@ -38,7 +38,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     private void UpdateFacing(Vector2 dir)
     {
-        if (!sprite) return;
+        if (!sprite) sprite = GetComponent<SpriteRenderer>();
+
         if (dir.x >= 0.01f)         sprite.flipX = false;
         else if (dir.x < -0.01f)    sprite.flipX = true;
     }
