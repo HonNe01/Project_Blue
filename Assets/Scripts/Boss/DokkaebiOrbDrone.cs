@@ -21,8 +21,9 @@ public class DokkaebiOrbDrone : MonoBehaviour
     
     private int baseDamage = 1;
 
+    [SerializeField] private bool isOn = false;
     private bool isChase = false;
-    [SerializeField] private bool isExploded = false;
+    private bool isExploded = false;
 
     private void Awake()
     {
@@ -31,11 +32,6 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
         if (expColl) expColl.enabled = false;
         if (bodyColl) bodyColl.enabled = false;
-    }
-
-    private void OnEnable()
-    {
-        
     }
 
     private void UpdateFacing(Vector2 dir)
@@ -114,7 +110,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
             }
             yield return null;
         }
-        
+
+        isOn = true;
         isChase = true;
         float total = lifeTime;
         float chaseTime = Mathf.Clamp01(chaseRatio) * total;
@@ -217,7 +214,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
         // 지형 충돌
         else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform"))
         {
-            if (!isExploded && !isChase)
+            if (!isExploded && !isChase && isOn)
             {
                 // 추격 중 아니면 폭발
                 StartCoroutine(Co_Explosion());

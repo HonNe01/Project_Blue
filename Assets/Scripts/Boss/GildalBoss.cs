@@ -134,6 +134,10 @@ public class GildalBoss : BossBase
         playerLayer = LayerMask.NameToLayer("Player");
         playerAttackLayer = LayerMask.NameToLayer("PlayerAttack");
 
+        // 피격 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
+
         // ---- 페이즈1 패턴 등록 (가중치/쿨타임/실행코루틴 연결) ----
         phase1Patterns.Add(new BossPattern {name = "Swing", 
                                             weight = swing_weight, 
@@ -729,10 +733,10 @@ public class GildalBoss : BossBase
 
     public void AE_EDroneSet()
     {
-        StartCoroutine(Co_DroneFire());
+        StartCoroutine(Co_EDroneFire());
     }
 
-    public IEnumerator Co_DroneFire()
+    public IEnumerator Co_EDroneFire()
     {
         // 3) 드론 3체 소환
         bool playerIsRight = target.position.x > transform.position.x;
@@ -742,7 +746,7 @@ public class GildalBoss : BossBase
         {
             // 드론 위치 조금식 오프셋
             Vector2 basePos = SetOrbSpawnPos(dokkaebiOrbSpawn_Offset);
-            Vector2 spawnPos = basePos + new Vector2(sign * (1f + i * 1.5f), 2f + i * 1.2f);
+            Vector2 spawnPos = basePos + new Vector2(sign * (i * 1.5f), i * 1.2f);
 
             var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
             drone = droneObj.GetComponent<DokkaebiOrbDrone>();
