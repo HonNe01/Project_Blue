@@ -32,6 +32,8 @@ AnimationClip:
       value: {fileID: -7725018292965192607, guid: a044752c035964522aa2cc86a799967d, type: 3}
     - time: 0.41666666
       value: {fileID: -703587555685413286, guid: a044752c035964522aa2cc86a799967d, type: 3}
+    - time: 0.5
+      value: {fileID: -747125338, guid: a044752c035964522aa2cc86a799967d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -60,12 +62,13 @@ AnimationClip:
     - {fileID: -1958108174731865267, guid: a044752c035964522aa2cc86a799967d, type: 3}
     - {fileID: -7725018292965192607, guid: a044752c035964522aa2cc86a799967d, type: 3}
     - {fileID: -703587555685413286, guid: a044752c035964522aa2cc86a799967d, type: 3}
+    - {fileID: -747125338, guid: a044752c035964522aa2cc86a799967d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -92,7 +95,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.5833333
     functionName: AE_DoStealth
     data: 
     objectReferenceParameter: {fileID: 0}

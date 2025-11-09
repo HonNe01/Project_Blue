@@ -143,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 200
         width: 180
         height: 100
       alignment: 7
@@ -165,7 +165,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 180
-        y: 100
+        y: 200
         width: 180
         height: 100
       alignment: 7
@@ -187,7 +187,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 360
-        y: 100
+        y: 200
         width: 180
         height: 100
       alignment: 7
@@ -209,7 +209,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 100
         width: 180
         height: 100
       alignment: 7
@@ -231,7 +231,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 180
-        y: 0
+        y: 100
         width: 180
         height: 100
       alignment: 7
@@ -253,7 +253,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 360
-        y: 0
+        y: 100
         width: 180
         height: 100
       alignment: 7
@@ -266,6 +266,28 @@ TextureImporter:
       bones: []
       spriteID: a5e4cfa88da5c36f0800000000000000
       internalID: -703587555685413286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Move-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 180
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b87520d7396449784700efa9c5b8e0
+      internalID: -747125338
       vertices: []
       indices: 
       edges: []
@@ -292,6 +314,7 @@ TextureImporter:
       Gildal_Phase2_Move-Sheet_3: -1958108174731865267
       Gildal_Phase2_Move-Sheet_4: -7725018292965192607
       Gildal_Phase2_Move-Sheet_5: -703587555685413286
+      Gildal_Phase2_Move-Sheet_6: -747125338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
