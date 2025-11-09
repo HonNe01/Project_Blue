@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()  // 물리 로직
     {
-        if (PlayerState.instance.isDie) return;
+        if (PlayerState.instance.isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
 
         MovePhysics();
         JumpPhysics();
@@ -111,7 +111,7 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()   // 그래픽 로직
     {
-        if (PlayerState.instance.isDie) return;
+        if (PlayerState.instance.isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
 
         anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
         anim.SetFloat("SpeedY", rb.linearVelocityY);

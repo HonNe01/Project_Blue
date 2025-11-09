@@ -105,7 +105,7 @@ public class PlayerState : MonoBehaviour
 
     private void Update()
     {
-        if (isDie) return;
+        if (isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
 
         // Ground Check
         if (rb.linearVelocityY <= 0)

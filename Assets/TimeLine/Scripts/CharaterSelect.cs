@@ -7,14 +7,14 @@ public class CharaterSelect : MonoBehaviour
 
     [Header("Select")]
     public GameObject selectPanel;
+    public Transform spawnPoint;
 
     [Header("Musin")]
     public bool musinSelected = false;
     private bool musinSelect = false;
     public GameObject musin;
     public GameObject musinEffect;
-    public Transform spawnPoint;
-
+    
     [Header("Moonsin")]
     public bool moonsinSelected = false;
     private bool moonsinSelect = false;
@@ -34,6 +34,8 @@ public class CharaterSelect : MonoBehaviour
             Debug.Log("[Character] Instance Destroy");
             Destroy(gameObject);
         }
+
+        selectPanel.SetActive(false);
     }
 
     public void OnSelect()

@@ -36,6 +36,8 @@ public class PlayerAttack : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (PlayerState.instance.isDie && GameManager.instance.State == GameManager.GameState.Directing) return;
+
         // АјАн
         Attack();
 

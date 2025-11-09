@@ -21,6 +21,8 @@ public class PlayerGuard : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerState.instance.isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
+
         GuardInput();
     }
 

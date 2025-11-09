@@ -188,6 +188,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] VSync : {enable}");
     }
 
+
+    // ===== 게임 상태 관련 =====
     public void OpenMenu(MenuType type)
     {
         if (curMenu == type) return;
@@ -226,7 +228,7 @@ public class GameManager : MonoBehaviour
             if (State != GameState.MainMenu)
             {
                 // 게임 재개
-                State = GameState.Playing;
+                GamePlay();
 
                 Time.timeScale = 1f;
                 CursorDisable();
@@ -305,6 +307,11 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log(sb.ToString());
+    }
+
+    public void GamePlay()
+    {
+        State = GameState.Playing;
     }
 
     public void GameQuit()
@@ -503,7 +510,7 @@ public class GameManager : MonoBehaviour
         else if (scene.name == outpostScene)
         {
             // 게임 씬
-            State = GameState.Playing;
+            GamePlay();
             SoundManager.instance.PlayBGM(SoundManager.BGM.OutPost);
 
             // 마우스 커서 비활성화
@@ -512,7 +519,7 @@ public class GameManager : MonoBehaviour
         else if (scene.name == gildalScene)
         {
             // 게임 씬
-            State = GameState.Playing;
+            GamePlay();
             SoundManager.instance.PlayBGM(SoundManager.BGM.Gildal_Normal);
 
             // 마우스 커서 비활성화
@@ -521,7 +528,7 @@ public class GameManager : MonoBehaviour
         else if (scene.name == cheongryuScene)
         {
             // 게임 씬
-            State = GameState.Playing;
+            GamePlay();
             SoundManager.instance.PlayBGM(SoundManager.BGM.CheongRyu_Normal);
 
             // 마우스 커서 비활성화

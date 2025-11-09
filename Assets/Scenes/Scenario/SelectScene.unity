@@ -3336,37 +3336,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8883574828553166131, guid: 59be03c78c474c547a0221a76f8f1517, type: 3}
   m_PrefabInstance: {fileID: 4931015123244416213}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &914106546
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 914106547}
-  m_Layer: 0
-  m_Name: Effect Group
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &914106547
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914106546}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48692, y: -2.6138, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &919491048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5762,6 +5731,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 131281289824415149, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 231074120795764658, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_Name
+      value: Moonsin Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512122766166433477, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491522072089619532, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_Name
+      value: Musin Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897182005394822479, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429735418107886848, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7384927528032977148, guid: 93520b5f1497c064eb6561fa9850833e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5935,4 +5928,3 @@ SceneRoots:
   - {fileID: 1936152541}
   - {fileID: 190345290}
   - {fileID: 356759923}
-  - {fileID: 914106547}

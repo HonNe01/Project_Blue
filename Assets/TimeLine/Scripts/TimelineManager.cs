@@ -15,7 +15,6 @@ public class TimelineManager : MonoBehaviour
 
     [Header(" Timeline UI")]
     public GameObject continueText;
-    public Image fade;
 
     [Header(" === Signal Setting ===")]
     [Header(" Signal Reference")]
@@ -23,6 +22,7 @@ public class TimelineManager : MonoBehaviour
 
     [Header("Normal Signal")]
     public SignalAsset holdScene;
+    public SignalAsset endTimeline;
 
     [Header("Select Scene Signal")]
     public SignalAsset SelectPanelOpen;
@@ -74,11 +74,15 @@ public class TimelineManager : MonoBehaviour
     public void InitTimeline()
     {
         director = FindAnyObjectByType<PlayableDirector>();
-        if (director != null) receiver = director.gameObject.GetComponent<SignalReceiver>();
+        if (director != null)
+        {
+            receiver = director.gameObject.GetComponent<SignalReceiver>();
 
-        // 시그널 초기화
-        RegistSignal(holdScene, HoldTimeline);
-        RegistSignal(SelectPanelOpen, OpenSelectPanel);
+            // 시그널 초기화
+            RegistSignal(holdScene, HoldTimeline);
+            RegistSignal(SelectPanelOpen, OpenSelectPanel);
+            RegistSignal(endTimeline, EndTimeline);
+        }
     }
 
     // 시그널 초기화
@@ -126,6 +130,11 @@ public class TimelineManager : MonoBehaviour
 
         var rootPlayable = director.playableGraph.GetRootPlayable(0);
         rootPlayable.SetSpeed(1);
+    }
+
+    public void EndTimeline()
+    {
+        GameManager.instance.GamePlay();
     }
 
     // 캐릭터 선택창

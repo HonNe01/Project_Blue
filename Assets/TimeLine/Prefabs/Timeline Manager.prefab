@@ -253,10 +253,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimelineManager
   director: {fileID: 0}
   continueText: {fileID: 7402935940707225979}
-  fade: {fileID: 0}
   receiver: {fileID: 0}
   holdScene: {fileID: 11400000, guid: 839993da325530845a13fc58599d89f2, type: 2}
-  shakeCamera: {fileID: 11400000, guid: 83f3c8abf6fbd224db8ba13586444299, type: 2}
+  endTimeline: {fileID: 11400000, guid: 59198bc50ff16be44a680d758620cac2, type: 2}
   SelectPanelOpen: {fileID: 11400000, guid: 6b69ccb98eccffc46a4e1c22b2500429, type: 2}
   redLightOn: {fileID: 11400000, guid: 2bbd9708ae5ac3b4997d8be7f9bf69c2, type: 2}
   redLightOff: {fileID: 11400000, guid: 62950997dd4965e469690baf75995b8c, type: 2}
