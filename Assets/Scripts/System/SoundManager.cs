@@ -29,8 +29,8 @@ public class SoundManager : MonoBehaviour
     public Slider sfxSlider;
 
     [Header(" === BGM Settings === ")]
-    public AudioClip[] bgmClips;
     public float bgmVolume = 0.5f;
+    public AudioClip[] bgmClips;
     AudioSource bgmPlayer;
 
     public enum SFX
