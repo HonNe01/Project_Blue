@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public enum PortalType { OutPost, Gildal, CheongRyu }
+    public enum PortalType { Ruins, OutPost, Gildal, CheongRyu }
 
     [Header("2 Way Setting")]
     [SerializeField] private PortalType endA;   // 포탈 목적지A
@@ -71,6 +71,7 @@ public class Portal : MonoBehaviour
             // 해당 씬으로 이동
             switch (destination)
             {
+                case PortalType.Ruins:      GameManager.instance.GoToRu();  break;
                 case PortalType.OutPost:    GameManager.instance.GoToOP();  break;
                 case PortalType.Gildal:     GameManager.instance.GoToGD();  break;
                 case PortalType.CheongRyu:  GameManager.instance.GoToCR();  break;

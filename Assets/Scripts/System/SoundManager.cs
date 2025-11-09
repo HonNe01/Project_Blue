@@ -13,10 +13,12 @@ public class SoundManager : MonoBehaviour
         Main, 
 
         // 시나리오
-        Select, Helicopter, Fallen,
+        Select,
+        Fallen_Mission, Fallen_Warning,
+        Ruins,
 
         // 플레이
-        YeonhwaEntrance, OutPost, 
+        OutPost, 
 
         // 보스
         Gildal_Normal, Gildal_Battle,

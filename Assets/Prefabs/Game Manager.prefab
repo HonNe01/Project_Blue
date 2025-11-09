@@ -121,11 +121,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainMenuScene: MainMenu
   selectScene: SelectScene
-  helicopterScene: Helicopter
-  fallenScene: YeonhwaEntrace
+  fallenScene: FallenScene
+  ruinsScene: RuinsScene
   outpostScene: OutPostScene
   gildalScene: GildalScene
   cheongryuScene: CheongRyuScene
+  nextScene: 
   curMenu: 0
   menuPanels:
   - {fileID: 6158779869717764298}

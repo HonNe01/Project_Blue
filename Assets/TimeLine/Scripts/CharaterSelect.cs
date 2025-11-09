@@ -72,7 +72,7 @@ public class CharaterSelect : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == GameManager.instance.fallenScene)
+        if (scene.name == GameManager.instance.ruinsScene)
         {
             if (musinSelect)
             {

@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
 
     [Header(" === Scene Names === ")]
     [SerializeField] public string mainMenuScene = "MainMenu";
-    [SerializeField] public string selectScene = "Choose Charater";
-    [SerializeField] public string helicopterScene = "Helicopter";
-    [SerializeField] public string fallenScene = "YeonhwaEntrace";
+    [SerializeField] public string selectScene = "SelectScene";
+    [SerializeField] public string fallenScene = "FallenScene";
+    [SerializeField] public string ruinsScene = "RuinsScene";
     [SerializeField] public string outpostScene = "OutPostScene";
     [SerializeField] public string gildalScene = "GildalScene";
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
@@ -360,6 +360,13 @@ public class GameManager : MonoBehaviour
         CursorEnable();
     }
 
+    public void GoToRu()
+    {
+        Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {ruinsScene}");
+
+        SceneManager.LoadScene(ruinsScene);
+    }
+
     public void GoToOP()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {outpostScene}");
@@ -389,6 +396,7 @@ public class GameManager : MonoBehaviour
         // 씬 이름에 따른 씬 타입 매핑
         return sceneName switch
         {
+            var name when name == ruinsScene => Portal.PortalType.Ruins,
             var name when name == outpostScene => Portal.PortalType.OutPost,
             var name when name == gildalScene => Portal.PortalType.Gildal,
             var name when name == cheongryuScene => Portal.PortalType.CheongRyu,
@@ -461,21 +469,9 @@ public class GameManager : MonoBehaviour
         {
             // 시나리오 씬
             State = GameState.Directing;
-            nextScene = helicopterScene;
+            nextScene = fallenScene;
             
             SoundManager.instance.PlayBGM(SoundManager.BGM.Select);
-            TimelineManager.instance.PlayTimeline();
-
-            // 마우스 커서 비활성화
-            CursorEnable();
-        }
-        else if (scene.name == helicopterScene)
-        {
-            // 시나리오 씬
-            State = GameState.Directing;
-            nextScene = fallenScene;
-
-            SoundManager.instance.PlayBGM(SoundManager.BGM.Helicopter);
             TimelineManager.instance.PlayTimeline();
 
             // 마우스 커서 비활성화
@@ -485,9 +481,20 @@ public class GameManager : MonoBehaviour
         {
             // 시나리오 씬
             State = GameState.Directing;
-            nextScene = outpostScene;
+            nextScene = ruinsScene;
 
-            SoundManager.instance.PlayBGM(SoundManager.BGM.Fallen);
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Fallen_Mission);
+            TimelineManager.instance.PlayTimeline();
+
+            // 마우스 커서 비활성화
+            CursorEnable();
+        }
+        else if (scene.name == ruinsScene)
+        {
+            // 시나리오 씬
+            State = GameState.Directing;
+
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Ruins);
             TimelineManager.instance.PlayTimeline();
 
             // 마우스 커서 비활성화

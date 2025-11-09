@@ -12,20 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Scenario/SelectScene.unity
     guid: 413edc452836b7f46ad72b612a12c066
   - enabled: 1
-    path: Assets/Scenes/Scenario/Helicopter.unity
+    path: Assets/Scenes/Scenario/FallenScene.unity
     guid: 3ee43ae93ff3729438fe56bfd2f7334f
   - enabled: 1
-    path: Assets/Scenes/Scenario/YeonhwaEntrace.unity
+    path: Assets/Scenes/Scenario/RuinsScene.unity
     guid: 7cd1c7fd6471e5a47bbb380e6df46e3e
   - enabled: 1
     path: Assets/Scenes/OutPostScene.unity
     guid: 850d0ce6f5200ee46926820a24199312
   - enabled: 1
-    path: Assets/Scenes/GildalScene.unity
-    guid: ebd1073cfcc48754ba10637e27e0dd8f
+    path: Assets/Scenes/Boss/GildalScene.unity
+    guid: 956914b53548d944fbe22685ffcbe117
   - enabled: 1
-    path: Assets/Scenes/CheongRyuScene.unity
-    guid: 1b186c1d698e7af4c91e2c9d5b6ff3ae
+    path: Assets/Scenes/Boss/CheongRyuScene.unity
+    guid: 4135a645873f482498641e5fc22a2131
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
