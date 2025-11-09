@@ -1,28 +1,40 @@
 fileFormatVersion: 2
-guid: d7eec8351c1164ebf99421eee15b71f3
+guid: c4ed0b45b8c7d41588aba63696d5c655
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1713735399047588396
-    second: Gildal_Phase2_Sturn-Sheet_0
+      213: 4003214120118838652
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_0
   - first:
-      213: 3445500114706679499
-    second: Gildal_Phase2_Sturn-Sheet_1
+      213: 472181361856439766
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_1
   - first:
-      213: -4627079941897765388
-    second: Gildal_Phase2_Sturn-Sheet_2
+      213: -4313604683064722962
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_2
   - first:
-      213: 2789562121786571191
-    second: Gildal_Phase2_Sturn-Sheet_3
+      213: -8757653284473178681
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_3
   - first:
-      213: 6659114654842521053
-    second: Gildal_Phase2_Sturn-Sheet_4
+      213: 3833323594558050197
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_4
   - first:
-      213: 6081055279215749478
-    second: Gildal_Phase2_Sturn-Sheet_5
+      213: -5959700435015329619
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_5
   - first:
-      213: -2695872326709741315
-    second: Gildal_Phase2_Sturn-Sheet_6
+      213: 7154219449119938980
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_6
+  - first:
+      213: -7881710286483272860
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_7
+  - first:
+      213: -2659469444336056144
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_8
+  - first:
+      213: -6695089030977675150
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_9
+  - first:
+      213: 1243301929017367897
+    second: Gildal_Phase2_DoggaebiOrb-Sheet_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,7 +130,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_0
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -133,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2a6e33044968c710800000000000000
-      internalID: 1713735399047588396
+      spriteID: c75e28548064e8730800000000000000
+      internalID: 4003214120118838652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_1
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_1
       rect:
         serializedVersion: 2
         x: 160
@@ -155,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc6c8aa6910e0df20800000000000000
-      internalID: 3445500114706679499
+      spriteID: 6d5630762768d8600800000000000000
+      internalID: 472181361856439766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_2
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_2
       rect:
         serializedVersion: 2
         x: 320
@@ -177,14 +189,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4fd39d3ee4f49cfb0800000000000000
-      internalID: -4627079941897765388
+      spriteID: ee9377c256ff224c0800000000000000
+      internalID: -4313604683064722962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_3
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 200
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c571f0ecb0967680800000000000000
+      internalID: -8757653284473178681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -199,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b939f358f386b620800000000000000
-      internalID: 2789562121786571191
+      spriteID: 59f81cadf73b23530800000000000000
+      internalID: 3833323594558050197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_4
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -221,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd58c704f7de96c50800000000000000
-      internalID: 6659114654842521053
+      spriteID: da89b2bb704ea4da0800000000000000
+      internalID: -5959700435015329619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_5
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_6
       rect:
         serializedVersion: 2
         x: 320
@@ -243,14 +277,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6692b21ce8f346450800000000000000
-      internalID: 6081055279215749478
+      spriteID: 4a91cfd2fa4e84360800000000000000
+      internalID: 7154219449119938980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Sturn-Sheet_6
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b4f97e04a8e9290800000000000000
+      internalID: -7881710286483272860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -265,8 +321,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df8f8a6f666569ad0800000000000000
-      internalID: -2695872326709741315
+      spriteID: 0b8085f71aaa71bd0800000000000000
+      internalID: -2659469444336056144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27026f89ff34613a0800000000000000
+      internalID: -6695089030977675150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_DoggaebiOrb-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d53a36488114110800000000000000
+      internalID: 1243301929017367897
       vertices: []
       indices: 
       edges: []
@@ -275,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2d15f9f5a630b4964b2abf7da6b0b045
+    spriteID: 6133cfc07ebda4634aa87776612c29f2
     internalID: 0
     vertices: []
     indices: 
@@ -287,13 +387,17 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gildal_Phase2_Sturn-Sheet_0: 1713735399047588396
-      Gildal_Phase2_Sturn-Sheet_1: 3445500114706679499
-      Gildal_Phase2_Sturn-Sheet_2: -4627079941897765388
-      Gildal_Phase2_Sturn-Sheet_3: 2789562121786571191
-      Gildal_Phase2_Sturn-Sheet_4: 6659114654842521053
-      Gildal_Phase2_Sturn-Sheet_5: 6081055279215749478
-      Gildal_Phase2_Sturn-Sheet_6: -2695872326709741315
+      Gildal_Phase2_DoggaebiOrb-Sheet_0: 4003214120118838652
+      Gildal_Phase2_DoggaebiOrb-Sheet_1: 472181361856439766
+      Gildal_Phase2_DoggaebiOrb-Sheet_10: 1243301929017367897
+      Gildal_Phase2_DoggaebiOrb-Sheet_2: -4313604683064722962
+      Gildal_Phase2_DoggaebiOrb-Sheet_3: -8757653284473178681
+      Gildal_Phase2_DoggaebiOrb-Sheet_4: 3833323594558050197
+      Gildal_Phase2_DoggaebiOrb-Sheet_5: -5959700435015329619
+      Gildal_Phase2_DoggaebiOrb-Sheet_6: 7154219449119938980
+      Gildal_Phase2_DoggaebiOrb-Sheet_7: -7881710286483272860
+      Gildal_Phase2_DoggaebiOrb-Sheet_8: -2659469444336056144
+      Gildal_Phase2_DoggaebiOrb-Sheet_9: -6695089030977675150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
