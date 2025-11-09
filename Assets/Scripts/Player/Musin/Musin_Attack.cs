@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Musin_Attack : PlayerAttack
 {
+    [Header(" === Attack === ")]
+    public GameObject chargingEffect;
+    public GameObject chargeEffect;
+
     [Header(" === Default Skill === ")]
     public GameObject skillEffect;
     [Header("Skill Power")]
@@ -50,6 +54,23 @@ public class Musin_Attack : PlayerAttack
     public GameObject _slashJump;
     public float slashspeed = 20f;
 
+    public override void OnCharge()
+    {
+        chargeEffect.SetActive(true);
+    }
+    public override void OffCharge()
+    {
+        chargeEffect.SetActive(false);
+    }
+
+    public override void OnCharging()
+    {
+        chargingEffect.SetActive(true);
+    }
+    public override void OffCharging()
+    {
+        chargingEffect.SetActive(false);
+    }
 
     public override void Skill()
     {

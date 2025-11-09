@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("ChargeAttack")]
     private float AttackTimer = 0f;
-    private float AttackHoldTime = 0.5f;
+    private float AttackHoldTime = 2f;
 
 
     [Header("Skill")]
@@ -108,7 +109,6 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (!comboQueue)
                     {
-                        
                         curCombo++;
                         comboQueue = true;
                     }
@@ -117,8 +117,6 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
-
-        
     }
 
     public virtual IEnumerator Co_Attack()
@@ -130,20 +128,40 @@ public class PlayerAttack : MonoBehaviour
         while (Input.GetKey(KeyCode.V))
         {
             AttackTimer += Time.deltaTime;
+
+            if (AttackTimer >= AttackHoldTime * 0.3f && !isCharge)
+            {
+                OnCharging();
+            }
+
             if (AttackTimer >= AttackHoldTime && !isCharge)
             {
+                OnCharge();
+                OffCharging();
                 isCharge = true;
+                
                 Debug.Log("차지공격 준비");
             }
             yield return null;
         }
         
+        // 차지 완료
         if (AttackTimer >= AttackHoldTime)
         {
+            OffCharge();
             anim.SetTrigger("Attack");
             anim.SetTrigger("ChargeAttack");
+
             Debug.Log("차지공격 실행");
         }
+        // 차지 취소
+        else if (AttackTimer >= AttackHoldTime * 0.3f && AttackTimer <= AttackHoldTime)
+        {
+            OffCharging();
+
+            yield break;
+        }
+        // 일반 공격
         else
         {
             anim.SetTrigger("Attack");
@@ -156,12 +174,10 @@ public class PlayerAttack : MonoBehaviour
         yield return null;
         yield return new WaitForEndOfFrame();
 
-                // 공격 중 멈춤
+        // 공격 중 멈춤
         float attackTime = anim.GetCurrentAnimatorStateInfo(0).length * 0.7f;
         float timer = 0f;
 
-
-                
         while (attackTime > timer)
         {
             DisableOtherAction();
@@ -223,6 +239,23 @@ public class PlayerAttack : MonoBehaviour
         isAttack = false;
         comboQueue = false;
     }
+    public virtual void OnCharging()
+    {
+
+    }
+    public virtual void OffCharging()
+    {
+
+    }
+    public virtual void OnCharge()
+    {
+
+    }
+    public virtual void OffCharge()
+    {
+
+    }
+
     public virtual void JumpAttackStart()
     {
         EffectManager.instance.PlayEffect(EffectManager.EffectType.JumpAttack, transform.position, PlayerState.instance.isRight < 0);

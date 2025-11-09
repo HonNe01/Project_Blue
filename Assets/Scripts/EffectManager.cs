@@ -13,7 +13,7 @@ public class EffectManager : MonoBehaviour
 
         // Attack : 8
         Attack1, Attack2, Attack3,
-        ChargeAttack, UpAttack,
+        ChargeAttack, UpAttack, 
         JumpAttack, JumpUpAttack, DownAttack,
 
         // Skill : 2

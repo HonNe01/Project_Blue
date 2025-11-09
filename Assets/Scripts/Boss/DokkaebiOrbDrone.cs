@@ -22,7 +22,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
     private int baseDamage = 1;
 
     private bool isChase = false;
-    private bool isExploded = false;
+    [SerializeField] private bool isExploded = false;
 
     private void Awake()
     {
@@ -88,18 +88,12 @@ public class DokkaebiOrbDrone : MonoBehaviour
         yield return StartCoroutine(Co_EndStealth());
         yield return null;
 
-        // 불타오름
-        anim.SetTrigger("Fire");
-        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
-
+        // 발사
         StartCoroutine(Co_FireOrb(player));
     }
 
     public IEnumerator Co_FireOrb(Transform player)
     {
-        yield return null;
-
         // 불타오름
         anim.SetTrigger("Fire");
         yield return null;
@@ -111,6 +105,8 @@ public class DokkaebiOrbDrone : MonoBehaviour
             if (t > timeout)
             {
                 StartCoroutine(Co_DoStealth());
+
+                yield break;
             }
             yield return null;
         }

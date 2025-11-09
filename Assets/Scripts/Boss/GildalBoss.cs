@@ -67,6 +67,7 @@ public class GildalBoss : BossBase
     public float slash_cooldown = 2.0f;
     public float slash_preDelay = 0.2f;
     public float slash_postDelay = 0.4f;
+    public float slash_offsetX;
     [Tooltip("Slash 히트 박스 오브젝트")]
     public GameObject slash_Hitbox;
 
@@ -403,22 +404,26 @@ public class GildalBoss : BossBase
             int sign = playerIsRight ? 1 : -1;
             hitbox2.transform.localScale = new Vector3(sign, 1, 1);
         }
+
+        Debug.Log("[Gildal] Flip");
     }
 
     // 특수 패턴 좌우 반전
     private void FlipX_Special()
     {
         if (sprite == null || target == null) return;
-        if (coll_Normal == null || coll_Special) return;
+        if (coll_Normal == null || coll_Special == null) return;
 
         // FlipX ( 길달 FlipX = true는 왼쪽, -1 )
         bool playerIsRight = target.position.x > transform.position.x;
-        float sign = playerIsRight ? 1 : -1;
+        float sign = playerIsRight ? -1 : 31;
         sprite.flipX = !playerIsRight;
 
         coll_Special.offset = new Vector2(Mathf.Abs(coll_Special.offset.x) * sign, coll_Special.offset.y);
         coll_Special.enabled = true;
         coll_Normal.enabled = false;
+
+        Debug.Log("[Gildal] Flip Speical");
     }
 
     private IEnumerator Co_MoveTo(Vector2 pos, float duration, float margin = 0.5f)
@@ -457,7 +462,7 @@ public class GildalBoss : BossBase
             ranOffsetX = Random.value < 0.5f ? -offsetX : offsetX;
 
         // 2) y좌표 보정
-        float groundY = GetFloorY(target.position.y);
+        float groundY = GetFloorY();
 
         // 3) 목표 계산
         float targetX = target.position.x + ranOffsetX;
@@ -472,13 +477,14 @@ public class GildalBoss : BossBase
     }
 
     // Y값 보정
-    private float GetFloorY(float playerY, bool isCenter = false)
+    private float GetFloorY(bool isCenter = false)
     {
+        float targetY = target.position.y;
         float chosen = floorHeights[0];
 
         for (int i = 0; i < floorHeights.Length; i++)
         {
-            if (playerY < floorHeights[i])
+            if (targetY < floorHeights[i])
             {
                 chosen = i == 0 ? floorHeights[0] : floorHeights[i - 1];
 
@@ -621,7 +627,7 @@ public class GildalBoss : BossBase
         Debug.Log("[Gildal] DoubleSlash");
 
         // 1) 플레이어 위치로 이동
-        MoveTo(swing_offsetX);
+        MoveTo(slash_offsetX);
         FlipX(slash_Hitbox);
 
         // 2) 은신 해제
@@ -701,7 +707,7 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Enhance Dokkaeni Orb");
 
-        // 1) 플레이어 근처로 이동
+        // 1) 이동
         float offsetX = Random.value < 0.5f ? (wallXMin + dokkaebiOrb_offsetX) : (wallXMax - dokkaebiOrb_offsetX);
         float offsetY = floorHeights[0];
         transform.position = new Vector2(offsetX, offsetY);
@@ -723,10 +729,11 @@ public class GildalBoss : BossBase
             Vector2 spawnPos = basePos + new Vector2(sign * (1f + i * 1.5f), 2f + i * 1.2f);
 
             var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
-            var drone = droneObj.GetComponent<DokkaebiOrbDrone>();
+            drone = droneObj.GetComponent<DokkaebiOrbDrone>();
 
             // 드론 조작
             StartCoroutine(drone.Co_DroneAuto(target));
+            drone = null;
 
             // 다음 드론 소환 딜레이
             yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
@@ -756,6 +763,9 @@ public class GildalBoss : BossBase
         isSturn = true;
         StopPattern();
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+
+        // 위치 보정
+        transform.position = new Vector2(transform.position.x, GetFloorY());
 
         // 스턴 모션
         anim.SetBool("Sturn", true);
@@ -814,8 +824,10 @@ public class GildalBoss : BossBase
         bool isOnRightWall = transform.position.x > stageCenterX;
         bool isHyungNyeon = !isOnRightWall; // 서쪽(왼쪽) 흉년
 
-        // 1) 플레이어 근처로 이동
-        MoveTo(3f);
+        // 1) 이동
+        float offsetX = Random.value < 0.5f ? (wallXMin + dokkaebiOrb_offsetX) : (wallXMax - dokkaebiOrb_offsetX);
+        float offsetY = floorHeights[0];
+        transform.position = new Vector2(offsetX, offsetY);
         FlipX();
 
         // 2) 은신 해제
@@ -975,12 +987,17 @@ public class GildalBoss : BossBase
         Gizmos.color = Color.red;
 
         // Swing 위치
-        Vector2 spawnPos = new Vector2(target.position.x + swing_offsetX, GetFloorY(target.position.y));
+        Vector2 spawnPos = new Vector2(target.position.x + swing_offsetX, GetFloorY());
         Gizmos.DrawWireCube(spawnPos + offset, size);
         Handles.Label(spawnPos + new Vector2(-1f ,size.y * 1f + 0.2f), "Predicted Swing Pos", EditorStyles.boldLabel);
 
+        // Slash 위치
+        spawnPos = new Vector2(target.position.x + slash_offsetX, GetFloorY());
+        Gizmos.DrawWireCube(spawnPos + offset, size);
+        Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slash Pos", EditorStyles.boldLabel);
+
         // Slam 위치
-        spawnPos = new Vector2(target.position.x + slam_offset.x, GetFloorY(target.position.y) + slam_offset.y);
+        spawnPos = new Vector2(target.position.x + slam_offset.x, GetFloorY() + slam_offset.y);
         Gizmos.DrawWireCube(spawnPos + offset, size);
         Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slam Pos", EditorStyles.boldLabel);
 

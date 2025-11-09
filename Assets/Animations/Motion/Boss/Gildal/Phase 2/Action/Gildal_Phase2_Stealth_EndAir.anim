@@ -77,14 +77,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: AE_StealthSound
+    functionName: AE_EndStealth
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
-    functionName: AE_EndStealth
+  - time: 0
+    functionName: AE_StealthSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
