@@ -164,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -186,7 +186,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -208,7 +208,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -230,7 +230,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -252,7 +252,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -274,7 +274,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -296,7 +296,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -318,7 +318,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -340,7 +340,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -362,7 +362,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -384,7 +384,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -406,7 +406,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -428,7 +428,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -450,7 +450,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -472,7 +472,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -494,7 +494,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -516,7 +516,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -538,7 +538,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -551,6 +551,50 @@ TextureImporter:
       bones: []
       spriteID: abccd5ea26ade4a3d80d0330976c4be5
       internalID: 2594656344748912425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Wall-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c72837559634baa8bf9b867768f4a7
+      internalID: -716022649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Phase2_Wall-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7152ce1ce9b40e4b78e042eebe3135
+      internalID: -886851504
       vertices: []
       indices: 
       edges: []
@@ -581,6 +625,8 @@ TextureImporter:
       Gildal_Phase2_Wall-Sheet_15: -4877312917208786634
       Gildal_Phase2_Wall-Sheet_16: -9143169985080294904
       Gildal_Phase2_Wall-Sheet_17: 2594656344748912425
+      Gildal_Phase2_Wall-Sheet_18: -716022649
+      Gildal_Phase2_Wall-Sheet_19: -886851504
       Gildal_Phase2_Wall-Sheet_2: -1683634940446342453
       Gildal_Phase2_Wall-Sheet_3: 2966787007692514311
       Gildal_Phase2_Wall-Sheet_4: -7453400753641467045
