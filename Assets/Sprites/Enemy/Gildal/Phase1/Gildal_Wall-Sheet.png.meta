@@ -395,7 +395,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -417,7 +417,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -439,7 +439,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -461,7 +461,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -483,7 +483,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 300
+        y: 400
         width: 160
         height: 100
       alignment: 7
@@ -505,7 +505,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -527,7 +527,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -549,7 +549,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -571,7 +571,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -593,7 +593,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 200
+        y: 300
         width: 160
         height: 100
       alignment: 7
@@ -615,7 +615,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -637,7 +637,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -659,7 +659,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -681,7 +681,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -703,7 +703,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 100
+        y: 200
         width: 160
         height: 100
       alignment: 7
@@ -725,7 +725,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -747,7 +747,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 100
         width: 160
         height: 100
       alignment: 7
@@ -760,6 +760,116 @@ TextureImporter:
       bones: []
       spriteID: a4a0bf41238b5410a9c0eed9f188148e
       internalID: 1570126781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Wall-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259371667428842b6a603d6d3c6f0f36
+      internalID: 412867232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Wall-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d5b51c036b941e4ba2fd0f606f2544
+      internalID: -1958215749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Wall-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 100
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c0da0be60dc4b08800b38484632fe2
+      internalID: -292345164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Wall-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a2c7d474e144b07ba43b1e119cf823
+      internalID: 903718570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gildal_Wall-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a8e32eff7814c8bb42d4d80158ab4f
+      internalID: -638816660
       vertices: []
       indices: 
       edges: []
@@ -789,7 +899,12 @@ TextureImporter:
       Gildal_Wall-Sheet_14: 1065660420
       Gildal_Wall-Sheet_15: -1582396654
       Gildal_Wall-Sheet_16: 1570126781
+      Gildal_Wall-Sheet_17: 412867232
+      Gildal_Wall-Sheet_18: -1958215749
+      Gildal_Wall-Sheet_19: -292345164
       Gildal_Wall-Sheet_2: 1380162093
+      Gildal_Wall-Sheet_20: 903718570
+      Gildal_Wall-Sheet_21: -638816660
       Gildal_Wall-Sheet_3: -1737799563
       Gildal_Wall-Sheet_4: 837213159
       Gildal_Wall-Sheet_5: 381553617
