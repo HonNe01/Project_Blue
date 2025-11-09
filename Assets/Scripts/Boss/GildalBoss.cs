@@ -718,6 +718,22 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
         anim?.SetTrigger("DokkaebiOrb");
 
+        // 4) 모션 대기
+        float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
+
+        // 5) 재은신
+        StartCoroutine(Co_DoStealth());
+        yield return new WaitForSeconds(eDokkaebiOrb_postDelay);
+    }
+
+    public void AE_EDroneSet()
+    {
+        StartCoroutine(Co_DroneFire());
+    }
+
+    public IEnumerator Co_DroneFire()
+    {
         // 3) 드론 3체 소환
         bool playerIsRight = target.position.x > transform.position.x;
         int sign = playerIsRight ? 1 : -1;
@@ -730,6 +746,7 @@ public class GildalBoss : BossBase
 
             var droneObj = Instantiate(dronePrefab, spawnPos, Quaternion.identity);
             drone = droneObj.GetComponent<DokkaebiOrbDrone>();
+            yield return null;
 
             // 드론 조작
             StartCoroutine(drone.Co_DroneAuto(target));
@@ -738,14 +755,6 @@ public class GildalBoss : BossBase
             // 다음 드론 소환 딜레이
             yield return new WaitForSeconds(eDokkaebiOrb_preDelay);
         }
-
-        // 4) 모션 대기
-        float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
-        yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
-
-        // 5) 재은신
-        StartCoroutine(Co_DoStealth());
-        yield return new WaitForSeconds(eDokkaebiOrb_postDelay);
     }
 
     public override void TakeDamage(float damage)

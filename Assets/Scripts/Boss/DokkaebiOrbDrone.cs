@@ -28,12 +28,14 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        if (expColl) expColl.enabled = false;
+        if (bodyColl) bodyColl.enabled = false;
     }
 
     private void OnEnable()
     {
-        if (expColl) expColl.enabled = false;
-        if (bodyColl) bodyColl.enabled = true;
+        
     }
 
     private void UpdateFacing(Vector2 dir)
@@ -96,6 +98,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
     {
         // 불타오름
         if (!anim) anim = GetComponent<Animator>();
+        if (bodyColl) bodyColl.enabled = true;
         anim.SetTrigger("Fire");
         yield return null;
 
@@ -205,17 +208,18 @@ public class DokkaebiOrbDrone : MonoBehaviour
             Debug.Log($"[{gameObject.name}] Player Hit!");
             PlayerState.instance.TakeDamage(baseDamage);
 
-            // 폭발 중 아니면 폭발
+            // 폭발
             if (!isExploded)
             {
                 StartCoroutine(Co_Explosion(true));
             }
         }
-        else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform") && !isChase)
+        // 지형 충돌
+        else if (collision.CompareTag("Wall") || collision.CompareTag("Ground") || collision.CompareTag("OneWayPlatform"))
         {
-            // 지형 충돌 : 폭발
-            if (!isExploded)
+            if (!isExploded && !isChase)
             {
+                // 추격 중 아니면 폭발
                 StartCoroutine(Co_Explosion());
             }
         }
