@@ -460,6 +460,7 @@ MonoBehaviour:
   musinSelected: 0
   musin: {fileID: 2085269201776898949, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
   musinEffect: {fileID: 4364466178451848582, guid: 460a0ee070a30b446a84794bc694cde8, type: 3}
+  spawnPoint: {fileID: 4692422127406746902, guid: 9cd52c751ca668448a7cf754b04ec847, type: 3}
   moonsinSelected: 0
   moonsin: {fileID: 2085269201776898949, guid: 4933b68d9ee5f2d42a653cf77be86c7e, type: 3}
   moonsinEffect: {fileID: 6867557495360439920, guid: fd916ef8d740b43459be6d1f374b1e2f, type: 3}

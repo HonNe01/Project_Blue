@@ -13,6 +13,7 @@ public class CharaterSelect : MonoBehaviour
     private bool musinSelect = false;
     public GameObject musin;
     public GameObject musinEffect;
+    public Transform spawnPoint;
 
     [Header("Moonsin")]
     public bool moonsinSelected = false;
@@ -75,7 +76,7 @@ public class CharaterSelect : MonoBehaviour
         {
             if (musinSelect)
             {
-                Instantiate(musin, Vector2.zero, Quaternion.identity);
+                Instantiate(musin, spawnPoint.position, Quaternion.identity);
                 Instantiate(musinEffect, Vector2.zero, Quaternion.identity);
             }
             else if (moonsinSelect)
