@@ -184,6 +184,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
+      propertyPath: m_Color.a
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_SortingLayer
       value: -1
       objectReference: {fileID: 0}
@@ -623,17 +627,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2307768977753520341, guid: d7c257af91873be449023b8c4c87880c, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3163840857716004558, guid: d7c257af91873be449023b8c4c87880c, type: 3}
       propertyPath: m_Name
       value: UI Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7283111578160694510, guid: d7c257af91873be449023b8c4c87880c, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -704,7 +700,7 @@ SpriteRenderer:
   m_SortingLayerID: 56676409
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3465286685962602723, guid: cf1a6cafbff196a409621ec4201c81d2, type: 3}
+  m_Sprite: {fileID: 6937817954938267909, guid: f3dfc9c61a0ee4149aff8e1b246459f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -724,8 +720,8 @@ Transform:
   m_GameObject: {fileID: 936351361}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.22, y: 2.27, z: 0}
-  m_LocalScale: {x: 4.65, y: 4.65, z: 4.65}
+  m_LocalPosition: {x: 1.22, y: -1.15, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 787497745}
@@ -793,6 +789,10 @@ PrefabInstance:
     - target: {fileID: 4124754037307216329, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
+      propertyPath: m_Color.a
+      value: 0.101960786
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_SortingLayer
@@ -1625,6 +1625,14 @@ PrefabInstance:
     - target: {fileID: 3844423571995196673, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028184086434606194, guid: 880ba2025d711934ca3346b01b075423, type: 3}
+      propertyPath: m_Color.a
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028184086434606194, guid: 880ba2025d711934ca3346b01b075423, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5028184086434606194, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_SortingLayer
