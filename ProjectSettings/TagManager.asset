@@ -12,6 +12,7 @@ TagManager:
   - BGM_Slider
   - SFX_Slider
   - Master_Slider
+  - Story_Slider
   layers:
   - Default
   - TransparentFX

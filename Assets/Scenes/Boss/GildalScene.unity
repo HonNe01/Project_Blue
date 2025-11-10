@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_Color.a
-      value: 0.17254902
+      value: 0.49019608
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_SortingLayer
@@ -358,6 +358,14 @@ PrefabInstance:
       propertyPath: airjumpDustEffect
       value: 
       objectReference: {fileID: 1461656304}
+    - target: {fileID: 4785944710395483702, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: guardSize.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785944710395483702, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: guardOffset.y
+      value: 0.525
+      objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.28
@@ -792,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_Color.a
-      value: 0.101960786
+      value: 0.49019608
       objectReference: {fileID: 0}
     - target: {fileID: 5463162717589827237, guid: 1d7aae107892b0845a24904051cc7a49, type: 3}
       propertyPath: m_SortingLayer
@@ -1551,7 +1559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5028184086434606194, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_Color.a
-      value: 0.101960786
+      value: 0.49019608
       objectReference: {fileID: 0}
     - target: {fileID: 5028184086434606194, guid: 880ba2025d711934ca3346b01b075423, type: 3}
       propertyPath: m_Enabled

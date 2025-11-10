@@ -119,7 +119,6 @@ public class HitboxController : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (type)

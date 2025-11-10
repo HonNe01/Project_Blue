@@ -119,15 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26eb5b0ed8656a840946a73b75f207ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  mainMenuScene: MainMenu
-  selectScene: SelectScene
-  fallenScene: FallenScene
-  ruinsScene: RuinsScene
-  outpostScene: OutPostScene
-  gildalScene: GildalScene
-  cheongryuScene: CheongRyuScene
-  nextScene: 
-  curMenu: 0
+  <State>k__BackingField: 0
+  beforeState: 0
+  Menu: 0
   menuPanels:
   - {fileID: 6158779869717764298}
   - {fileID: 2432642499367105365}
@@ -136,6 +130,14 @@ MonoBehaviour:
   - {fileID: 3144893932835244055}
   resolutionDropdown: {fileID: 2991982904516286249}
   inventory: {fileID: 0}
+  mainMenuScene: MainMenu
+  selectScene: SelectScene
+  fallenScene: FallenScene
+  ruinsScene: RuinsScene
+  outpostScene: OutPostScene
+  gildalScene: GildalScene
+  cheongryuScene: CheongRyuScene
+  nextScene: 
 --- !u!1 &149643875396503211
 GameObject:
   m_ObjectHideFlags: 0
@@ -10122,7 +10124,7 @@ GameObject:
   - component: {fileID: 7416944056539784321}
   m_Layer: 5
   m_Name: Story Slider
-  m_TagString: SFX_Slider
+  m_TagString: Story_Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

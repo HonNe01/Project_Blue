@@ -21,11 +21,11 @@ public class PlayerState : MonoBehaviour
 
     [Header("=== Player State ===")]
     [Header("State")]
-    [SerializeField] private float damagedTime;
     public bool isDamaged = false;
-    public bool isDie = false;
+    [SerializeField] private float damagedTime = 0.2f;
     private bool isHit = false;
-    private float hitTime = 0.5f;
+    [SerializeField] private float hitTime = 0.5f;
+    public bool isDie = false;
 
     [Header("Move")]
     public int isRight;
@@ -188,6 +188,30 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    public void Heal(int amount = 1)
+    {
+        if (!UseGauge(20))
+        {
+            isHeal = false;
+            ishealing = false;
+            anim.SetBool("IsHeal", isHeal);
+            anim.SetBool("Healing", ishealing);
+        }
+        else
+        {
+            healPress = false;
+            healTimer = 0;
+            curHP += amount;
+            curHP = Mathf.Clamp(curHP, 0, maxHP);
+            Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
+        }
+    }
+
+    public void HealSound()
+    {
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Healing);
+    }
+
     private IEnumerator DisableHeal()
     {
         yield return new WaitForSeconds(0.5f);
@@ -216,34 +240,18 @@ public class PlayerState : MonoBehaviour
             anim.SetBool("Healing", ishealing);
         }
     }
-    public void HealSound()
-    {
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Healing);
-    }
-
-    public void Heal(int amount = 1)
-    {
-        if (!UseGauge(20))
-        {
-            isHeal = false;
-            ishealing = false;
-            anim.SetBool("IsHeal", isHeal);
-            anim.SetBool("Healing", ishealing);
-        }
-        else
-        {
-            healPress = false;
-            healTimer = 0;
-            curHP += amount;
-            curHP = Mathf.Clamp(curHP, 0, maxHP);
-            Debug.Log("[PlayerState] Player Heal! CurrentHP: " + curHP);
-        }
-    }
-
+    
     public void TakeDamage(int damage = 1)
     {
-        if (isDie) return;
-        if (isHit) return;
+        if (isHit ||isDie) return;
+        isHit = true;
+
+        StartCoroutine(Co_TakeDamage(damage));
+    }
+
+    private IEnumerator Co_TakeDamage(int damage)
+    {
+        yield return null;
 
         // 방어 판정
         if (playerGuard.IsGuard())
@@ -251,49 +259,58 @@ public class PlayerState : MonoBehaviour
             if (playerGuard.IsParry())
             {
                 // 패링 성공
+                isHit = false;
                 playerGuard.Parry();
+                playerGuard.OffGuarded();
 
-                return;
+                yield break;
             }
             else
             {
+                // 방어 성공
+                isHit = false;
                 playerGuard.Guard();
+                playerGuard.OffGuarded();
 
-                return;
+                yield break;
             }
         }
-        
-        // 이동 불능
-        StartCoroutine(Co_DisableAction(damagedTime));
-        // 이미 피격 상태면 무시
-        StartCoroutine(DisableHitbox());
-
-        // 피격 넉백
-        if (isRight > 0)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
-        }
+        // 피격 판정
         else
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
-        }
+            // 이동 불능
+            StartCoroutine(Co_DisableAction(damagedTime));
+            // 이미 피격 상태면 무시
+            StartCoroutine(DisableHitbox());
 
-        // 체력 감소
-        curHP -= damage;
-        curHP = Mathf.Clamp(curHP, 0, maxHP);
+            // 피격 넉백
+            if (isRight > 0)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(new Vector2(-damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(new Vector2(damagedknockbackXForce, damagedknockbackYForce), ForceMode2D.Impulse);
+            }
 
-        // 피격 애니메이션
-        anim.SetTrigger("IsDamaged");
-        Debug.Log($"[PlayerState] Damaged!, Current HP : {curHP}");
+            // 체력 감소
+            curHP -= damage;
+            curHP = Mathf.Clamp(curHP, 0, maxHP);
 
-        // 사망 판정
-        if (curHP <= 0)
-        {
-            Die();
+            // 피격 애니메이션
+            anim.SetTrigger("IsDamaged");
+            Debug.Log($"[PlayerState] Damaged!, Current HP : {curHP}");
+
+            // 사망 판정
+            if (curHP <= 0)
+            {
+                Die();
+            }
         }
     }
+
     IEnumerator DisableHitbox()
     {
         isHit = true;
@@ -316,7 +333,7 @@ public class PlayerState : MonoBehaviour
         anim.SetTrigger("IsDie");
     }
 
-    //skill gauge 관련
+    // skill gauge 관련
     public void AddGauge(int amount)    // 게이지 회복
     {
         currentGauge += amount;
@@ -336,17 +353,7 @@ public class PlayerState : MonoBehaviour
         return true;
     }
 
-    private void OnDrawGizmos()
-    {
-        // Ground Check
-        if (instance != null)
-        {
-            Gizmos.color = isGround ? Color.green : Color.red;
-            Gizmos.DrawWireCube(transform.position, groundCheck);
-        }
-    }
-
-    IEnumerator Co_DisableAction(float duration)
+    IEnumerator Co_DisableAction(float duration)    // 피격시 행동 불능
     {
         isDamaged = true;
         DisableAction();
@@ -362,18 +369,35 @@ public class PlayerState : MonoBehaviour
 
     private void DisableAction()
     {
+        // 조작
         canMove = false;
+        canJump = false;
+        canDash = false;
+
+        // 행동
         canGuard = false;
         canHeal = false;
+        
+        // 공격
+        canAttack = false;
+        canSkill = false;
     }
 
     private void EnableAction()
     {
+        // 조작
         canMove = true;
+        canJump = true;
+        canDash = true;
+
+        // 행동
         canGuard = true;
         canHeal = true;
-    }
 
+        // 공격
+        canAttack = true;
+        canSkill = true;
+    }
 
     private void OnEnable()
     {
@@ -395,6 +419,16 @@ public class PlayerState : MonoBehaviour
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
 
         vcam.Follow = transform;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Ground Check
+        if (instance != null)
+        {
+            Gizmos.color = isGround ? Color.green : Color.red;
+            Gizmos.DrawWireCube(transform.position, groundCheck);
+        }
     }
 }
 

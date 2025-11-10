@@ -159,6 +159,7 @@ public class SoundManager : MonoBehaviour
                 if (slider.CompareTag("Master_Slider")) masterSlider = slider.GetComponent<Slider>();
                 if (slider.CompareTag("BGM_Slider")) bgmSlider = slider.GetComponent<Slider>();
                 if (slider.CompareTag("SFX_Slider")) sfxSlider = slider.GetComponent<Slider>();
+                if (slider.CompareTag("Story_Slider")) storySlider = slider.GetComponent<Slider>();
             }
         }
 
@@ -400,7 +401,7 @@ public class SoundManager : MonoBehaviour
         bgmSlider.value = PlayerPrefs.GetFloat("BGM Volume", 1f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume", 1f);
         storySlider.value = PlayerPrefs.GetFloat("Story Volume", 1f);
-        Debug.Log($"[SoundManager] Volume Load: Master {masterSlider.value}, BGM {bgmSlider.value}, SFX {sfxSlider.value}, Story {storySlider.value}");
+        Debug.Log($"[SoundManager] Volume Load (M: {masterSlider.value}, B: {bgmSlider.value}, S1: {sfxSlider.value}, S2: {storySlider.value})");
 
         UpdateVolumeBGM();
         UpdateVolumeSFX();
