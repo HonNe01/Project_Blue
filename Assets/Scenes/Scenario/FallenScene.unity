@@ -1059,7 +1059,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.819352
+  orthographic size: 4.308314
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3550,11 +3550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.49455
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613240064081090337, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4233,8 +4233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 71.71997, y: 308}
-  m_SizeDelta: {x: 700, y: 50}
+  m_AnchoredPosition: {x: 200, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1853851331
 MonoBehaviour:
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

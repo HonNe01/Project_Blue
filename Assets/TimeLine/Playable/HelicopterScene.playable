@@ -2019,7 +2019,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: sub - helicopter2
+    m_DisplayName: Fallen_Mission 1
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -2465,7 +2465,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: sub - warning
+    m_DisplayName: Fallen_Warning
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -2506,7 +2506,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 1.4
     m_ClipIn: 0
     m_Asset: {fileID: 2707348340804539470}
     m_Duration: 2
@@ -2571,8 +2571,8 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 28.15
-    m_PreExtrapolationTime: 0
+    m_PostExtrapolationTime: 26.75
+    m_PreExtrapolationTime: 1.4
     m_DisplayName: Fade In
   - m_Version: 1
     m_Start: 30.15
@@ -2927,7 +2927,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: sub - warning
+    m_DisplayName: Fallen_Explosion
   m_Markers:
     m_Objects: []
   m_TrackProperties:
