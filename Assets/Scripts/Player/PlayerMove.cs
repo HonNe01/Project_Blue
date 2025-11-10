@@ -349,35 +349,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     void DashInput()
-    {
-        // 대쉬 쿨타임 감소
-        if (dashCooldownCounter > 0f)
-            dashCooldownCounter -= Time.deltaTime;
-
-        // 대쉬 쿨타임 초기화
-        if (PlayerState.instance.isDamaged)
-        {
-            PlayerState.instance.canDash = false;
-            canAirDash = false;
-        }
-        else
-        {
-            if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
-            {
-                PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
-                canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
-            }
-            else if (isTouchingWall) // 벽에 닿으면 공중 대쉬 재사용 가능
-            {
-                PlayerState.instance.canDash = !isDashing && canAirDash;
-                canAirDash = true; // 벽에 닿으면 재사용 가능
-            }
-            else // 공중
-            {
-                PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
-            }
-        }
-        
+    {    
         // 대쉬 실행
         if (Input.GetKeyDown(KeyCode.X) && PlayerState.instance.canDash)
         {
@@ -405,6 +377,34 @@ public class PlayerMove : MonoBehaviour
             {
                 canAirDash = false; // 땅/벽 닿기 전까지 재사용 불가
             }   
+        }
+
+        // 대쉬 쿨타임 감소
+        if (dashCooldownCounter > 0f)
+            dashCooldownCounter -= Time.deltaTime;
+
+        // 대쉬 쿨타임 초기화
+        if (PlayerState.instance.isDamaged)
+        {
+            PlayerState.instance.canDash = false;
+            canAirDash = false;
+        }
+        else
+        {
+            if (PlayerState.instance.isGround) // 지상에서는 쿨다운 체크
+            {
+                PlayerState.instance.canDash = !isDashing && dashCooldownCounter <= 0f;
+                canAirDash = true; // 땅에 닿으면 공중 대쉬 다시 사용 가능
+            }
+            else if (isTouchingWall) // 벽에 닿으면 공중 대쉬 재사용 가능
+            {
+                PlayerState.instance.canDash = !isDashing && canAirDash;
+                canAirDash = true; // 벽에 닿으면 재사용 가능
+            }
+            else // 공중
+            {
+                PlayerState.instance.canDash = !isDashing && canAirDash; // 최초 1회 가능
+            }
         }
     }
 

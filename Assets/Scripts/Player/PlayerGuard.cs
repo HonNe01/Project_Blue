@@ -6,7 +6,7 @@ public class PlayerGuard : MonoBehaviour
     [Header("Guard Setting")]
     [SerializeField] public bool isGuard;               // 가드 버튼 누르는지
     [SerializeField] private float guardTime = 0f;      // 가드한 시간
-    [SerializeField] private float guardDisableTime = 0.5f;
+    [SerializeField] private float guardDisableTime = 1.5f;
 
     [Header("Parry Setting")]
     [SerializeField] private float parrytime = 0.2f;    // 패링 판단 시간
@@ -42,12 +42,13 @@ public class PlayerGuard : MonoBehaviour
         {
             guardTime += Time.deltaTime;
             rb.linearVelocity = Vector2.zero;
-            PlayerState.instance.canMove = false;
+            OnDisableActive();
         }
         else
         {
             guardTime = 0f;
-            PlayerState.instance.canMove = true;
+            OnEnableActive();
+
         }
     }
 
@@ -75,6 +76,26 @@ public class PlayerGuard : MonoBehaviour
 
         StartCoroutine(GuardEnable());
         PlayerState.instance.anim.SetTrigger("IsParry");
+    }
+
+    private void OnDisableActive()
+    {
+        PlayerState.instance.canMove = false;
+        PlayerState.instance.canJump = false;
+        PlayerState.instance.canDash = false;
+        PlayerState.instance.canAttack = false;
+        PlayerState.instance.canHeal = false;
+        PlayerState.instance.canSkill = false;
+    }
+
+    private void OnEnableActive()
+    {
+        PlayerState.instance.canMove = true;
+        PlayerState.instance.canJump = true;
+        PlayerState.instance.canDash = true;
+        PlayerState.instance.canAttack = true;
+        PlayerState.instance.canHeal = true;
+        PlayerState.instance.canSkill = true;
     }
 
     IEnumerator GuardEnable()
