@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerGuard : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class PlayerGuard : MonoBehaviour
 
     [Header("Parry Setting")]
     [SerializeField] private float parrytime = 0.2f;    // 패링 판단 시간
+    private bool isParrySuccess = false;
+    private bool isGuardSuccess = false;
+
+    [Header("Guard direction")]
+    public Vector2 boxSize = new Vector2(1f, 1f);
+    public LayerMask LayerMask = -1;
+    private Collider2D[] cols;
 
     Rigidbody2D rb;
 
@@ -40,6 +48,16 @@ public class PlayerGuard : MonoBehaviour
 
         if (isGuard)
         {
+            Vector2 boxCenter;
+            if (PlayerState.instance.isRight > 0)
+            {
+                boxCenter = (Vector2)transform.position + new Vector2(boxSize.x * 0.25f, 0);
+            }
+            else
+            {
+                boxCenter = (Vector2)transform.position + new Vector2(-boxSize.x * 0.25f, 0);
+            }
+            cols = Physics2D.OverlapBoxAll(boxCenter, boxSize * 0.5f, 0f, LayerMask);
             guardTime += Time.deltaTime;
             rb.linearVelocity = Vector2.zero;
             OnDisableActive();
@@ -54,10 +72,23 @@ public class PlayerGuard : MonoBehaviour
 
     public void Guard()     // 가드 로직
     {
-        Debug.Log("[PlayerState] Guard 성공!");
-
-        StartCoroutine(GuardEnable());
-        PlayerState.instance.anim.SetTrigger("IsBlock");
+        foreach (Collider2D col in cols)
+        {
+            Debug.Log("[PlayerState] Guard 성공!");
+            StartCoroutine(GuardEnable());
+            PlayerState.instance.anim.SetTrigger("IsBlock");
+            isGuardSuccess = true;
+        }
+        if (isGuardSuccess)
+        {
+            isGuardSuccess = false;
+            return;
+        }
+        else
+        {
+            Debug.Log("[PlayerState] Guard 실패!");
+            PlayerState.instance.TakeDamage(1); // 가드 실패시 데미지
+        }
     }
 
     public bool IsGuard()   // 가드 했는지
@@ -72,10 +103,22 @@ public class PlayerGuard : MonoBehaviour
 
     public void Parry()     // 패링 로직
     {
-        Debug.Log("[PlayerState] Parry 성공!");
-
-        StartCoroutine(GuardEnable());
-        PlayerState.instance.anim.SetTrigger("IsParry");
+        foreach (Collider2D col in cols)
+        {
+            Debug.Log("[PlayerState] Parry 성공!");
+            StartCoroutine(GuardEnable());
+            PlayerState.instance.anim.SetTrigger("IsParry");
+            isParrySuccess = true;
+        }
+        if (isParrySuccess)
+        {
+            isParrySuccess = false;
+            return;
+        }
+        else
+        {
+            PlayerState.instance.TakeDamage(1); // 패링 실패시 데미지
+        }
     }
 
     private void OnDisableActive()
@@ -105,5 +148,14 @@ public class PlayerGuard : MonoBehaviour
         yield return new WaitForSeconds(guardDisableTime);
 
         PlayerState.instance.canGuard = true;
+    }
+
+    // 디버그용 가드 범위 시각화
+    private void OnDrawGizmos()
+    {
+
+        Vector2 boxCenter = (Vector2)transform.position + Vector2.right * 0.5f * Mathf.Sign(transform.localScale.x);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }

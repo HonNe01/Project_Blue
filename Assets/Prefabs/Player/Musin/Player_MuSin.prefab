@@ -402,6 +402,11 @@ MonoBehaviour:
   guardTime: 0
   guardDisableTime: 0.5
   parrytime: 0.2
+  character: {fileID: 9141692392611381851}
+  boxSize: {x: 1, y: 1}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 641
 --- !u!114 &2995258539916941256
 MonoBehaviour:
   m_ObjectHideFlags: 0
