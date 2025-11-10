@@ -47,16 +47,17 @@ MonoBehaviour:
   masterSlider: {fileID: 0}
   bgmSlider: {fileID: 0}
   sfxSlider: {fileID: 0}
+  storySlider: {fileID: 0}
+  bgmVolume: 0.4
   bgmClips:
   - {fileID: 8300000, guid: ab0125e1d557a1d4d8fa2c80c3060810, type: 3}
   - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
-  - {fileID: 8300000, guid: 6cb9ff74a536944baab35afe99fc17ba, type: 3}
-  - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
+  - {fileID: 8300000, guid: 4f84cc2837b084a5783ad7ecdaf62d04, type: 3}
+  - {fileID: 8300000, guid: 74aa8ff4436443b4c8147ddc4e5ee661, type: 3}
   - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
   - {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
   - {fileID: 8300000, guid: d4b927ced4f632e4e975188119e8674c, type: 3}
   - {fileID: 8300000, guid: 0f233a6a8e8be854fa0c1c7318ce9bb8, type: 3}
-  bgmVolume: 0.4
   sfxVolume: 0.5
   channelCount: 10
   systemSFXClips:
@@ -90,3 +91,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   - {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
   cheongRyuSFXClips: []
+  storyVolume: 0.5

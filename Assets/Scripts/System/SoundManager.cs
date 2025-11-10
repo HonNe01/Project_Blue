@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +28,7 @@ public class SoundManager : MonoBehaviour
     public Slider masterSlider;
     public Slider bgmSlider;
     public Slider sfxSlider;
+    public Slider storySlider;
 
     [Header(" === BGM Settings === ")]
     public float bgmVolume = 0.5f;
@@ -89,6 +89,10 @@ public class SoundManager : MonoBehaviour
     [Tooltip("")]
     public AudioClip[] cheongRyuSFXClips;
 
+    [Header(" === Story Settings === ")]
+    public float storyVolume = 0.5f;
+    AudioSource storyPlayer;
+
     private void Awake()
     {
         // ÀÎ½ºÅÏ½º ÃÊ±âÈ­
@@ -137,6 +141,9 @@ public class SoundManager : MonoBehaviour
             sfxPlayers[i].playOnAwake = false;
             sfxPlayers[i].loop = false;
         }
+
+        // Story ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+        InitStory();
     }
 
     private void InitSlider()
@@ -161,15 +168,23 @@ public class SoundManager : MonoBehaviour
         {
             sfxPlayers[i].volume = sfxVolume * sfxSlider.value * masterSlider.value;
         }
+        if (storyPlayer != null) storyPlayer.volume = storyVolume * sfxSlider.value * masterSlider.value;
+    }
+
+    public void UpdateVolumeMaster()
+    {
+        // º¼·ý Á¶Á¤
+        UpdateVolumeBGM();
+        UpdateVolumeSFX();
+        UpdateVolumeStory();
+
+        // º¼·ý ÀúÀå
+        PlayerPrefs.SetFloat("Master Volume", masterSlider.value);
+        PlayerPrefs.Save();
     }
 
     public void PlayBGM(BGM bgm)
     {
-        if (bgmPlayer == null)
-        {
-            Debug.Log("[SoundManager] Player Loading...");
-        }
-
         // ¿Àµð¿À ¼±ÅÃ
         AudioClip nextClip = bgmClips[(int)bgm];
         if (bgmPlayer.clip == nextClip) return;
@@ -181,9 +196,14 @@ public class SoundManager : MonoBehaviour
 
     public void UpdateVolumeBGM()
     {
+        // º¼·ý Á¶Á¤
         if (bgmPlayer == null) return;
         
         bgmPlayer.volume = bgmVolume * bgmSlider.value * masterSlider.value;
+
+        // º¼·ý ÀúÀå
+        PlayerPrefs.SetFloat("BGM Volume", bgmSlider.value);
+        PlayerPrefs.Save();
     }
 
     public void FadeBGM(AudioClip nextClip, float fadeTime = 1f)
@@ -341,20 +361,36 @@ public class SoundManager : MonoBehaviour
 
     public void UpdateVolumeSFX()
     {
+        // º¼·ý Á¶Á¤
         if (sfxPlayers == null) return;
-
         foreach (var sfxPlayer in sfxPlayers)
         {
             sfxPlayer.volume = sfxVolume * sfxSlider.value * masterSlider.value;
         }
+
+        // º¼·ý ÀúÀå
+        PlayerPrefs.SetFloat("SFX Volume", sfxSlider.value);
+        PlayerPrefs.Save();
     }
 
-    public void SaveVolume()
+    public void InitStory()
     {
-        PlayerPrefs.SetFloat("Master Volume", masterSlider.value);
-        PlayerPrefs.SetFloat("BGM Volume", bgmSlider.value);
-        PlayerPrefs.SetFloat("SFX Volume", sfxSlider.value);
-        
+        if (TimelineManager.instance != null && TimelineManager.instance.director != null)
+        {
+            storyPlayer = TimelineManager.instance.director.GetComponent<AudioSource>();
+        }
+
+        UpdateVolumeStory();
+    }
+
+    public void UpdateVolumeStory()
+    {
+        // º¼·ý Á¶Á¤
+        if (storyPlayer == null) return;
+        storyPlayer.volume = storyVolume * storySlider.value * masterSlider.value;
+
+        // º¼·ý ÀúÀå
+        PlayerPrefs.SetFloat("Story Volume", storySlider.value);
         PlayerPrefs.Save();
     }
 
@@ -363,8 +399,11 @@ public class SoundManager : MonoBehaviour
         masterSlider.value = PlayerPrefs.GetFloat("Master Volume", 1f);
         bgmSlider.value = PlayerPrefs.GetFloat("BGM Volume", 1f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume", 1f);
+        storySlider.value = PlayerPrefs.GetFloat("Story Volume", 1f);
+        Debug.Log($"[SoundManager] Volume Load: Master {masterSlider.value}, BGM {bgmSlider.value}, SFX {sfxSlider.value}, Story {storySlider.value}");
 
         UpdateVolumeBGM();
         UpdateVolumeSFX();
+        UpdateVolumeStory();
     }
 }

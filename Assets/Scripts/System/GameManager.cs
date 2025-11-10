@@ -7,11 +7,27 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public enum GameState { MainMenu, Playing, Directing, Paused }
-    public GameState State { get; private set; }
+    public enum GameState { None, MainMenu, Playing, Directing, Paused }
+
+    [Header(" === Game State === ")]
+    [field: SerializeField] public GameState State { get; private set; }
+    [SerializeField] private GameState beforeState = GameState.None;
 
     public enum MenuType { None, Pause, Option, Graphic, Audio, Control }
     private Stack<MenuType> menuStack = new Stack<MenuType>();
+
+    [Header(" === UI Reference === ")]
+    [SerializeField] private MenuType Menu = MenuType.None;
+    [SerializeField] private GameObject[] menuPanels;
+
+    [Header("Graphics")]
+    public TMP_Dropdown resolutionDropdown;
+    private List<Resolution> resolutions = new List<Resolution>();
+    private int optimalResolutionIndex = 0;
+
+    [Header("Inventory")]
+    public PlayerInventory inventory;
+
 
     [Header(" === Scene Names === ")]
     [SerializeField] public string mainMenuScene = "MainMenu";
@@ -23,17 +39,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
     [HideInInspector] public string nextScene;
 
-    [Header(" === UI Reference === ")]
-    [SerializeField] private MenuType curMenu = MenuType.None;
-    [SerializeField] private GameObject[] menuPanels;
-
-    [Header("Graphics")]
-    public TMP_Dropdown resolutionDropdown;
-    private List<Resolution> resolutions = new List<Resolution>();
-    private int optimalResolutionIndex = 0;
-
-    [Header("Inventory")]
-    public PlayerInventory inventory;
 
     private void Awake()
     {
@@ -85,7 +90,7 @@ public class GameManager : MonoBehaviour
             }
 
             // 일시정지
-            if (State == GameState.Playing)
+            if (State == GameState.Playing || State == GameState.Directing)
             {
                 OpenMenu(MenuType.Pause);
             }
@@ -96,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 인벤토리 열기
-        if (State == GameState.Playing && curMenu == MenuType.None)
+        if (State == GameState.Playing && Menu == MenuType.None)
         {
             if (Input.GetKeyDown(KeyCode.Tab) && inventory != null)
             {
@@ -192,7 +197,7 @@ public class GameManager : MonoBehaviour
     // ===== 게임 상태 관련 =====
     public void OpenMenu(MenuType type)
     {
-        if (curMenu == type) return;
+        if (Menu == type) return;
 
         // 메뉴 스택 넣기
         menuStack.Push(type);
@@ -206,10 +211,10 @@ public class GameManager : MonoBehaviour
 
     public void CloseMenu()
     {
-        if (curMenu == MenuType.None) return;
+        if (Menu == MenuType.None) return;
 
         // 현재 메뉴 닫기
-        DeActiveMenu(curMenu);
+        DeActiveMenu(Menu);
         menuStack.Pop();
 
         if (menuStack.Count > 0)
@@ -222,7 +227,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // 스택 없음 -> 메뉴 끝
-            curMenu = MenuType.None;
+            Menu = MenuType.None;
 
             // 메뉴 다 닫힘
             if (State != GameState.MainMenu)
@@ -240,12 +245,25 @@ public class GameManager : MonoBehaviour
 
     public void ActiveMenu(MenuType type)
     {
-        if (curMenu == type) return;
+        if (Menu == type) return;
+
+        // 게임 정지
+        if (State != GameState.MainMenu && State != GameState.Paused)
+        {
+            Debug.Log($"[GameManager] Game Paused");
+
+            // 게임 상태 설정
+            beforeState = State;
+            State = GameState.Paused;
+
+            Time.timeScale = 0f;
+            CursorEnable();
+        }
 
         // 기존 메뉴 닫기
-        if (curMenu != MenuType.None)
+        if (Menu != MenuType.None)
         {
-            DeActiveMenu(curMenu);
+            DeActiveMenu(Menu);
         }
 
         // 새 메뉴 열기
@@ -257,16 +275,7 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[GameManager] {type} Panel Open");
         }
 
-        curMenu = type;
-
-        if (State != GameState.MainMenu)
-        {
-            // 게임 상태 설정
-            State = GameState.Paused;
-
-            Time.timeScale = 0f;
-            CursorEnable();
-        }
+        Menu = type;
     }
 
     private void DeActiveMenu(MenuType type)
@@ -311,7 +320,16 @@ public class GameManager : MonoBehaviour
 
     public void GamePlay()
     {
-        State = GameState.Playing;
+        if (State == GameState.Paused)
+        {
+            State = beforeState;
+
+            Debug.Log($"[GameManager] Game Resume");
+        }
+        else
+        {
+            State = GameState.Playing;
+        }
     }
 
     public void GameQuit()
@@ -337,8 +355,7 @@ public class GameManager : MonoBehaviour
 
     public void MasterAudio()
     {
-        BGMAudio();
-        SFXAudio();
+        SoundManager.instance.UpdateVolumeMaster();
     }
 
     public void BGMAudio()
@@ -349,6 +366,11 @@ public class GameManager : MonoBehaviour
     public void SFXAudio()
     {
         SoundManager.instance.UpdateVolumeSFX();
+    }
+
+    public void StoryAudio()
+    {
+        SoundManager.instance.UpdateVolumeStory();
     }
 
     public void GameControl()
@@ -441,7 +463,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GameManager] Scene Load");
 
         // 상태 정리
-        curMenu = MenuType.None;
+        Menu = MenuType.None;
         Time.timeScale = 1f;
         nextScene = null;
 
@@ -453,7 +475,11 @@ public class GameManager : MonoBehaviour
         }
 
         // 타임라인 초기화
-        if (TimelineManager.instance) TimelineManager.instance.InitTimeline();
+        if (TimelineManager.instance)
+        {
+            TimelineManager.instance.InitTimeline();
+            SoundManager.instance.InitStory();
+        }
 
         // 씬 구분
         if (scene.name == mainMenuScene)
@@ -479,6 +505,7 @@ public class GameManager : MonoBehaviour
             nextScene = fallenScene;
             
             SoundManager.instance.PlayBGM(SoundManager.BGM.Select);
+            
             TimelineManager.instance.PlayTimeline();
 
             // 마우스 커서 비활성화

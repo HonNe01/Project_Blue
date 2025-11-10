@@ -10,14 +10,12 @@ public class CharaterSelect : MonoBehaviour
     public Transform spawnPoint;
 
     [Header("Musin")]
-    public bool musinSelected = false;
-    private bool musinSelect = false;
+    [SerializeField] private bool musinSelect = true;
     public GameObject musin;
     public GameObject musinEffect;
     
     [Header("Moonsin")]
-    public bool moonsinSelected = false;
-    private bool moonsinSelect = false;
+    [SerializeField] private bool moonsinSelect = false;
     public GameObject moonsin;
     public GameObject moonsinEffect;
 
@@ -43,6 +41,7 @@ public class CharaterSelect : MonoBehaviour
         Debug.Log("[Character] Select Panel Open");
 
         selectPanel.SetActive(true);
+        GameManager.instance.CursorEnable();
     }
 
     public void SelectMusin()
@@ -53,6 +52,7 @@ public class CharaterSelect : MonoBehaviour
         moonsinSelect = false;
 
         selectPanel.SetActive(false);
+        GameManager.instance.CursorDisable();
         TimelineManager.instance.ResumeTimeline();
     }
 
@@ -64,6 +64,7 @@ public class CharaterSelect : MonoBehaviour
         musinSelect = false;
 
         selectPanel.SetActive(false);
+        GameManager.instance.CursorDisable();
         TimelineManager.instance.ResumeTimeline();
     }
 

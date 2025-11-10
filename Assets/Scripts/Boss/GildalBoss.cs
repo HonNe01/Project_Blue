@@ -186,7 +186,6 @@ public class GildalBoss : BossBase
 
     public void Landing()
     {
-        Debug.Log("[Gildal] Boss Dispatch");
         transform.position = transform.position + new Vector3(0, 15f, 0);
         sprite.enabled = true;
 
@@ -276,7 +275,7 @@ public class GildalBoss : BossBase
     // 페이즈 변경
     protected override IEnumerator Co_PhaseChange()
     {
-        Debug.Log("[Gildal] 페이즈 전환");
+        Debug.Log("[Gildal] Phase Change");
         state = BossState.Directing;
 
         // 1) 플레이어 근처로 이동
@@ -307,7 +306,7 @@ public class GildalBoss : BossBase
 
         // 6) 페이즈 변경 종료
         inPhase2 = true;
-        Debug.Log("[Gildal] 2페이즈 돌입");
+        Debug.Log("[Gildal] Phase 2 Enter");
 
         // 7) 재은신
         yield return StartCoroutine(Co_DoStealth());
@@ -408,8 +407,6 @@ public class GildalBoss : BossBase
             int sign = playerIsRight ? 1 : -1;
             hitbox2.transform.localScale = new Vector3(sign, 1, 1);
         }
-
-        Debug.Log("[Gildal] Flip");
     }
 
     // 특수 패턴 좌우 반전
@@ -426,8 +423,6 @@ public class GildalBoss : BossBase
         coll_Special.offset = new Vector2(Mathf.Abs(coll_Special.offset.x) * sign, coll_Special.offset.y);
         coll_Special.enabled = true;
         coll_Normal.enabled = false;
-
-        Debug.Log("[Gildal] Flip Speical");
     }
 
     private IEnumerator Co_MoveTo(Vector2 pos, float duration, float margin = 0.5f)
@@ -502,8 +497,6 @@ public class GildalBoss : BossBase
     // 1페이즈 패턴
     private IEnumerator Co_Swing()
     {
-        Debug.Log("[Gildal] Swing");
-
         // 1) 플레이어 위치로 이동
         MoveTo(swing_offsetX);
         FlipX(swing_Hitbox);
@@ -532,8 +525,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_Slam()
     {
-        Debug.Log("[Gildal] Slam");
-
         // 1) 플레이어 위치로 이동
         MoveTo(slam_offset.x, slam_offset.y);
         FlipX(slam_Hitbox);
@@ -568,8 +559,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_DokkaebiOrb()
     {
-        Debug.Log("[Gildal] Dokkaebi Orb");
-
         // 1) 플레이어 근처로 이동
         float offsetX = Random.value < 0.5f ? (wallXMin + dokkaebiOrb_offsetX) : (wallXMax - dokkaebiOrb_offsetX);
         float offsetY = floorHeights[0];
@@ -628,8 +617,6 @@ public class GildalBoss : BossBase
     // 2페이즈 패턴
     private IEnumerator Co_DoubleSlash()
     {
-        Debug.Log("[Gildal] DoubleSlash");
-
         // 1) 플레이어 위치로 이동
         MoveTo(slash_offsetX);
         FlipX(slash_Hitbox);
@@ -668,8 +655,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_JumpSlash()
     {
-        Debug.Log("[Gildal] JumpSlash");
-
         // 1) 플레이어 위치로 이동
         MoveTo(slam_offset.x, slam_offset.y);
         FlipX(jumpSlash_Hitbox1, jumpSlash_Hitbox2);
@@ -709,8 +694,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_EDokkaebiOrb()
     {
-        Debug.Log("[Gildal] Enhance Dokkaeni Orb");
-
         // 1) 이동
         float offsetX = Random.value < 0.5f ? (wallXMin + dokkaebiOrb_offsetX) : (wallXMax - dokkaebiOrb_offsetX);
         float offsetY = floorHeights[0];
@@ -772,7 +755,7 @@ public class GildalBoss : BossBase
     protected override IEnumerator Co_Sturn()
     {
         // 스턴 상태 변경
-        Debug.Log("[Gildal] Boss Sturn Start");
+        Debug.Log("[Gildal] Boss Sturn!");
         isSturn = true;
         StopPattern();
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
@@ -787,7 +770,6 @@ public class GildalBoss : BossBase
         anim.SetBool("Sturn", false);
 
         // 상태 복구
-        Debug.Log("[Gildal] Boss Sturn End");
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
         isSturn = false;
@@ -828,6 +810,7 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_RunSpecial(int idx)  // 흉년, 풍년 패턴
     {
+        Debug.Log("[Gildal] Special Pattern");
         specialUsed[idx] = true;
 
         // 0) 준비
@@ -929,8 +912,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_DoPungNyeon()    // 두 층
     {
-        Debug.Log("[Gildal] 풍년이로구나!");
-
         float[] centers = GetFloorCenter();
 
         // 1) 층 선택
@@ -967,8 +948,6 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_DoHyungNyeon()   // 한 층
     {
-        Debug.Log("[Gildal] 흉년이로구나..");
-
         // 1) 층 선택
         float[] centers = GetFloorCenter();
         int floor = Random.Range(0, centers.Length);
