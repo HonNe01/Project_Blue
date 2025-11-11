@@ -66,7 +66,7 @@ public class DokkaebiOrbDrone : MonoBehaviour
 
     public void AE_StealthSound()
     {
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gildal);
+        SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Stealth_Gildal);
     }
 
     // 드론 자동 조작: 은신 해제 -> 돌진/폭발

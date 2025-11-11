@@ -382,10 +382,10 @@ public class GildalBoss : BossBase
     {
         sprite.color = new Color(1, 1, 1, 1);
     }
-
     public void AE_StealthSound()
     {
-        SoundManager.instance.PlaySFX(SoundManager.SFX.Stealth_Gildal);
+        if (inPhase2) SoundManager.instance.PlaySFX(SoundManager.SFX.Phase2_Stealth_Gildal);
+        else SoundManager.instance.PlaySFX(SoundManager.SFX.Phase1_Stealth_Gildal);
     }
 
     // ÁÂ¿ì ¹ÝÀü
