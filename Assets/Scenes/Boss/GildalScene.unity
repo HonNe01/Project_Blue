@@ -221,6 +221,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: gildalSFXClips.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a161527766be241efad062d931d302c5, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1bbb25e64d99d05438edd0a29a8a8b5e, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a86628bd214b934f8fdaa794ade9226, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[10]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e7a70f7ce57c5b4a858358e4185a97d, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[11]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 89dbbb247f62a9b4db70b3320a195ee5, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[12]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a32a0d49cd240b4cb9934adf37a49a5, type: 3}
+    - target: {fileID: 2800518173911106087, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
+      propertyPath: 'gildalSFXClips.Array.data[14]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
     - target: {fileID: 3321525004647849168, guid: ffb83235990b3c34f9041012e856cf5a, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -837,11 +869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876816282052133681, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: orthographic size
-      value: 4.821429
+      value: 4.7460938
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.502222
+      value: -4.0410066
       objectReference: {fileID: 0}
     - target: {fileID: 8801082535052482755, guid: fbfe4b4be3fab3b4a8d858e439592a64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -899,7 +931,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.502222
+      value: -4.0410066
       objectReference: {fileID: 0}
     - target: {fileID: 643130412692132232, guid: 3e194566442353741ba672d2036ab341, type: 3}
       propertyPath: m_LocalPosition.y

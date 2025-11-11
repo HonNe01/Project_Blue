@@ -52,10 +52,12 @@ public class SoundManager : MonoBehaviour
 
         // Enemy
         // - Gildal
-        Landing_Gildal, Start_Gildal, Cry_Gildal, Stealth_Gildal, 
+        Landing_Gildal, Start_Gildal, Cry_Gildal, 
         Sturn_Gildal, Shock_Gildal,
+        Phase1_Stealth_Gildal,
         Phase1_Attack1_Gildal, Phase1_Attack2_Gildal,
         Phase2_Attack1_Gildal, Phase2_Attack2_Gildal,
+        Phase2_Stealth_Gildal,
         Attack3_Gildal, 
         Special_Wave_Charge_Gildal, Special_Wave_Fire_Gildal,
         Explosion_Drone,
