@@ -124,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_0
+      name: Gildal_Phase2_2Attack-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,16 +137,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cc79d6e691568a030800000000000000
-      internalID: 3506163469809194956
+      spriteID: bf50481426eb34e56a4a057b8a793bd2
+      internalID: 513180987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_1
+      name: Gildal_Phase2_2Attack-Sheet_1
       rect:
         serializedVersion: 2
         x: 300
@@ -159,16 +159,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9498df66634672270800000000000000
-      internalID: 8225653429234403657
+      spriteID: 09e79f109c66a43c4ada391e18452771
+      internalID: -1719274132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_2
+      name: Gildal_Phase2_2Attack-Sheet_2
       rect:
         serializedVersion: 2
         x: 600
@@ -181,16 +181,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b218cf6eaee0c5550800000000000000
-      internalID: 6150807593141698859
+      spriteID: 3c3c0119988d347ce9901fea0c82ae06
+      internalID: 550707496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_3
+      name: Gildal_Phase2_2Attack-Sheet_3
       rect:
         serializedVersion: 2
         x: 900
@@ -203,16 +203,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6ed6cb03273393f50800000000000000
-      internalID: 6861572072812604902
+      spriteID: 9adbe3c869c4848efbb8514eabc2bb50
+      internalID: -896152574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_4
+      name: Gildal_Phase2_2Attack-Sheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -225,16 +225,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4f57488c6f7cbb7f0800000000000000
-      internalID: -595662662956452364
+      spriteID: 91c4e7451b1634b929893ad7890eca38
+      internalID: 1620906086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_5
+      name: Gildal_Phase2_2Attack-Sheet_5
       rect:
         serializedVersion: 2
         x: 300
@@ -247,16 +247,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 42d7f94b22af21bb0800000000000000
-      internalID: -4966632412070052572
+      spriteID: b0f861b1821c6448cabd95adcd1f6a8a
+      internalID: -1985635657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_6
+      name: Gildal_Phase2_2Attack-Sheet_6
       rect:
         serializedVersion: 2
         x: 600
@@ -269,16 +269,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e8fa6faa245e6b7d0800000000000000
-      internalID: -2902880835294810226
+      spriteID: c8476d6527243443f86c6d579ca6373b
+      internalID: 1597353740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_7
+      name: Gildal_Phase2_2Attack-Sheet_7
       rect:
         serializedVersion: 2
         x: 900
@@ -293,14 +293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 063e0fd366762458998caa7706ac15e5
-      internalID: -1011746933
+      spriteID: a7ebef689aa3d4a249d6dc032e89943d
+      internalID: -561092051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_8
+      name: Gildal_Phase2_2Attack-Sheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -315,14 +315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6551d1d5eb5004bb8a8629aa18873f81
-      internalID: 1395183785
+      spriteID: 1967486a569294aefb205e24c4e67d7b
+      internalID: 12772983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_9
+      name: Gildal_Phase2_2Attack-Sheet_9
       rect:
         serializedVersion: 2
         x: 300
@@ -337,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50e37dd20ae847bdafdd2fe545a9f30
-      internalID: -864001542
+      spriteID: 6a4eeb602085442caad0d4bdb0995d4c
+      internalID: 51011029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_10
+      name: Gildal_Phase2_2Attack-Sheet_10
       rect:
         serializedVersion: 2
         x: 600
@@ -359,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a03648a53d4344602adf3fcce5366702
-      internalID: -127123219
+      spriteID: 2c4ca3f645fba4a948066d5973941064
+      internalID: 610999869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_11
+      name: Gildal_Phase2_2Attack-Sheet_11
       rect:
         serializedVersion: 2
         x: 900
@@ -381,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01cfe199766f940a4a44aad471b256f4
-      internalID: -1679011276
+      spriteID: 36502fc8122c142f297084bfc13df0f9
+      internalID: 1826160592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gildal_Phase2_Attack-Sheet_12
+      name: Gildal_Phase2_2Attack-Sheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -403,8 +403,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5907c3e757dbc4412ac77451c480ea96
-      internalID: -1284870286
+      spriteID: 1cf62bd3136d544eaa3544941475ae09
+      internalID: -706460433
       vertices: []
       indices: 
       edges: []
@@ -423,21 +423,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gildal_Phase2_Attack-Sheet_0: 3506163469809194956
-      Gildal_Phase2_Attack-Sheet_1: 8225653429234403657
-      Gildal_Phase2_Attack-Sheet_10: -127123219
-      Gildal_Phase2_Attack-Sheet_11: -1679011276
-      Gildal_Phase2_Attack-Sheet_12: -1284870286
-      Gildal_Phase2_Attack-Sheet_2: 6150807593141698859
-      Gildal_Phase2_Attack-Sheet_3: 6861572072812604902
-      Gildal_Phase2_Attack-Sheet_4: -595662662956452364
-      Gildal_Phase2_Attack-Sheet_5: -4966632412070052572
-      Gildal_Phase2_Attack-Sheet_6: -2902880835294810226
-      Gildal_Phase2_Attack-Sheet_7: -1011746933
-      Gildal_Phase2_Attack-Sheet_8: 1395183785
-      Gildal_Phase2_Attack-Sheet_9: -864001542
+      Gildal_Phase2_2Attack-Sheet_0: 513180987
+      Gildal_Phase2_2Attack-Sheet_1: -1719274132
+      Gildal_Phase2_2Attack-Sheet_10: 610999869
+      Gildal_Phase2_2Attack-Sheet_11: 1826160592
+      Gildal_Phase2_2Attack-Sheet_12: -706460433
+      Gildal_Phase2_2Attack-Sheet_2: 550707496
+      Gildal_Phase2_2Attack-Sheet_3: -896152574
+      Gildal_Phase2_2Attack-Sheet_4: 1620906086
+      Gildal_Phase2_2Attack-Sheet_5: -1985635657
+      Gildal_Phase2_2Attack-Sheet_6: 1597353740
+      Gildal_Phase2_2Attack-Sheet_7: -561092051
+      Gildal_Phase2_2Attack-Sheet_8: 12772983
+      Gildal_Phase2_2Attack-Sheet_9: 51011029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
