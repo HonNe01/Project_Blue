@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// [보스 베이스 클래스]
 ///     - 체력 / 페이즈 전환 / I-Frame / 사망 처리
-///     - 기본 FSM 상태 관리 ( Idle -> ChoosePattern -> Attacking -> PhaseChange -> Die )
+///     - 기본 FSM 상태 관리 ( Directing -> Idle -> ChoosePattern -> Attacking -> PhaseChange -> Die )
 ///     - 공통 패턴 시스템 (BossPattern) 제공 : 가중치 + 쿨타임 기반
 ///     - 자식 클래스는 Co_ChoosePattern()과 패턴 코루틴 등의 추가 구현 필요
 /// </summary>
