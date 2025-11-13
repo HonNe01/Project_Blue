@@ -9,6 +9,7 @@ public class Musin_Attack : PlayerAttack
 
     [Header(" === Default Skill === ")]
     public GameObject skillEffect;
+    private bool isSkillCool = false;
     [Header("Skill Power")]
     public float skillknockbackXForce = 7f;
     public float skillknockbackYForce = 2f;
@@ -74,8 +75,10 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill()
     {
+        if (isSkillCool) return;
         if (PlayerState.instance.UseGauge(20))
         {
+            StartCoroutine(Co_SkillCool());
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 1);
             Debug.Log("일반 스킬 사용");
@@ -117,8 +120,10 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill_Up()
     {
+        if(isSkillCool) return;
         if (PlayerState.instance.UseGauge(20))
         {
+            StartCoroutine(Co_SkillCool());
             if (((Musin_State)PlayerState.instance).fireGranade)
             {
                 anim.SetTrigger("Attack");
@@ -192,8 +197,10 @@ public class Musin_Attack : PlayerAttack
 
     public override void Skill_Down()
     {
+        if (isSkillCool) return;
         if (PlayerState.instance.UseGauge(20))
         {
+            StartCoroutine(Co_SkillCool());
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackSkill", 3);
 
@@ -216,8 +223,14 @@ public class Musin_Attack : PlayerAttack
 
         EnableOtherAction();
     }
+    protected IEnumerator Co_SkillCool()
+    {
+        isSkillCool = true;
+        yield return new WaitForSeconds(1f);
+        isSkillCool = false;
+    }
 
-    
+
 
     public override void Attack1Start()
     {

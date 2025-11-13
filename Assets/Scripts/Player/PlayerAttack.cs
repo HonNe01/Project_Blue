@@ -373,6 +373,7 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    
     public void EnableOtherAction()
     {
         PlayerState.instance.canMove = true;
