@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private bool isFirst = true;
 
     public enum GameState { None, MainMenu, Playing, Directing, Paused }
 
@@ -523,7 +524,7 @@ public class GameManager : MonoBehaviour
             // 마우스 커서 비활성화
             CursorEnable();
         }
-        else if (scene.name == ruinsScene)
+        else if (isFirst && scene.name == ruinsScene)
         {
             // 시나리오 씬
             State = GameState.Directing;
@@ -533,6 +534,7 @@ public class GameManager : MonoBehaviour
 
             // 마우스 커서 비활성화
             CursorEnable();
+            isFirst = false;
         }
         else if (scene.name == outpostScene)
         {
