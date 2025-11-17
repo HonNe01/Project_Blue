@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
-  m_Time: 55.11666666666663
+  m_Time: 58.86159542215367
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 1876521ddb360fb4f941738a51cf518c, type: 2}
@@ -3286,7 +3286,7 @@ MonoBehaviour:
     m_Start: 53.11666666666663
     m_ClipIn: 0
     m_Asset: {fileID: 893884334586892748}
-    m_Duration: 2
+    m_Duration: 5.744928755487038
     m_TimeScale: 1
     m_ParentTrack: {fileID: 285980493066685439}
     m_EaseInDuration: 0
