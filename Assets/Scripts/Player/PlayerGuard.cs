@@ -71,11 +71,12 @@ public class PlayerGuard : MonoBehaviour
     public void Guard()     // 가드 로직
     {
         Debug.Log("[PlayerState] Guard!");
-        StartCoroutine(GuardEnable());
+        StartCoroutine(GuardDisable());
         StartCoroutine(Co_Guard());
     }
     private IEnumerator Co_Guard()
     {
+        isGuard = false;
         PlayerState.instance.anim.SetTrigger("IsBlock");
         yield return null;
 
@@ -96,6 +97,7 @@ public class PlayerGuard : MonoBehaviour
     }
     private IEnumerator Co_Parry()
     {
+        isGuard = false;
         PlayerState.instance.anim.SetTrigger("IsParry");
         yield return null;
 
@@ -134,10 +136,10 @@ public class PlayerGuard : MonoBehaviour
         PlayerState.instance.canSkill = true;
     }
 
-    private IEnumerator GuardEnable()
+    private IEnumerator GuardDisable()
     {
         PlayerState.instance.canGuard = false;
-
+        
         yield return new WaitForSeconds(guardDisableTime);
 
         PlayerState.instance.canGuard = true;
