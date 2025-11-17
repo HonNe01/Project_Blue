@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class Musin_Timeline : MonoBehaviour
+public class AE_Timeline : MonoBehaviour
 {
     SpriteRenderer sprite;
 
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+    }
+
+    public void AE_WalkSound()
+    {
+        if (SoundManager.instance) SoundManager.instance.PlaySFX(SoundManager.SFX.Walk);
     }
 
     public void AE_DashSound()
