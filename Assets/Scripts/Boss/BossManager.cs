@@ -18,6 +18,7 @@ public class BossManager : MonoBehaviour
     [Header("Boss Arena")]
     public GameObject arenaEntrance;
     public Collider2D bossCameraArena;
+    public GameObject bossPlatforms;
 
     private CinemachineConfiner2D confiner;
     private Collider2D originCameraArena;
@@ -58,6 +59,7 @@ public class BossManager : MonoBehaviour
 
         SetArenaLocked(true);
         SetBossCamera(true);
+        SetGround(true);
         BossSpawn();
     }
 
@@ -77,6 +79,7 @@ public class BossManager : MonoBehaviour
     {
         SetArenaLocked(false);
         SetBossCamera(false);
+        SetGround(false);
 
         Debug.Log("[BossManager] Boss Battle Finish");
     }
@@ -108,6 +111,13 @@ public class BossManager : MonoBehaviour
     private void SetArenaLocked(bool locked)
     {
         arenaEntrance.SetActive(locked);
+    }
+
+    private void SetGround(bool enable)
+    {
+        if (bossPlatforms == null) return;
+
+        bossPlatforms.SetActive(enable);
     }
 
     private void SetBossCamera(bool enable)
