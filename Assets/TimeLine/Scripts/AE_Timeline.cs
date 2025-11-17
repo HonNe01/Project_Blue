@@ -24,6 +24,11 @@ public class AE_Timeline : MonoBehaviour
         if (EffectManager.instance) EffectManager.instance.PlayEffect(EffectManager.EffectType.Dash, transform.position, sprite.flipX);
     }
 
+    public void Attack1Start()
+    {
+        if (EffectManager.instance) EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1, transform.position, PlayerState.instance.isRight < 0);
+    }
+
     public void AE_Attack1Sound()
     {
         if (EffectManager.instance) EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack1, transform.position, sprite.flipX);

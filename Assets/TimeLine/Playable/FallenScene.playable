@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.AudioPlayableAsset
   m_Clip: {fileID: 8300000, guid: 74aa8ff4436443b4c8147ddc4e5ee661, type: 3}
-  m_Loop: 0
+  m_Loop: 1
   m_bufferingTime: 0.1
   m_ClipProperties:
     volume: 1
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 18.33333333333334
+    m_Start: 16.616666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 1684811004453766189}
     m_Duration: 14.933333333333326
@@ -4098,4 +4098,4 @@ MonoBehaviour:
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 1
+    volume: 0.9

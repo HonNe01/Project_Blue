@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +35,7 @@ public class SoundManager : MonoBehaviour
     public float bgmVolume = 0.5f;
     public AudioClip[] bgmClips;
     AudioSource bgmPlayer;
+
 
     public enum SFX
     {
@@ -71,6 +73,9 @@ public class SoundManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex = 0;
 
+    private float sfxBufferTime = 0.05f;
+    private Dictionary<SFX, float> lastSFXPlayTime = new Dictionary<SFX, float>();
+
     [Header("System")]
     [Tooltip("")]
     public AudioClip[] systemSFXClips;
@@ -90,6 +95,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] gildalSFXClips;
     [Tooltip("")]
     public AudioClip[] cheongRyuSFXClips;
+
 
     [Header(" === Story Settings === ")]
     public float storyVolume = 0.5f;
@@ -266,6 +272,14 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = GetSFX(sfx);
         if (clip == null) return;
 
+        // 사운드 오버 체크
+        float now = Time.time;
+        if (lastSFXPlayTime.TryGetValue(sfx, out float lastTime))
+        {
+            if (now - lastTime < sfxBufferTime) return;
+        }
+        lastSFXPlayTime[sfx] = now;
+
         for (int i = 0; i < sfxPlayers.Length; i++)
         {
             // 비어있는 플레이어 찾기
@@ -280,7 +294,6 @@ public class SoundManager : MonoBehaviour
                 ranIndex = Random.Range(0, 2);
             }
             */
-
 
             channelIndex = loopIndex;
             sfxPlayers[loopIndex].clip = clip; // Random Sound 예시 : sfxPlayers[loopIndex].clip = sfxClip[(int)sfx + ranIndex];
