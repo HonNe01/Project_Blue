@@ -5020,7 +5020,7 @@ GameObject:
   - component: {fileID: 2071568785}
   - component: {fileID: 2071568784}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: TileMap Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
