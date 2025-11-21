@@ -91,7 +91,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -168412677
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5798957361778897971, guid: 8322c2d9ae16645bbb72d09e947dc7c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -114,7 +114,7 @@ Animator:
   m_GameObject: {fileID: 2085269201776898949}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0486731e9892b0f4f823491354a2b9ea, type: 2}
+  m_Controller: {fileID: 22100000, guid: 66415a1dca4ba24478c9230230363704, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -218,9 +218,10 @@ MonoBehaviour:
   playerMove: {fileID: 0}
   playerAttack: {fileID: 0}
   playerGuard: {fileID: 0}
-  cinemachineCamera: {fileID: 0}
-  damagedTime: 0.3
+  cinemachineComposer: {fileID: 0}
   isDamaged: 0
+  damagedTime: 0.3
+  hitTime: 0.5
   isDie: 0
   isRight: 0
   isGround: 1
@@ -234,6 +235,7 @@ MonoBehaviour:
   canGuard: 1
   canHeal: 1
   isHeal: 0
+  ishealing: 0
   maxHP: 5
   healHoldTime: 0.5
   maxGauge: 100
@@ -288,6 +290,12 @@ MonoBehaviour:
   isGuard: 0
   guardTime: 0
   guardDisableTime: 0.5
+  <isGuarded>k__BackingField: 0
+  enemyAttackMask:
+    serializedVersion: 2
+    m_Bits: 0
+  guardSize: {x: 0, y: 0}
+  guardOffset: {x: 0, y: 0}
   parrytime: 0.2
 --- !u!114 &3808332643156549148
 MonoBehaviour:
@@ -304,13 +312,8 @@ MonoBehaviour:
   maxCombo: 3
   curCombo: 0
   comboTime: 1.5
-  _attack1: {fileID: 6115924602441622479}
-  _attack2: {fileID: 2979906348748911168}
-  _attack3: {fileID: 2722666121366175620}
-  _chargeAttack: {fileID: 4138148513470597994}
-  _jumpAttack: {fileID: 8715432015965566512}
-  _upAttack: {fileID: 8052990509291645254}
-  _downattack: {fileID: 4121120796025748153}
+  isAttack: 0
+  comboQueue: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
   _downSkillEffect: {fileID: 0}
@@ -417,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &5321995325623704447
 Animator:
   serializedVersion: 7
@@ -509,7 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &2979906348748911168
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &4151604131255937631
 Animator:
   serializedVersion: 7
@@ -698,7 +707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &4121120796025748153
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 2
+  actType: 0
 --- !u!95 &648328669084210216
 Animator:
   serializedVersion: 7
@@ -887,7 +901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &4138148513470597994
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,6 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &433522226476671422
 Animator:
   serializedVersion: 7
@@ -1076,7 +1095,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &6115924602441622479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &6201203966337424210
 Animator:
   serializedVersion: 7
@@ -1265,7 +1289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &8052990509291645254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &3946747759001717397
 Animator:
   serializedVersion: 7
@@ -1454,7 +1483,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
 --- !u!1 &8715432015965566512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
   type: 0
+  actType: 0
 --- !u!95 &9195865159149762678
 Animator:
   serializedVersion: 7
@@ -1643,4 +1677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3427c39b177454386d9043617cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  anim: {fileID: 0}
+  MoveEffects: []
+  AttackEffects: []
+  SkillEffects: []
+  ModuleEffects: []
+  HitEffect: []
