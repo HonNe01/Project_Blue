@@ -72,6 +72,12 @@ public abstract class BossBase : MonoBehaviour
         switch (state)
         {
             case BossState.Idle:
+                // 게임 플레이 모드 전환
+                if (GameManager.instance.State == GameManager.GameState.Directing)
+                {
+                    GameManager.instance.GamePlay();
+                }
+
                 // 패턴 선택으로 이동
                 state = BossState.ChoosePattern;
 
@@ -86,7 +92,7 @@ public abstract class BossBase : MonoBehaviour
 
                 break;
             case BossState.Directing:
-                // 페이즈 전환
+                // 연출 중
                 
                 break;
             case BossState.Sturn:
@@ -100,7 +106,6 @@ public abstract class BossBase : MonoBehaviour
                 break;
             case BossState.Die:
                 // 사망
-                Die();
 
                 break;
         }
@@ -137,7 +142,7 @@ public abstract class BossBase : MonoBehaviour
         if (curHp <= 0f)
         {
             curHp = 0f;
-            state = BossState.Die;
+            Die();
 
             return;
         }
@@ -176,11 +181,15 @@ public abstract class BossBase : MonoBehaviour
     private void Die()
     {
         if (isDie) return;
-        Debug.Log("[Boss] 보스 사망");
-
         isDie = true;
-        StopPattern();
-        StopAllCoroutines();
+
+        Debug.Log("[Boss] 보스 사망");
+    }
+
+    protected virtual IEnumerator Co_Die()
+    {
+        yield return null;
+
         anim?.SetTrigger("Die");
     }
 

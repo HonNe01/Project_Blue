@@ -105,7 +105,6 @@ public class GildalBoss : BossBase
     public SpriteRenderer sprite;
     public Collider2D coll_Normal;
     public Collider2D coll_Special;
-    private Material stealthMat;
 
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
@@ -118,7 +117,6 @@ public class GildalBoss : BossBase
         specialUsed = new bool[specialHpThresholds.Length];
 
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
-        if (stealthMat == null) stealthMat = sprite.material;
         if (coll_Normal == null) coll_Normal = GetComponents<Collider2D>()[0];
         if (coll_Special == null) coll_Special = GetComponents<Collider2D>()[1];
     }
@@ -174,6 +172,12 @@ public class GildalBoss : BossBase
 
     public override IEnumerator Co_StartBattle()
     {
+        // 연출 모드가 아니면 전환
+        if (GameManager.instance.State != GameManager.GameState.Directing)
+        {
+            GameManager.instance.GameDirecting();
+        }
+
         StartCoroutine(base.Co_StartBattle());
         state = BossState.Directing;
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
@@ -210,6 +214,7 @@ public class GildalBoss : BossBase
         float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
+        GameManager.instance.GamePlay();
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
     }
@@ -232,6 +237,12 @@ public class GildalBoss : BossBase
 
     protected override IEnumerator Co_ChoosePattern()
     {
+        if (isDie)
+        {
+            yield return StartCoroutine(Co_Die());
+        }
+
+        // 페이즈 변경 확인
         if (phaseChange)
         {
             phaseChange = false;
@@ -240,6 +251,7 @@ public class GildalBoss : BossBase
 
             // 패턴 재개
             state = BossState.Idle;
+            yield return StartCoroutine(Co_DoStealth());
             curPatternCoroutine = null;
             yield break;
         }
@@ -277,6 +289,7 @@ public class GildalBoss : BossBase
     {
         Debug.Log("[Gildal] Phase Change");
         state = BossState.Directing;
+        GameManager.instance.GameDirecting();
 
         // 1) 플레이어 근처로 이동
         MoveTo(5f);
@@ -307,9 +320,34 @@ public class GildalBoss : BossBase
         // 6) 페이즈 변경 종료
         inPhase2 = true;
         Debug.Log("[Gildal] Phase 2 Enter");
+        GameManager.instance.GamePlay();
+    }
 
-        // 7) 재은신
+    // 사망
+    protected override IEnumerator Co_Die()
+    {
+        yield return null;
+
+        // 1) 은신
         yield return StartCoroutine(Co_DoStealth());
+
+        // 2) 이동
+        transform.position = BossManager.instance.spawnPoint.position;
+
+        // 3) 은신 해제
+        yield return StartCoroutine(Co_EndStealth());
+
+        // 4) 사망 연출
+        GameManager.instance.GameDirecting();
+        anim?.SetTrigger("Die");
+        yield return null;
+
+        float animLength = anim.GetCurrentAnimatorStateInfo(2).length;
+        yield return new WaitForSeconds(animLength);
+        GameManager.instance.GamePlay();
+
+        StopAllCoroutines();
+        state = BossState.Die;
     }
 
     // 은신 기믹

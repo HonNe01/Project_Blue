@@ -105,7 +105,13 @@ public class PlayerState : MonoBehaviour
 
     private void Update()
     {
-        if (isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
+        // 사망, 연출 상태일 때 동작 중지
+        if (isDie || GameManager.instance.State == GameManager.GameState.Directing)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+            
 
         // Ground Check
         if (rb.linearVelocityY <= 0)

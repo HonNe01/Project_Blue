@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    public static BossManager instance;
+
     public enum BossType { Gildal, Chyeongryu }
 
     [Header(" === Boss Manager === ")]
@@ -25,7 +27,16 @@ public class BossManager : MonoBehaviour
 
     public void Awake()
     {
-        if (arenaEntrance != null)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+            if (arenaEntrance != null)
         {
             arenaEntrance.SetActive(false);
         }

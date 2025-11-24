@@ -333,6 +333,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameDirecting()
+    {
+        Debug.Log("[GameManager] Game Directing");
+
+        State = GameState.Directing;
+    }
+
     public void GameQuit()
     {
 #if UNITY_EDITOR

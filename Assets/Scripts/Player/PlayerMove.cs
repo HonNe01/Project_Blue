@@ -111,8 +111,14 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()   // 그래픽 로직
     {
-        if (PlayerState.instance.isDie || GameManager.instance.State == GameManager.GameState.Directing) return;
+        // 플레이어 사망, 연출 중일 때 동작 중지
+        if (PlayerState.instance.isDie || GameManager.instance.State == GameManager.GameState.Directing)
+        {
+            anim.SetFloat("SpeedX", 0);
+            return;
+        }
 
+        // 애니메이션 파라미터 갱신
         anim.SetFloat("SpeedX", Mathf.Abs(inputValueX));
         anim.SetFloat("SpeedY", rb.linearVelocityY);
 
