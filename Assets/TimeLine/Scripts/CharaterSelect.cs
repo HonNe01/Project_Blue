@@ -13,6 +13,7 @@ public class CharaterSelect : MonoBehaviour
     [SerializeField] private bool musinSelect = true;
     public GameObject musin;
     public GameObject musinEffect;
+    public GameObject musinUI;
     
     [Header("Moonsin")]
     [SerializeField] private bool moonsinSelect = false;
@@ -79,6 +80,7 @@ public class CharaterSelect : MonoBehaviour
         {
             if (musinSelect)
             {
+                Instantiate(musinUI, spawnPoint.position, Quaternion.identity);
                 Instantiate(musin, spawnPoint.position, Quaternion.identity);
                 Instantiate(musinEffect, Vector2.zero, Quaternion.identity);
             }
