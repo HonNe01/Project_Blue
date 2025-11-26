@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: aa2bc02ec6cdf4834905f1c253f42efd
+guid: ae0c9624ed97448e2af617858a49882b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 645411862609229670
-    second: Map_0
+      213: 553775606221290486
+    second: Jangseung_Idle-Sheet_0
+  - first:
+      213: -7956562505432427715
+    second: Jangseung_Idle-Sheet_1
+  - first:
+      213: -7694313225095773425
+    second: Jangseung_Idle-Sheet_2
+  - first:
+      213: 6052935863707745910
+    second: Jangseung_Idle-Sheet_3
+  - first:
+      213: 6856165725509997918
+    second: Jangseung_Idle-Sheet_4
+  - first:
+      213: 5811134349430156823
+    second: Jangseung_Idle-Sheet_5
+  - first:
+      213: -2943880409537618456
+    second: Jangseung_Idle-Sheet_6
+  - first:
+      213: -833973427106993286
+    second: Jangseung_Idle-Sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,243 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Map_0
+      name: Jangseung_Idle-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 100
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e09552f3c7ca349bf97e0f3baa9867fe
-      internalID: 645411862609229670
+      spriteID: 6fbb816daf76fa700800000000000000
+      internalID: 553775606221290486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_1
+      name: Jangseung_Idle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 324
-        y: 320
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 40
+        y: 100
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4c1d383110d5942a79bf7fd501d1b671
-      internalID: -2119239618
+      spriteID: d3312869e8c949190800000000000000
+      internalID: -7956562505432427715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_2
+      name: Jangseung_Idle-Sheet_2
       rect:
         serializedVersion: 2
-        x: 648
-        y: 320
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 80
+        y: 100
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9030e3e859c9a452c8a80ae51772ff28
-      internalID: 1916264973
+      spriteID: f03839353ee483590800000000000000
+      internalID: -7694313225095773425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_3
-      rect:
-        serializedVersion: 2
-        x: 972
-        y: 320
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 152ebef2f4db641e58cbc9c55490ceab
-      internalID: 1448693414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Map_4
+      name: Jangseung_Idle-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 50
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b08794a93db4430d8820b8dfa208b20
-      internalID: 441967567
+      spriteID: 324f9e248a2ee4141a1bc6a9d589c5b4
+      internalID: 6052935863707745910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_5
+      name: Jangseung_Idle-Sheet_4
       rect:
         serializedVersion: 2
-        x: 324
-        y: 160
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 40
+        y: 50
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddcdd5cb45fb4f4a9cc794596238335
-      internalID: 1133817755
+      spriteID: f2082d339c5bf4920b4a7be4b02ea6bb
+      internalID: 6856165725509997918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_6
+      name: Jangseung_Idle-Sheet_5
       rect:
         serializedVersion: 2
-        x: 648
-        y: 160
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 80
+        y: 50
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 519922ba89ed944fe88fada1d21a5ac2
-      internalID: 2068874130
+      spriteID: d8ac41e6831334001a4aba40ff6473e4
+      internalID: 5811134349430156823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_7
-      rect:
-        serializedVersion: 2
-        x: 972
-        y: 160
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d806b65995dfa41cfbea31489b5af7e7
-      internalID: 483241850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Map_8
+      name: Jangseung_Idle-Sheet_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b2436697272436483ffc96cf679451
-      internalID: 818685911
+      spriteID: 814b86dcd57be443c99c57898e005f0c
+      internalID: -2943880409537618456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Map_9
+      name: Jangseung_Idle-Sheet_7
       rect:
         serializedVersion: 2
-        x: 324
+        x: 40
         y: 0
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 40
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ebbd3c20f7b43beb18ddcb7c551dd3
-      internalID: -796620229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Map_10
-      rect:
-        serializedVersion: 2
-        x: 648
-        y: 0
-        width: 324
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9105f20b8b9664b9d9f9b0b9c0a63c8f
-      internalID: -893218184
+      spriteID: 7dda47102fc5f446982005df79dcdccc
+      internalID: -833973427106993286
       vertices: []
       indices: 
       edges: []
@@ -345,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 411a9d53307424acbadd120e43442571
+    spriteID: 457ecdd6d49624326966a31d41150bd7
     internalID: 0
     vertices: []
     indices: 
@@ -355,19 +310,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":324.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Map_0: 645411862609229670
-      Map_1: -2119239618
-      Map_10: -893218184
-      Map_2: 1916264973
-      Map_3: 1448693414
-      Map_4: 441967567
-      Map_5: 1133817755
-      Map_6: 2068874130
-      Map_7: 483241850
-      Map_8: 818685911
-      Map_9: -796620229
+      Jangseung_Idle-Sheet_0: 553775606221290486
+      Jangseung_Idle-Sheet_1: -7956562505432427715
+      Jangseung_Idle-Sheet_2: -7694313225095773425
+      Jangseung_Idle-Sheet_3: 6052935863707745910
+      Jangseung_Idle-Sheet_4: 6856165725509997918
+      Jangseung_Idle-Sheet_5: 5811134349430156823
+      Jangseung_Idle-Sheet_6: -2943880409537618456
+      Jangseung_Idle-Sheet_7: -833973427106993286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
