@@ -946,7 +946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &315080219
 Animator:
   serializedVersion: 7
@@ -2353,6 +2353,17 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &697139006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5019293227919578364, guid: 3e194566442353741ba672d2036ab341, type: 3}
+  m_PrefabInstance: {fileID: 697139003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697139004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &725222103
 GameObject:
   m_ObjectHideFlags: 0
@@ -16333,6 +16344,8 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - 8370290d2044b7045a939ec18c9608a4: {fileID: 1780074516}
+    - 1b89b0fab1ed19b469920cb2fa405c62: {fileID: 697139006}
+    - ba484a818a3fef744962b9651223f8e8: {fileID: 697139006}
     - 48301c00db5cb44459705472a05e57f4: {fileID: 1780074516}
 --- !u!4 &1866438609
 Transform:
