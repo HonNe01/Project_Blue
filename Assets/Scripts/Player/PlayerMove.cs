@@ -150,11 +150,11 @@ public class PlayerMove : MonoBehaviour
             {
                 if (wallDir > 0)
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position + new Vector3(0.5f, 0.7f, 0), false);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position);
                 }
                 else
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position + new Vector3(-0.5f, 0.7f, 0), true);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.Slide, transform.position + new Vector3(-0, 0, 0), true);
                 }
             }
             else
@@ -246,11 +246,11 @@ public class PlayerMove : MonoBehaviour
             //점프 이펙트
             if (PlayerState.instance.isGround)
             {
-                EffectManager.instance.PlayEffect(EffectManager.EffectType.Jump, transform.position + new Vector3(0, 0.2f, 0));
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.Jump, transform.position);
             }
             else
             {
-                EffectManager.instance.PlayEffect(EffectManager.EffectType.AirJump, transform.position + new Vector3(0, 0.2f, 0));
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.AirJump, transform.position);
             }
         }
         // 카운터 갱신
