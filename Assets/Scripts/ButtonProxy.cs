@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ButtonProxy : MonoBehaviour
 {
-    public enum ProxyAction { Start, Credit, Option, Quit }
+    public enum ProxyAction { Start, Credit, Option, Quit , Boss}
     public ProxyAction action;
 
     private void Start()
@@ -30,6 +30,10 @@ public class ButtonProxy : MonoBehaviour
                         break;
                     case ProxyAction.Quit:
                         GameManager.instance.GameQuit();
+
+                        break;
+                    case ProxyAction.Boss:
+                        GameManager.instance.GoToGD();
 
                         break;
                 }
