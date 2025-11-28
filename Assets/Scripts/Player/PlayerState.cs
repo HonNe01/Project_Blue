@@ -145,6 +145,14 @@ public class PlayerState : MonoBehaviour
 
     public void Healing()
     {
+        if (!isHeal)
+        {
+            playerMove.enabled = true;
+        }
+        else
+        {
+            playerMove.enabled = false;
+        }
         if (!canHeal || curHP >= maxHP || currentGauge < 20)
         {
             return;
@@ -171,10 +179,8 @@ public class PlayerState : MonoBehaviour
             healPress = true;
             anim.SetBool("Healing", ishealing);
             anim.SetBool("IsHeal", isHeal);
-            playerMove.enabled = false;
             rb.linearVelocity = Vector2.zero;
         }
-
 
         if (healPress)
         {
@@ -195,10 +201,6 @@ public class PlayerState : MonoBehaviour
                 isHeal = false;
                 healTimer = 0f;
             }
-        }
-        else
-        {
-            playerMove.enabled = true;
         }
     }
 
