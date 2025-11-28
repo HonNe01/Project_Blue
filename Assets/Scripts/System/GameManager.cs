@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     private Stack<MenuType> menuStack = new Stack<MenuType>();
 
     [Header(" === UI Reference === ")]
+    public Image fadeImage;
     [SerializeField] private MenuType Menu = MenuType.None;
     [SerializeField] private GameObject[] menuPanels;
 
@@ -194,6 +197,27 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] VSync : {enable}");
     }
 
+    public IEnumerator Fade(bool isFade = true)
+    {
+        // 페이드 인/아웃 코루틴
+        State = GameState.Directing;
+        
+        float elapsed = 0f;
+        float duration = 1f;
+
+        while (elapsed <= duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = isFade ? Mathf.Clamp01(elapsed / duration) : 1f - Mathf.Clamp01(elapsed / duration);
+            fadeImage.color = new Color(0f, 0f, 0f, alpha);
+            yield return null;
+        }
+
+        fadeImage.color = isFade ? new Color(0f, 0f, 0f, 1f) : new Color(0f, 0f, 0f, 0f);
+
+        // 페이드 완료 후 게임 상태 설정
+        State = GameState.Playing;
+    }
 
     // ===== 게임 상태 관련 =====
     public void OpenMenu(MenuType type)
@@ -401,28 +425,35 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {ruinsScene}");
 
-        SceneManager.LoadScene(ruinsScene);
+        StartCoroutine(NextScene(ruinsScene));
     }
 
     public void GoToOP()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {outpostScene}");
 
-        SceneManager.LoadScene(outpostScene);
+        StartCoroutine(NextScene(outpostScene));
     }
 
     public void GoToGD()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {gildalScene}");
 
-        SceneManager.LoadScene(gildalScene);
+        StartCoroutine(NextScene(gildalScene));
     }
 
     public void GoToCR()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {cheongryuScene}");
 
-        SceneManager.LoadScene(cheongryuScene);
+        StartCoroutine(NextScene(cheongryuScene));
+    }
+
+    public IEnumerator NextScene(string nextScene)
+    {
+        yield return StartCoroutine(Fade(true));
+
+        SceneManager.LoadScene(nextScene);
     }
 
     public Portal.PortalType GetCurrentSceneType()
@@ -493,6 +524,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == mainMenuScene)
         {
             // 메인 메뉴 씬
+            StartCoroutine(Fade(false));
             State = GameState.MainMenu;
             SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
 
@@ -531,22 +563,29 @@ public class GameManager : MonoBehaviour
             // 마우스 커서 비활성화
             CursorEnable();
         }
-        else if (isFirst && scene.name == ruinsScene)
+        else if (scene.name == ruinsScene)
         {
-            // 시나리오 씬
-            State = GameState.Directing;
+            if (isFirst)
+            {
+                // 시나리오 씬
+                isFirst = false;
+                State = GameState.Directing;
+                TimelineManager.instance.PlayTimeline();
+
+                // 마우스 커서 비활성화
+                CursorEnable();
+            }
+            else
+            {
+                StartCoroutine(Fade(false));
+            }
 
             SoundManager.instance.PlayBGM(SoundManager.BGM.Ruins);
-            TimelineManager.instance.PlayTimeline();
-
-            // 마우스 커서 비활성화
-            CursorEnable();
-            isFirst = false;
         }
         else if (scene.name == outpostScene)
         {
             // 게임 씬
-            GamePlay();
+            StartCoroutine(Fade(false));
             SoundManager.instance.PlayBGM(SoundManager.BGM.OutPost);
 
             // 마우스 커서 비활성화
@@ -555,7 +594,7 @@ public class GameManager : MonoBehaviour
         else if (scene.name == gildalScene)
         {
             // 게임 씬
-            GamePlay();
+            StartCoroutine(Fade(false));
             SoundManager.instance.PlayBGM(SoundManager.BGM.Gildal_Normal);
 
             // 마우스 커서 비활성화
@@ -564,7 +603,7 @@ public class GameManager : MonoBehaviour
         else if (scene.name == cheongryuScene)
         {
             // 게임 씬
-            GamePlay();
+            StartCoroutine(Fade(false));
             SoundManager.instance.PlayBGM(SoundManager.BGM.CheongRyu_Normal);
 
             // 마우스 커서 비활성화
