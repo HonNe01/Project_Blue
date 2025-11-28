@@ -147,6 +147,7 @@ public class PlayerState : MonoBehaviour
     {
         if (!isHeal)
         {
+            StartCoroutine(DisableHeal());
             playerMove.enabled = true;
         }
         else
