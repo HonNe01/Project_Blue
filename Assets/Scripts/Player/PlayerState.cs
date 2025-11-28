@@ -69,6 +69,8 @@ public class PlayerState : MonoBehaviour
     public int GaugePercent => (currentGauge * 100) / maxGauge;
 
 
+
+
     private void Awake()
     {
         // 인스턴스
@@ -98,7 +100,6 @@ public class PlayerState : MonoBehaviour
 
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
-
         vcam.Follow = transform;
     }
 
@@ -149,6 +150,20 @@ public class PlayerState : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            isHeal = false;
+            ishealing = false;
+            healPress = false;
+            Debug.Log("힐 취소");
+            anim.SetBool("IsHeal", isHeal);
+            anim.SetBool("Healing", ishealing);
+            healTimer = 0f;
+            healContinew = false;
+            StartCoroutine(DisableHeal());
+            return;
+        }
+
         if (Input.GetKey(KeyCode.F))
         {
             isHeal = true;
@@ -156,21 +171,10 @@ public class PlayerState : MonoBehaviour
             healPress = true;
             anim.SetBool("Healing", ishealing);
             anim.SetBool("IsHeal", isHeal);
-            canMove = false;
+            playerMove.enabled = false;
             rb.linearVelocity = Vector2.zero;
         }
-        else if (Input.GetKeyUp(KeyCode.F))
-        {
-            isHeal = false;
-            ishealing = false;
-            healPress = false;
-            anim.SetBool("IsHeal", isHeal);
-            anim.SetBool("Healing", ishealing);
-            healTimer = 0f;
-            healContinew = false;
-            StartCoroutine(DisableHeal());
-            canMove = true;            
-        }
+
 
         if (healPress)
         {
@@ -182,7 +186,7 @@ public class PlayerState : MonoBehaviour
                 Heal(1);
                 isHeal = false;
                 healTimer = 0f;
-                healContinew = true; 
+                healContinew = true;
             }
             // 이후 반복 힐 (0.5초 간격)
             else if (healContinew && healTimer >= 0.5f)
@@ -191,6 +195,10 @@ public class PlayerState : MonoBehaviour
                 isHeal = false;
                 healTimer = 0f;
             }
+        }
+        else
+        {
+            playerMove.enabled = true;
         }
     }
 
