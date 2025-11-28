@@ -425,10 +425,15 @@ public class PlayerState : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 메인 씬 진입시 파괴
         string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == GameManager.instance.mainMenuScene) Destroy(gameObject);
+        if (sceneName == GameManager.instance.mainMenuScene)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-        // 씬 전환시 카메라 할당
+        // 씬 전환시 메인 카메라 할당
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
 

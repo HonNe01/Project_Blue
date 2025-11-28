@@ -39,21 +39,21 @@ public class SoundManager : MonoBehaviour
 
     public enum SFX
     {
-        // System
+        // System : 1
         Click,
 
-        // Player
+        // Player : 4
         Walk, Jump, Dash, Healing,
-        // - Musin
+        // - Musin : 5
         Attack1_Musin, Attack2_Musin, Attack3_Musin, ChargeAttack_Musin,
 
 
         Attack_Hit,
-        // - Moonsin
+        // - Moonsin : 0
 
 
-        // Enemy
-        // - Gildal
+        // Enemy : 0
+        // - Gildal : 15
         Landing_Gildal, Start_Gildal, Cry_Gildal, 
         Sturn_Gildal, Shock_Gildal,
         Phase1_Stealth_Gildal,
