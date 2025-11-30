@@ -33,7 +33,7 @@ public class PlayerState : MonoBehaviour
     public bool canMove = true;
     public bool canDash = true;
     public bool canJump = true;
-    [HideInInspector] public Vector2 groundCheck = new Vector2(0.5f, 0.05f);
+    public Vector2 groundCheck = new Vector2(0.2f, 0.05f);
 
     [Header("Attack")]
     public bool canAttack = true;
@@ -446,11 +446,8 @@ public class PlayerState : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Ground Check
-        if (instance != null)
-        {
-            Gizmos.color = isGround ? Color.green : Color.red;
-            Gizmos.DrawWireCube(transform.position, groundCheck);
-        }
+        Gizmos.color = isGround ? Color.green : Color.red;
+        Gizmos.DrawWireCube(transform.position, groundCheck);
     }
 }
 

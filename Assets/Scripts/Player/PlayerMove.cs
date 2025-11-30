@@ -7,7 +7,6 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5f;        // 이동속도
     private float inputValueX;
 
-
     [Header("Jump Setting")]
     public float jumpForce = 12f;       // 점프 파워
     public float jumpTimeMax = 0.3f;    // 점프 키 입력 유지 최대 시간
@@ -50,16 +49,11 @@ public class PlayerMove : MonoBehaviour
     public GameObject jumpDustEffect;
     public GameObject airjumpDustEffect;
 
-
-    //[Header("가드")]
-    //Player_Guard _playerGuard;
-
     // PlayerState 참조
     Animator anim;
     Rigidbody2D rb;
     Collider2D coll;
     SpriteRenderer sprite;
-
 
     void Start()
     {

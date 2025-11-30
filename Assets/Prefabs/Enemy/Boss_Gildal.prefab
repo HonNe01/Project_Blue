@@ -1024,7 +1024,7 @@ SpriteRenderer:
   m_SortingLayerID: -61198025
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1380162093, guid: 4ba32fbbcaa3ff44cb917c1057ea217a, type: 3}
+  m_Sprite: {fileID: 1207915632, guid: 68ee07c4d0a7b4bb1a9737ed09036a82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -1099,7 +1099,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.390625, y: 0.15}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 8, y: 5}
     newSize: {x: 9.375, y: 5}
     adaptiveTilingThreshold: 0.5
@@ -1163,8 +1163,8 @@ MonoBehaviour:
   pattern_Delay: 0.35
   sturn_Delay: 2
   reStealth_Delay: 0.8
-  wallXMin: -8.2
-  wallXMax: 7.46
+  wallXMin: -9
+  wallXMax: 9
   swing_weight: 4
   swing_cooldown: 2
   swing_preDelay: 0
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   dokkaebiOrb_preDelay: 0.2
   dokkaebiOrb_postDelay: 1
   dokkaebiOrbSpawn_Offset: {x: 1.51, y: 4}
-  dokkaebiOrb_offsetX: 0
+  dokkaebiOrb_offsetX: 1.3
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   slash_weight: 4
   slash_cooldown: 2
@@ -1212,8 +1212,7 @@ MonoBehaviour:
   spawnSpacing: 5
   spawnDelay: 0.1
   sprite: {fileID: 0}
-  coll_Normal: {fileID: 0}
-  coll_Special: {fileID: 0}
+  coll: {fileID: 0}
 --- !u!114 &8670731891582766443
 MonoBehaviour:
   m_ObjectHideFlags: 0

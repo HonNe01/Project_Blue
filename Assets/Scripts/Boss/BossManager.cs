@@ -1,4 +1,5 @@
 using Unity.Cinemachine;
+using UnityEditor;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
@@ -155,6 +156,24 @@ public class BossManager : MonoBehaviour
         if (!isBattle && isFirst && collision.CompareTag("Player"))
         {
             BattleStart();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 보스 카메라 영역 그리기
+        if (bossCameraArena != null)
+        {
+            // 기본 색상 설정
+            Gizmos.color = Color.green;
+
+            // 콜라이더의 경계 상자 그리기
+            Bounds bounds = bossCameraArena.bounds;
+            Gizmos.DrawWireCube(bounds.center, bounds.size);
+
+            // 네임택 라벨
+            Vector3 labelPos = new Vector3(bounds.min.x, bounds.max.y + 0.2f, bounds.center.z);
+            Handles.Label(labelPos, "Boss Camera Arena");
         }
     }
 }

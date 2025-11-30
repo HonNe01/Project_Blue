@@ -89,7 +89,7 @@ public class GildalBoss : BossBase
 
     [Header(" === Special Patterns === ")]
     [Header("Famine / abundance")]
-    public float[] specialHpThresholds = new float[] { 75f, 50f, 25f };
+    public float[] specialHpPer = new float[] { 0.7f, 0.4f, 0.1f };
     public float special_preDelay = 0.2f;
     public float special_postDelay = 0.2f;
     public int baseDronesPerLayer = 2;
@@ -103,8 +103,7 @@ public class GildalBoss : BossBase
     [Header("References")]
     [Tooltip("길달 본체 스프라이트 (flipX 제어용)")]
     public SpriteRenderer sprite;
-    public Collider2D coll_Normal;
-    public Collider2D coll_Special;
+    public Collider2D coll;
 
     // 길달 패턴 리스트
     private readonly List<BossPattern> phase1Patterns = new();
@@ -114,19 +113,17 @@ public class GildalBoss : BossBase
     {
         base.Awake();
 
-        specialUsed = new bool[specialHpThresholds.Length];
+        specialUsed = new bool[specialHpPer.Length];
 
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
-        if (coll_Normal == null) coll_Normal = GetComponents<Collider2D>()[0];
-        if (coll_Special == null) coll_Special = GetComponents<Collider2D>()[1];
+        if (coll == null) coll = GetComponents<Collider2D>()[0];
     }
 
     private void Start()
     {
         sprite.enabled = false;
 
-        coll_Normal.enabled = true;
-        coll_Special.enabled = false;
+        coll.enabled = true;
         
         bossLayer = LayerMask.NameToLayer("Enemy");
         playerLayer = LayerMask.NameToLayer("Player");
@@ -447,22 +444,6 @@ public class GildalBoss : BossBase
         }
     }
 
-    // 특수 패턴 좌우 반전
-    private void FlipX_Special()
-    {
-        if (sprite == null || target == null) return;
-        if (coll_Normal == null || coll_Special == null) return;
-
-        // FlipX ( 길달 FlipX = true는 왼쪽, -1 )
-        bool playerIsRight = target.position.x > transform.position.x;
-        float sign = playerIsRight ? -1 : 31;
-        sprite.flipX = !playerIsRight;
-
-        coll_Special.offset = new Vector2(Mathf.Abs(coll_Special.offset.x) * sign, coll_Special.offset.y);
-        coll_Special.enabled = true;
-        coll_Normal.enabled = false;
-    }
-
     private IEnumerator Co_MoveTo(Vector2 pos, float duration, float margin = 0.5f)
     {
         if (sprite == null || target == null) yield break;
@@ -572,9 +553,6 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_EndStealth(true));
         anim?.SetTrigger("SlamPrep");
         yield return new WaitForSeconds(slam_preDelay);
-
-        // 충돌 무시 (복구는 Co_MoveTo에서)
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
 
         // 3) 공격
         yield return StartCoroutine(Co_MoveTo(dest, 0.2f));
@@ -833,10 +811,11 @@ public class GildalBoss : BossBase
     private void CheckSpecialTrigger()
     {
         if (isSpecial) return;
+        float hpRatio = curHp / maxHp;
 
-        for (int i = 0; i < specialHpThresholds.Length; i++)
+        for (int i = 0; i < specialHpPer.Length; i++)
         {
-            if (!specialUsed[i] && curHp <= specialHpThresholds[i])
+            if (!specialUsed[i] && hpRatio <= specialHpPer[i])
             {
                 isSpecial = true;
                 specialIndex = i;
@@ -886,8 +865,8 @@ public class GildalBoss : BossBase
         // 4) 벽 이동
         float groundYWall = floorHeights[1];
         float wallX = isHyungNyeon ? wallXMin : wallXMax;
+        sprite.flipX = isHyungNyeon ? false : true;
         transform.position = new Vector2(wallX, groundYWall);
-        FlipX_Special();
 
         anim?.SetTrigger("SpecialPrep2");
         yield return null;  // 1프레임 대기 -> Animator의 state 갱신 대기
@@ -910,8 +889,6 @@ public class GildalBoss : BossBase
             yield return StartCoroutine(Co_DoPungNyeon());
 
         yield return StartCoroutine(Co_DoStealth(true));
-        coll_Normal.enabled = true;
-        coll_Special.enabled = false;
     }
 
     // 각 층 중심 y좌표 반환
@@ -1006,39 +983,52 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
 
-#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (target == null || coll_Normal == null) return;
+        // 각 패턴 예상 위치 표시
+        if (target != null)
+        {
+            Gizmos.color = Color.red;
+            Vector2 offset = coll.offset;
+            Vector2 size = coll.bounds.size;
+            
+            // Swing 위치
+            Vector2 spawnPos = new Vector2(target.position.x + swing_offsetX, GetFloorY());
+            Gizmos.DrawWireCube(spawnPos + offset, size);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Swing Pos", EditorStyles.boldLabel);
 
-        Vector2 offset = coll_Normal.offset;
-        Vector2 size = coll_Normal.bounds.size;
+            // Slash 위치
+            spawnPos = new Vector2(target.position.x + slash_offsetX, GetFloorY());
+            Gizmos.DrawWireCube(spawnPos + offset, size);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slash Pos", EditorStyles.boldLabel);
 
-        Gizmos.color = Color.red;
+            // Slam 위치
+            spawnPos = new Vector2(target.position.x + slam_offset.x, GetFloorY() + slam_offset.y);
+            Gizmos.DrawWireCube(spawnPos + offset, size);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slam Pos", EditorStyles.boldLabel);
 
-        // Swing 위치
-        Vector2 spawnPos = new Vector2(target.position.x + swing_offsetX, GetFloorY());
-        Gizmos.DrawWireCube(spawnPos + offset, size);
-        Handles.Label(spawnPos + new Vector2(-1f ,size.y * 1f + 0.2f), "Predicted Swing Pos", EditorStyles.boldLabel);
+            // DokkaebiOrb 위치
+            spawnPos = new Vector2(wallXMin + dokkaebiOrb_offsetX, floorHeights[0]);
+            Gizmos.DrawWireCube(spawnPos + offset, size);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
 
-        // Slash 위치
-        spawnPos = new Vector2(target.position.x + slash_offsetX, GetFloorY());
-        Gizmos.DrawWireCube(spawnPos + offset, size);
-        Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slash Pos", EditorStyles.boldLabel);
+            spawnPos = new Vector2(wallXMax - dokkaebiOrb_offsetX, floorHeights[0]);
+            Gizmos.DrawWireCube(spawnPos + offset, size);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
+        }
 
-        // Slam 위치
-        spawnPos = new Vector2(target.position.x + slam_offset.x, GetFloorY() + slam_offset.y);
-        Gizmos.DrawWireCube(spawnPos + offset, size);
-        Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slam Pos", EditorStyles.boldLabel);
+        // 보스맵 경계 표시
+        if (coll != null)
+        {
+            Gizmos.color = Color.cyan;
+            float wallLeft = wallXMin - (coll.bounds.size.x / 2);
+            float wallRight = wallXMax + (coll.bounds.size.x / 2);
 
-        // DokkaebiOrb 위치
-        spawnPos = new Vector2(wallXMin + dokkaebiOrb_offsetX, floorHeights[0]);
-        Gizmos.DrawWireCube(spawnPos + offset, size);
-        Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
-
-        spawnPos = new Vector2(wallXMax - dokkaebiOrb_offsetX, floorHeights[0]);
-        Gizmos.DrawWireCube(spawnPos + offset, size);
-        Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
+            Gizmos.DrawLine(new Vector2(wallLeft, floorHeights[0]), new Vector2(wallLeft, floorHeights[floorHeights.Length - 1]));
+            Gizmos.DrawLine(new Vector2(wallRight, floorHeights[0]), new Vector2(wallRight, floorHeights[floorHeights.Length - 1]));
+            Handles.Label(new Vector2(wallXMin, floorHeights[floorHeights.Length - 1]) + Vector2.up * 0.2f, "Wall X Min");
+            Handles.Label(new Vector2(wallXMax, floorHeights[floorHeights.Length - 1]) + Vector2.up * 0.2f, "Wall X Max");
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -1051,5 +1041,4 @@ public class GildalBoss : BossBase
 
         Handles.Label(orbPos + Vector2.up * (0.1f + 0.1f), "Drone Spawn Position");
     }
-#endif
 }

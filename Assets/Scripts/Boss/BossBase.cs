@@ -130,7 +130,11 @@ public abstract class BossBase : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         if (state == BossState.Die) return;
-        if (isInvulnerable) return;     // I-Frame 중 무시
+        if (isInvulnerable)
+        {
+            Debug.Log("[Boss] I-Frame Active - No Damage Taken");
+            return;     // I-Frame 중 무시
+        }
 
         curHp -= damage;
 

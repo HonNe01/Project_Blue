@@ -115,133 +115,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Musin_wallattach-Sheet_0
+      name: Musin_WallSliding-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3823f4604dc905dc0800000000000000
-      internalID: -3652246863344618877
+      spriteID: 27edb06694e5b0143a23e6119c80b903
+      internalID: 2007052669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattach-Sheet_1
+      name: Musin_WallSliding-Sheet_1
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 20d61e1c32d6e2620800000000000000
-      internalID: 2751256422714010882
+      spriteID: ae939dc140ad5c84f9d923f430467c89
+      internalID: 65861630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattach-Sheet_2
+      name: Musin_WallSliding-Sheet_2
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 003904a97d9f0e4a0800000000000000
-      internalID: -6565973552304975104
+      spriteID: 7587b398469eabd47ac3eb9cbada36fa
+      internalID: 1462465215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattach-Sheet_3
+      name: Musin_WallSliding-Sheet_3
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 48d12bec63eb5d4e0800000000000000
-      internalID: -1957449320417321596
+      spriteID: 0da02fa14c3cf264eb9f05c6a8de7539
+      internalID: -630441416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattach-Sheet_4
+      name: Musin_WallSliding-Sheet_4
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ef86c71c8dfb87c10800000000000000
-      internalID: 2051600567947258110
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Musin_wallattach-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b559fad28dd067f0800000000000000
-      internalID: -621253194487867975
+      spriteID: 02439022e592f734a96683ddc1c8b93a
+      internalID: 305290064
       vertices: []
       indices: 
       edges: []
@@ -260,14 +238,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.6000000238418579,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Musin_wallattach-Sheet_0: -3652246863344618877
-      Musin_wallattach-Sheet_1: 2751256422714010882
-      Musin_wallattach-Sheet_2: -6565973552304975104
-      Musin_wallattach-Sheet_3: -1957449320417321596
-      Musin_wallattach-Sheet_4: 2051600567947258110
-      Musin_wallattach-Sheet_5: -621253194487867975
+      Musin_WallSliding-Sheet_0: 2007052669
+      Musin_WallSliding-Sheet_1: 65861630
+      Musin_WallSliding-Sheet_2: 1462465215
+      Musin_WallSliding-Sheet_3: -630441416
+      Musin_WallSliding-Sheet_4: 305290064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
