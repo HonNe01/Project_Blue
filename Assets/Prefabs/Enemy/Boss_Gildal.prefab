@@ -947,7 +947,6 @@ GameObject:
   - component: {fileID: 7783108065526105649}
   - component: {fileID: 6833678964055669684}
   - component: {fileID: 7177458767277867851}
-  - component: {fileID: 2986117634561265590}
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
   - component: {fileID: 8670731891582766443}
@@ -1025,7 +1024,7 @@ SpriteRenderer:
   m_SortingLayerID: -61198025
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -676993076, guid: 68ee07c4d0a7b4bb1a9737ed09036a82, type: 3}
+  m_Sprite: {fileID: 1380162093, guid: 4ba32fbbcaa3ff44cb917c1057ea217a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -1100,7 +1099,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.390625, y: 0.15}
     oldSize: {x: 8, y: 5}
     newSize: {x: 9.375, y: 5}
     adaptiveTilingThreshold: 0.5
@@ -1108,52 +1107,6 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 2.35, y: 3}
-  m_EdgeRadius: 0
---- !u!61 &2986117634561265590
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428890711854167041}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 1.193681, y: 2.3192062}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 8, y: 5}
-    newSize: {x: 9.375, y: 5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.7262335, y: 2.3079834}
   m_EdgeRadius: 0
 --- !u!95 &7991700780297173686
 Animator:
