@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] VSync : {enable}");
     }
 
-    public IEnumerator Fade(bool isFade = true)
+    public IEnumerator Fade(bool isFade = true, GameState state = GameState.Playing)
     {
         // 페이드 인/아웃 코루틴
         State = GameState.Directing;
@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
         fadeImage.color = isFade ? new Color(0f, 0f, 0f, 1f) : new Color(0f, 0f, 0f, 0f);
 
         // 페이드 완료 후 게임 상태 설정
-        State = GameState.Playing;
+        State = state;
     }
 
     // ===== 게임 상태 관련 =====
@@ -524,8 +524,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == mainMenuScene)
         {
             // 메인 메뉴 씬
-            StartCoroutine(Fade(false));
-            State = GameState.MainMenu;
+            StartCoroutine(Fade(false, GameState.MainMenu));
             SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
 
             // 이펙트 매니저 파괴
