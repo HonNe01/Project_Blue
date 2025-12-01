@@ -909,7 +909,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &314955244
@@ -1130,7 +1130,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &506121345
@@ -2435,7 +2435,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -11904,7 +11904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &955510786
 Transform:
   m_ObjectHideFlags: 0
@@ -11977,7 +11977,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &975590854
@@ -12255,7 +12255,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1064631879
@@ -12377,11 +12377,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2195055801461455536, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.07
+      value: 71.611
       objectReference: {fileID: 0}
     - target: {fileID: 2195055801461455536, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2195055801461455536, guid: 1ee1865b3e5508a4ba71f9c7ad877798, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12530,7 +12530,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1130519665
@@ -12748,7 +12748,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -12798,7 +12798,7 @@ CompositeCollider2D:
       - {x: 33.00003, y: -4}
       - {x: 34, y: -4.0000296}
       - {x: 34.00003, y: -5}
-  m_VertexDistance: 0.0005
+  m_VertexDistance: 0.01
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1151646534}
@@ -13956,7 +13956,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1188249055
@@ -14066,7 +14066,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -14785,7 +14785,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1314533710
@@ -16253,7 +16253,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1866438607
@@ -17399,7 +17399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1145733315036640454, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.910131
+      value: -3.998
       objectReference: {fileID: 0}
     - target: {fileID: 1145733315036640454, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: m_LocalPosition.z
