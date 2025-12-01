@@ -179,8 +179,8 @@ MonoBehaviour:
   routeId: 0
   thisScene: 0
   useOverride: 0
-  spawnPoint: {fileID: 7648478322628358616}
-  promptUI: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  promptUI: {fileID: 2663824142074378534}
 --- !u!1 &2663824142074378534
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.5}
+  m_AnchoredPosition: {x: 0, y: 2.85}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &5623649023274147027
