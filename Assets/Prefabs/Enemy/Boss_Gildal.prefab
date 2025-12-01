@@ -274,7 +274,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 1
-  hitPoint: {x: 0, y: 0}
 --- !u!212 &5910109785052565260
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -631,7 +630,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 1
-  hitPoint: {x: 0, y: 0}
 --- !u!212 &2480886907468151602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -808,7 +806,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 1
-  hitPoint: {x: 0, y: 0}
 --- !u!212 &6387907059559171045
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1216,7 +1213,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 1
-  hitPoint: {x: 0, y: 0}
 --- !u!212 &5192498163131547830
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1504,7 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a318193937b69448909e8ea48e1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GildalBoss
-  maxHp: 30
+  maxHp: 10
   phase2ThresholdRatio: 0.3
   iFrameDuration: 0.5
   anim: {fileID: 7991700780297173686}
@@ -1590,7 +1586,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 0
-  hitPoint: {x: 0, y: 1.59}
 --- !u!1 &8355188705297284781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1862,6 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 1
-  hitPoint: {x: 0, y: 0}
 --- !u!212 &232824377379332128
 SpriteRenderer:
   m_ObjectHideFlags: 0
