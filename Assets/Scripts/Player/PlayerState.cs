@@ -69,8 +69,6 @@ public class PlayerState : MonoBehaviour
     public int GaugePercent => (currentGauge * 100) / maxGauge;
 
 
-
-
     private void Awake()
     {
         // 인스턴스
@@ -115,7 +113,7 @@ public class PlayerState : MonoBehaviour
             
 
         // Ground Check
-        if (rb.linearVelocityY <= 0)
+        if (rb.linearVelocityY <= 0.1)
         {
             isGround = Physics2D.OverlapBox(transform.position,
                                             groundCheck, 0f,
