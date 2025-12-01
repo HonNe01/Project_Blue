@@ -2903,6 +2903,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_MuSin
       objectReference: {fileID: 0}
+    - target: {fileID: 5779482375873306277, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779482375873306277, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9141692392611381851, guid: ac581546aaea3334a84810ecacb47bd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.508
