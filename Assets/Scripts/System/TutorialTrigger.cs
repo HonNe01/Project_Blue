@@ -6,7 +6,7 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && targetObject != null)
         {
             targetObject.SetActive(true);
         }
@@ -14,7 +14,7 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && targetObject != null)
         {
             targetObject.SetActive(false);
         }
