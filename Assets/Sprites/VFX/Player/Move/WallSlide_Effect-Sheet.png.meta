@@ -109,67 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Musin_wallattachEffect-Sheet_0
+      name: WallSlide_Effect-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 50
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0255f47e3ecb70480800000000000000
-      internalID: -8932963648841755360
+      spriteID: 3bb583f54cd0ffc4d84f5bbf183141b0
+      internalID: 355902835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattachEffect-Sheet_1
+      name: WallSlide_Effect-Sheet_1
       rect:
         serializedVersion: 2
         x: 80
         y: 50
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3513dbb878e9b9e00800000000000000
-      internalID: 1052609242923348307
+      spriteID: bbfbd3629e1dc104fb0dee18c8982db9
+      internalID: -1340466911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Musin_wallattachEffect-Sheet_2
+      name: WallSlide_Effect-Sheet_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
         height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ac09861e923948740800000000000000
-      internalID: 5153405681703358666
+      spriteID: 524567eaf9b991042a151df58b338cdc
+      internalID: 1746445516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_Effect-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663594c1945784c49ab3b387064171ba
+      internalID: -497394806
       vertices: []
       indices: 
       edges: []
@@ -188,11 +210,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.6000000238418579,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Musin_wallattachEffect-Sheet_0: -8932963648841755360
-      Musin_wallattachEffect-Sheet_1: 1052609242923348307
-      Musin_wallattachEffect-Sheet_2: 5153405681703358666
+      WallSlide_Effect-Sheet_0: 355902835
+      WallSlide_Effect-Sheet_1: -1340466911
+      WallSlide_Effect-Sheet_2: 1746445516
+      WallSlide_Effect-Sheet_3: -497394806
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
