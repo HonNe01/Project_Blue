@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class HitboxController : MonoBehaviour
@@ -11,9 +12,11 @@ public class HitboxController : MonoBehaviour
     [SerializeField] private int baseDamage = 1;
     [SerializeField] private HitboxType type;
     [SerializeField] private ActiveType actType;
-
+    
 
     private float bounceForce = 10f;
+    private Collider2D coll;
+    private Vector2 hitPos;
 
 
     void Awake()
@@ -26,6 +29,8 @@ public class HitboxController : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
+        coll = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,14 +41,19 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
-                    PlayerState.instance.AddGauge(5);
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, collision.gameObject.transform.position, PlayerState.instance.isRight < 0);
+
+                    // 피격 이펙트
+                    GetEffectPos(collision, out hitPos);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, hitPos, PlayerState.instance.isRight < 0);
+
+                    // 공중에선 점프 초기화
                     if (!PlayerState.instance.isGround)
                     {
-                        // 공중에선 점프 초기화
                         PlayerState.instance.playerMove.JumpCountReset();
                     }
 
+                    // 피격 처리
+                    PlayerState.instance.AddGauge(5);
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
                     {
@@ -55,8 +65,12 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
-                    PlayerState.instance.AddGauge(5);
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, collision.gameObject.transform.position, PlayerState.instance.isRight < 0);
+                    
+                    // 피격 이펙트
+                    GetEffectPos(collision, out hitPos);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.AttackHit, hitPos, PlayerState.instance.isRight < 0);
+
+                    // 공중에선 점프 초기화 및 튕겨올리기
                     if (!PlayerState.instance.isGround)
                     {
                         AttackBounce();
@@ -64,6 +78,8 @@ public class HitboxController : MonoBehaviour
                         Debug.Log("튀어오르기");
                     }
 
+                    // 피격 처리
+                    PlayerState.instance.AddGauge(5);
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
                         enemy.TakeDamage(baseDamage);
@@ -73,13 +89,18 @@ public class HitboxController : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     Debug.Log($"[Player] {collision.gameObject.name} Hit!");
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillHit, transform.position, PlayerState.instance.isRight < 0);
+
+                    // 피격 이펙트
+                    GetEffectPos(collision, out hitPos);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.SkillHit, hitPos, PlayerState.instance.isRight < 0);
+
+                    // 공중에선 점프 초기화
                     if (!PlayerState.instance.isGround)
                     {
-                        // 공중에선 점프 초기화
                         PlayerState.instance.playerMove.JumpCountReset();
                     }
 
+                    // 피격 처리
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
                         enemy.TakeDamage(baseDamage);
@@ -88,7 +109,12 @@ public class HitboxController : MonoBehaviour
             case HitboxType.Enemy:
                 if (collision.CompareTag("Player"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, transform.position, PlayerState.instance.isRight < 0);
+                    Debug.Log($"[{gameObject.name}] Player Hit!");
+
+                    // 피격 이펙트
+                    GetEffectPos(collision, out hitPos);
+                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, hitPos, PlayerState.instance.isRight < 0);
+
                     // 패링 확인
                     if (PlayerState.instance.playerGuard.IsParry())
                     {
@@ -103,8 +129,7 @@ public class HitboxController : MonoBehaviour
                         return;
                     }
 
-                    Debug.Log($"[{gameObject.name}] Player Hit!");
-
+                    // 피격 처리
                     PlayerState.instance.TakeDamage(baseDamage);
                 }
                 break;
@@ -205,6 +230,27 @@ public class HitboxController : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private bool GetEffectPos(Collider2D b, out Vector2 hitPos)
+    {
+        hitPos = Vector2.zero;
+
+        Bounds A = coll.bounds;
+        Bounds B = b.bounds;
+
+        // AABB 충돌 체크
+        if (!A.Intersects(B)) return false;
+
+        // 충돌 영역 계산
+        Vector3 min = Vector3.Max(A.min, B.min);
+        Vector3 max = Vector3.Min(A.max, B.max);
+
+        // 중심
+        Vector3 center = (min + max) / 2f;
+        hitPos = new Vector2(center.x, center.y);
+
+        return true;
     }
 
     void AttackBounce()  // 플레이어를 위로 튕겨올리는 함수

@@ -334,6 +334,10 @@ public class GildalBoss : BossBase
         // 3) 은신 해제
         yield return StartCoroutine(Co_EndStealth());
 
+        // 피격 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
+
         // 4) 사망 연출
         GameManager.instance.GameDirecting();
         anim?.SetTrigger("Die");
@@ -380,6 +384,7 @@ public class GildalBoss : BossBase
     public void AE_DoStealth()
     {
         sprite.color = new Color(1, 1, 1, 0);
+        coll.enabled = false;
     }
 
     private IEnumerator Co_EndStealth(bool isAir = false)
@@ -407,8 +412,8 @@ public class GildalBoss : BossBase
             float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
             yield return new WaitForSeconds(animLength);
         }
-        
-        // 피격 판정 설정
+
+        // 피격 판정 복구
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
         Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
     }
@@ -416,6 +421,7 @@ public class GildalBoss : BossBase
     public void AE_EndStealth()
     {
         sprite.color = new Color(1, 1, 1, 1);
+        coll.enabled = true;
     }
     public void AE_StealthSound()
     {
@@ -448,7 +454,11 @@ public class GildalBoss : BossBase
     {
         if (sprite == null || target == null) yield break;
 
-        // 위치 보정
+        // 피격 판정 복구
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
+
+        // 위치 지정
         float clampX = Mathf.Clamp(pos.x, wallXMin + margin, wallXMax - margin);
         pos = new Vector2(clampX, pos.y);
 
@@ -461,11 +471,6 @@ public class GildalBoss : BossBase
             yield return null;
         }
 
-        // 충돌 복구
-        int playerLayer = LayerMask.NameToLayer("Player");
-
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
-
         // 위치 보정
         transform.position = pos;
     }
@@ -473,6 +478,10 @@ public class GildalBoss : BossBase
     private void MoveTo(float offsetX = 0f, float offsetY = 0f)
     {
         if (target == null) return;
+
+        // 피격 판정 해제
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
 
         // 1) 좌우 오프셋
         float ranOffsetX = 0;
@@ -575,7 +584,7 @@ public class GildalBoss : BossBase
 
     private IEnumerator Co_DokkaebiOrb()
     {
-        // 1) 플레이어 근처로 이동
+        // 1) 지정 위치로 이동 (양쪽 벽 근처)
         float offsetX = Random.value < 0.5f ? (wallXMin + dokkaebiOrb_offsetX) : (wallXMax - dokkaebiOrb_offsetX);
         float offsetY = floorHeights[0];
         transform.position = new Vector2(offsetX, offsetY);
@@ -681,9 +690,6 @@ public class GildalBoss : BossBase
         anim?.SetTrigger("JumpSlashPrep");
         yield return new WaitForSeconds(jumpSlash_preDelay);
 
-        // 충돌 무시 (복구는 Co_MoveTo에서)
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
-
         // 3) 공격
         anim?.SetTrigger("JumpSlash");
         StartCoroutine(Co_MoveTo(dest, 0.1f));
@@ -771,10 +777,10 @@ public class GildalBoss : BossBase
     protected override IEnumerator Co_Sturn()
     {
         // 스턴 상태 변경
-        Debug.Log("[Gildal] Boss Sturn!");
         isSturn = true;
         StopPattern();
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
+        Debug.Log("[Gildal] Boss Sturn!");
 
         // 위치 보정
         transform.position = new Vector2(transform.position.x, GetFloorY());
@@ -787,8 +793,8 @@ public class GildalBoss : BossBase
 
         // 상태 복구
         yield return StartCoroutine(Co_DoStealth());
-        state = BossState.Idle;
         isSturn = false;
+        state = BossState.Idle;
         Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
     }
 
@@ -1037,8 +1043,6 @@ public class GildalBoss : BossBase
         Gizmos.color = Color.magenta;
         Vector2 orbPos = Application.isPlaying ? SetOrbSpawnPos(dokkaebiOrbSpawn_Offset) : (Vector2)transform.position + dokkaebiOrbSpawn_Offset;
         Gizmos.DrawWireSphere(orbPos, 0.1f);
-
-
         Handles.Label(orbPos + Vector2.up * (0.1f + 0.1f), "Drone Spawn Position");
     }
 }
