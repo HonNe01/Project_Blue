@@ -278,6 +278,7 @@ public class PlayerState : MonoBehaviour
                 // 패링 성공
                 isHit = false;
                 playerGuard.Parry();
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.GuardHit, transform.position);
                 playerGuard.OffGuarded();
 
                 yield break;
@@ -287,6 +288,7 @@ public class PlayerState : MonoBehaviour
                 // 방어 성공
                 isHit = false;
                 playerGuard.Guard();
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.GuardHit, transform.position);
                 playerGuard.OffGuarded();
 
                 yield break;

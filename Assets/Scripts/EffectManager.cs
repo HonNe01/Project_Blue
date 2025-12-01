@@ -24,10 +24,11 @@ public class EffectManager : MonoBehaviour
         ChargeAttack_Module, UpAttack_Module,
         JumpAttack_Module, JumpUpAttack_Module, DownAttack_Module,
 
-        // Hit : 6
+        // Hit : 7
         MusinHit,
         AttackHit, SkillHit,
         ExplosionNormalHit, ExplosionElectronicHit, ExplosionFireHit,
+        GuardHit,
     }
 
     public GameObject[] MoveEffects;
