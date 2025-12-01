@@ -37,9 +37,13 @@ public class BossManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-            if (arenaEntrance != null)
+        if (arenaEntrance != null)
         {
             arenaEntrance.SetActive(false);
+        }
+        if (bossPlatforms != null)
+        {
+            bossPlatforms.SetActive(false);
         }
     }
 
