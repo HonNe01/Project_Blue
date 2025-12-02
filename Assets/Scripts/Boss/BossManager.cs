@@ -163,6 +163,7 @@ public class BossManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         // 보스 카메라 영역 그리기
@@ -180,4 +181,5 @@ public class BossManager : MonoBehaviour
             Handles.Label(labelPos, "Boss Camera Arena");
         }
     }
+#endif
 }
