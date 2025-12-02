@@ -103,7 +103,7 @@ public class HitboxController : MonoBehaviour
                     // 피격 처리
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                        enemy.TakeDamage(3);
                 }
                 break;
             case HitboxType.Enemy:
@@ -195,7 +195,7 @@ public class HitboxController : MonoBehaviour
 
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
-                        enemy.TakeDamage(baseDamage);
+                        enemy.TakeDamage(3);
                 }
                 break;
             case HitboxType.Enemy:
