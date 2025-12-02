@@ -157,7 +157,7 @@ public class PlayerState : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.D))
         {
             isHeal = false;
             ishealing = false;
@@ -171,7 +171,7 @@ public class PlayerState : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.D))
         {
             isHeal = true;
             ishealing = true;
