@@ -989,6 +989,7 @@ public class GildalBoss : BossBase
         yield return new WaitForSeconds(dokkaebiOrb_postDelay);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         // 각 패턴 예상 위치 표시
@@ -1001,26 +1002,26 @@ public class GildalBoss : BossBase
             // Swing 위치
             Vector2 spawnPos = new Vector2(target.position.x + swing_offsetX, GetFloorY());
             Gizmos.DrawWireCube(spawnPos + offset, size);
-            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Swing Pos", EditorStyles.boldLabel);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Swing Pos");
 
             // Slash 위치
             spawnPos = new Vector2(target.position.x + slash_offsetX, GetFloorY());
             Gizmos.DrawWireCube(spawnPos + offset, size);
-            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slash Pos", EditorStyles.boldLabel);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slash Pos");
 
             // Slam 위치
             spawnPos = new Vector2(target.position.x + slam_offset.x, GetFloorY() + slam_offset.y);
             Gizmos.DrawWireCube(spawnPos + offset, size);
-            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slam Pos", EditorStyles.boldLabel);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted Slam Pos");
 
             // DokkaebiOrb 위치
             spawnPos = new Vector2(wallXMin + dokkaebiOrb_offsetX, floorHeights[0]);
             Gizmos.DrawWireCube(spawnPos + offset, size);
-            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos");
 
             spawnPos = new Vector2(wallXMax - dokkaebiOrb_offsetX, floorHeights[0]);
             Gizmos.DrawWireCube(spawnPos + offset, size);
-            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos", EditorStyles.boldLabel);
+            Handles.Label(spawnPos + new Vector2(-1f, size.y * 1f + 0.2f), "Predicted DokkaebiOrb Pos");
         }
 
         // 보스맵 경계 표시
@@ -1045,4 +1046,5 @@ public class GildalBoss : BossBase
         Gizmos.DrawWireSphere(orbPos, 0.1f);
         Handles.Label(orbPos + Vector2.up * (0.1f + 0.1f), "Drone Spawn Position");
     }
+#endif
 }
