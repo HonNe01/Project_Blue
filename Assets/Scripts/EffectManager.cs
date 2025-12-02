@@ -8,8 +8,9 @@ public class EffectManager : MonoBehaviour
 
     public enum EffectType
     {
-        // Move : 4
+        // Move : 5
         Walk, Dash, Jump, AirJump, Slide,
+        DashCooltime,
 
         // Attack : 8
         Attack1, Attack2, Attack3,
@@ -18,6 +19,7 @@ public class EffectManager : MonoBehaviour
 
         // Skill : 2
         Skill, SkillDown,
+        
 
         // Module : 7
         Attack1_Module, Attack2_Module, Attack3_Module,
