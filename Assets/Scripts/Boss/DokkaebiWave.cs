@@ -4,7 +4,7 @@ using UnityEngine;
 public class DokkaebiWave : MonoBehaviour
 {
     [Header("Projectile Setting")]
-    public int fireTime = 2;
+    public float fireTime = 2;
     [SerializeField] private int baseDamage = 1;
 
     private Animator anim;

@@ -67,6 +67,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ac1cb04ab9cfeb74c8de45aa81c06351, type: 3}
   - {fileID: 8300000, guid: 50a975149b33d7840922abed9f213a3d, type: 3}
   - {fileID: 8300000, guid: db8f6c7e417864432b0de55529f2c857, type: 3}
+  - {fileID: 8300000, guid: 00e0cb6d46151de4e88b78d8b0238419, type: 3}
   musinSFXClips:
   - {fileID: 8300000, guid: 792be152b215a48fdb3d086593b0111b, type: 3}
   - {fileID: 8300000, guid: a1aadf2828b6840428f1c09a54ddc896, type: 3}

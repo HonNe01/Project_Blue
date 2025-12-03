@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BossManager : MonoBehaviour
     public enum BossType { Gildal, Chyeongryu }
 
     [Header(" === Boss Manager === ")]
+    [Header("Boss Reference")]
     public BossType bossType;
     public GameObject bossPrefab;
     public Transform spawnPoint;
@@ -17,12 +19,16 @@ public class BossManager : MonoBehaviour
     private bool isBattle = false;
     private bool isFirst = true;
 
-     
+    [Header("Boss State")]
+    public Slider bossHp;
+
+
     [Header("Boss Arena")]
     public GameObject arenaEntrance;
     public Collider2D bossCameraArena;
     public GameObject bossPlatforms;
 
+    
     private CinemachineConfiner2D confiner;
     private Collider2D originCameraArena;
 
@@ -60,6 +66,8 @@ public class BossManager : MonoBehaviour
         {
             originCameraArena = confiner.BoundingShape2D;
         }
+
+        bossHp.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -97,6 +105,7 @@ public class BossManager : MonoBehaviour
         SetBossCamera(false);
         SetGround(false);
 
+        bossHp.gameObject.SetActive(false);
         Debug.Log("[BossManager] Boss Battle Finish");
     }
 

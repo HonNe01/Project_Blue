@@ -384,7 +384,7 @@ public class PlayerMove : MonoBehaviour
             dashCooldownCounter -= Time.deltaTime;
 
         // 대쉬 쿨타임 초기화
-        if (PlayerState.instance.isDamaged)
+        if (PlayerState.instance.isHit)
         {
             PlayerState.instance.canDash = false;
             canAirDash = false;
@@ -431,29 +431,39 @@ public class PlayerMove : MonoBehaviour
     {
         if (isStart)
         {
+            // 이동 기능 해제
             PlayerState.instance.canMove = false;
             PlayerState.instance.canJump = false;
-            PlayerState.instance.canGuard = false;
-            PlayerState.instance.canAttack = false;
-            PlayerState.instance.canSkill = false;
+
+            // 방어 기능 해제
+            PlayerState.instance.playerGuard.enabled = false;
+
+            // 공격 기능 해제
+            PlayerState.instance.playerAttack.enabled = false;
+
             rb.gravityScale = 0f;
         }
         else
         {
+            // 이동 기능 복구
             PlayerState.instance.canMove = true;
             PlayerState.instance.canJump = true;
-            PlayerState.instance.canGuard = true;
-            PlayerState.instance.canAttack = true;
-            PlayerState.instance.canSkill = true;
+
+            // 방어 기능 복구
+            PlayerState.instance.playerGuard.enabled = true;
+
+            // 공격 기능 복구
+            PlayerState.instance.playerAttack.enabled = true;
+
             rb.gravityScale = defaultGravity;
         }
     }
 
-    public void AE_DashSound()
+    public void AE_DashSound()  // 대쉬 사운드
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Dash);
     }
-    public void AE_DashEffect()
+    public void AE_DashEffect() // 대쉬 이펙트
     {
         EffectManager.instance.PlayEffect(EffectManager.EffectType.Dash, transform.position, PlayerState.instance.isRight < 0);
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 
@@ -109,6 +110,8 @@ public class GildalBoss : BossBase
     private readonly List<BossPattern> phase1Patterns = new();
     private readonly List<BossPattern> phase2Patterns = new();
 
+    private CinemachineImpulseSource impulse;
+
     protected override void Awake()
     {
         base.Awake();
@@ -211,7 +214,10 @@ public class GildalBoss : BossBase
         float animLength = anim.GetCurrentAnimatorStateInfo(1).length;
         yield return new WaitForSeconds(animLength);    // anim 끝날 때까지 대기
 
+
         GameManager.instance.GamePlay();
+        BossManager.instance.bossHp.value = curHp / maxHp;
+        BossManager.instance.bossHp.gameObject.SetActive(true);
         yield return StartCoroutine(Co_DoStealth());
         state = BossState.Idle;
     }
@@ -220,13 +226,17 @@ public class GildalBoss : BossBase
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Landing_Gildal);
         SoundManager.instance.PlayBGM(SoundManager.BGM.Gildal_Battle);
+        ImpulseCamera();
     }
-
+    public void ImpulseCamera() // 카메라 흔들기
+    {
+        impulse = GetComponent<CinemachineImpulseSource>();
+        impulse.GenerateImpulse();
+    }
     public void AE_StartSound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Start_Gildal);
     }
-
     public void AE_CrySound()
     {
         SoundManager.instance.PlaySFX(SoundManager.SFX.Cry_Gildal);

@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 4
+  type: 5
   actType: 1
 --- !u!212 &5910109785052565260
 SpriteRenderer:
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 4
+  type: 5
   actType: 1
 --- !u!212 &2480886907468151602
 SpriteRenderer:
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 4
+  type: 5
   actType: 1
 --- !u!212 &6387907059559171045
 SpriteRenderer:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 4
+  type: 5
   actType: 1
 --- !u!212 &5192498163131547830
 SpriteRenderer:
@@ -1308,6 +1308,7 @@ GameObject:
   - component: {fileID: 7991700780297173686}
   - component: {fileID: 5258845458500319665}
   - component: {fileID: 8670731891582766443}
+  - component: {fileID: 4672208981333419772}
   m_Layer: 7
   m_Name: Boss_Gildal
   m_TagString: Enemy
@@ -1500,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a318193937b69448909e8ea48e1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GildalBoss
-  maxHp: 10
+  maxHp: 20
   phase2ThresholdRatio: 0.3
   iFrameDuration: 0.5
   anim: {fileID: 7991700780297173686}
@@ -1536,30 +1537,30 @@ MonoBehaviour:
   slam_postDelay: 1
   slam_offset: {x: 2, y: 5}
   slam_Hitbox: {fileID: 5924644709608940927}
-  dokkaebiOrb_weight: 5
+  dokkaebiOrb_weight: 1
   dokkaebiOrb_cooldown: 2
   dokkaebiOrb_preDelay: 0.2
-  dokkaebiOrb_postDelay: 1
+  dokkaebiOrb_postDelay: 2
   dokkaebiOrbSpawn_Offset: {x: 1.51, y: 4}
   dokkaebiOrb_offsetX: 1.3
   dronePrefab: {fileID: 7932476323538561107, guid: 7cb0dfd4261578c46bbc51ff0389004e, type: 3}
   slash_weight: 4
   slash_cooldown: 2
   slash_preDelay: 0.1
-  slash_postDelay: 0.2
+  slash_postDelay: 0.5
   slash_offsetX: 4
   slash_Hitbox: {fileID: 8355188705297284781}
   jumpSlash_weight: 3
   jumpSlash_height: 5
   jumpSlash_cooldown: 2
-  jumpSlash_preDelay: 0.1
-  jumpSlash_postDelay: 0.2
+  jumpSlash_preDelay: 0
+  jumpSlash_postDelay: 0.5
   jumpSlash_Hitbox1: {fileID: 5816483574308687481}
   jumpSlash_Hitbox2: {fileID: 278258734063782736}
   eDokkaebiOrb_weight: 1
   eDokkaebiOrb_cooldown: 2
   eDokkaebiOrb_preDelay: 0.1
-  eDokkaebiOrb_postDelay: 0.2
+  eDokkaebiOrb_postDelay: 1
   specialHpPer:
   - 0.7
   - 0.4
@@ -1586,6 +1587,59 @@ MonoBehaviour:
   baseDamage: 1
   type: 4
   actType: 0
+--- !u!114 &4672208981333419772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428890711854167041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 4
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.5
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0.25, y: 0.25, z: 0}
 --- !u!1 &8355188705297284781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxController
   baseDamage: 1
-  type: 4
+  type: 5
   actType: 1
 --- !u!212 &232824377379332128
 SpriteRenderer:

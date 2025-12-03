@@ -1,9 +1,8 @@
-using UnityEditor;
 using UnityEngine;
 
 public class HitboxController : MonoBehaviour
 {
-    public enum HitboxType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, Scarecrow }
+    public enum HitboxType { PlayerAttack, PlayerDownAttack, PlayerSkill, Trap, Enemy, EnemyAttack, Scarecrow }
     public enum EffectType { Slash, Explosion }
 
     public enum ActiveType { True, False }
@@ -33,6 +32,11 @@ public class HitboxController : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
+    private void OnEnable()
+    {
+        coll.enabled = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (type)
@@ -57,7 +61,9 @@ public class HitboxController : MonoBehaviour
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
                     {
-                        enemy.TakeDamage(baseDamage);                        
+                        coll.enabled = false;
+                        enemy.TakeDamage(baseDamage);
+                        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack_Hit);
                     }
                 }
                 break;
@@ -82,7 +88,11 @@ public class HitboxController : MonoBehaviour
                     PlayerState.instance.AddGauge(5);
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
+                    {
+                        coll.enabled = false;
                         enemy.TakeDamage(baseDamage);
+                        SoundManager.instance.PlaySFX(SoundManager.SFX.Attack_Hit);
+                    }
                 }
                 break;
             case HitboxType.PlayerSkill:
@@ -103,17 +113,16 @@ public class HitboxController : MonoBehaviour
                     // 피격 처리
                     var enemy = collision.GetComponent<BossBase>();
                     if (enemy != null)
-                        enemy.TakeDamage(3);
+                    {
+                        coll.enabled = false;
+                        enemy.TakeDamage(baseDamage);
+                    }
                 }
                 break;
             case HitboxType.Enemy:
                 if (collision.CompareTag("Player"))
                 {
                     Debug.Log($"[{gameObject.name}] Player Hit!");
-
-                    // 피격 이펙트
-                    GetEffectPos(collision, out hitPos);
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, hitPos, PlayerState.instance.isRight < 0);
 
                     // 패링 확인
                     if (PlayerState.instance.playerGuard.IsParry())
@@ -130,6 +139,30 @@ public class HitboxController : MonoBehaviour
                     }
 
                     // 피격 처리
+                    PlayerState.instance.TakeDamage(baseDamage);
+                }
+                break;
+            case HitboxType.EnemyAttack:
+                if (collision.CompareTag("Player"))
+                {
+                    Debug.Log($"[{gameObject.name}] Player Hit!");
+
+                    // 패링 확인
+                    if (PlayerState.instance.playerGuard.IsParry())
+                    {
+                        // 보스 스턴
+                        var boss = GetComponentInParent<BossBase>();
+
+                        if (boss != null)
+                        {
+                            boss.state = BossBase.BossState.Sturn;
+                        }
+
+                        return;
+                    }
+
+                    // 피격 처리
+                    coll.enabled = false;
                     PlayerState.instance.TakeDamage(baseDamage);
                 }
                 break;
@@ -195,13 +228,12 @@ public class HitboxController : MonoBehaviour
 
                     var enemy = collision.gameObject.GetComponent<BossBase>();
                     if (enemy != null)
-                        enemy.TakeDamage(3);
+                        enemy.TakeDamage(baseDamage);
                 }
                 break;
             case HitboxType.Enemy:
                 if (collision.gameObject.CompareTag("Player"))
                 {
-                    EffectManager.instance.PlayEffect(EffectManager.EffectType.MusinHit, transform.position, PlayerState.instance.isRight < 0);
                     // 패링 확인
                     if (PlayerState.instance.playerGuard.IsParry())
                     {

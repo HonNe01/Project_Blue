@@ -6,7 +6,7 @@ public class PlayerGuard : MonoBehaviour
     [Header("Guard Setting")]
     [SerializeField] public bool isGuard;               // 가드 버튼 누르는지
     [SerializeField] private float guardTime = 0f;      // 가드한 시간
-    [SerializeField] private float guardDisableTime = 1.5f;
+    public float guardDisableTime = 1.5f;
     [field: SerializeField] public bool isGuarded { get; private set; }         // 가드 성공 여부
     [SerializeField] private LayerMask enemyAttackMask;
 
@@ -99,6 +99,7 @@ public class PlayerGuard : MonoBehaviour
     {
         isGuard = false;
         PlayerState.instance.anim.SetTrigger("IsParry");
+        PlayerState.instance.AddGauge(20);
         yield return null;
 
         float animLength = PlayerState.instance.anim.GetCurrentAnimatorStateInfo(0).length;
@@ -118,22 +119,20 @@ public class PlayerGuard : MonoBehaviour
 
     private void OnDisableActive()
     {
-        PlayerState.instance.canMove = false;
-        PlayerState.instance.canJump = false;
-        PlayerState.instance.canDash = false;
-        PlayerState.instance.canAttack = false;
+        PlayerState.instance.playerMove.enabled = false;
+
+        PlayerState.instance.playerAttack.enabled = false;
+        
         PlayerState.instance.canHeal = false;
-        PlayerState.instance.canSkill = false;
     }
 
     private void OnEnableActive()
     {
-        PlayerState.instance.canMove = true;
-        PlayerState.instance.canJump = true;
-        PlayerState.instance.canDash = true;
-        PlayerState.instance.canAttack = true;
+        PlayerState.instance.playerMove.enabled = true;
+
+        PlayerState.instance.playerAttack.enabled = true;
+
         PlayerState.instance.canHeal = true;
-        PlayerState.instance.canSkill = true;
     }
 
     private IEnumerator GuardDisable()

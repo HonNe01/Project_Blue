@@ -137,7 +137,8 @@ public abstract class BossBase : MonoBehaviour
         }
 
         curHp -= damage;
-
+        BossManager.instance.bossHp.value = curHp / maxHp;
+        
         // I-Frame
         if (isInvulnerable == false)
             StartCoroutine(Co_IFrame());

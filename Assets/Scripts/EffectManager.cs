@@ -27,7 +27,6 @@ public class EffectManager : MonoBehaviour
         JumpAttack_Module, JumpUpAttack_Module, DownAttack_Module,
 
         // Hit : 7
-        MusinHit,
         AttackHit, SkillHit,
         ExplosionNormalHit, ExplosionElectronicHit, ExplosionFireHit,
         GuardHit,

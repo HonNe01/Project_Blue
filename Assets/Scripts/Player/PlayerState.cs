@@ -1,6 +1,6 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour
@@ -19,13 +19,13 @@ public class PlayerState : MonoBehaviour
 
     [HideInInspector] public CinemachinePositionComposer cinemachineComposer;
 
+
     [Header("=== Player State ===")]
     [Header("State")]
-    public bool isDamaged = false;
-    [SerializeField] private float damagedTime = 0.2f;
-    private bool isHit = false;
-    [SerializeField] private float hitTime = 0.5f;
-    public bool isDie = false;
+    public bool isHit = false;                         // 피격 상태 판정
+    private float damagedTime = 0.5f;  // 피격 후 경직 시간
+    private float hitTime = 1.5f;      // 피격 후 무적 시간
+    public bool isDie = false;                          // 사망 상태 판정
 
     [Header("Move")]
     public int isRight;
@@ -63,11 +63,11 @@ public class PlayerState : MonoBehaviour
     public int currentGauge = 100;
 
     [Header("Damaged")]
+    public GameObject hitEffect;
     public float damagedknockbackXForce = 10f;
     public float damagedknockbackYForce = 10f;
 
     public int GaugePercent => (currentGauge * 100) / maxGauge;
-
 
     private void Awake()
     {
@@ -94,10 +94,16 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
-        curHP = maxHP;
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == GameManager.instance.ruinsScene) curHP = 3;
+        else curHP = maxHP;
 
+        hitEffect.SetActive(false);
+
+        // 메인 카메라 할당
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         cinemachineComposer = vcam.GetComponent<CinemachinePositionComposer>();
+
         vcam.Follow = transform;
     }
 
@@ -143,9 +149,11 @@ public class PlayerState : MonoBehaviour
 
     public void Healing()
     {
+        if (!isGround) return;
+
         if (!isHeal)
         {
-            StartCoroutine(DisableHeal());
+            StartCoroutine(Co_DisableHeal());
             playerMove.enabled = true;
         }
         else
@@ -167,7 +175,7 @@ public class PlayerState : MonoBehaviour
             anim.SetBool("Healing", ishealing);
             healTimer = 0f;
             healContinew = false;
-            StartCoroutine(DisableHeal());
+            StartCoroutine(Co_DisableHeal());
             return;
         }
 
@@ -227,9 +235,12 @@ public class PlayerState : MonoBehaviour
         SoundManager.instance.PlaySFX(SoundManager.SFX.Healing);
     }
 
-    private IEnumerator DisableHeal()
+    private IEnumerator Co_DisableHeal()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
+
+        float animLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animLength);
     }
 
     public void HPCheck()
@@ -258,7 +269,8 @@ public class PlayerState : MonoBehaviour
     
     public void TakeDamage(int damage = 1)
     {
-        if (isHit ||isDie) return;
+        if (GameManager.instance.isGod) return;
+        if (isHit || isDie) return;
         isHit = true;
 
         StartCoroutine(Co_TakeDamage(damage));
@@ -273,8 +285,10 @@ public class PlayerState : MonoBehaviour
         {
             if (playerGuard.IsParry())
             {
+                // 이후 피격 무시
+                StartCoroutine(DisableHitbox(hitTime * 0.5f));
+
                 // 패링 성공
-                isHit = false;
                 playerGuard.Parry();
                 if (isRight > 0)
                 {
@@ -287,12 +301,15 @@ public class PlayerState : MonoBehaviour
                 playerGuard.OffGuarded();
 
                 yield break;
-            }
+            } // 패링
             else
             {
+                // 이후 피격 무시
+                StartCoroutine(DisableHitbox(hitTime * 0.5f));
+
                 // 방어 성공
-                isHit = false;
                 playerGuard.Guard();
+                StartCoroutine(Co_DisableGuard(playerGuard.guardDisableTime));
                 if (isRight > 0)
                 {
                     EffectManager.instance.PlayEffect(EffectManager.EffectType.GuardHit, transform.position);
@@ -301,18 +318,19 @@ public class PlayerState : MonoBehaviour
                 {
                     EffectManager.instance.PlayEffect(EffectManager.EffectType.GuardHit, transform.position + new Vector3(-0, 0, 0), true);
                 }
-                playerGuard.OffGuarded();
-
+                
                 yield break;
-            }
+            }                       // 방어
         }
         // 피격 판정
         else
         {
-            // 이동 불능
+            // 행동 불능
             StartCoroutine(Co_DisableAction(damagedTime));
-            // 이미 피격 상태면 무시
-            StartCoroutine(DisableHitbox());
+            StartCoroutine(Co_DisableGuard(damagedTime));
+
+            // 이후 피격 무시
+            StartCoroutine(DisableHitbox(hitTime));
 
             // 피격 넉백
             if (isRight > 0)
@@ -331,9 +349,11 @@ public class PlayerState : MonoBehaviour
             curHP = Mathf.Clamp(curHP, 0, maxHP);
 
             // 피격 애니메이션
+            hitEffect.SetActive(true);
             anim.SetTrigger("IsDamaged");
+            SoundManager.instance.PlaySFX(SoundManager.SFX.Damaged);
             Debug.Log($"[PlayerState] Damaged!, Current HP : {curHP}");
-
+            
             // 사망 판정
             if (curHP <= 0)
             {
@@ -342,10 +362,17 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    IEnumerator DisableHitbox()
+    private IEnumerator Co_DisableGuard(float time)
+    {
+        playerGuard.enabled = false;
+        yield return new WaitForSeconds(time);
+        playerGuard.enabled = true;
+    }
+
+    IEnumerator DisableHitbox(float time)
     {
         isHit = true;
-        yield return new WaitForSeconds(hitTime);
+        yield return new WaitForSeconds(time);
         isHit = false;
     }
 
@@ -353,15 +380,17 @@ public class PlayerState : MonoBehaviour
     {
         Debug.Log("플레이어 사망!");
 
-        // 조작 해제
-        DisableAction();
-
         // 상태 처리
         isDie = true;
-        rb.linearVelocity = Vector2.zero;   
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
+        coll.enabled = false;
 
         // 사망 애니메이션
         anim.SetTrigger("IsDie");
+
+        // 조작 해제
+        DisableAction();
     }
 
     // skill gauge 관련
@@ -371,9 +400,13 @@ public class PlayerState : MonoBehaviour
         currentGauge = Mathf.Clamp(currentGauge, 0, maxGauge);
         Debug.Log("게이지 증가");
     }
-
     public bool UseGauge(int amount)    // 게이지 소모
     {
+        if (GameManager.instance.isGod)
+        {
+            return true;
+        }
+
         if (currentGauge < amount)
         {
             Debug.Log("게이지 부족");
@@ -386,69 +419,51 @@ public class PlayerState : MonoBehaviour
 
     IEnumerator Co_DisableAction(float duration)    // 피격시 행동 불능
     {
-        isDamaged = true;
         DisableAction();
 
         if (!isDie)
         {
             yield return new WaitForSeconds(duration);
 
-            isDamaged = false;
             EnableAction();
         }
     }
-
     private void DisableAction()
     {
         // 조작
-        canMove = false;
-        canJump = false;
-        canDash = false;
+        playerMove.enabled = false;
 
         // 행동
-        canGuard = false;
+        playerGuard.enabled = false;
         canHeal = false;
         
         // 공격
-        canAttack = false;
-        canSkill = false;
+        playerAttack.enabled = false;
     }
-
     private void EnableAction()
     {
         // 조작
-        canMove = true;
-        canJump = true;
-        canDash = true;
+        playerMove.enabled = true;
 
         // 행동
-        canGuard = true;
+        playerGuard.enabled = true;
         canHeal = true;
 
         // 공격
-        canAttack = true;
-        canSkill = true;
+        playerAttack.enabled = true;
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 메인 씬 진입시 파괴
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == GameManager.instance.mainMenuScene)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (scene.name == GameManager.instance.mainMenuScene) return;
 
         // 씬 전환시 메인 카메라 할당
         CinemachineCamera vcam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();

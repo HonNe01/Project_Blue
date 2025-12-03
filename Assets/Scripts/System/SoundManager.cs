@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour
         Click,
 
         // Player : 4
-        Walk, Jump, Dash, Healing,
+        Walk, Jump, Dash, Healing, Damaged,
         // - Musin : 5
         Attack1_Musin, Attack2_Musin, Attack3_Musin, ChargeAttack_Musin,
 

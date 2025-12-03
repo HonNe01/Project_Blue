@@ -1348,7 +1348,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6530195403321344225, guid: 2d2937fd479e6284e8dccf092428dc75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 478863803}
   m_SourcePrefab: {fileID: 100100000, guid: 2d2937fd479e6284e8dccf092428dc75, type: 3}
 --- !u!224 &478863801 stripped
 RectTransform:
@@ -1360,6 +1363,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6530195403321344225, guid: 2d2937fd479e6284e8dccf092428dc75, type: 3}
   m_PrefabInstance: {fileID: 478863800}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &478863803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478863802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 83f3c8abf6fbd224db8ba13586444299, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1898387958}
+          m_TargetAssemblyTypeName: ShakeCamera, Assembly-CSharp
+          m_MethodName: ImpulseCamera
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &531965364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6157,6 +6190,7 @@ GameObject:
   - component: {fileID: 1898387954}
   - component: {fileID: 1898387956}
   - component: {fileID: 1898387957}
+  - component: {fileID: 1898387958}
   m_Layer: 0
   m_Name: KingCinema
   m_TagString: Untagged
@@ -6330,6 +6364,19 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0.25, y: 0.25, z: 0}
+--- !u!114 &1898387958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898387952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cacf81e9003b54459f26b0f5f842ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShakeCamera
+  impulse: {fileID: 1898387957}
 --- !u!1 &1936152540
 GameObject:
   m_ObjectHideFlags: 0

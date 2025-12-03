@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState { None, MainMenu, Playing, Directing, Paused }
 
+
     [Header(" === Game State === ")]
     [field: SerializeField] public GameState State { get; private set; }
     [SerializeField] private GameState beforeState = GameState.None;
@@ -19,20 +21,23 @@ public class GameManager : MonoBehaviour
     public enum MenuType { None, Pause, Option, Graphic, Audio, Control }
     private Stack<MenuType> menuStack = new Stack<MenuType>();
 
+
     [Header(" === UI Reference === ")]
     public Image fadeImage;
     [SerializeField] private MenuType Menu = MenuType.None;
     [SerializeField] private GameObject[] menuPanels;
+
 
     [Header("Graphics")]
     public TMP_Dropdown resolutionDropdown;
     private List<Resolution> resolutions = new List<Resolution>();
     private int optimalResolutionIndex = 0;
 
+
     [Header("Inventory")]
     public PlayerInventory inventory;
 
-
+    
     [Header(" === Scene Names === ")]
     [SerializeField] public string mainMenuScene = "MainMenu";
     [SerializeField] public string selectScene = "SelectScene";
@@ -43,6 +48,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string cheongryuScene = "CheongRyuScene";
     [HideInInspector] public string nextScene;
 
+
+    [Header("Developer Mode")]
+    public bool isGod = false;
 
     private void Awake()
     {
@@ -120,6 +128,12 @@ public class GameManager : MonoBehaviour
                     CursorEnable();
                 }
             }
+        }
+
+        // 개발자 모드
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            isGod = !isGod;
         }
     }
 
@@ -524,16 +538,24 @@ public class GameManager : MonoBehaviour
         if (scene.name == mainMenuScene)
         {
             // 메인 메뉴 씬
+            isGod = false;
+            isFirst = true;
             StartCoroutine(Fade(false, GameState.MainMenu));
             SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
 
+            // 플레이어 파괴
+            if (PlayerState.instance != null)
+            {
+                Debug.Log("[GameManager] Player Destroy");
+                Destroy(PlayerState.instance.gameObject);
+            }
             // 이펙트 매니저 파괴
             if (EffectManager.instance != null)
             {
                 Debug.Log("[GameManager] EffectManager Destroy");
                 Destroy(EffectManager.instance.gameObject);
             }
-
+            
             // 마우스 커서 활성화
             CursorEnable();
         }
