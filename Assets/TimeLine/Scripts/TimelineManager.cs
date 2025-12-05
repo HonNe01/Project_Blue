@@ -1,9 +1,10 @@
-using Unity.Cinemachine;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
+using static GameManager;
 
 public class TimelineManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class TimelineManager : MonoBehaviour
 
     [Header(" Timeline UI")]
     public GameObject continueText;
+    public GameObject skipButton;
 
     [Header(" === Signal Setting ===")]
     [Header(" Signal Reference")]
@@ -26,7 +28,7 @@ public class TimelineManager : MonoBehaviour
 
     [Header("Select Scene Signal")]
     public SignalAsset SelectPanelOpen;
-    
+
     [Header("Helicopter Scene Signal")]
     public SignalAsset redLightOn;
     public SignalAsset redLightOff;
@@ -97,7 +99,7 @@ public class TimelineManager : MonoBehaviour
             unityEvent = new UnityEvent();
             receiver.AddReaction(asset, unityEvent);
         }
-        
+
         // 리액션 할당
         unityEvent.AddListener(action);
     }
@@ -137,6 +139,20 @@ public class TimelineManager : MonoBehaviour
         GameManager.instance.GamePlay();
     }
 
+    public void Skip()
+    {
+        StartCoroutine(Co_Skip());
+    }
+
+    private IEnumerator Co_Skip()
+    {
+        yield return StartCoroutine(GameManager.instance.Fade());
+
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+        SceneManager.LoadScene(nextIndex);
+    }
+
     // 캐릭터 선택창
     public void OpenSelectPanel()
     {
@@ -144,5 +160,58 @@ public class TimelineManager : MonoBehaviour
 
         var rootPlayable = director.playableGraph.GetRootPlayable(0);
         rootPlayable.SetSpeed(0);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 타임라인 초기화
+        InitTimeline();
+        SoundManager.instance.InitStory();
+
+        // 씬 구분
+        if (scene.name == GameManager.instance.mainMenuScene)
+        {
+            skipButton.SetActive(false);
+        }
+        else if (scene.name == GameManager.instance.selectScene)
+        {
+            StartCoroutine(GameManager.instance.Fade(false, GameState.Directing));
+
+            skipButton.SetActive(true);
+        }
+        else if (scene.name == GameManager.instance.fallenScene)
+        {
+            StartCoroutine(GameManager.instance.Fade(false, GameState.Directing));
+            skipButton.SetActive(true);
+        }
+        else if (scene.name == GameManager.instance.ruinsScene)
+        {
+            skipButton.SetActive(false);
+
+            if (GameManager.instance.isFirst)
+            {
+                // 시나리오 씬
+                StartCoroutine(GameManager.instance.Fade(false, GameState.Directing));
+                GameManager.instance.isFirst = false;
+                GameManager.instance.GameDirecting();
+                PlayTimeline();
+
+                // 마우스 커서 비활성화
+                GameManager.instance.CursorEnable();
+            }
+            else
+            {
+                StartCoroutine(GameManager.instance.Fade(false));
+            }
+        }
     }
 }

@@ -87,12 +87,10 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetKey(KeyCode.UpArrow))          // 윗 공격
                 {
                     StartCoroutine(Co_UpAttack(PlayerState.instance.isGround));
-                    Debug.Log("Up Attack");
                 }
                 else if (Input.GetKey(KeyCode.DownArrow))   // 아래 공격
                 {
                     StartCoroutine(Co_DownAttack());
-                    Debug.Log("Down Attack");
                 }
                 else
                 {
@@ -104,7 +102,6 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetKey(KeyCode.UpArrow))          // 윗 공격
                 {
                     StartCoroutine(Co_UpAttack(PlayerState.instance.isGround));
-                    Debug.Log("Up Attack");
                 }
                 else
                 {
@@ -168,7 +165,6 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             anim.SetInteger("AttackCombo", curCombo);
             rb.linearVelocity = Vector2.zero;
-            Debug.Log($"콤보{curCombo} 실행");
         }
         rb.linearVelocity = Vector2.zero;
 
@@ -282,7 +278,6 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Co_DownAttack()                 // 아래 공격
     {
-        Debug.Log("Down Attack Animation");
         anim.SetTrigger("IsDown");
         anim.SetTrigger("Attack");
         yield return new WaitForEndOfFrame();

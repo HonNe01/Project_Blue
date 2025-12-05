@@ -56,12 +56,8 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         // 가상 카메라 참조
-        var vcam = FindAnyObjectByType<CinemachineCamera>();
+        confiner = PlayerState.instance.cinemachineComposer.gameObject.GetComponent<CinemachineConfiner2D>();
 
-        if (vcam != null)
-        {
-            confiner = vcam.GetComponent<CinemachineConfiner2D>();
-        }
         if (confiner != null)   // 원래 카메라 영역 저장
         {
             originCameraArena = confiner.BoundingShape2D;

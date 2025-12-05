@@ -14,6 +14,16 @@ public class AE_Timeline : MonoBehaviour
         if (SoundManager.instance) SoundManager.instance.PlaySFX(SoundManager.SFX.Walk);
     }
 
+    public void AE_JumpEffect()
+    {
+        if (EffectManager.instance) EffectManager.instance.PlayEffect(EffectManager.EffectType.Jump, transform.position);
+    }
+
+    public void AE_AirJumpEffect()
+    {
+        if (EffectManager.instance) EffectManager.instance.PlayEffect(EffectManager.EffectType.AirJump, transform.position);
+    }
+
     public void AE_DashSound()
     {
         if (SoundManager.instance) SoundManager.instance.PlaySFX(SoundManager.SFX.Dash);

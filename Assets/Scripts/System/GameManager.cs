@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private bool isFirst = true;
+    public bool isFirst = true;
 
     public enum GameState { None, MainMenu, Playing, Directing, Paused }
 
@@ -223,11 +222,11 @@ public class GameManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float alpha = isFade ? Mathf.Clamp01(elapsed / duration) : 1f - Mathf.Clamp01(elapsed / duration);
-            fadeImage.color = new Color(0f, 0f, 0f, alpha);
+            fadeImage.color = new Color(0.2f, 0.2f, 0.2f, alpha);
             yield return null;
         }
 
-        fadeImage.color = isFade ? new Color(0f, 0f, 0f, 1f) : new Color(0f, 0f, 0f, 0f);
+        fadeImage.color = isFade ? new Color(0.2f, 0.2f, 0.2f, 1f) : new Color(0.2f, 0.2f, 0.2f, 0f);
 
         // 페이드 완료 후 게임 상태 설정
         State = state;
@@ -439,31 +438,31 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {ruinsScene}");
 
-        StartCoroutine(NextScene(ruinsScene));
+        StartCoroutine(Co_NextScene(ruinsScene));
     }
 
     public void GoToOP()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {outpostScene}");
 
-        StartCoroutine(NextScene(outpostScene));
+        StartCoroutine(Co_NextScene(outpostScene));
     }
 
     public void GoToGD()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {gildalScene}");
 
-        StartCoroutine(NextScene(gildalScene));
+        StartCoroutine(Co_NextScene(gildalScene));
     }
 
     public void GoToCR()
     {
         Debug.Log($"[GameManager] Load Scene : {SceneManager.GetActiveScene().name} -> {cheongryuScene}");
 
-        StartCoroutine(NextScene(cheongryuScene));
+        StartCoroutine(Co_NextScene(cheongryuScene));
     }
 
-    public IEnumerator NextScene(string nextScene)
+    public IEnumerator Co_NextScene(string nextScene)
     {
         yield return StartCoroutine(Fade(true));
 
@@ -485,6 +484,7 @@ public class GameManager : MonoBehaviour
             _ => Portal.PortalType.OutPost,
         };
     }
+
 
     // ===== 마우스 커서 상태 관련 =====
     public void CursorEnable()
@@ -520,18 +520,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         nextScene = null;
 
+        if (TimelineManager.instance != null && TimelineManager.instance.director == null)
+        {
+            TimelineManager.instance.InitTimeline();
+        }
+
         // 메뉴 전부 닫기
         foreach (var panel in menuPanels)
         {
             if (panel != null)
                 panel.SetActive(false);
-        }
-
-        // 타임라인 초기화
-        if (TimelineManager.instance)
-        {
-            TimelineManager.instance.InitTimeline();
-            SoundManager.instance.InitStory();
         }
 
         // 씬 구분
@@ -586,21 +584,6 @@ public class GameManager : MonoBehaviour
         }
         else if (scene.name == ruinsScene)
         {
-            if (isFirst)
-            {
-                // 시나리오 씬
-                isFirst = false;
-                State = GameState.Directing;
-                TimelineManager.instance.PlayTimeline();
-
-                // 마우스 커서 비활성화
-                CursorEnable();
-            }
-            else
-            {
-                StartCoroutine(Fade(false));
-            }
-
             SoundManager.instance.PlayBGM(SoundManager.BGM.Ruins);
         }
         else if (scene.name == outpostScene)

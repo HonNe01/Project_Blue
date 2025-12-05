@@ -26,7 +26,7 @@ TagManager:
   - EnemyAttack
   - PlayerAttack
   - BossManager
-  - 
+  - Wall
   - 
   - 
   - 
@@ -53,6 +53,9 @@ TagManager:
   - name: Ground
     uniqueID: 1153062603
     locked: 0
+  - name: Back UI
+    uniqueID: 3883556221
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -71,7 +74,7 @@ TagManager:
   - name: PlayerAttack
     uniqueID: 2250172645
     locked: 0
-  - name: UI
+  - name: Front UI
     uniqueID: 3802851853
     locked: 0
   - name: Menu UI

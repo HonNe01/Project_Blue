@@ -402,7 +402,7 @@ public class SoundManager : MonoBehaviour
     public void UpdateVolumeStory()
     {
         // º¼·ý Á¶Á¤
-        if (storyPlayer == null) return;
+        if (storyPlayer == null || storySlider == null || masterSlider == null) return;
         storyPlayer.volume = storyVolume * storySlider.value * masterSlider.value;
 
         // º¼·ý ÀúÀå

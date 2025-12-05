@@ -114,6 +114,9 @@ public class PlayerState : MonoBehaviour
         if (isDie || GameManager.instance.State == GameManager.GameState.Directing)
         {
             rb.linearVelocity = Vector2.zero;
+
+            StartCoroutine(Co_DisableAction(1));
+
             return;
         }
             
@@ -151,41 +154,38 @@ public class PlayerState : MonoBehaviour
     {
         if (!isGround) return;
 
-        if (!isHeal)
-        {
-            StartCoroutine(Co_DisableHeal());
-            playerMove.enabled = true;
-        }
-        else
-        {
-            playerMove.enabled = false;
-        }
-        if (!canHeal || curHP >= maxHP || currentGauge < 20)
-        {
-            return;
-        }
-
         if (Input.GetKeyUp(KeyCode.D))
         {
+            Debug.Log("힐 취소");
+
             isHeal = false;
             ishealing = false;
             healPress = false;
-            Debug.Log("힐 취소");
+
+            EnableAction();
+            StartCoroutine(Co_DisableHeal());
+
             anim.SetBool("IsHeal", isHeal);
             anim.SetBool("Healing", ishealing);
+
             healTimer = 0f;
             healContinew = false;
-            StartCoroutine(Co_DisableHeal());
             return;
         }
+
+        if (curHP >= maxHP || currentGauge < 20) return;
 
         if (Input.GetKey(KeyCode.D))
         {
             isHeal = true;
             ishealing = true;
             healPress = true;
+
+            DisableAction();
+
             anim.SetBool("Healing", ishealing);
             anim.SetBool("IsHeal", isHeal);
+
             rb.linearVelocity = Vector2.zero;
         }
 
@@ -327,7 +327,6 @@ public class PlayerState : MonoBehaviour
         {
             // 행동 불능
             StartCoroutine(Co_DisableAction(damagedTime));
-            StartCoroutine(Co_DisableGuard(damagedTime));
 
             // 이후 피격 무시
             StartCoroutine(DisableHitbox(hitTime));

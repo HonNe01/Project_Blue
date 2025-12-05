@@ -345,8 +345,9 @@ public class GildalBoss : BossBase
         yield return StartCoroutine(Co_EndStealth());
 
         // 피격 판정 해제
-        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, true);
-        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, true);
+        coll.enabled = false;
+        Physics2D.IgnoreLayerCollision(bossLayer, playerLayer, false);
+        Physics2D.IgnoreLayerCollision(bossLayer, playerAttackLayer, false);
 
         // 4) 사망 연출
         GameManager.instance.GameDirecting();
@@ -359,6 +360,7 @@ public class GildalBoss : BossBase
 
         StopAllCoroutines();
         state = BossState.Die;
+
     }
 
     // 은신 기믹

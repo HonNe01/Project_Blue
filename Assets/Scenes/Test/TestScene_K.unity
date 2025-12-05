@@ -160,10 +160,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 518224479812225942, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
-      propertyPath: type
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1145733315036640454, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.45
@@ -268,6 +264,10 @@ PrefabInstance:
     - target: {fileID: 7428619333310077809, guid: 2984abc03c423f64594a239404cc69a6, type: 3}
       propertyPath: m_Name
       value: Test_Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428619333310077809, guid: 2984abc03c423f64594a239404cc69a6, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1420,6 +1420,10 @@ PrefabInstance:
     - target: {fileID: 7428619333310077809, guid: 2984abc03c423f64594a239404cc69a6, type: 3}
       propertyPath: m_Name
       value: Test_Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428619333310077809, guid: 2984abc03c423f64594a239404cc69a6, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2703,7 +2707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 518224479812225942, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: type
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1145733315036640454, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2748,10 +2752,6 @@ PrefabInstance:
     - target: {fileID: 1415166212797198082, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
       propertyPath: m_Name
       value: Scarecrow_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4380575710568449922, guid: dfcc0ea4ba657a3489c7ee5154b45e5d, type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
