@@ -39,6 +39,8 @@ public class HitboxController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Hit(collision.gameObject);
+
         switch (type)
         {
             case HitboxType.PlayerAttack:
@@ -87,6 +89,7 @@ public class HitboxController : MonoBehaviour
                     // 피격 처리
                     PlayerState.instance.AddGauge(5);
                     var enemy = collision.GetComponent<BossBase>();
+
                     if (enemy != null)
                     {
                         coll.enabled = false;
@@ -263,6 +266,30 @@ public class HitboxController : MonoBehaviour
                 break;
         }
     }
+
+    private void Hit(GameObject target)
+    {
+        switch(type)
+        {
+            case HitboxType.PlayerAttack:
+                break;
+            case HitboxType.PlayerDownAttack:
+                break;
+            case HitboxType.PlayerSkill:
+                break;
+            case HitboxType.Enemy:
+            case HitboxType.EnemyAttack:
+                break;
+            case HitboxType.Trap:
+                break;
+        }
+    }
+
+    private void HitPlayerAttack(GameObject target)
+    {
+
+    }
+
 
     private bool GetEffectPos(Collider2D b, out Vector2 hitPos)
     {

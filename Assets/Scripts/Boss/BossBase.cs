@@ -9,7 +9,7 @@ using UnityEngine;
 ///     - 공통 패턴 시스템 (BossPattern) 제공 : 가중치 + 쿨타임 기반
 ///     - 자식 클래스는 Co_ChoosePattern()과 패턴 코루틴 등의 추가 구현 필요
 /// </summary>
-public abstract class BossBase : MonoBehaviour
+public class BossBase : MonoBehaviour, IDamageable
 {
     // Enum 상태 정의
     public enum BossState { Idle, ChoosePattern, Attacking, Directing, Sturn, Die }
